@@ -46,6 +46,9 @@
         <img class="mi mi-0" src="img/portrait.webp" alt="" width="896" height="1200">
         <img class="mi mi-1" src="img/wraps.webp" alt="" width="896" height="1200">
         <img class="mi mi-2" src="img/gear.webp" alt="" width="896" height="1200">
+        <div class="shards">
+          <i class="sh sh-1"></i><i class="sh sh-2"></i><i class="sh sh-3"></i><i class="sh sh-4"></i>
+        </div>
       </div>
 
       <svg class="scribble scribble-hero" viewBox="0 0 320 120" aria-hidden="true">
@@ -101,7 +104,7 @@
   <!-- LE PALMARÈS — musée de collection (#44) -->
   <section class="chapter black museum" aria-labelledby="museum-h">
     <div class="wrap">
-      <h2 id="museum-h" class="sec-title onblack">LE PALMARÈS <span class="sec-fictif">(fictif — grammaire d'aperçu)</span></h2>
+      <h2 id="museum-h" class="sec-title onblack reveal">LE PALMARÈS <span class="sec-fictif">(fictif — grammaire d'aperçu)</span></h2>
       <div class="mus-grid">
         <article class="mus-card">
           <img src="img/gants-rouges.webp" alt="Premiers gants rouges usés — visuel fictif" width="900" height="900" loading="lazy">
@@ -120,7 +123,7 @@
           <p class="mus-name">LA CEINTURE <span class="mus-yr">2023</span></p>
         </article>
       </div>
-      <p class="mus-record"><span class="rec">18</span> victoires · <span class="rec">2</span> défaites · <span class="rec">11</span> avant la limite <span class="fictif">(palmarès fictif)</span></p>
+      <p class="mus-record reveal"><span class="rec">18</span> victoires · <span class="rec">2</span> défaites · <span class="rec">11</span> avant la limite <span class="fictif">(palmarès fictif)</span></p>
     </div>
   </section>
 
@@ -130,6 +133,7 @@
     <div class="dual-grid">
       <a class="dual-half" href="#contact">
         <img src="img/ring.webp" alt="En combat, sous les projecteurs — visuel fictif" width="864" height="1184" loading="lazy">
+        <video class="dual-vid" muted loop playsinline preload="none" data-src="img/ring-loop.mp4" aria-hidden="true"></video>
         <div class="dual-copy">
           <p class="dual-t">SUR LE <strong>RING</strong></p>
           <p class="dual-d">Les soirs d'affiche : calendrier, billets, résultats.</p>
@@ -164,7 +168,7 @@
   <!-- PARTENAIRES -->
   <section class="chapter paper partners" aria-label="Partenaires">
     <div class="wrap">
-      <p class="part-row" aria-hidden="true">
+      <p class="part-row reveal" aria-hidden="true">
         <span>ARLON&nbsp;SPORTS</span><span>BRASSERIE&nbsp;KIRCHBERG</span><span>FIT&nbsp;LËTZEBUERG</span><span class="part-you">VOTRE&nbsp;MARQUE&nbsp;ICI&nbsp;↗</span>
       </p>
       <p class="part-note fictif">partenaires fictifs (aperçu)</p>
@@ -174,9 +178,9 @@
   <!-- CONTACT -->
   <section class="chapter black contact" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
-      <h2 id="contact-h" class="sec-title onblack big">ÉCRIRE À L'ÉQUIPE <em class="neon-serif">Roda</em></h2>
-      <p class="contact-sub">Sponsoring, presse, coaching des jeunes : une seule adresse, une réponse sous 48&nbsp;h. <span class="fictif">(formulaire de démonstration)</span></p>
-      <form class="lead-form" action="#" method="post" aria-label="Formulaire de contact (démonstration)">
+      <h2 id="contact-h" class="sec-title onblack big reveal">ÉCRIRE À L'ÉQUIPE <em class="neon-serif">Roda</em></h2>
+      <p class="contact-sub reveal">Sponsoring, presse, coaching des jeunes : une seule adresse, une réponse sous 48&nbsp;h. <span class="fictif">(formulaire de démonstration)</span></p>
+      <form class="lead-form reveal" action="#" method="post" aria-label="Formulaire de contact (démonstration)">
         <div class="form-grid">
           <label>Nom<input type="text" name="nom" autocomplete="name" required></label>
           <label>E-mail<input type="email" name="email" autocomplete="email" required></label>
@@ -236,11 +240,15 @@ if (kin) {
 }
 
 // HÉROS #43 — assemblage de l'équipement au scroll + scrubs globaux
+let tiltX = 0, tiltY = 0;
 if (!reduced) {
   const hero = document.querySelector('.morph-hero');
   if (hero) hero.classList.add('scrub');
   const mis = [...document.querySelectorAll('.mi')];
   const mega = document.querySelector('.mega');
+  // éclats 3D : les fragments de l'équipement volent en place (#43 flagship)
+  const shards = [...document.querySelectorAll('.sh')];
+  const SHOFF = [{x:-260,y:-190,r:-16},{x:250,y:-150,r:13},{x:-210,y:210,r:9},{x:270,y:190,r:-11}];
   const rail = document.querySelector('.progress-rail');
   const kws = kin ? [...kin.querySelectorAll('.kw')] : [];
   const neonW = kin ? kin.querySelector('.neon-word') : null;
@@ -254,8 +262,16 @@ if (!reduced) {
       const r = hero.getBoundingClientRect();
       const p = clamp01(-r.top / Math.max(r.height - vh, 1));
       if (mis[1]) mis[1].style.opacity = clamp01((p - 0.25) / 0.2);
-      if (mis[2]) mis[2].style.opacity = clamp01((p - 0.62) / 0.2);
-      if (mega) mega.style.transform = `translate(-50%, calc(-50% + ${p * -40}px)) scale(${1 + p * 0.06})`;
+      if (mis[2]) mis[2].style.opacity = clamp01((p - 0.74) / 0.16);
+      const s = clamp01((p - 0.52) / 0.32);
+      shards.forEach((sh, i) => {
+        const si = clamp01((s - i * 0.09) / 0.6);
+        const e = 1 - Math.pow(1 - si, 3);
+        const o = SHOFF[i];
+        sh.style.opacity = si.toFixed(2);
+        sh.style.transform = `translate3d(${(o.x * (1 - e)).toFixed(1)}px, ${(o.y * (1 - e)).toFixed(1)}px, ${(140 * (1 - e)).toFixed(1)}px) rotate(${(o.r * (1 - e)).toFixed(2)}deg)`;
+      });
+      if (mega) mega.style.transform = `translate(calc(-50% + ${tiltX * -3}px), calc(-50% + ${p * -40 + tiltY * 3}px)) scale(${1 + p * 0.06})`;
       hero.classList.toggle('geared', p > 0.8);
     }
     if (rail) rail.style.transform = `scaleX(${clamp01(y / (document.documentElement.scrollHeight - vh))})`;
@@ -277,23 +293,43 @@ if (!reduced) {
 } else {
   document.querySelectorAll('.kw').forEach(w => w.classList.add('sharp'));
 }
-if (io) document.querySelectorAll('.reveal, .mus-card, .pola').forEach(el => io.observe(el));
+if (io) document.querySelectorAll('.reveal, .mus-card, .pola, .dual-half, .fan').forEach(el => io.observe(el));
 
-// Anneau curseur néon
+// loop vidéo — SUR LE RING (desktop, chargée à l'approche)
+const dv = document.querySelector('.dual-vid');
+if (dv && !reduced && matchMedia('(min-width: 700px)').matches && 'IntersectionObserver' in window) {
+  const dio = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      dv.preload = 'auto'; dv.src = dv.dataset.src; dv.load();
+      dv.addEventListener('loadeddata', () => { dv.classList.add('on'); dv.play().catch(() => {}); }, { once: true });
+      dio.disconnect();
+    });
+  }, { rootMargin: '200px' });
+  dio.observe(dv.parentElement);
+}
+
+// Anneau curseur néon + inclinaison 3D du portrait (souris)
 if (matchMedia('(pointer: fine)').matches && !reduced) {
   const ring = document.createElement('div');
   ring.className = 'cursor-ring';
   document.body.appendChild(ring);
+  const morphWrap = document.querySelector('.morph-imgs');
   let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+  let ttx = 0, tty = 0;
   addEventListener('pointermove', ev => {
     mx = ev.clientX; my = ev.clientY;
+    ttx = (ev.clientX / innerWidth - 0.5) * 10;
+    tty = (ev.clientY / innerHeight - 0.5) * -8;
     ring.classList.add('on');
     ring.classList.toggle('hot', !!(ev.target.closest && ev.target.closest('a, button')));
   }, { passive: true });
   document.documentElement.addEventListener('pointerleave', () => ring.classList.remove('on'));
   (function loop() {
     rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+    tiltX += (ttx - tiltX) * 0.07; tiltY += (tty - tiltY) * 0.07;
     ring.style.transform = `translate(${rx.toFixed(1)}px, ${ry.toFixed(1)}px)`;
+    if (morphWrap) morphWrap.style.transform = `rotateY(${tiltX.toFixed(2)}deg) rotateX(${tiltY.toFixed(2)}deg)`;
     requestAnimationFrame(loop);
   })();
 }

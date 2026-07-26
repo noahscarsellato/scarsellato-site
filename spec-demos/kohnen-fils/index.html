@@ -52,6 +52,7 @@
         <img class="ph ph-0 active" src="img/terrain.webp" alt="" width="1600" height="893">
         <img class="ph ph-1" src="img/structure.webp" alt="" width="1600" height="893">
         <img class="ph ph-2" src="img/maison.webp" alt="" width="1600" height="893">
+        <video class="build-vid" muted playsinline preload="none" data-src="img/chantier.mp4" aria-hidden="true"></video>
       </div>
       <div class="build-scrim" aria-hidden="true"></div>
 
@@ -235,6 +236,15 @@ if (cio) document.querySelectorAll('.numeral').forEach(el => cio.observe(el));
 const hero = document.querySelector('.build-hero');
 if (hero && !reduced) {
   hero.classList.add('scrub');
+  // le time-lapse (arsenal #41 flagship) : la vidéo se scrub au scroll — images = poster/fallback
+  const vid = hero.querySelector('.build-vid');
+  const useVid = vid && matchMedia('(min-width: 900px)').matches;
+  if (useVid) {
+    vid.preload = 'auto';
+    vid.src = vid.dataset.src;
+    vid.load();
+    vid.addEventListener('loadeddata', () => hero.classList.add('vid-on'), { once: true });
+  }
   const phs = [...hero.querySelectorAll('.ph')];
   const pas = [...hero.querySelectorAll('.pa')];
   const copy = hero.querySelector('.hero-copy');
@@ -249,6 +259,10 @@ if (hero && !reduced) {
     const vh = innerHeight, y = scrollY;
     const r = hero.getBoundingClientRect();
     const p = clamp01(-r.top / Math.max(r.height - vh, 1));
+    if (useVid && hero.classList.contains('vid-on') && vid.duration) {
+      const t = p * (vid.duration - 0.06);
+      if (Math.abs(vid.currentTime - t) > 0.02) vid.currentTime = t;
+    }
     phs[1].style.opacity = clamp01((p - 0.22) / 0.16);
     phs[2].style.opacity = clamp01((p - 0.58) / 0.16);
     const idx = p < 0.30 ? 0 : p < 0.66 ? 1 : 2;

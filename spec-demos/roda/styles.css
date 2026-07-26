@@ -91,7 +91,8 @@ img { max-width: 100%; display: block; }
 }
 .mega .tm { font-size: 0.14em; vertical-align: super; font-weight: 600; letter-spacing: 0; }
 
-.morph-imgs { position: relative; z-index: 2; width: min(46vh, 76vw); aspect-ratio: 3 / 4; }
+.morph-stage { perspective: 1100px; }
+.morph-imgs { position: relative; z-index: 2; width: min(46vh, 76vw); aspect-ratio: 3 / 4; transform-style: preserve-3d; will-change: transform; }
 .morph-imgs img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   border-radius: 6px; opacity: 0;
@@ -100,6 +101,19 @@ img { max-width: 100%; display: block; }
 .morph-imgs .mi-0 { opacity: 1; }
 html:not(.js) .morph-imgs .mi-2 { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .morph-imgs .mi-2 { opacity: 1 !important; } }
+
+/* éclats — l'équipement vole en place (#43) */
+.shards { position: absolute; inset: 0; pointer-events: none; transform-style: preserve-3d; }
+.sh {
+  position: absolute; inset: 0; opacity: 0; will-change: transform, opacity;
+  background: url('img/gear.webp') center / cover; border-radius: 6px;
+}
+.sh-1 { clip-path: polygon(0 0, 56% 0, 46% 50%, 0 58%); }
+.sh-2 { clip-path: polygon(56% 0, 100% 0, 100% 54%, 46% 50%); }
+.sh-3 { clip-path: polygon(0 58%, 46% 50%, 52% 100%, 0 100%); }
+.sh-4 { clip-path: polygon(46% 50%, 100% 54%, 100% 100%, 52% 100%); }
+html:not(.js) .shards, .no-shards .shards { display: none; }
+@media (prefers-reduced-motion: reduce) { .shards { display: none; } }
 
 /* scribbles néon (#45) */
 .scribble path { stroke: var(--neon); stroke-width: 5; stroke-linecap: round; }
@@ -218,7 +232,19 @@ html:not(.js) .kw { opacity: 1; filter: none; }
 .dual-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; min-height: 72vh; }
 @media (max-width: 700px) { .dual-grid { grid-template-columns: 1fr; } }
 .dual-half { position: relative; overflow: clip; display: block; min-height: 50vh; }
+/* entrée en scène : les deux moitiés glissent l'une vers l'autre */
+.js .dual-half { opacity: 0; transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.js .dual-half:first-child { transform: translateX(-46px); }
+.js .dual-half:last-child { transform: translateX(46px); }
+.js .dual-half.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .dual-half { opacity: 1 !important; transform: none !important; } }
 .dual-half img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease), filter 0.9s var(--ease); }
+.dual-vid {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 0.7s var(--ease);
+}
+.dual-vid.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .dual-vid { display: none; } }
 .dual-half:first-child img { filter: grayscale(0.2); }
 .dual-half:hover img { transform: scale(1.045); }
 .dual-copy {
@@ -241,9 +267,19 @@ html:not(.js) .kw { opacity: 1; filter: none; }
 .f-1 { transform: translateX(-50%) rotate(-12deg) translateX(-58%); }
 .f-2 { transform: translateX(-50%) translateY(-6%); z-index: 2; }
 .f-3 { transform: translateX(-50%) rotate(12deg) translateX(58%); }
-.fan:hover .f-1 { transform: translateX(-50%) rotate(-16deg) translateX(-72%); }
-.fan:hover .f-3 { transform: translateX(-50%) rotate(16deg) translateX(72%); }
-.fan:hover .f-2 { transform: translateX(-50%) translateY(-10%); }
+/* le déclencheur du bas de page : la main de cartes s'ouvre en arrivant à l'écran */
+.js .fan:not(.in) .fan-c { transform: translateX(-50%) rotate(0) translateX(0); }
+.js .fan .fan-c { transition: transform 0.9s var(--ease); }
+.js .fan .f-2 { transition-delay: 0.05s; }
+.js .fan .f-3 { transition-delay: 0.1s; }
+.fan:hover .f-1, .js .fan.in:hover .f-1 { transform: translateX(-50%) rotate(-16deg) translateX(-72%); }
+.fan:hover .f-3, .js .fan.in:hover .f-3 { transform: translateX(-50%) rotate(16deg) translateX(72%); }
+.fan:hover .f-2, .js .fan.in:hover .f-2 { transform: translateX(-50%) translateY(-10%); }
+@media (prefers-reduced-motion: reduce) {
+  .js .fan:not(.in) .f-1 { transform: translateX(-50%) rotate(-12deg) translateX(-58%); }
+  .js .fan:not(.in) .f-2 { transform: translateX(-50%) translateY(-6%); }
+  .js .fan:not(.in) .f-3 { transform: translateX(-50%) rotate(12deg) translateX(58%); }
+}
 .soc-note { font-size: 0.8125rem; opacity: 0.7; max-width: 30rem; margin-inline: auto; }
 
 /* PARTENAIRES */
@@ -294,6 +330,9 @@ html:not(.js) .kw { opacity: 1; filter: none; }
 }
 .cursor-ring.on { opacity: 0.9; }
 .cursor-ring.hot { scale: 1.6; }
+
+/* le curseur natif disparaît — seul le nôtre existe (desktop) */
+@media (pointer: fine) { *, a, button, input, textarea, select, label { cursor: none !important; } }
 
 /* footer */
 .site-footer { background: var(--ink-990); color: var(--paper-100); padding-block: 2.4rem; }
