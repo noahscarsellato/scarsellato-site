@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scarsellato — L'atelier digital, Luxembourg</title>
+<meta name="description" content="Scarsellato construit des mondes, pas des pages — sites immersifs dessinés à la main, sans cookies. Luxembourg.">
+<link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="loader-core">
+    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
+    <p class="loader-count"><span id="loaderCount">00</span></p>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+  </div>
+</div>
+
+<canvas class="dust" id="dust" aria-hidden="true"></canvas>
+<div class="progress-rail" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="wordmark" href="#top">scar<span class="italic gold">sellato</span></a>
+  <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
+  <nav class="top-links" aria-label="Navigation">
+    <a href="#traversee">Traversée</a>
+    <a href="#atelier">Atelier</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="btn-pill magnetic" href="#contact"><span class="pill-label">Parler d'un projet</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+</header>
+
+<main id="top">
+
+  <!-- (01) MONDE D'OUVERTURE — l'image est l'interface -->
+  <section class="pano hero" aria-label="Ouverture">
+    <div class="pano-bg" id="heroBg"><img src="img/world-immo.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="img/loop-immo.mp4"></video></div>
+    <div class="pano-scrim" aria-hidden="true"></div>
+    <p class="chip chip-tl" aria-hidden="true">( SCARSELLATO ) — ATELIER DIGITAL · LUXEMBOURG</p>
+    <p class="whisper whisper-tr" aria-hidden="true">Chaque monde est construit à la main —<br>image, mouvement, réponse.<br>Aucun template, jamais.</p>
+    <div class="statement st-hero">
+      <p class="st-line"><span class="st-in">Des mondes.</span></p>
+      <p class="st-line"><span class="st-in italic gold">Pas des pages.</span></p>
+    </div>
+    <h1 class="megamark" id="megaMark" aria-label="Scarsellato">scarsellato<span class="tm">™</span></h1>
+    <p class="scroll-cue" aria-hidden="true">DÉFILER<span class="cue-line"></span></p>
+    <p class="chip chip-br" aria-hidden="true">49.61° N · 6.13° E — FR · DE · EN · IT</p>
+  </section>
+
+  <!-- statement noir -->
+  <section class="statement-block" aria-label="Promesse">
+    <p class="st-line big"><span class="st-in">Répondre.</span></p>
+    <p class="st-line big"><span class="st-in italic gold">Le jour même.</span></p>
+  </section>
+
+  <!-- (02) LA TRAVERSÉE — plein écran, monde après monde -->
+  <section class="corridor" id="traversee" aria-label="La traversée">
+    <div class="cor-head">
+      <p class="chip" aria-hidden="true">( 01 ) — LA TRAVERSÉE · LA CAMÉRA AVANCE</p>
+    </div>
+    <div class="cor-track">
+      <div class="cor-sticky">
+        <div class="cor-world" id="corWorld">
+          <div class="cor-floor" aria-hidden="true"></div>
+          <i class="streak" style="--sz:-500px;  --sx:-40vw"></i>
+          <i class="streak" style="--sz:-1100px; --sx:41vw"></i>
+          <i class="streak" style="--sz:-1800px; --sx:-43vw"></i>
+          <i class="streak" style="--sz:-2600px; --sx:39vw"></i>
+          <i class="streak" style="--sz:-3300px; --sx:-38vw"></i>
+          <i class="streak" style="--sz:-4100px; --sx:42vw"></i>
+          <i class="streak" style="--sz:-5000px; --sx:-41vw"></i>
+          <i class="streak" style="--sz:-5900px; --sx:40vw"></i>
+          <article class="cor-room" data-z="0">
+            <div class="cor-bg"><img src="img/world-immo.jpg" alt="Monde immobilier"><video class="vid" muted loop playsinline preload="auto" src="img/loop-immo.mp4"></video></div>
+            <div class="cor-scrim"></div>
+            <p class="chip r-tl">M-IMM · GRUND / 2026</p>
+            <p class="whisper r-tr">Un récit de quartiers.<br>Réponse le jour même.</p>
+            <h3 class="room-title">immobilier<span class="tm">.</span></h3>
+          </article>
+          <article class="cor-room" data-z="-2200">
+            <div class="cor-bg"><img src="img/world-sante.jpg" alt="Monde santé"><video class="vid" muted loop playsinline preload="auto" src="img/loop-sante.mp4"></video></div>
+            <div class="cor-scrim"></div>
+            <p class="chip r-tl">PHY-C · ESCH / 2026</p>
+            <p class="whisper r-tr">La lumière comme soin.<br>Rendez-vous sans téléphone.</p>
+            <h3 class="room-title">santé<span class="tm">.</span></h3>
+          </article>
+          <article class="cor-room" data-z="-4400">
+            <div class="cor-bg"><img src="img/world-gastro.jpg" alt="Monde gastronomie"><video class="vid" muted loop playsinline preload="auto" src="img/loop-gastro.mp4"></video></div>
+            <div class="cor-scrim"></div>
+            <p class="chip r-tl">A-SAP · DIFFERDANGE / 2026</p>
+            <p class="whisper r-tr">Lume di candela.<br>La table se dresse.</p>
+            <h3 class="room-title">gastronomia<span class="tm">.</span></h3>
+          </article>
+          <div class="cor-room cor-final" data-z="-6600">
+            <h3 class="room-title final">le vôtre<span class="gold">.</span></h3>
+            <p class="chip">VOTRE-NOM · VOTRE-VILLE / 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (03) MANIFESTE CINÉTIQUE — le texte vit sur l'image -->
+  <section class="kinetic" aria-label="Manifeste">
+    <div class="kin-track">
+      <div class="kin-sticky">
+        <div class="pano-bg"><img src="img/world-sante.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="img/loop-sante.mp4"></video></div>
+        <div class="kin-scrim" aria-hidden="true"></div>
+        <p class="chip chip-tl" aria-hidden="true">( 02 ) — CE QUE NOUS CROYONS</p>
+        <p class="kin-text" id="kinText">un site n'est pas ✦ une carte de visite. c'est la première poignée de main ∿ le premier rendez-vous ⇌ la première réponse. nous construisons des pages qui respirent ✦ qui racontent — et qui répondent, le jour même.</p>
+        <p class="chip kin-chip1" aria-hidden="true">RÉPONSE — LE JOUR MÊME ↗</p>
+        <p class="chip kin-chip2" aria-hidden="true">0 COOKIE · 0 TRACEUR</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (04) L'ATELIER — les sites dans le vide, fiche technique qui s'écrit -->
+  <section class="void" id="atelier" aria-label="L'atelier">
+    <div class="void-track">
+      <div class="void-sticky">
+        <p class="chip chip-tl" aria-hidden="true">( 03 ) — L'ATELIER · CONSTRUIT À LA MAIN</p>
+        <p class="void-counter chip" aria-hidden="true"><span id="voidIdx">01</span> / 04</p>
+        <div class="void-stage">
+          <a class="v-screen" data-i="0" href="../spec-demos/m-immobilier/index.html" target="_blank" rel="noopener">
+            <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="img/world-immo.jpg" alt="Site M Immobilier"></div>
+            <div class="v-reflect" aria-hidden="true"><img src="img/world-immo.jpg" alt=""></div>
+          </a>
+          <a class="v-screen" data-i="1" href="../spec-demos/physio-concept/index.html" target="_blank" rel="noopener">
+            <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="img/world-sante.jpg" alt="Site Physio Concept"></div>
+            <div class="v-reflect" aria-hidden="true"><img src="img/world-sante.jpg" alt=""></div>
+          </a>
+          <a class="v-screen" data-i="2" href="../spec-demos/antichi-sapori/index.html" target="_blank" rel="noopener">
+            <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="img/world-gastro.jpg" alt="Site Antichi Sapori"></div>
+            <div class="v-reflect" aria-hidden="true"><img src="img/world-gastro.jpg" alt=""></div>
+          </a>
+          <a class="v-screen" data-i="3" href="../spec-demos/verde/index.html" target="_blank" rel="noopener">
+            <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="../spec-demos/verde/img/interieur.jpg" alt="Site Verde"></div>
+            <div class="v-reflect" aria-hidden="true"><img src="../spec-demos/verde/img/interieur.jpg" alt=""></div>
+          </a>
+        </div>
+        <div class="v-specs" id="vSpecs" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (05) chiffres -->
+  <section class="numbers" aria-label="Les chiffres">
+    <div class="num-grid">
+      <div class="num"><span class="numeral" data-count="3">3</span><span class="num-cap">mondes déjà construits</span></div>
+      <div class="num"><span class="numeral" data-count="0">0</span><span class="num-cap">cookie, zéro traceur</span></div>
+      <div class="num"><span class="numeral" data-count="100">100</span><span class="num-cap">% dessiné à la main</span></div>
+    </div>
+  </section>
+
+  <!-- (06) FINALE — monde gastro -->
+  <section class="pano finale" id="contact" aria-label="Contact">
+    <div class="pano-bg"><img src="img/world-gastro.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="img/loop-gastro.mp4"></video></div>
+    <div class="pano-scrim deep" aria-hidden="true"></div>
+    <div class="finale-core">
+      <p class="chip" aria-hidden="true">( 04 ) — ET MAINTENANT</p>
+      <div class="statement">
+        <p class="st-line big"><span class="st-in">Parlons de</span></p>
+        <p class="st-line big"><span class="st-in italic gold">votre monde.</span></p>
+      </div>
+      <a class="btn-pill magnetic big" href="#top"><span class="pill-label">Écrire à l'atelier</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+      <p class="finale-note">RÉPONSE LE JOUR MÊME — PROMIS.</p>
+    </div>
+    <p class="giant-wordmark" aria-hidden="true">scar<span class="italic">sellato</span></p>
+    <p class="foot-line">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
+  </section>
+
+</main>
+
+<script>
+document.documentElement.classList.add('js');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp01 = v => Math.max(0, Math.min(1, v));
+
+// ---------- horloge vivante ----------
+const liveLine = document.getElementById('liveLine');
+const JOURS = ['DIMANCHE','LUNDI','MARDI','MERCREDI','JEUDI','VENDREDI','SAMEDI'];
+const MOIS = ['JANVIER','FÉVRIER','MARS','AVRIL','MAI','JUIN','JUILLET','AOÛT','SEPTEMBRE','OCTOBRE','NOVEMBRE','DÉCEMBRE'];
+const tickClock = () => {
+  const d = new Date(), p = n => String(n).padStart(2, '0');
+  liveLine.textContent = `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())} [LUX] — ${JOURS[d.getDay()]} ${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}`;
+};
+tickClock(); setInterval(tickClock, 1000);
+
+// ---------- preloader ----------
+const loader = document.getElementById('loader');
+if (reduced) { loader.remove(); document.documentElement.classList.add('ready'); }
+else {
+  const cnt = document.getElementById('loaderCount'), bar = document.getElementById('loaderBar');
+  const t0 = performance.now(), DUR = 1400;
+  let finished = false;
+  const finish = () => {
+    if (finished) return; finished = true;
+    cnt.textContent = '100'; bar.style.transform = 'scaleX(1)';
+    loader.classList.add('done');
+    document.documentElement.classList.add('ready');
+    setTimeout(() => loader.remove(), 1300);
+  };
+  const tick = now => {
+    if (finished) return;
+    const p = clamp01((now - t0) / DUR);
+    cnt.textContent = String(Math.floor(p * 100)).padStart(2, '0');
+    bar.style.transform = `scaleX(${p})`;
+    if (p < 1) requestAnimationFrame(tick); else finish();
+  };
+  requestAnimationFrame(tick);
+  setTimeout(finish, DUR + 500);
+}
+
+// ---------- lettres : le wordmark massif + statements ----------
+const splitChars = (el, lineIndex) => {
+  const nodes = [...el.childNodes];
+  el.textContent = '';
+  let i = 0;
+  nodes.forEach(n => {
+    const txt = n.textContent;
+    const wrap = n.nodeType === 1 ? n : null;
+    [...txt].forEach(c => {
+      const s = document.createElement('span');
+      s.className = 'ch'; s.style.setProperty('--i', i); s.style.setProperty('--l', lineIndex);
+      s.textContent = c === ' ' ? ' ' : c;
+      if (wrap) { const w = wrap.cloneNode(false); w.appendChild(s); el.appendChild(w); }
+      else el.appendChild(s);
+      i++;
+    });
+  });
+};
+splitChars(document.getElementById('megaMark'), 2);
+document.querySelectorAll('.st-hero .st-in').forEach((el, li) => splitChars(el, li));
+
+// ---------- manifeste cinétique : mots en spans ----------
+const kin = document.getElementById('kinText');
+kin.innerHTML = kin.textContent.trim().split(/\s+/).map(w =>
+  /^[✦∿⇌⌂—]$/.test(w) ? `<span class="kw glyph">${w}</span>` : `<span class="kw">${w}</span>`).join(' ');
+const kws = [...kin.querySelectorAll('.kw')];
+
+// ---------- fiches techniques de l'atelier ----------
+const SPECS = [
+  ['SITE 01 — M-IMM / GRUND', 'RÉCIT — 6 CHAPITRES', 'RIDEAU DIRECTIONNEL + MORPH DE MONDE', 'ÉLÉVATION DESSINÉE AU SCROLL', '0 COOKIE · 0 TRACEUR'],
+  ['SITE 02 — PHY-C / ESCH', 'ARCHÉTYPE LUMIÈRE — PAPIER & EUCALYPTUS', 'SCHÉMA DU CORPS ANIMÉ', 'RENDEZ-VOUS SANS TÉLÉPHONE', 'RAPPELS — LA VEILLE, PROMIS'],
+  ['SITE 03 — A-SAP / DIFFERDANGE', 'MONDE — LUME DI CANDELA', 'LA TAVOLA SE DESSINE', 'IL MENU EN 3 ACTES', 'PRENOTAZIONI — EN 2 MINUTES'],
+  ['SITE 04 — VERDE / CONCEPT', 'ARCHÉTYPE BOLD-ORGANIC', 'LE BOL QUI S’OUVRE — INGRÉDIENTS + KCAL', 'SLIDER 3D — LA CARTE', 'RÉVÉLATION IMMERSIVE DU LIEU']
+];
+const vSpecs = document.getElementById('vSpecs');
+vSpecs.innerHTML = SPECS.map((list, si) =>
+  `<ul class="spec-list" data-i="${si}">` + list.map(l => `<li class="spec-line">${l}</li>`).join('') + '</ul>').join('');
+const specLists = [...vSpecs.querySelectorAll('.spec-list')];
+const vScreens = [...document.querySelectorAll('.v-screen')];
+
+// ---------- compteurs ----------
+const cio = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, end = parseInt(el.dataset.count, 10); cio.unobserve(el);
+    if (reduced) return;
+    let t0n = null;
+    const step = ts => { if (!t0n) t0n = ts; const p = Math.min((ts - t0n) / 1100, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll('.numeral').forEach(el => cio.observe(el));
+
+// ---------- moteur maître ----------
+if (!reduced) {
+  const rail = document.querySelector('.progress-rail');
+  const heroBg = document.getElementById('heroBg');
+  const hero = document.querySelector('.hero');
+  const corTrack = document.querySelector('.cor-track');
+  const corWorld = document.getElementById('corWorld');
+  const rooms = [...corWorld.querySelectorAll('.cor-room')];
+  const roomZ = rooms.map(r => parseFloat(r.dataset.z));
+  const kinTrack = document.querySelector('.kin-track');
+  const voidTrack = document.querySelector('.void-track');
+  const voidIdxEl = document.getElementById('voidIdx');
+  const finale = document.querySelector('.finale');
+
+  let swayX = 0, swayY = 0, tSwayX = 0, tSwayY = 0;
+  let mx = innerWidth / 2, my = innerHeight / 2;
+  let rawV = 0, skew = 0, lastY = scrollY;
+  let dustDrift = 0, forming = false;
+
+  addEventListener('pointermove', ev => {
+    mx = ev.clientX; my = ev.clientY;
+    tSwayX = (ev.clientX / innerWidth - 0.5) * 3.4;
+    tSwayY = (ev.clientY / innerHeight - 0.5) * -2.4;
+  }, { passive: true });
+
+  const prog = el => { const r = el.getBoundingClientRect(); return clamp01(-r.top / Math.max(r.height - innerHeight, 1)); };
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const y = scrollY, vh = innerHeight;
+    rawV = y - lastY; lastY = y; dustDrift = rawV;
+    rail.style.transform = `scaleX(${clamp01(y / (document.documentElement.scrollHeight - vh))})`;
+    // héros : l'image respire, le wordmark plonge
+    if (y < vh * 1.3) {
+      heroBg.style.transform = `scale(${1.06 + y / vh * 0.06}) translate(${(mx - innerWidth / 2) * -0.012}px, ${(my - vh / 2) * -0.012 + y * 0.08}px)`;
+      hero.style.setProperty('--fade', clamp01(1 - y / (vh * 0.9)));
+    }
+    // couloir
+    const cp = prog(corTrack);
+    const camZ = cp * 6900 - 150;
+    corWorld.style.transform = `translateZ(${camZ}px) rotateY(${swayX.toFixed(2)}deg) rotateX(${swayY.toFixed(2)}deg)`;
+    rooms.forEach((r, i) => {
+      const d = roomZ[i] + camZ;
+      let o;
+      if (d > 320) o = 0;
+      else if (d > -160) o = 1 - (d + 160) / 480;
+      else if (d > -2400) o = 1;
+      else o = clamp01(1 - (-d - 2400) / 1600);
+      r.style.opacity = o.toFixed(3);
+      r.style.visibility = o <= 0.01 ? 'hidden' : 'visible';
+    });
+    // manifeste cinétique
+    const kp = prog(kinTrack);
+    const lit = Math.floor(kp * (kws.length + 5));
+    kws.forEach((w, i) => {
+      w.classList.toggle('lit', i < lit);
+      w.classList.toggle('hot', i === lit - 1);
+    });
+    // atelier dans le vide
+    const vp = prog(voidTrack);
+    const vi = Math.min(3, Math.floor(vp * 4));
+    const local = vp * 4 - vi;
+    voidIdxEl.textContent = String(vi + 1).padStart(2, '0');
+    vScreens.forEach((s, i) => {
+      s.classList.toggle('on', i === vi);
+      s.style.transform = i === vi
+        ? `rotateY(${swayX * 2.4}deg) rotateX(${swayY * 1.8}deg) translateY(${(0.5 - local) * 26}px)`
+        : '';
+    });
+    specLists.forEach((ul, i) => {
+      ul.classList.toggle('on', i === vi);
+      if (i === vi) [...ul.children].forEach((li, k) => li.classList.toggle('on', local > 0.1 + k * 0.13));
+    });
+    // la poussière se condense dans le finale
+    const fr = finale.getBoundingClientRect();
+    forming = fr.top < vh * 0.55 && fr.bottom > vh * 0.5;
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+
+  // ---------- curseur : point + anneau ----------
+  const ring = document.createElement('div'); ring.className = 'cursor-ring';
+  const dot = document.createElement('div'); dot.className = 'cursor-dot';
+  document.body.append(ring, dot);
+  let rx = mx, ry = my;
+  addEventListener('pointermove', ev => {
+    dot.style.transform = `translate(${ev.clientX}px, ${ev.clientY}px)`;
+    ring.classList.add('on'); dot.classList.add('on');
+    ring.classList.toggle('hot', !!(ev.target.closest && ev.target.closest('a, button')));
+  }, { passive: true });
+
+  // ---------- poussière d'or ----------
+  const dustC = document.getElementById('dust');
+  const ctx = dustC.getContext('2d');
+  let W, H, DPR = Math.min(devicePixelRatio || 1, 2);
+  const fit = () => { W = dustC.width = Math.floor(innerWidth * DPR); H = dustC.height = Math.floor(innerHeight * DPR);
+    dustC.style.width = innerWidth + 'px'; dustC.style.height = innerHeight + 'px'; };
+  fit(); addEventListener('resize', fit);
+  const N = matchMedia('(pointer: coarse)').matches ? 320 : 1000;
+  const P = Array.from({ length: N }, () => ({
+    x: Math.random() * innerWidth * DPR, y: Math.random() * innerHeight * DPR,
+    vx: 0, vy: 0, s: (0.4 + Math.random() * 1.3) * DPR, a: 0.12 + Math.random() * 0.45
+  }));
+  let targets = null;
+  const buildTargets = () => {
+    try {
+      const oc = document.createElement('canvas'); oc.width = W; oc.height = H;
+      const o = oc.getContext('2d');
+      o.font = `340 ${Math.min(W * 0.13, 200 * DPR)}px Fraunces, Georgia, serif`;
+      o.textAlign = 'center'; o.textBaseline = 'middle'; o.fillStyle = '#fff';
+      o.fillText('scarsellato', W / 2, H * 0.32);
+      const d = o.getImageData(0, 0, W, H).data, pts = [], step = Math.max(4, Math.floor(5 * DPR));
+      for (let yy = 0; yy < H; yy += step) for (let xx = 0; xx < W; xx += step)
+        if (d[(yy * W + xx) * 4 + 3] > 128) pts.push([xx, yy]);
+      if (pts.length) targets = pts;
+    } catch (e) {}
+  };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(buildTargets);
+  setTimeout(() => { if (!targets) buildTargets(); }, 2600);
+
+  // ---------- boucle continue : sway, skew, curseur, poussière ----------
+  (function loop() {
+    swayX += (tSwayX - swayX) * 0.06; swayY += (tSwayY - swayY) * 0.06;
+    rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+    ring.style.transform = `translate(${rx.toFixed(1)}px, ${ry.toFixed(1)}px)`;
+    skew += (Math.max(-6, Math.min(6, rawV * 0.05)) - skew) * 0.1; rawV *= 0.85;
+    document.documentElement.style.setProperty('--vskew', skew.toFixed(2) + 'deg');
+    // poussière
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    const mxD = rx * DPR, myD = ry * DPR;
+    for (let i = 0; i < N; i++) {
+      const p = P[i];
+      if (forming && targets) {
+        const t = targets[i % targets.length];
+        p.vx += (t[0] - p.x) * 0.014; p.vy += (t[1] - p.y) * 0.014;
+        p.vx *= 0.84; p.vy *= 0.84;
+      } else {
+        p.vx += (Math.random() - 0.5) * 0.05 * DPR;
+        p.vy += (Math.random() - 0.5) * 0.05 * DPR + dustDrift * 0.0022 * DPR;
+        const dx = p.x - mxD, dy = p.y - myD, d2 = dx * dx + dy * dy, R = 150 * DPR;
+        if (d2 < R * R && d2 > 1) {
+          const dd = Math.sqrt(d2), f = (1 - dd / R) * 0.5 * DPR;
+          p.vx += (dx / dd) * f + (-dy / dd) * f * 0.7;
+          p.vy += (dy / dd) * f + (dx / dd) * f * 0.7;
+        }
+        p.vx *= 0.96; p.vy *= 0.96;
+      }
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x += W; if (p.x > W) p.x -= W;
+      if (p.y < 0) p.y += H; if (p.y > H) p.y -= H;
+      ctx.globalAlpha = p.a;
+      ctx.fillStyle = 'rgb(198 165 108)';
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(loop);
+  })();
+  update();
+
+  // les mondes respirent : lecture des boucles vidéo
+  document.querySelectorAll('video.vid').forEach(v => { v.muted = true; v.play().catch(() => {}); });
+
+  // ---------- boutons magnétiques + écrans qui penchent ----------
+  document.querySelectorAll('.magnetic').forEach(b => {
+    b.addEventListener('pointermove', ev => {
+      const r = b.getBoundingClientRect();
+      b.style.transform = `translate(${(ev.clientX - r.left - r.width / 2) * 0.22}px, ${(ev.clientY - r.top - r.height / 2) * 0.22}px)`;
+    });
+    b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+  });
+}
+</script>
+</body>
+</html>

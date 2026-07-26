@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verde — Cuisine verte, Luxembourg (aperçu Scarsellato)</title>
+<meta name="description" content="Aperçu de site créé par Scarsellato — concept fictif « Verde » : cuisine verte, bols et tartines, Luxembourg. Démo d'animations interactives.">
+<link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+
+<p class="demo-note">( APERÇU ) — créé par Scarsellato · concept fictif «&nbsp;Verde&nbsp;» · plats et prix = exemples · visuels générés par IA.</p>
+
+<header class="nav">
+  <a class="wm" href="#top">VERDE<span class="dot">.</span></a>
+  <nav class="links" aria-label="Navigation">
+    <a href="#bol">Le bol</a>
+    <a href="#carte">La carte</a>
+    <a href="#lieu">Le lieu</a>
+  </nav>
+  <a class="cta" href="#commander">COMMANDER ↗</a>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="kick">( CUISINE VERTE — LUXEMBOURG )</p>
+    <h1 class="giant">VERDE</h1>
+    <div class="hero-bowl"><img src="img/bowl.jpg" alt="Le bol vert — visuel généré par IA (exemple)"></div>
+    <p class="hero-line">DES ASSIETTES QUI POUSSENT — PAS QUI PÈSENT. <span class="fictif">(APERÇU)</span></p>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="mq-track">
+      <span>VERDE · DE SAISON · SANS CHICHI · BOLS &amp; TARTINES · LOCAL D'ABORD · </span>
+      <span>VERDE · DE SAISON · SANS CHICHI · BOLS &amp; TARTINES · LOCAL D'ABORD · </span>
+    </div>
+  </div>
+
+  <!-- (01) L'EXPLOSION — le bol se raconte -->
+  <section class="explode" id="bol">
+    <div class="ex-track">
+      <div class="ex-sticky">
+        <p class="kick">( 01 ) — CE QU'IL Y A DEDANS</p>
+        <h2 class="h2">LE BOL, <em>OUVERT.</em></h2>
+        <div class="ex-stage" id="exStage">
+          <div class="ex-bowl"><img src="img/bowl.jpg" alt=""></div>
+          <figure class="ing" style="--tx:-30vw; --ty:-16vh"><img src="img/ing-avocat.jpg" alt=""><figcaption>AVOCAT<span>200 KCAL</span></figcaption></figure>
+          <figure class="ing" style="--tx:30vw; --ty:-18vh"><img src="img/ing-epinards.jpg" alt=""><figcaption>ÉPINARDS<span>160 KCAL</span></figcaption></figure>
+          <figure class="ing" style="--tx:-33vw; --ty:14vh"><img src="img/ing-pain.jpg" alt=""><figcaption>PAIN<span>120 KCAL</span></figcaption></figure>
+          <figure class="ing" style="--tx:33vw; --ty:16vh"><img src="img/ing-oeuf.jpg" alt=""><figcaption>ŒUF<span>230 KCAL</span></figcaption></figure>
+          <figure class="ing" style="--tx:-14vw; --ty:26vh"><img src="img/ing-roquette.jpg" alt=""><figcaption>ROQUETTE<span>90 KCAL</span></figcaption></figure>
+          <figure class="ing" style="--tx:15vw; --ty:-28vh"><img src="img/ing-romarin.jpg" alt=""><figcaption>ROMARIN<span>10 KCAL</span></figcaption></figure>
+        </div>
+        <p class="ex-note">DÉFILEZ — LE BOL S'OUVRE <span class="fictif">(VALEURS FICTIVES)</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (02) LA CARTE — slider 3D -->
+  <section class="slider" id="carte">
+    <div class="sl-track">
+      <div class="sl-sticky">
+        <p class="kick">( 02 ) — LA CARTE</p>
+        <p class="sl-counter"><span id="slIdx">01</span> / 03</p>
+        <div class="sl-stage" id="slStage">
+          <figure class="slide" data-i="0">
+            <img src="img/bowl.jpg" alt="Le bol vert">
+            <figcaption><strong>LE BOL VERT</strong><span>14 € <em class="fictif">(fictif)</em></span></figcaption>
+          </figure>
+          <figure class="slide" data-i="1">
+            <img src="img/tartine.jpg" alt="La tartine">
+            <figcaption><strong>LA TARTINE</strong><span>12 € <em class="fictif">(fictif)</em></span></figcaption>
+          </figure>
+          <figure class="slide" data-i="2">
+            <img src="img/dessert.jpg" alt="Le dessert">
+            <figcaption><strong>LE DOLCE VERT</strong><span>8 € <em class="fictif">(fictif)</em></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (03) LE LIEU — révélation immersive -->
+  <section class="reveal" id="lieu">
+    <div class="rv-track">
+      <div class="rv-sticky">
+        <div class="rv-img" id="rvImg"><img src="img/interieur.jpg" alt="Le lieu — visuel généré par IA (exemple)"></div>
+        <p class="kick rv-kick">( 03 ) — LE LIEU</p>
+        <p class="rv-caption">PLANTES, BOIS CLAIR, SOLEIL — <span class="fictif">ADRESSE À COMPLÉTER, LUXEMBOURG</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMANDER -->
+  <section class="order" id="commander">
+    <h2 class="giant sm">ON VOUS<br>PRÉPARE ÇA<span class="dot">.</span></h2>
+    <a class="cta big" href="#top">COMMANDER ↗</a>
+    <p class="order-note">COMMANDE EN LIGNE · RETRAIT EN 15 MIN · <span class="fictif">(APERÇU — FLUX À RELIER)</span></p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>VERDE — CONCEPT FICTIF · APERÇU RÉALISÉ PAR SCARSELLATO · SANS COOKIES, SANS TRACEURS · © 2026</p>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp01 = v => Math.max(0, Math.min(1, v));
+if (!reduced) {
+  const exT = document.querySelector('.ex-track'), exS = document.getElementById('exStage');
+  const slT = document.querySelector('.sl-track');
+  const slides = [...document.querySelectorAll('.slide')];
+  const slIdx = document.getElementById('slIdx');
+  const rvT = document.querySelector('.rv-track'), rvI = document.getElementById('rvImg');
+  const prog = el => { const r = el.getBoundingClientRect(); return clamp01(-r.top / Math.max(r.height - innerHeight, 1)); };
+  let tick = false;
+  const upd = () => {
+    tick = false;
+    // (01) explosion : ease la progression
+    const ep = prog(exT);
+    exS.style.setProperty('--ex', (1 - Math.pow(1 - clamp01(ep * 1.15), 3)).toFixed(4));
+    // (02) slider 3D par tiers
+    const sp = prog(slT);
+    const i = Math.min(2, Math.floor(sp * 3));
+    slIdx.textContent = String(i + 1).padStart(2, '0');
+    slides.forEach((s, k) => {
+      s.classList.toggle('active', k === i);
+      s.classList.toggle('prev', k < i);
+      s.classList.toggle('next', k > i);
+    });
+    // (03) révélation : le cadre devient le monde
+    const rp = 1 - Math.pow(1 - prog(rvT), 2);
+    const ins = 32 * (1 - rp);
+    rvI.style.clipPath = `inset(${ins}% ${ins}% ${ins}% ${ins}% round ${18 * (1 - rp)}px)`;
+    rvI.style.transform = `scale(${1.12 - rp * 0.12})`;
+    document.querySelector('.rv-caption').style.opacity = rp > 0.85 ? 1 : 0;
+  };
+  addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
+  upd();
+}
+</script>
+</body>
+</html>
