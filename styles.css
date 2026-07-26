@@ -315,7 +315,7 @@ html:not(.js) .kin-sticky { position: static; height: auto; min-height: 100vh; }
 
 /* ---------- l'atelier dans le vide ---------- */
 .void { background: var(--noir-deep); }
-.void-track { height: 520vh; position: relative; }
+.void-track { height: 760vh; position: relative; }
 .void-sticky {
   position: sticky; top: 0; height: 100vh; overflow: hidden;
   display: flex; align-items: center; justify-content: center;

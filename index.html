@@ -121,7 +121,7 @@
     <div class="void-track">
       <div class="void-sticky">
         <p class="chip chip-tl" aria-hidden="true">( 03 ) — L'ATELIER · CONSTRUIT À LA MAIN</p>
-        <p class="void-counter chip" aria-hidden="true"><span id="voidIdx">01</span> / 04</p>
+        <p class="void-counter chip" aria-hidden="true"><span id="voidIdx">01</span> / 06</p>
         <div class="void-stage">
           <a class="v-screen" data-i="0" href="spec-demos/m-immobilier/index.html" target="_blank" rel="noopener">
             <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="img/world-immo.jpg" alt="Site M Immobilier"></div>
@@ -138,6 +138,14 @@
           <a class="v-screen" data-i="3" href="spec-demos/verde/index.html" target="_blank" rel="noopener">
             <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="spec-demos/verde/img/interieur.jpg" alt="Site Verde"></div>
             <div class="v-reflect" aria-hidden="true"><img src="spec-demos/verde/img/interieur.jpg" alt=""></div>
+          </a>
+          <a class="v-screen" data-i="4" href="spec-demos/kohnen-fils/index.html" target="_blank" rel="noopener">
+            <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="spec-demos/kohnen-fils/img/maison.webp" alt="Site Kohnen &amp; Fils"></div>
+            <div class="v-reflect" aria-hidden="true"><img src="spec-demos/kohnen-fils/img/maison.webp" alt=""></div>
+          </a>
+          <a class="v-screen" data-i="5" href="spec-demos/roda/index.html" target="_blank" rel="noopener">
+            <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="spec-demos/roda/img/gear.webp" alt="Site Maxime Roda"></div>
+            <div class="v-reflect" aria-hidden="true"><img src="spec-demos/roda/img/gear.webp" alt=""></div>
           </a>
         </div>
         <div class="v-specs" id="vSpecs" aria-hidden="true"></div>
@@ -257,7 +265,9 @@ const SPECS = [
   ['SITE 01 — M-IMM / GRUND', 'RÉCIT — 6 CHAPITRES', 'RIDEAU DIRECTIONNEL + MORPH DE MONDE', 'ÉLÉVATION DESSINÉE AU SCROLL', '0 COOKIE · 0 TRACEUR'],
   ['SITE 02 — PHY-C / ESCH', 'ARCHÉTYPE LUMIÈRE — PAPIER & EUCALYPTUS', 'SCHÉMA DU CORPS ANIMÉ', 'RENDEZ-VOUS SANS TÉLÉPHONE', 'RAPPELS — LA VEILLE, PROMIS'],
   ['SITE 03 — A-SAP / DIFFERDANGE', 'MONDE — LUME DI CANDELA', 'LA TAVOLA SE DESSINE', 'IL MENU EN 3 ACTES', 'PRENOTAZIONI — EN 2 MINUTES'],
-  ['SITE 04 — VERDE / CONCEPT', 'ARCHÉTYPE BOLD-ORGANIC', 'LE BOL QUI S’OUVRE — INGRÉDIENTS + KCAL', 'SLIDER 3D — LA CARTE', 'RÉVÉLATION IMMERSIVE DU LIEU']
+  ['SITE 04 — VERDE / CONCEPT', 'ARCHÉTYPE BOLD-ORGANIC', 'LE BOL QUI S’OUVRE — INGRÉDIENTS + KCAL', 'SLIDER 3D — LA CARTE', 'RÉVÉLATION IMMERSIVE DU LIEU'],
+  ['SITE 05 — KOHNEN / CONSTRUCTION', 'ARCHÉTYPE BÂTISSEUR — DEPUIS 1957', 'LA MAISON SE CONSTRUIT AU SCROLL', 'REGISTRE — DÉJÀ CONSTRUIT', 'ANNOTATIONS DE CHANTIER'],
+  ['SITE 06 — RODA / ATHLÈTE', 'ARCHÉTYPE STORYTELLER — PAPIER & NÉON', 'L’ÉQUIPEMENT S’ASSEMBLE AU SCROLL', 'MUSÉE DU PALMARÈS', 'SUR LE RING / HORS DU RING']
 ];
 const vSpecs = document.getElementById('vSpecs');
 vSpecs.innerHTML = SPECS.map((list, si) =>
@@ -340,8 +350,8 @@ if (!reduced) {
     });
     // atelier dans le vide
     const vp = prog(voidTrack);
-    const vi = Math.min(3, Math.floor(vp * 4));
-    const local = vp * 4 - vi;
+    const vi = Math.min(5, Math.floor(vp * 6));
+    const local = vp * 6 - vi;
     voidIdxEl.textContent = String(vi + 1).padStart(2, '0');
     vScreens.forEach((s, i) => {
       s.classList.toggle('on', i === vi);
