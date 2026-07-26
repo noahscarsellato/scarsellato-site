@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Verde — Cuisine verte, Luxembourg (aperçu Scarsellato)</title>
 <meta name="description" content="Aperçu de site créé par Scarsellato — concept fictif « Verde » : cuisine verte, bols et tartines, Luxembourg. Démo d'animations interactives.">
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -141,6 +141,15 @@ if (!reduced) {
   };
   addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
   upd();
+}
+</script>
+<div class="v-ring" id="vRing" style="position:fixed;top:0;left:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:2px solid #2e5d34;border-radius:50%;pointer-events:none;z-index:90;opacity:0"></div>
+<script>
+if (matchMedia('(pointer: fine)').matches) {
+  const r = document.getElementById('vRing');
+  let mx = 0, my = 0, x = 0, y = 0;
+  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; r.style.opacity = 0.85; }, { passive: true });
+  (function l() { x += (mx - x) * 0.2; y += (my - y) * 0.2; r.style.transform = `translate(${x}px,${y}px)`; requestAnimationFrame(l); })();
 }
 </script>
 </body>

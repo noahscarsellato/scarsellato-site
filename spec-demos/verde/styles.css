@@ -178,3 +178,7 @@ html:not(.js) .rv-img { clip-path: none; transform: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+
+/* le curseur natif disparaît — seul le nôtre existe (desktop) */
+@media (pointer: fine) { *, a, button, input, textarea, select, label { cursor: none !important; } }
