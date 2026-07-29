@@ -116,6 +116,21 @@ html:not(.js) .loader { display: none; }
 }
 .top-links a:hover { color: var(--gold); }
 
+/* ---------- sélecteur de langue FR · EN · DE ---------- */
+.lang-switch { display: flex; align-items: center; }
+.lang-switch button {
+  background: none; border: 0; padding: 0.5rem 0.55rem;
+  font-family: inherit; font-size: 0.6875rem; letter-spacing: 0.2em;
+  color: var(--cream-mut); text-transform: uppercase;
+  transition: color 0.3s var(--ease);
+}
+.lang-switch button:hover { color: var(--gold); }
+.lang-switch button[aria-current="true"] {
+  color: var(--gold);
+  text-decoration: underline; text-underline-offset: 0.4em; text-decoration-color: var(--gold-soft);
+}
+.lang-switch button + button { border-left: 1px solid rgb(255 255 255 / 0.14); }
+
 .btn-pill {
   display: inline-flex; align-items: center; gap: 0.6rem;
   min-height: 2.75rem; padding: 0.6rem 1.4rem;
@@ -412,6 +427,8 @@ html:not(.js) .spec-line { opacity: 1; transform: none; }
 /* ---------- mobile ---------- */
 @media (max-width: 47rem) {
   .live-line, .top-links { display: none; }
+  .lang-switch { margin-left: auto; }
+  .lang-switch button { padding: 0.5rem 0.4rem; }
   .whisper-tr { display: none; }
   .st-hero { top: 24vh; }
   .megamark { font-size: 15.5vw; padding-bottom: 4rem; }
@@ -444,6 +461,8 @@ html:not(.js) .v-screen { pointer-events: auto; }
   background: rgb(9 12 14 / 0.7); border: 1px solid var(--gold-soft);
   padding: 0.45rem 0.9rem; opacity: 0; transition: opacity 0.3s var(--ease);
 }
+html[lang="en"] .v-screen.on .frame::after { content: "VISIT THE SITE ↗"; }
+html[lang="de"] .v-screen.on .frame::after { content: "SEITE BESUCHEN ↗"; }
 .v-screen.on:hover .frame::after { opacity: 1; }
 .v-screen.on:hover .frame { box-shadow: 0 40px 120px rgb(0 0 0 / 0.6), 0 0 120px rgb(198 165 108 / 0.28); }
 

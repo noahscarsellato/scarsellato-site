@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scarsellato — L'atelier digital, Luxembourg</title>
 <meta name="description" content="Scarsellato construit des mondes, pas des pages — sites immersifs dessinés à la main, sans cookies. Luxembourg.">
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 
@@ -25,11 +25,16 @@
   <a class="wordmark" href="#top">scar<span class="italic gold">sellato</span></a>
   <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
   <nav class="top-links" aria-label="Navigation">
-    <a href="#traversee">Traversée</a>
-    <a href="#atelier">Atelier</a>
-    <a href="#contact">Contact</a>
+    <a href="#traversee" data-i18n="nav.traversee">Traversée</a>
+    <a href="#atelier" data-i18n="nav.atelier">Atelier</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
-  <a class="btn-pill magnetic" href="#contact"><span class="pill-label">Parler d'un projet</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+  <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.talk">Parler d'un projet</span><span class="pill-dot" aria-hidden="true">↗</span></a>
 </header>
 
 <main id="top">
@@ -38,27 +43,27 @@
   <section class="pano hero" aria-label="Ouverture">
     <div class="pano-bg" id="heroBg"><img src="img/world-immo.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="img/loop-immo.mp4"></video></div>
     <div class="pano-scrim" aria-hidden="true"></div>
-    <p class="chip chip-tl" aria-hidden="true">( SCARSELLATO ) — ATELIER DIGITAL · LUXEMBOURG</p>
-    <p class="whisper whisper-tr" aria-hidden="true">Chaque monde est construit à la main —<br>image, mouvement, réponse.<br>Aucun template, jamais.</p>
+    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( SCARSELLATO ) — ATELIER DIGITAL · LUXEMBOURG</p>
+    <p class="whisper whisper-tr" aria-hidden="true" data-i18n="hero.whisper">Chaque monde est construit à la main —<br>image, mouvement, réponse.<br>Aucun template, jamais.</p>
     <div class="statement st-hero">
-      <p class="st-line"><span class="st-in">Des mondes.</span></p>
-      <p class="st-line"><span class="st-in italic gold">Pas des pages.</span></p>
+      <p class="st-line"><span class="st-in" data-i18n="hero.st1">Des mondes.</span></p>
+      <p class="st-line"><span class="st-in italic gold" data-i18n="hero.st2">Pas des pages.</span></p>
     </div>
     <h1 class="megamark" id="megaMark" aria-label="Scarsellato">scarsellato<span class="tm">™</span></h1>
-    <p class="scroll-cue" aria-hidden="true">DÉFILER<span class="cue-line"></span></p>
+    <p class="scroll-cue" aria-hidden="true"><span data-i18n="hero.cue">DÉFILER</span><span class="cue-line"></span></p>
     <p class="chip chip-br" aria-hidden="true">49.61° N · 6.13° E — FR · DE · EN · IT</p>
   </section>
 
   <!-- statement noir -->
   <section class="statement-block" aria-label="Promesse">
-    <p class="st-line big"><span class="st-in">Répondre.</span></p>
-    <p class="st-line big"><span class="st-in italic gold">Le jour même.</span></p>
+    <p class="st-line big"><span class="st-in" data-i18n="promise.st1">Répondre.</span></p>
+    <p class="st-line big"><span class="st-in italic gold" data-i18n="promise.st2">Le jour même.</span></p>
   </section>
 
   <!-- (02) LA TRAVERSÉE — plein écran, monde après monde -->
   <section class="corridor" id="traversee" aria-label="La traversée">
     <div class="cor-head">
-      <p class="chip" aria-hidden="true">( 01 ) — LA TRAVERSÉE · LA CAMÉRA AVANCE</p>
+      <p class="chip" aria-hidden="true" data-i18n="cor.head">( 01 ) — LA TRAVERSÉE · LA CAMÉRA AVANCE</p>
     </div>
     <div class="cor-track">
       <div class="cor-sticky">
@@ -76,26 +81,26 @@
             <div class="cor-bg"><img src="img/world-immo.jpg" alt="Monde immobilier"><video class="vid" muted loop playsinline preload="auto" src="img/loop-immo.mp4"></video></div>
             <div class="cor-scrim"></div>
             <p class="chip r-tl">M-IMM · GRUND / 2026</p>
-            <p class="whisper r-tr">Un récit de quartiers.<br>Réponse le jour même.</p>
-            <h3 class="room-title">immobilier<span class="tm">.</span></h3>
+            <p class="whisper r-tr" data-i18n="room1.whisper">Un récit de quartiers.<br>Réponse le jour même.</p>
+            <h3 class="room-title"><span data-i18n="room1.title">immobilier</span><span class="tm">.</span></h3>
           </article>
           <article class="cor-room" data-z="-2200">
             <div class="cor-bg"><img src="img/world-sante.jpg" alt="Monde santé"><video class="vid" muted loop playsinline preload="auto" src="img/loop-sante.mp4"></video></div>
             <div class="cor-scrim"></div>
             <p class="chip r-tl">PHY-C · ESCH / 2026</p>
-            <p class="whisper r-tr">La lumière comme soin.<br>Rendez-vous sans téléphone.</p>
-            <h3 class="room-title">santé<span class="tm">.</span></h3>
+            <p class="whisper r-tr" data-i18n="room2.whisper">La lumière comme soin.<br>Rendez-vous sans téléphone.</p>
+            <h3 class="room-title"><span data-i18n="room2.title">santé</span><span class="tm">.</span></h3>
           </article>
           <article class="cor-room" data-z="-4400">
             <div class="cor-bg"><img src="img/world-gastro.jpg" alt="Monde gastronomie"><video class="vid" muted loop playsinline preload="auto" src="img/loop-gastro.mp4"></video></div>
             <div class="cor-scrim"></div>
             <p class="chip r-tl">A-SAP · DIFFERDANGE / 2026</p>
-            <p class="whisper r-tr">Lume di candela.<br>La table se dresse.</p>
-            <h3 class="room-title">gastronomia<span class="tm">.</span></h3>
+            <p class="whisper r-tr" data-i18n="room3.whisper">Lume di candela.<br>La table se dresse.</p>
+            <h3 class="room-title"><span data-i18n="room3.title">gastronomia</span><span class="tm">.</span></h3>
           </article>
           <div class="cor-room cor-final" data-z="-6600">
-            <h3 class="room-title final">le vôtre<span class="gold">.</span></h3>
-            <p class="chip">VOTRE-NOM · VOTRE-VILLE / 2026</p>
+            <h3 class="room-title final"><span data-i18n="final.title">le vôtre</span><span class="gold">.</span></h3>
+            <p class="chip" data-i18n="final.chip">VOTRE-NOM · VOTRE-VILLE / 2026</p>
           </div>
         </div>
       </div>
@@ -108,10 +113,10 @@
       <div class="kin-sticky">
         <div class="pano-bg"><img src="img/world-sante.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="img/loop-sante.mp4"></video></div>
         <div class="kin-scrim" aria-hidden="true"></div>
-        <p class="chip chip-tl" aria-hidden="true">( 02 ) — CE QUE NOUS CROYONS</p>
-        <p class="kin-text" id="kinText">un site n'est pas ✦ une carte de visite. c'est la première poignée de main ∿ le premier rendez-vous ⇌ la première réponse. nous construisons des pages qui respirent ✦ qui racontent — et qui répondent, le jour même.</p>
-        <p class="chip kin-chip1" aria-hidden="true">RÉPONSE — LE JOUR MÊME ↗</p>
-        <p class="chip kin-chip2" aria-hidden="true">0 COOKIE · 0 TRACEUR</p>
+        <p class="chip chip-tl" aria-hidden="true" data-i18n="kin.head">( 02 ) — CE QUE NOUS CROYONS</p>
+        <p class="kin-text" id="kinText" data-i18n="kin.text">un site n'est pas ✦ une carte de visite. c'est la première poignée de main ∿ le premier rendez-vous ⇌ la première réponse. nous construisons des pages qui respirent ✦ qui racontent — et qui répondent, le jour même.</p>
+        <p class="chip kin-chip1" aria-hidden="true" data-i18n="kin.chip1">RÉPONSE — LE JOUR MÊME ↗</p>
+        <p class="chip kin-chip2" aria-hidden="true" data-i18n="kin.chip2">0 COOKIE · 0 TRACEUR</p>
       </div>
     </div>
   </section>
@@ -120,7 +125,7 @@
   <section class="void" id="atelier" aria-label="L'atelier">
     <div class="void-track">
       <div class="void-sticky">
-        <p class="chip chip-tl" aria-hidden="true">( 03 ) — L'ATELIER · CONSTRUIT À LA MAIN</p>
+        <p class="chip chip-tl" aria-hidden="true" data-i18n="void.head">( 03 ) — L'ATELIER · CONSTRUIT À LA MAIN</p>
         <p class="void-counter chip" aria-hidden="true"><span id="voidIdx">01</span> / 06</p>
         <div class="void-stage">
           <a class="v-screen" data-i="0" href="spec-demos/m-immobilier/index.html" target="_blank" rel="noopener">
@@ -156,9 +161,9 @@
   <!-- (05) chiffres -->
   <section class="numbers" aria-label="Les chiffres">
     <div class="num-grid">
-      <div class="num"><span class="numeral" data-count="3">3</span><span class="num-cap">mondes déjà construits</span></div>
-      <div class="num"><span class="numeral" data-count="0">0</span><span class="num-cap">cookie, zéro traceur</span></div>
-      <div class="num"><span class="numeral" data-count="100">100</span><span class="num-cap">% dessiné à la main</span></div>
+      <div class="num"><span class="numeral" data-count="3">3</span><span class="num-cap" data-i18n="num1.cap">mondes déjà construits</span></div>
+      <div class="num"><span class="numeral" data-count="0">0</span><span class="num-cap" data-i18n="num2.cap">cookie, zéro traceur</span></div>
+      <div class="num"><span class="numeral" data-count="100">100</span><span class="num-cap" data-i18n="num3.cap">% dessiné à la main</span></div>
     </div>
   </section>
 
@@ -167,31 +172,219 @@
     <div class="pano-bg"><img src="img/world-gastro.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="img/loop-gastro.mp4"></video></div>
     <div class="pano-scrim deep" aria-hidden="true"></div>
     <div class="finale-core">
-      <p class="chip" aria-hidden="true">( 04 ) — ET MAINTENANT</p>
+      <p class="chip" aria-hidden="true" data-i18n="fin.head">( 04 ) — ET MAINTENANT</p>
       <div class="statement">
-        <p class="st-line big"><span class="st-in">Parlons de</span></p>
-        <p class="st-line big"><span class="st-in italic gold">votre monde.</span></p>
+        <p class="st-line big"><span class="st-in" data-i18n="fin.st1">Parlons de</span></p>
+        <p class="st-line big"><span class="st-in italic gold" data-i18n="fin.st2">votre monde.</span></p>
       </div>
-      <a class="btn-pill magnetic big" href="mailto:noah@scarsellato.com?subject=Parlons%20de%20mon%20monde"><span class="pill-label">Écrire à l'atelier</span><span class="pill-dot" aria-hidden="true">↗</span></a>
-      <p class="finale-note">RÉPONSE LE JOUR MÊME — PROMIS.</p>
+      <a class="btn-pill magnetic big" id="mailCta" href="mailto:noah@scarsellato.com?subject=Parlons%20de%20mon%20monde"><span class="pill-label" data-i18n="fin.cta">Écrire à l'atelier</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+      <p class="finale-note" data-i18n="fin.note">RÉPONSE LE JOUR MÊME — PROMIS.</p>
       <form class="atelier-form" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
         <input type="hidden" name="_subject" value="Nouveau message — scarsellato.com">
         <input type="hidden" name="_next" value="https://scarsellato.com/#contact">
         <input type="text" name="_honey" style="display:none">
         <div class="af-row">
-          <input type="text" name="nom" placeholder="VOTRE NOM" required aria-label="Nom">
-          <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail">
+          <input type="text" name="nom" placeholder="VOTRE NOM" required aria-label="Nom" data-i18n-ph="form.name">
+          <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
         </div>
-        <textarea name="message" placeholder="PARLEZ-NOUS DE VOTRE MONDE…" required aria-label="Message"></textarea>
-        <button class="btn-pill magnetic big" type="submit"><span class="pill-label">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+        <textarea name="message" placeholder="PARLEZ-NOUS DE VOTRE MONDE…" required aria-label="Message" data-i18n-ph="form.msg"></textarea>
+        <button class="btn-pill magnetic big" type="submit"><span class="pill-label" data-i18n="form.send">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
       </form>
 
     </div>
     <p class="giant-wordmark" aria-hidden="true">scar<span class="italic">sellato</span></p>
-    <p class="foot-line">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
+    <p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
   </section>
 
 </main>
+
+<script>
+// ---------- i18n — FR est la source (inline), EN/DE par dictionnaire ----------
+const I18N = {
+  fr: {
+    title: 'Scarsellato — L’atelier digital, Luxembourg',
+    desc: 'Scarsellato construit des mondes, pas des pages — sites immersifs dessinés à la main, sans cookies. Luxembourg.',
+    days: ['DIMANCHE','LUNDI','MARDI','MERCREDI','JEUDI','VENDREDI','SAMEDI'],
+    months: ['JANVIER','FÉVRIER','MARS','AVRIL','MAI','JUIN','JUILLET','AOÛT','SEPTEMBRE','OCTOBRE','NOVEMBRE','DÉCEMBRE'],
+    mailto: 'mailto:noah@scarsellato.com?subject=Parlons%20de%20mon%20monde',
+    specs: [
+      ['SITE 01 — M-IMM / GRUND', 'RÉCIT — 6 CHAPITRES', 'RIDEAU DIRECTIONNEL + MORPH DE MONDE', 'ÉLÉVATION DESSINÉE AU SCROLL', '0 COOKIE · 0 TRACEUR'],
+      ['SITE 02 — PHY-C / ESCH', 'ARCHÉTYPE LUMIÈRE — PAPIER & EUCALYPTUS', 'SCHÉMA DU CORPS ANIMÉ', 'RENDEZ-VOUS SANS TÉLÉPHONE', 'RAPPELS — LA VEILLE, PROMIS'],
+      ['SITE 03 — A-SAP / DIFFERDANGE', 'MONDE — LUME DI CANDELA', 'LA TAVOLA SE DESSINE', 'IL MENU EN 3 ACTES', 'PRENOTAZIONI — EN 2 MINUTES'],
+      ['SITE 04 — VERDE / CONCEPT', 'ARCHÉTYPE BOLD-ORGANIC', 'LE BOL QUI S’OUVRE — INGRÉDIENTS + KCAL', 'SLIDER 3D — LA CARTE', 'RÉVÉLATION IMMERSIVE DU LIEU'],
+      ['SITE 05 — KOHNEN / CONSTRUCTION', 'ARCHÉTYPE BÂTISSEUR — DEPUIS 1957', 'LA MAISON SE CONSTRUIT AU SCROLL', 'REGISTRE — DÉJÀ CONSTRUIT', 'ANNOTATIONS DE CHANTIER'],
+      ['SITE 06 — RODA / ATHLÈTE', 'ARCHÉTYPE STORYTELLER — PAPIER & NÉON', 'L’ÉQUIPEMENT S’ASSEMBLE AU SCROLL', 'MUSÉE DU PALMARÈS', 'SUR LE RING / HORS DU RING']
+    ],
+    qa: [
+      ["Que construisez-vous ?", "Des mondes complets — site immersif, images et vidéos générées sur mesure, textes, et la réponse automatisée à vos clients. Jamais de template. Descendez voir l'atelier : chaque écran est cliquable."],
+      ["Combien ça coûte ?", "Chaque monde est unique, donc chaque prix aussi. Écrivez-nous une ligne sur votre projet via le formulaire — vous recevez une réponse le jour même, avec une fourchette honnête."],
+      ["En combien de temps ?", "Un premier aperçu de VOTRE monde arrive en jours, pas en mois — vous jugez sur pièce avant tout engagement."],
+      ["Comment travaillez-vous ?", "Quatre gestes : écouter, dessiner, construire, répondre. Vous corrigez, on affine — le monde n'est fini que quand vous dites wow."],
+      ["Et les cookies / trackers ?", "Zéro cookie, zéro traceur, sur ce site comme sur ceux qu'on livre. La performance n'a pas besoin de vous espionner."],
+      ["Je veux voir des exemples", "Descendez à L'ATELIER — quatre mondes déjà construits (immobilier, santé, gastronomia, cuisine verte). Cliquez l'écran affiché : le site s'ouvre."]
+    ],
+    t: {}
+  },
+  en: {
+    title: 'Scarsellato — The digital atelier, Luxembourg',
+    desc: 'Scarsellato builds worlds, not pages — immersive, hand-drawn websites, cookie-free. Luxembourg.',
+    days: ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'],
+    months: ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'],
+    mailto: 'mailto:noah@scarsellato.com?subject=Let%27s%20talk%20about%20my%20world',
+    specs: [
+      ['SITE 01 — M-IMM / GRUND', 'NARRATIVE — 6 CHAPTERS', 'DIRECTIONAL CURTAIN + WORLD MORPH', 'ELEVATION DRAWN ON SCROLL', '0 COOKIES · 0 TRACKERS'],
+      ['SITE 02 — PHY-C / ESCH', 'LIGHT ARCHETYPE — PAPER & EUCALYPTUS', 'ANIMATED BODY DIAGRAM', 'APPOINTMENTS WITHOUT A PHONE CALL', 'REMINDERS — THE DAY BEFORE, PROMISED'],
+      ['SITE 03 — A-SAP / DIFFERDANGE', 'WORLD — LUME DI CANDELA', 'LA TAVOLA DRAWS ITSELF', 'IL MENU IN 3 ACTS', 'PRENOTAZIONI — IN 2 MINUTES'],
+      ['SITE 04 — VERDE / CONCEPT', 'BOLD-ORGANIC ARCHETYPE', 'THE BOWL THAT OPENS — INGREDIENTS + KCAL', '3D SLIDER — THE MENU', 'IMMERSIVE REVEAL OF THE PLACE'],
+      ['SITE 05 — KOHNEN / CONSTRUCTION', 'BUILDER ARCHETYPE — SINCE 1957', 'THE HOUSE BUILDS ITSELF ON SCROLL', 'LEDGER — ALREADY BUILT', 'SITE ANNOTATIONS'],
+      ['SITE 06 — RODA / ATHLETE', 'STORYTELLER ARCHETYPE — PAPER & NEON', 'THE GEAR ASSEMBLES ON SCROLL', 'MUSEUM OF THE RECORD', 'IN THE RING / OUT OF THE RING']
+    ],
+    qa: [
+      ["What do you build?", "Complete worlds — an immersive website, custom-generated images and videos, copy, and automated replies to your clients. Never a template. Scroll down to the atelier: every screen is clickable."],
+      ["How much does it cost?", "Every world is unique, so every price is too. Write us one line about your project via the form — you get a reply the same day, with an honest range."],
+      ["How long does it take?", "A first glimpse of YOUR world arrives in days, not months — you judge the real thing before any commitment."],
+      ["How do you work?", "Four gestures: listen, draw, build, respond. You correct, we refine — the world is only finished when you say wow."],
+      ["What about cookies / trackers?", "Zero cookies, zero trackers — on this site and on every site we deliver. Performance doesn't need to spy on you."],
+      ["I want to see examples", "Scroll down to THE ATELIER — four worlds already built (real estate, health, gastronomia, green cuisine). Click the screen on display: the site opens."]
+    ],
+    t: {
+      'nav.traversee': 'Crossing',
+      'nav.atelier': 'Atelier',
+      'nav.contact': 'Contact',
+      'cta.talk': 'Start a project',
+      'hero.chip': '( SCARSELLATO ) — DIGITAL ATELIER · LUXEMBOURG',
+      'hero.whisper': 'Every world is built by hand —<br>image, motion, response.<br>No templates, ever.',
+      'hero.st1': 'Worlds.',
+      'hero.st2': 'Not pages.',
+      'hero.cue': 'SCROLL',
+      'promise.st1': 'We answer.',
+      'promise.st2': 'Same day.',
+      'cor.head': '( 01 ) — THE CROSSING · THE CAMERA MOVES FORWARD',
+      'room1.whisper': 'A story of neighbourhoods.<br>Same-day response.',
+      'room1.title': 'real estate',
+      'room2.whisper': 'Light as care.<br>Book without a phone call.',
+      'room2.title': 'health',
+      'room3.whisper': 'Lume di candela.<br>The table is set.',
+      'room3.title': 'gastronomia',
+      'final.title': 'yours',
+      'final.chip': 'YOUR-NAME · YOUR-CITY / 2026',
+      'kin.head': '( 02 ) — WHAT WE BELIEVE',
+      'kin.text': 'a website is not ✦ a business card. it is the first handshake ∿ the first appointment ⇌ the first answer. we build pages that breathe ✦ that tell stories — and that answer, the same day.',
+      'kin.chip1': 'RESPONSE — SAME DAY ↗',
+      'kin.chip2': '0 COOKIES · 0 TRACKERS',
+      'void.head': '( 03 ) — THE ATELIER · BUILT BY HAND',
+      'num1.cap': 'worlds already built',
+      'num2.cap': 'cookies, zero trackers',
+      'num3.cap': '% drawn by hand',
+      'fin.head': '( 04 ) — AND NOW',
+      'fin.st1': 'Let’s talk about',
+      'fin.st2': 'your world.',
+      'fin.cta': 'Write to the atelier',
+      'fin.note': 'SAME-DAY RESPONSE — PROMISED.',
+      'form.name': 'YOUR NAME',
+      'form.email': 'YOUR E-MAIL',
+      'form.msg': 'TELL US ABOUT YOUR WORLD…',
+      'form.send': 'Send',
+      'foot': 'SCARSELLATO — THE DIGITAL ATELIER · LUXEMBOURG · © 2026 · NO COOKIES, NO TRACKERS',
+      'chat.toggleAria': 'A question? Open the assistant',
+      'chat.panelAria': 'Atelier assistant',
+      'chat.head': '( ASSISTANT — PRE-RECORDED ANSWERS )',
+      'chat.closeAria': 'Close',
+      'chat.greet': 'Hello! Pre-recorded answers — no data sent or stored. Choose:'
+    }
+  },
+  de: {
+    title: 'Scarsellato — Das digitale Atelier, Luxemburg',
+    desc: 'Scarsellato baut Welten, keine Seiten — immersive, von Hand gezeichnete Websites, ohne Cookies. Luxemburg.',
+    days: ['SONNTAG','MONTAG','DIENSTAG','MITTWOCH','DONNERSTAG','FREITAG','SAMSTAG'],
+    months: ['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'],
+    mailto: 'mailto:noah@scarsellato.com?subject=Sprechen%20wir%20%C3%BCber%20meine%20Welt',
+    specs: [
+      ['SITE 01 — M-IMM / GRUND', 'ERZÄHLUNG — 6 KAPITEL', 'RICHTUNGSVORHANG + WELT-MORPH', 'AUFRISS ZEICHNET SICH BEIM SCROLLEN', '0 COOKIES · 0 TRACKER'],
+      ['SITE 02 — PHY-C / ESCH', 'ARCHETYP LICHT — PAPIER & EUKALYPTUS', 'ANIMIERTES KÖRPERSCHEMA', 'TERMINE OHNE TELEFON', 'ERINNERUNGEN — AM VORTAG, VERSPROCHEN'],
+      ['SITE 03 — A-SAP / DIFFERDANGE', 'WELT — LUME DI CANDELA', 'LA TAVOLA ZEICHNET SICH', 'IL MENU IN 3 AKTEN', 'PRENOTAZIONI — IN 2 MINUTEN'],
+      ['SITE 04 — VERDE / CONCEPT', 'ARCHETYP BOLD-ORGANIC', 'DIE SCHALE ÖFFNET SICH — ZUTATEN + KCAL', '3D-SLIDER — DIE KARTE', 'IMMERSIVE ENTHÜLLUNG DES ORTES'],
+      ['SITE 05 — KOHNEN / BAU', 'ARCHETYP BAUMEISTER — SEIT 1957', 'DAS HAUS BAUT SICH BEIM SCROLLEN', 'REGISTER — BEREITS GEBAUT', 'BAUSTELLEN-ANNOTATIONEN'],
+      ['SITE 06 — RODA / ATHLET', 'ARCHETYP STORYTELLER — PAPIER & NEON', 'DIE AUSRÜSTUNG MONTIERT SICH BEIM SCROLLEN', 'MUSEUM DES PALMARÈS', 'IM RING / AUSSERHALB DES RINGS']
+    ],
+    qa: [
+      ["Was bauen Sie?", "Vollständige Welten — immersive Website, maßgefertigte Bilder und Videos, Texte und die automatisierte Antwort an Ihre Kunden. Niemals ein Template. Scrollen Sie hinunter ins Atelier: jeder Bildschirm ist klickbar."],
+      ["Was kostet das?", "Jede Welt ist einzigartig, also auch jeder Preis. Schreiben Sie uns eine Zeile über Ihr Projekt über das Formular — Sie erhalten noch am selben Tag eine Antwort, mit einer ehrlichen Preisspanne."],
+      ["Wie lange dauert es?", "Ein erster Blick auf IHRE Welt kommt in Tagen, nicht Monaten — Sie urteilen am Ergebnis, vor jeder Verpflichtung."],
+      ["Wie arbeiten Sie?", "Vier Gesten: zuhören, zeichnen, bauen, antworten. Sie korrigieren, wir verfeinern — die Welt ist erst fertig, wenn Sie wow sagen."],
+      ["Und Cookies / Tracker?", "Null Cookies, null Tracker — auf dieser Seite wie auf allen, die wir liefern. Leistung muss Sie nicht ausspionieren."],
+      ["Ich möchte Beispiele sehen", "Scrollen Sie hinunter zum ATELIER — vier bereits gebaute Welten (Immobilien, Gesundheit, Gastronomia, grüne Küche). Klicken Sie den angezeigten Bildschirm: die Website öffnet sich."]
+    ],
+    t: {
+      'nav.traversee': 'Passage',
+      'nav.atelier': 'Atelier',
+      'nav.contact': 'Kontakt',
+      'cta.talk': 'Projekt besprechen',
+      'hero.chip': '( SCARSELLATO ) — DIGITALES ATELIER · LUXEMBURG',
+      'hero.whisper': 'Jede Welt wird von Hand gebaut —<br>Bild, Bewegung, Antwort.<br>Keine Templates, niemals.',
+      'hero.st1': 'Welten.',
+      'hero.st2': 'Keine Seiten.',
+      'hero.cue': 'SCROLLEN',
+      'promise.st1': 'Wir antworten.',
+      'promise.st2': 'Noch am selben Tag.',
+      'cor.head': '( 01 ) — DIE PASSAGE · DIE KAMERA FÄHRT VORAN',
+      'room1.whisper': 'Eine Erzählung der Viertel.<br>Antwort am selben Tag.',
+      'room1.title': 'immobilien',
+      'room2.whisper': 'Licht als Fürsorge.<br>Termine ohne Telefon.',
+      'room2.title': 'gesundheit',
+      'room3.whisper': 'Lume di candela.<br>Der Tisch deckt sich.',
+      'room3.title': 'gastronomia',
+      'final.title': 'die ihre',
+      'final.chip': 'IHR-NAME · IHRE-STADT / 2026',
+      'kin.head': '( 02 ) — WORAN WIR GLAUBEN',
+      'kin.text': 'eine website ist keine ✦ visitenkarte. sie ist der erste händedruck ∿ der erste termin ⇌ die erste antwort. wir bauen seiten, die atmen ✦ die erzählen — und die antworten, noch am selben tag.',
+      'kin.chip1': 'ANTWORT — NOCH AM SELBEN TAG ↗',
+      'kin.chip2': '0 COOKIES · 0 TRACKER',
+      'void.head': '( 03 ) — DAS ATELIER · VON HAND GEBAUT',
+      'num1.cap': 'welten bereits gebaut',
+      'num2.cap': 'cookies, null tracker',
+      'num3.cap': '% von hand gezeichnet',
+      'fin.head': '( 04 ) — UND JETZT',
+      'fin.st1': 'Sprechen wir über',
+      'fin.st2': 'Ihre Welt.',
+      'fin.cta': 'Dem Atelier schreiben',
+      'fin.note': 'ANTWORT AM SELBEN TAG — VERSPROCHEN.',
+      'form.name': 'IHR NAME',
+      'form.email': 'IHRE E-MAIL',
+      'form.msg': 'ERZÄHLEN SIE UNS VON IHRER WELT…',
+      'form.send': 'Senden',
+      'foot': 'SCARSELLATO — DAS DIGITALE ATELIER · LUXEMBURG · © 2026 · OHNE COOKIES, OHNE TRACKER',
+      'chat.toggleAria': 'Eine Frage? Assistent öffnen',
+      'chat.panelAria': 'Atelier-Assistent',
+      'chat.head': '( ASSISTENT — VORGEFERTIGTE ANTWORTEN )',
+      'chat.closeAria': 'Schließen',
+      'chat.greet': 'Guten Tag! Vorgefertigte Antworten — es werden keine Daten gesendet oder gespeichert. Wählen Sie:'
+    }
+  }
+};
+let stored = null;
+try { stored = localStorage.getItem('scar-lang'); } catch (e) {}
+let LANG = (new URLSearchParams(location.search).get('lang') || stored || (navigator.language || 'fr').slice(0, 2)).toLowerCase();
+if (!I18N[LANG]) LANG = 'fr';
+const applyI18n = () => {
+  const d = I18N[LANG];
+  document.documentElement.lang = LANG;
+  document.title = d.title;
+  document.querySelector('meta[name="description"]').setAttribute('content', d.desc);
+  document.querySelectorAll('[data-i18n]').forEach(el => { const s = d.t[el.dataset.i18n]; if (s != null) el.innerHTML = s; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { const s = d.t[el.dataset.i18nPh]; if (s != null) el.placeholder = s; });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => { const s = d.t[el.dataset.i18nAria]; if (s != null) el.setAttribute('aria-label', s); });
+  const mail = document.getElementById('mailCta'); if (mail) mail.href = d.mailto;
+  document.querySelectorAll('#langSwitch [data-lang]').forEach(b => b.setAttribute('aria-current', String(b.dataset.lang === LANG)));
+};
+applyI18n();
+document.querySelectorAll('#langSwitch [data-lang]').forEach(b => b.addEventListener('click', () => {
+  if (b.dataset.lang === LANG) return;
+  try { localStorage.setItem('scar-lang', b.dataset.lang); } catch (e) {}
+  const u = new URL(location.href); u.searchParams.set('lang', b.dataset.lang);
+  location.replace(u.href);
+}));
+</script>
 
 <script>
 document.documentElement.classList.add('js');
@@ -200,8 +393,8 @@ const clamp01 = v => Math.max(0, Math.min(1, v));
 
 // ---------- horloge vivante ----------
 const liveLine = document.getElementById('liveLine');
-const JOURS = ['DIMANCHE','LUNDI','MARDI','MERCREDI','JEUDI','VENDREDI','SAMEDI'];
-const MOIS = ['JANVIER','FÉVRIER','MARS','AVRIL','MAI','JUIN','JUILLET','AOÛT','SEPTEMBRE','OCTOBRE','NOVEMBRE','DÉCEMBRE'];
+const JOURS = I18N[LANG].days;
+const MOIS = I18N[LANG].months;
 const tickClock = () => {
   const d = new Date(), p = n => String(n).padStart(2, '0');
   liveLine.textContent = `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())} [LUX] — ${JOURS[d.getDay()]} ${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}`;
@@ -260,15 +453,8 @@ kin.innerHTML = kin.textContent.trim().split(/\s+/).map(w =>
   /^[✦∿⇌⌂—]$/.test(w) ? `<span class="kw glyph">${w}</span>` : `<span class="kw">${w}</span>`).join(' ');
 const kws = [...kin.querySelectorAll('.kw')];
 
-// ---------- fiches techniques de l'atelier ----------
-const SPECS = [
-  ['SITE 01 — M-IMM / GRUND', 'RÉCIT — 6 CHAPITRES', 'RIDEAU DIRECTIONNEL + MORPH DE MONDE', 'ÉLÉVATION DESSINÉE AU SCROLL', '0 COOKIE · 0 TRACEUR'],
-  ['SITE 02 — PHY-C / ESCH', 'ARCHÉTYPE LUMIÈRE — PAPIER & EUCALYPTUS', 'SCHÉMA DU CORPS ANIMÉ', 'RENDEZ-VOUS SANS TÉLÉPHONE', 'RAPPELS — LA VEILLE, PROMIS'],
-  ['SITE 03 — A-SAP / DIFFERDANGE', 'MONDE — LUME DI CANDELA', 'LA TAVOLA SE DESSINE', 'IL MENU EN 3 ACTES', 'PRENOTAZIONI — EN 2 MINUTES'],
-  ['SITE 04 — VERDE / CONCEPT', 'ARCHÉTYPE BOLD-ORGANIC', 'LE BOL QUI S’OUVRE — INGRÉDIENTS + KCAL', 'SLIDER 3D — LA CARTE', 'RÉVÉLATION IMMERSIVE DU LIEU'],
-  ['SITE 05 — KOHNEN / CONSTRUCTION', 'ARCHÉTYPE BÂTISSEUR — DEPUIS 1957', 'LA MAISON SE CONSTRUIT AU SCROLL', 'REGISTRE — DÉJÀ CONSTRUIT', 'ANNOTATIONS DE CHANTIER'],
-  ['SITE 06 — RODA / ATHLÈTE', 'ARCHÉTYPE STORYTELLER — PAPIER & NÉON', 'L’ÉQUIPEMENT S’ASSEMBLE AU SCROLL', 'MUSÉE DU PALMARÈS', 'SUR LE RING / HORS DU RING']
-];
+// ---------- fiches techniques de l'atelier (traduites via I18N) ----------
+const SPECS = I18N[LANG].specs;
 const vSpecs = document.getElementById('vSpecs');
 vSpecs.innerHTML = SPECS.map((list, si) =>
   `<ul class="spec-list" data-i="${si}">` + list.map(l => `<li class="spec-line">${l}</li>`).join('') + '</ul>').join('');
@@ -464,25 +650,19 @@ if (!reduced) {
 </script>
 
 <div class="chat" id="chat">
-  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
   </button>
-  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" hidden>
-    <div class="chat-head"><p class="chip">( ASSISTANT — RÉPONSES PRÉENREGISTRÉES )</p><button class="chat-close" id="chatClose" aria-label="Fermer">×</button></div>
-    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot">Bonsoir ! Réponses préenregistrées — aucune donnée envoyée ni conservée. Choisissez :</p></div>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — RÉPONSES PRÉENREGISTRÉES )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonsoir ! Réponses préenregistrées — aucune donnée envoyée ni conservée. Choisissez :</p></div>
     <div class="chat-choices" id="chatChoices"></div>
   </div>
 </div>
 <script>
 (() => {
-const QA = [
-  ["Que construisez-vous ?", "Des mondes complets — site immersif, images et vidéos générées sur mesure, textes, et la réponse automatisée à vos clients. Jamais de template. Descendez voir l'atelier : chaque écran est cliquable."],
-  ["Combien ça coûte ?", "Chaque monde est unique, donc chaque prix aussi. Écrivez-nous une ligne sur votre projet via le formulaire — vous recevez une réponse le jour même, avec une fourchette honnête."],
-  ["En combien de temps ?", "Un premier aperçu de VOTRE monde arrive en jours, pas en mois — vous jugez sur pièce avant tout engagement."],
-  ["Comment travaillez-vous ?", "Quatre gestes : écouter, dessiner, construire, répondre. Vous corrigez, on affine — le monde n'est fini que quand vous dites wow."],
-  ["Et les cookies / trackers ?", "Zéro cookie, zéro traceur, sur ce site comme sur ceux qu'on livre. La performance n'a pas besoin de vous espionner."],
-  ["Je veux voir des exemples", "Descendez à L'ATELIER — quatre mondes déjà construits (immobilier, santé, gastronomia, cuisine verte). Cliquez l'écran affiché : le site s'ouvre."]
-];
+applyI18n(); // le bloc chat est parsé après le premier passage — deuxième passage ici
+const QA = I18N[LANG].qa;
 const log = document.getElementById('chatLog'), ch = document.getElementById('chatChoices'),
       tg = document.getElementById('chatToggle'), pn = document.getElementById('chatPanel'),
       cl = document.getElementById('chatClose');
