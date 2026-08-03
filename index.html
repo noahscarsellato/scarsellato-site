@@ -497,6 +497,9 @@ if (!reduced) {
   let dustDrift = 0, forming = false;
 
   addEventListener('pointermove', ev => {
+    // le pouce qui scrolle n'est pas une souris : sur tactile il reste collé à un bord
+    // et penchait tout le couloir d'un côté — le sway est réservé au pointeur souris
+    if (ev.pointerType && ev.pointerType !== 'mouse') return;
     mx = ev.clientX; my = ev.clientY;
     tSwayX = (ev.clientX / innerWidth - 0.5) * 3.4;
     tSwayY = (ev.clientY / innerHeight - 0.5) * -2.4;
@@ -643,6 +646,7 @@ if (!reduced) {
   // ---------- boutons magnétiques + écrans qui penchent ----------
   document.querySelectorAll('.magnetic').forEach(b => {
     b.addEventListener('pointermove', ev => {
+      if (ev.pointerType && ev.pointerType !== 'mouse') return;
       const r = b.getBoundingClientRect();
       b.style.transform = `translate(${(ev.clientX - r.left - r.width / 2) * 0.22}px, ${(ev.clientY - r.top - r.height / 2) * 0.22}px)`;
     });
