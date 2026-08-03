@@ -436,7 +436,12 @@ html:not(.js) .spec-line { opacity: 1; transform: none; }
   .whisper-tr { display: none; }
   .st-hero { top: 24vh; }
   .megamark { font-size: 15.5vw; padding-bottom: 4rem; }
-  .room-title { font-size: 13vw; }
+  /* couloir : la salle vole au centre comme un cadre réduit — sur mobile son contenu
+     doit être centré DANS ce cadre (comme « le vôtre. »), sinon il flotte décalé */
+  .cor-sticky { perspective-origin: 50% 50%; }
+  .room-title { font-size: 13vw; width: 100%; text-align: center; padding: 0 1rem 10vh; }
+  .cor-room .r-tl { left: 50%; transform: translate(-50%, 0) translateZ(220px); top: 18vh; }
+  .cor-room .whisper.r-tr { display: none; }
   /* les statements clippent (overflow:hidden pour le reveal) — sous 375px le DE débordait */
   .st-line.big { font-size: clamp(2.2rem, 9.5vw, 6.4rem); }
   .void-stage { width: 86vw; }
