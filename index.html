@@ -366,14 +366,16 @@ let stored = null;
 try { stored = localStorage.getItem('scar-lang'); } catch (e) {}
 let LANG = (new URLSearchParams(location.search).get('lang') || stored || (navigator.language || 'fr').slice(0, 2)).toLowerCase();
 if (!I18N[LANG]) LANG = 'fr';
-const applyI18n = () => {
+const applyI18n = (scope = document) => {
+  // scope ≠ document pour les blocs parsés après le premier passage (chat) —
+  // ne JAMAIS repasser sur tout le document : le moteur a déjà splitté kin/statements en spans
   const d = I18N[LANG];
   document.documentElement.lang = LANG;
   document.title = d.title;
   document.querySelector('meta[name="description"]').setAttribute('content', d.desc);
-  document.querySelectorAll('[data-i18n]').forEach(el => { const s = d.t[el.dataset.i18n]; if (s != null) el.innerHTML = s; });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => { const s = d.t[el.dataset.i18nPh]; if (s != null) el.placeholder = s; });
-  document.querySelectorAll('[data-i18n-aria]').forEach(el => { const s = d.t[el.dataset.i18nAria]; if (s != null) el.setAttribute('aria-label', s); });
+  scope.querySelectorAll('[data-i18n]').forEach(el => { const s = d.t[el.dataset.i18n]; if (s != null) el.innerHTML = s; });
+  scope.querySelectorAll('[data-i18n-ph]').forEach(el => { const s = d.t[el.dataset.i18nPh]; if (s != null) el.placeholder = s; });
+  scope.querySelectorAll('[data-i18n-aria]').forEach(el => { const s = d.t[el.dataset.i18nAria]; if (s != null) el.setAttribute('aria-label', s); });
   const mail = document.getElementById('mailCta'); if (mail) mail.href = d.mailto;
   document.querySelectorAll('#langSwitch [data-lang]').forEach(b => b.setAttribute('aria-current', String(b.dataset.lang === LANG)));
 };
@@ -661,7 +663,7 @@ if (!reduced) {
 </div>
 <script>
 (() => {
-applyI18n(); // le bloc chat est parsé après le premier passage — deuxième passage ici
+applyI18n(document.getElementById('chat')); // le bloc chat est parsé après le premier passage — deuxième passage SCOPÉ au chat
 const QA = I18N[LANG].qa;
 const log = document.getElementById('chatLog'), ch = document.getElementById('chatChoices'),
       tg = document.getElementById('chatToggle'), pn = document.getElementById('chatPanel'),
