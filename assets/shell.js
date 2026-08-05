@@ -69,7 +69,13 @@
 
   const applyI18n = (scope = document) => {
     document.documentElement.lang = LANG;
-    if (D.t['meta.title']) document.title = D.t['meta.title'];
+    // document.title est du TEXTE BRUT : une entité HTML (&amp;) s'y afficherait
+    // littéralement dans l'onglet. On la décode avant d'assigner.
+    if (D.t['meta.title']) {
+      const tmp = document.createElement('textarea');
+      tmp.innerHTML = D.t['meta.title'];
+      document.title = tmp.value;
+    }
     const md = document.querySelector('meta[name="description"]');
     if (md && D.t['meta.desc']) md.setAttribute('content', D.t['meta.desc']);
     scope.querySelectorAll('[data-i18n]').forEach(el => { const s = D.t[el.dataset.i18n]; if (s != null) el.innerHTML = s; });
