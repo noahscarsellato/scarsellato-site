@@ -1,0 +1,114 @@
+/* ============================================================
+   PAGE — RÉALISATIONS (ce que nous avons déjà construit)
+   Règle d'honnêteté : ce sont des MONDES DE DÉMONSTRATION, pas
+   des références clients. Le libellé « démonstration » est dans
+   le HTML, pas seulement dans une note de bas de page.
+   Mécanique : mosaïque qui se colore et fiches techniques qui
+   se déroulent ligne par ligne à l'entrée dans le cadre.
+   ============================================================ */
+
+/* ---------- héros ---------- */
+.re-hero { display: flex; align-items: flex-end; padding-bottom: 12vh; }
+.re-hero .statement { padding: 0 clamp(1.25rem, 5vw, 4rem); }
+.re-hero .kicker { display: block; margin-bottom: 1.6rem; }
+.re-hero .sub { margin-top: 1.8rem; max-width: 36rem; font-size: 1rem; line-height: 1.7; opacity: 0.92; }
+.re-count { position: absolute; right: clamp(1.25rem, 5vw, 4rem); bottom: 12vh; z-index: 3; text-align: right; }
+.re-count b { display: block; font-family: var(--font-d); font-weight: 340; font-size: clamp(3rem, 9vw, 7rem); line-height: 1; color: var(--gold); }
+.re-count small { display: block; font-size: 0.625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-mut); margin-top: 0.6rem; }
+
+/* ---------- avertissement d'honnêteté (assumé, pas caché) ---------- */
+.honest {
+  margin: 0 auto; max-width: 74rem; display: flex; gap: 1.2rem; align-items: flex-start;
+  border-left: 2px solid var(--gold); background: rgb(198 165 108 / 0.05); padding: 1.4rem 1.6rem;
+}
+.honest .mark { font-family: var(--font-d); font-size: 1.6rem; color: var(--gold); line-height: 1; }
+.honest p { font-size: 0.9rem; line-height: 1.7; color: var(--cream-mut); }
+.honest p b { color: var(--cream); font-weight: 400; }
+
+/* ---------- les six mondes ---------- */
+.worlds { padding: 14vh clamp(1.25rem, 5vw, 4rem) 10vh; }
+.worlds-head { max-width: 74rem; margin: 0 auto 3rem; }
+.worlds-head .statement { margin-top: 1.4rem; }
+.w-grid { max-width: 74rem; margin: 3.5rem auto 0; display: grid; gap: 2.6rem; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
+.w-card { display: flex; flex-direction: column; }
+.w-shot { position: relative; display: block; overflow: hidden; border: 1px solid rgb(198 165 108 / 0.22); text-decoration: none; }
+.w-bar { display: flex; gap: 0.35rem; padding: 0.55rem 0.7rem; background: var(--noir-deep); border-bottom: 1px solid rgb(198 165 108 / 0.18); }
+.w-bar i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: rgb(198 165 108 / 0.4); }
+.w-shot img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; filter: saturate(0.25) contrast(1.05); transition: filter 1.1s var(--ease), transform 1.1s var(--ease); }
+.w-card.in .w-shot img { filter: saturate(1) contrast(1); }
+.w-shot:hover img { transform: scale(1.04); }
+.w-tag {
+  position: absolute; top: 2.6rem; left: 0.8rem; z-index: 2;
+  font-size: 0.5625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--noir);
+  background: var(--gold); padding: 0.3rem 0.6rem;
+}
+.w-open {
+  position: absolute; right: 0.8rem; bottom: 0.8rem; z-index: 2;
+  font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream);
+  background: rgb(9 12 14 / 0.7); border: 1px solid var(--gold-soft); padding: 0.4rem 0.7rem;
+  opacity: 0; transform: translateY(0.4rem); transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.w-shot:hover .w-open, .w-shot:focus-visible .w-open { opacity: 1; transform: none; }
+.w-name { font-family: var(--font-d); font-weight: 340; font-size: 1.5rem; margin-top: 1.1rem; }
+.w-name .tm { color: var(--gold); }
+.w-sector { font-size: 0.625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-top: 0.35rem; }
+.w-specs { list-style: none; margin-top: 1rem; border-top: 1px solid rgb(198 165 108 / 0.16); padding-top: 0.9rem; }
+.w-specs li {
+  font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-mut);
+  padding: 0.32rem 0; padding-left: 1rem; position: relative;
+}
+.w-specs li::before { content: "·"; position: absolute; left: 0.2rem; color: var(--gold); }
+@media (prefers-reduced-motion: no-preference) {
+  .js .w-specs li { opacity: 0; transform: translateX(-0.4rem); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+  .js .w-card.in .w-specs li { opacity: 1; transform: none; }
+  .js .w-card.in .w-specs li:nth-child(2) { transition-delay: 0.1s; }
+  .js .w-card.in .w-specs li:nth-child(3) { transition-delay: 0.2s; }
+  .js .w-card.in .w-specs li:nth-child(4) { transition-delay: 0.3s; }
+  .js .w-card.in .w-specs li:nth-child(5) { transition-delay: 0.4s; }
+}
+
+/* ---------- ce que nous avons construit pour nous-mêmes ---------- */
+.own { padding: 12vh clamp(1.25rem, 5vw, 4rem); background: var(--noir-deep); }
+.own-inner { max-width: 74rem; margin: 0 auto; }
+.own-head { margin-bottom: 3.5rem; }
+.own-grid { display: grid; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); background: rgb(198 165 108 / 0.18); border: 1px solid rgb(198 165 108 / 0.18); }
+.own-item { background: var(--noir-deep); padding: 2rem 1.7rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.own-item h3 { font-family: var(--font-d); font-weight: 340; font-size: 1.3rem; }
+.own-item p { font-size: 0.875rem; line-height: 1.7; color: var(--cream-mut); }
+.own-item .live { font-size: 0.5625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.45rem; }
+.own-item .live::before { content: ""; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--gold); }
+@media (prefers-reduced-motion: no-preference) {
+  .own-item .live::before { animation: live-pulse 2.4s var(--ease) infinite; }
+  @keyframes live-pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+}
+.own-item .act { margin-top: auto; padding-top: 1rem; }
+.own-item .act button, .own-item .act a {
+  background: none; border: 0; border-bottom: 1px solid var(--gold-soft); padding: 0 0 2px;
+  color: var(--cream-mut); font-family: inherit; font-size: 0.75rem; text-decoration: none;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.own-item .act button:hover, .own-item .act a:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ---------- clôture ---------- */
+.re-end { padding: 14vh clamp(1.25rem, 5vw, 4rem) 10vh; }
+.re-end-inner { max-width: 74rem; margin: 0 auto; }
+.re-end .note { margin-top: 1.6rem; font-size: 0.9rem; line-height: 1.75; color: var(--cream-mut); max-width: 40rem; }
+.re-end .note b { color: var(--cream); font-weight: 400; }
+.re-end .cta-row { margin-top: 2.4rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.back-home { display: inline-block; margin-top: 3rem; font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-mut); text-decoration: none; }
+.back-home:hover { color: var(--gold); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(1.3rem); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .reveal.d1 { transition-delay: 0.09s; }
+  .js .reveal.d2 { transition-delay: 0.18s; }
+}
+
+@media (max-width: 47rem) {
+  .re-hero { padding-bottom: 8vh; }
+  .re-count { position: static; margin: 2.4rem clamp(1.25rem, 5vw, 4rem) 0; text-align: left; }
+  .re-count small { text-align: left; }
+  .worlds, .own, .re-end { padding-top: 9vh; padding-bottom: 9vh; }
+  .w-open { opacity: 1; transform: none; }
+}

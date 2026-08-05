@@ -194,9 +194,21 @@ html:not(.js) .loader { display: none; }
 
 @media (pointer: fine) { *, a, button, input, textarea, select, label { cursor: none !important; } }
 @media (max-width: 47rem) {
-  .live-line { display: none; }
-  .topbar { gap: 0.8rem; padding: 0.8rem 1rem; }
-  .top-links { gap: 0.9rem; }
-  .top-links a { font-size: 0.5625rem; letter-spacing: 0.12em; }
+  /* Même traitement que la home (correctif 08-03) : sous 375 px, wordmark + liens +
+     langue + CTA font 644 px de large — le CTA sortait de l'écran et « Contact » était
+     coupé. Les liens tombent, la langue prend la place, le CTA devient rond (icône seule).
+     La navigation reste assurée par le wordmark (→ accueil) et les liens de bas de section. */
+  .live-line, .top-links { display: none; }
+  .lang-switch { margin-left: auto; }
+  .lang-switch button { padding: 0.5rem 0.4rem; }
+  .topbar { gap: 0.9rem; padding: 0.8rem 1rem; }
+  .topbar .btn-pill { padding: 0.55rem; }
+  .topbar .btn-pill .pill-label { display: none; }
+  .whisper-tr { display: none; }
+  .st-line.big { font-size: clamp(2.2rem, 9.5vw, 5.4rem); }
+  .chip-tl { top: 4.6rem; }
   .atelier-form input, .atelier-form textarea, .chat-input { font-size: 1rem; }
 }
+
+/* viewport stable : pas de saut quand la barre d'URL mobile se replie */
+@supports (height: 100svh) { .pano { min-height: 100svh; } }
