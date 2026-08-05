@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les publicités UGC — accroches &amp; scripts — Scarsellato, Luxembourg</title>
+<meta name="description" content="Des vidéos courtes qui ne ressemblent pas à des publicités, écrites uniquement à partir de votre matière : vos avis, vos commentaires, vos messages. Angles, accroches, scripts, plans de tournage, versions rendues. Premier lot court, relu avant d'aller plus loin.">
+<link rel="stylesheet" href="../assets/shell.css?v=3">
+<link rel="stylesheet" href="page.css?v=1">
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="loader-core">
+    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
+    <p class="loader-count"><span id="loaderCount">00</span></p>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+  </div>
+</div>
+
+<canvas class="dust" id="dust" aria-hidden="true"></canvas>
+<div class="progress-rail" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="wordmark" href="../">scar<span class="italic gold">sellato</span></a>
+  <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
+  <nav class="top-links" aria-label="Navigation">
+    <a href="../" data-i18n="nav.home">Accueil</a>
+    <a href="../#metiers" data-i18n="nav.metiers">Métiers</a>
+    <a href="./" aria-current="page" data-i18n="nav.this">Publicités UGC</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+  <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.batch">Demander un premier lot</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+</header>
+
+<main id="top">
+
+  <!-- HÉROS -->
+  <section class="pano ugc-hero" aria-label="Les publicités UGC">
+    <div class="pano-bg" data-parallax><img src="../img/world-gastro.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="../img/loop-gastro.mp4"></video></div>
+    <div class="pano-scrim" aria-hidden="true"></div>
+    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( MÉTIER 05 ) — LES PUBLICITÉS UGC</p>
+    <div class="statement">
+      <span class="chip kicker" data-i18n="hero.kicker">LUXEMBOURG · FR · DE · EN</span>
+      <p class="st-line big"><span class="st-in" data-i18n="hero.st1">La première seconde</span></p>
+      <p class="st-line big"><span class="st-in italic gold" data-i18n="hero.st2">décide du reste.</span></p>
+      <p class="sub" data-i18n="hero.sub">Une publicité qui ressemble à une publicité est passée avant d'être lue. Nous écrivons des vidéos courtes qui ressemblent à quelqu'un qui parle — et la première phrase, nous ne l'inventons pas : elle vient de ce que vos clients ont déjà dit.</p>
+      <div class="hero-cta">
+        <a class="btn-pill big magnetic" href="#contact"><span data-i18n="hero.cta1">Parler d'un premier lot</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+        <button class="btn-pill magnetic" type="button" data-ask="À partir de quoi écrivez-vous les publicités UGC ?"><span data-i18n="hero.cta2">Demander à l'assistant</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+    <p class="ugc-second" aria-hidden="true">1<i>s</i><small data-i18n="hero.tick">c'est tout ce que vous avez pour être regardé</small></p>
+  </section>
+
+  <!-- (01) LE MUR D'ACCROCHES -->
+  <section class="wall" id="mur" aria-label="Le mur d'accroches">
+    <div class="wall-inner">
+      <div class="wall-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="wall.head">( 01 ) — LE MUR D'ACCROCHES</p>
+        <div class="statement">
+          <p class="st-line"><span class="st-in" data-i18n="wall.st1">Le produit, ce n'est pas la vidéo.</span></p>
+          <p class="st-line"><span class="st-in italic gold" data-i18n="wall.st2">C'est la première phrase.</span></p>
+        </div>
+        <p class="wall-lead" data-i18n="wall.lead">Six manières d'ouvrir, six façons d'attraper la même personne. Chacune part d'un endroit précis : ce qu'on vous demande sans arrêt, ce qu'on vous objecte, ce qu'on vous dit quand vous ne demandez rien.</p>
+      </div>
+
+      <div class="wall-grid">
+        <article class="hook reveal">
+          <div class="frame">
+            <span class="frame-bar" aria-hidden="true"><i></i></span>
+            <p class="hook-line" data-i18n="h1.line">« Je croyais que c'était trop cher. »</p>
+            <span class="frame-t" aria-hidden="true">0:01</span>
+          </div>
+          <p class="hook-form" data-i18n="h1.form">01 · L'objection, en premier</p>
+          <p class="hook-src" data-i18n="h1.src">Vient d'une question qui revient dans vos commentaires.</p>
+        </article>
+
+        <article class="hook reveal d1">
+          <div class="frame">
+            <span class="frame-bar" aria-hidden="true"><i></i></span>
+            <p class="hook-line" data-i18n="h2.line">« Je ne pensais pas rester aussi longtemps. »</p>
+            <span class="frame-t" aria-hidden="true">0:01</span>
+          </div>
+          <p class="hook-form" data-i18n="h2.form">02 · Le mot exact du client</p>
+          <p class="hook-src" data-i18n="h2.src">Repris tel quel dans un avis, sans être reformulé.</p>
+        </article>
+
+        <article class="hook reveal d2">
+          <div class="frame">
+            <span class="frame-bar" aria-hidden="true"><i></i></span>
+            <p class="hook-line" data-i18n="h3.line">« Vous fermez vraiment à 14 h ? »</p>
+            <span class="frame-t" aria-hidden="true">0:01</span>
+          </div>
+          <p class="hook-form" data-i18n="h3.form">03 · La question directe</p>
+          <p class="hook-src" data-i18n="h3.src">Vient d'un message reçu, celui qu'on vous écrit chaque semaine.</p>
+        </article>
+
+        <article class="hook reveal">
+          <div class="frame has-media">
+            <img src="../img/world-gastro.jpg" alt="">
+            <video class="vid" muted loop playsinline preload="metadata" src="../img/loop-gastro.mp4"></video>
+            <span class="frame-scrim" aria-hidden="true"></span>
+            <span class="frame-bar" aria-hidden="true"><i></i></span>
+            <p class="hook-line" data-i18n="h4.line">« Regardez trois secondes, puis décidez. »</p>
+            <span class="frame-t" aria-hidden="true">0:01</span>
+          </div>
+          <p class="hook-form" data-i18n="h4.form">04 · L'image avant les mots</p>
+          <p class="hook-src" data-i18n="h4.src">Vient de votre propre matière filmée, jamais d'ailleurs.</p>
+        </article>
+
+        <article class="hook reveal d1">
+          <div class="frame">
+            <span class="frame-bar" aria-hidden="true"><i></i></span>
+            <p class="hook-line" data-i18n="h5.line">« N'entrez pas si vous êtes pressé. »</p>
+            <span class="frame-t" aria-hidden="true">0:01</span>
+          </div>
+          <p class="hook-form" data-i18n="h5.form">05 · Le contre-pied</p>
+          <p class="hook-src" data-i18n="h5.src">Vient de ce que vos habitués disent en souriant.</p>
+        </article>
+
+        <article class="hook reveal d2">
+          <div class="frame">
+            <span class="frame-bar" aria-hidden="true"><i></i></span>
+            <p class="hook-line" data-i18n="h6.line">« On nous pose toujours la même question. »</p>
+            <span class="frame-t" aria-hidden="true">0:01</span>
+          </div>
+          <p class="hook-form" data-i18n="h6.form">06 · La réponse à ce qu'on vous demande</p>
+          <p class="hook-src" data-i18n="h6.src">Vient de vos propres réponses, celles que vous répétez.</p>
+        </article>
+      </div>
+
+      <p class="wall-note reveal" data-i18n="wall.note">Ces lignes sont des exemples de formes, écrites ici pour montrer l'anatomie d'une accroche. Les vôtres seront écrites dans vos mots, à partir de votre matière.</p>
+    </div>
+  </section>
+
+  <!-- (02) D'OÙ VIENNENT LES MOTS -->
+  <section class="roots" aria-label="D'où viennent les mots">
+    <div class="roots-inner">
+      <div class="roots-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="roots.head">( 02 ) — D'OÙ VIENNENT LES MOTS</p>
+        <div class="statement">
+          <p class="st-line"><span class="st-in" data-i18n="roots.st1">Nous n'écrivons rien</span></p>
+          <p class="st-line"><span class="st-in italic gold" data-i18n="roots.st2">que vous n'ayez déjà entendu.</span></p>
+        </div>
+      </div>
+      <div class="roots-grid">
+        <article class="root reveal">
+          <span class="mark" aria-hidden="true">«</span>
+          <h3 data-i18n="roots.1.t">Vos avis</h3>
+          <p data-i18n="roots.1.d">Les mots exacts de vos clients, repris tels quels plutôt que reformulés. Une phrase trouvée dans un avis fait souvent une meilleure ouverture que trois jours d'idées.</p>
+        </article>
+        <article class="root reveal d1">
+          <span class="mark" aria-hidden="true">«</span>
+          <h3 data-i18n="roots.2.t">Vos commentaires et vos messages</h3>
+          <p data-i18n="roots.2.d">Ce qu'on vous demande en boucle, et ce qu'on vous objecte. Une objection fréquente devient une publicité qui y répond avant même qu'elle soit posée.</p>
+        </article>
+        <article class="root reveal d2">
+          <span class="mark" aria-hidden="true">«</span>
+          <h3 data-i18n="roots.3.t">Ce qui a déjà tourné chez vous</h3>
+          <p data-i18n="roots.3.d">Vos anciennes publicités, vos publications qui ont marché. Nous regardons ce qui a fonctionné chez vous, pas ce qui fonctionne ailleurs.</p>
+        </article>
+      </div>
+      <div class="stop reveal">
+        <span class="tag" data-i18n="roots.stopTag">Et s'il n'y a rien ?</span>
+        <p data-i18n="roots.stop">Alors nous nous arrêtons et nous vous le demandons. Sans matière, il ne reste que l'invention — et une publicité inventée sur un produit qu'on n'a jamais vu se repère en une seconde. C'est la seule règle que nous ne négocions pas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (03) CE QUE VOUS RECEVEZ -->
+  <section class="deliver" aria-label="Ce que vous recevez">
+    <div class="deliver-inner">
+      <div class="deliver-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="del.head">( 03 ) — CE QUE VOUS RECEVEZ</p>
+        <h3 data-i18n="del.title">Le dossier complet, prêt à diffuser</h3>
+      </div>
+      <ul class="deliver-list reveal d1">
+        <li data-i18n="del.1"><b>Des angles</b> — trois à cinq raisons différentes de s'arrêter, pas cinq fois la même.</li>
+        <li data-i18n="del.2"><b>Des accroches</b> — plusieurs ouvertures par angle, chacune avec sa source citée.</li>
+        <li data-i18n="del.3"><b>Des scripts</b> — courts, dits à voix haute avant d'être écrits.</li>
+        <li data-i18n="del.4"><b>Des plans de tournage</b> — ce qu'on voit, dans quel ordre, avec les zones que l'interface de la plateforme recouvre.</li>
+        <li data-i18n="del.5"><b>Les textes par plateforme</b> — dans les limites de caractères, avec une version raccourcie quand ça déborde.</li>
+        <li data-i18n="del.6"><b>Les versions rendues</b> — en 9:16, prêtes à être déposées telles quelles.</li>
+      </ul>
+      <p class="own reveal d2" data-i18n="del.own">Tout vous appartient : les fichiers, les textes, les angles, les sources. Si vous arrêtez, vous partez avec.</p>
+    </div>
+  </section>
+
+  <!-- (04) CE QUE NOUS NE FAISONS PAS -->
+  <section class="never" aria-label="Ce que nous ne faisons pas">
+    <div class="never-inner">
+      <div class="never-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="never.head">( 04 ) — CE QUE NOUS NE FAISONS PAS</p>
+        <div class="statement">
+          <p class="st-line"><span class="st-in" data-i18n="never.st1">Ce que nous refusons de faire</span></p>
+          <p class="st-line"><span class="st-in italic gold" data-i18n="never.st2">dit le reste.</span></p>
+        </div>
+      </div>
+      <ul class="nots">
+        <li class="not reveal"><span class="x" aria-hidden="true">✕</span><span class="d" data-i18n="never.1">Nous ne touchons pas à votre compte publicitaire. Nous n'en demandons aucun accès : nous livrons les créations, vous les diffusez, ou votre media buyer s'en charge.</span></li>
+        <li class="not reveal"><span class="x" aria-hidden="true">✕</span><span class="d" data-i18n="never.2">Nous n'inventons aucun chiffre, aucun avis, aucune promesse sur votre produit. Ce que nous n'avons pas, nous le laissons vide et nous vous le demandons.</span></li>
+        <li class="not reveal"><span class="x" aria-hidden="true">✕</span><span class="d" data-i18n="never.3">Nous ne promettons pas de performance. Personne ne peut le faire honnêtement avant d'avoir diffusé chez vous, avec votre offre et votre audience.</span></li>
+        <li class="not reveal"><span class="x" aria-hidden="true">✕</span><span class="d" data-i18n="never.4">Nous ne faisons pas passer une vidéo générée pour un vrai client qui se filme. Ce qui est mis en scène est signalé noir sur blanc dans le dossier.</span></li>
+        <li class="not last reveal"><span class="x" aria-hidden="true">✕</span><span class="d" data-i18n="never.5">Nous ne prenons ni musique ni images qui ne nous appartiennent pas. Un format se reprend, un contenu jamais.</span></li>
+      </ul>
+      <button class="btn-pill magnetic never-ask" type="button" data-ask="Vous ne touchez vraiment pas au compte publicitaire du client ?"><span data-i18n="never.ask">Poser la question à l'assistant</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+    </div>
+  </section>
+
+  <!-- (05) COMMENCER PETIT -->
+  <section class="small" aria-label="Commencer petit">
+    <div class="small-inner">
+      <div class="small-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="small.head">( 05 ) — COMMENCER PETIT</p>
+        <div class="statement">
+          <p class="st-line"><span class="st-in" data-i18n="small.st1">Un premier lot,</span></p>
+          <p class="st-line"><span class="st-in italic gold" data-i18n="small.st2">relu avant d'aller plus loin.</span></p>
+        </div>
+      </div>
+      <div class="small-panel reveal d1">
+        <span class="tag" data-i18n="small.tag">Le premier lot</span>
+        <p data-i18n="small.1">Nous commençons par un lot volontairement court, écrit à partir de votre matière. Vous le lisez en entier avant qu'il serve à quoi que ce soit.</p>
+        <p data-i18n="small.2">Vous gardez ce que vous reconnaissez, vous coupez le reste. Ce que vous validez devient la référence : le ton, les mots, et ce qui ne se dit pas chez vous.</p>
+        <p data-i18n="small.3">On n'élargit qu'ensuite, et seulement sur ce qui a été validé. Rien ne passe à l'échelle avant que vous ayez vu à quoi ça ressemble.</p>
+      </div>
+      <p class="honest reveal d2" data-i18n="small.honest">Nous n'avons pas encore de campagnes clientes publiées. Nous ne vous montrerons donc ni résultats, ni captures d'écran, ni témoignages : il n'y en a pas. Ce que nous pouvons montrer, c'est la matière et la méthode — le reste se mesurera chez vous.</p>
+    </div>
+  </section>
+
+  <!-- (06) CONTACT -->
+  <section class="ugc-contact" id="contact" aria-label="Contact">
+    <div class="ugc-contact-inner">
+      <div class="reveal">
+        <p class="chip" aria-hidden="true" data-i18n="fin.head">( 06 ) — ET MAINTENANT</p>
+        <div class="statement" style="margin-top:1.4rem">
+          <p class="st-line big"><span class="st-in" data-i18n="fin.st1">Dites-nous ce que</span></p>
+          <p class="st-line big"><span class="st-in italic gold" data-i18n="fin.st2">vos clients disent déjà.</span></p>
+        </div>
+        <p class="note" data-i18n="fin.note">Un lien vers vos avis ou vos commentaires suffit pour commencer. Nous répondons le jour même — et si nous n'avons pas de quoi écrire honnêtement, nous vous le dirons plutôt que d'inventer.</p>
+        <form class="atelier-form" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
+          <input type="hidden" name="_subject" value="Publicités UGC — demande (scarsellato.com)">
+          <input type="hidden" name="_next" value="https://scarsellato.com/ugc/#contact">
+          <input type="text" name="_honey" style="display:none">
+          <div class="af-row">
+            <input type="text" name="nom" placeholder="VOTRE NOM" required aria-label="Nom" data-i18n-ph="form.name">
+            <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+          </div>
+          <textarea name="message" placeholder="OÙ PEUT-ON LIRE VOS CLIENTS ? (AVIS, COMMENTAIRES, MESSAGES)" required aria-label="Message" data-i18n-ph="form.msg2"></textarea>
+          <button class="btn-pill magnetic big" type="submit"><span data-i18n="form.send">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+        </form>
+        <a class="back-home" href="../#metiers" data-i18n="fin.back">← Revoir tous les métiers</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
+
+<div class="chat" id="chat">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — EN DIRECT )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonjour ! Je réponds en direct, uniquement à partir des informations de l'atelier — je ne devine rien. Posez votre question, ou commencez par l'une de celles-ci :</p></div>
+    <div class="chat-choices" id="chatChoices"></div>
+    <form class="chat-form" id="chatForm">
+      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="ÉCRIVEZ VOTRE QUESTION…" aria-label="Votre question" data-i18n-ph="chat.ph">
+      <button class="chat-send" id="chatSend" type="submit" aria-label="Envoyer" data-i18n-aria="chat.sendAria">➤</button>
+    </form>
+    <p class="chat-note" data-i18n="chat.note">Vos messages servent uniquement à vous répondre. 0 cookie, 0 traceur.</p>
+  </div>
+</div>
+
+<script>
+/* Dictionnaire de CETTE page — le FR est la source inline, EN/DE traduisent.
+   Les paires qa[] servent de doublure hors-ligne à l'assistant. */
+window.PAGE_I18N = {
+  fr: { t: {}, qa: [
+    ["Vous avez des résultats à montrer ?", "Non, et nous ne prétendrons pas le contraire : aucune campagne cliente n'a encore été publiée par nous. Nous montrons la méthode et la matière, pas des chiffres. Les vôtres se mesureront chez vous."],
+    ["À partir de quoi vous écrivez ?", "De votre matière : vos avis, vos commentaires, vos messages, vos publicités déjà diffusées. Si nous n'avons rien, nous ne l'inventons pas — nous nous arrêtons et nous vous le demandons."],
+    ["Vous gérez notre compte publicitaire ?", "Non, jamais. Nous livrons les créations et vous les diffusez, ou votre media buyer s'en charge. Nous ne demandons aucun accès à vos comptes."],
+    ["On reçoit quoi exactement ?", "Des angles, des accroches, des scripts, des plans de tournage, les textes adaptés à chaque plateforme et les versions rendues en 9:16. Tout vous appartient."],
+    ["On commence comment ?", "Par un premier lot volontairement court, que vous relisez avant qu'il serve. Ce que vous validez devient la référence, et on n'élargit qu'ensuite."],
+    ["Combien ça coûte ?", "Cela dépend du volume et de la matière disponible. Laissez-nous votre e-mail : vous avez un chiffre précis le jour même, sans engagement."]
+  ]},
+  en: { t: {
+    'meta.title': 'UGC ads — hooks & scripts — Scarsellato, Luxembourg',
+    'meta.desc': "Short videos that do not look like ads, written only from your own material: your reviews, your comments, your messages. Angles, hooks, scripts, shot plans, rendered versions. A short first batch, reviewed before anything scales.",
+    'nav.this': 'UGC ads', 'cta.batch': 'Ask for a first batch',
+    'hero.chip': '( CRAFT 05 ) — UGC ADS',
+    'hero.kicker': 'LUXEMBOURG · FR · DE · EN',
+    'hero.st1': 'The first second', 'hero.st2': 'decides the rest.',
+    'hero.sub': "An ad that looks like an ad is scrolled past before it is read. We write short videos that look like someone talking — and the first line is not invented: it comes from something your customers already said.",
+    'hero.cta1': 'Talk about a first batch', 'hero.cta2': 'Ask the assistant',
+    'hero.tick': 'that is all you get to be watched at all',
+    'wall.head': '( 01 ) — THE HOOK WALL',
+    'wall.st1': 'The product is not the video.', 'wall.st2': 'It is the first line.',
+    'wall.lead': 'Six ways to open, six ways to catch the same person. Each one starts somewhere precise: what you are asked over and over, what people object to, what they tell you when you ask nothing.',
+    'h1.line': '“I thought it was too expensive.”',
+    'h1.form': '01 · The objection, first',
+    'h1.src': 'Comes from a question that keeps coming back in your comments.',
+    'h2.line': '“I did not expect to stay that long.”',
+    'h2.form': '02 · The customer’s exact words',
+    'h2.src': 'Taken word for word from a review, not rephrased.',
+    'h3.line': '“Do you really close at 2 pm?”',
+    'h3.form': '03 · The direct question',
+    'h3.src': 'Comes from a message you receive every single week.',
+    'h4.line': '“Watch three seconds, then decide.”',
+    'h4.form': '04 · The image before the words',
+    'h4.src': 'Comes from your own filmed material, never from anywhere else.',
+    'h5.line': '“Do not come in if you are in a hurry.”',
+    'h5.form': '05 · The counter-move',
+    'h5.src': 'Comes from what your regulars say with a smile.',
+    'h6.line': '“We always get asked the same thing.”',
+    'h6.form': '06 · The answer to what you are asked',
+    'h6.src': 'Comes from your own answers, the ones you repeat all day.',
+    'wall.note': 'These lines are examples of forms, written here to show the anatomy of a hook. Yours will be written in your words, from your material.',
+    'roots.head': '( 02 ) — WHERE THE WORDS COME FROM',
+    'roots.st1': 'We write nothing', 'roots.st2': 'you have not already heard.',
+    'roots.1.t': 'Your reviews',
+    'roots.1.d': 'The exact words of your customers, kept as they are rather than rewritten. One sentence found in a review often opens better than three days of ideas.',
+    'roots.2.t': 'Your comments and messages',
+    'roots.2.d': 'What people ask you on a loop, and what they object to. A frequent objection becomes an ad that answers it before it is even raised.',
+    'roots.3.t': 'What has already run for you',
+    'roots.3.d': 'Your older ads, your posts that worked. We look at what worked for you, not at what works for someone else.',
+    'roots.stopTag': 'And if there is nothing?',
+    'roots.stop': 'Then we stop and we ask you for it. Without material there is only invention — and an ad invented about a product nobody has seen shows in one second. That is the one rule we do not negotiate.',
+    'del.head': '( 03 ) — WHAT YOU RECEIVE', 'del.title': 'The full file, ready to run',
+    'del.1': '<b>Angles</b> — three to five different reasons to stop, not the same one five times.',
+    'del.2': '<b>Hooks</b> — several openings per angle, each with its source cited.',
+    'del.3': '<b>Scripts</b> — short, said out loud before they are written down.',
+    'del.4': '<b>Shot plans</b> — what is seen, in what order, with the zones the platform interface covers.',
+    'del.5': '<b>Per-platform copy</b> — within the character limits, with a trimmed version whenever it runs over.',
+    'del.6': '<b>Rendered versions</b> — in 9:16, ready to be uploaded as they are.',
+    'del.own': 'It is all yours: the files, the copy, the angles, the sources. If you stop, you leave with them.',
+    'never.head': '( 04 ) — WHAT WE NEVER DO',
+    'never.st1': 'What we refuse to do', 'never.st2': 'says the rest.',
+    'never.1': 'We do not touch your ad account. We ask for no access to it: we hand over the creatives, you run them, or your media buyer does.',
+    'never.2': 'We invent no number, no review, no promise about your product. What we do not have stays empty and we ask you for it.',
+    'never.3': 'We promise no performance. Nobody can do that honestly before running it with your offer and your audience.',
+    'never.4': 'We do not pass a generated video off as a real customer filming themselves. Anything staged is flagged plainly in the file.',
+    'never.5': 'We take no music and no footage that is not ours. A format can be borrowed, content never.',
+    'never.ask': 'Ask the assistant about it',
+    'small.head': '( 05 ) — START SMALL',
+    'small.st1': 'A first batch,', 'small.st2': 'read before anything grows.',
+    'small.tag': 'The first batch',
+    'small.1': 'We start with a deliberately short batch, written from your material. You read it in full before it is used for anything.',
+    'small.2': 'You keep what you recognise, you cut the rest. What you approve becomes the reference: the tone, the words, and what is never said in your house.',
+    'small.3': 'Only then do we widen, and only on what was approved. Nothing scales before you have seen what it looks like.',
+    'small.honest': 'We have no published client campaigns yet. So we will show you no results, no screenshots and no testimonials: there are none. What we can show is the material and the method — the rest will be measured at your end.',
+    'fin.head': '( 06 ) — AND NOW',
+    'fin.st1': 'Tell us what', 'fin.st2': 'your customers already say.',
+    'fin.note': 'A link to your reviews or your comments is enough to start. We reply the same day — and if we do not have enough to write honestly, we will say so rather than invent.',
+    'form.msg2': 'WHERE CAN WE READ YOUR CUSTOMERS? (REVIEWS, COMMENTS, MESSAGES)',
+    'fin.back': '← Back to all crafts'
+  }, qa: [
+    ["Do you have results to show?", "No, and we will not pretend otherwise: we have not published any client campaign yet. We show the method and the material, not numbers. Yours will be measured at your end."],
+    ["What do you write from?", "From your material: your reviews, your comments, your messages, the ads you have already run. If we have nothing, we do not invent it — we stop and we ask you for it."],
+    ["Do you run our ad account?", "No, never. We hand over the creatives and you run them, or your media buyer does. We ask for no access to your accounts."],
+    ["What exactly do we receive?", "Angles, hooks, scripts, shot plans, copy adapted to each platform and rendered versions in 9:16. All of it is yours."],
+    ["How do we start?", "With a deliberately short first batch that you read before it is used. What you approve becomes the reference, and only then do we widen."],
+    ["How much does it cost?", "It depends on the volume and on the material available. Leave us your email: you get a precise figure the same day, with no commitment."]
+  ]},
+  de: { t: {
+    'meta.title': 'UGC-Werbung — Hooks & Skripte — Scarsellato, Luxemburg',
+    'meta.desc': 'Kurze Videos, die nicht nach Werbung aussehen, geschrieben ausschließlich aus Ihrem eigenen Material: Ihren Bewertungen, Kommentaren, Nachrichten. Angles, Hooks, Skripte, Shot-Pläne, fertige Versionen. Ein kurzer erster Satz, gelesen, bevor irgendetwas skaliert.',
+    'nav.this': 'UGC-Werbung', 'cta.batch': 'Ersten Satz anfragen',
+    'hero.chip': '( GEWERK 05 ) — UGC-WERBUNG',
+    'hero.kicker': 'LUXEMBURG · FR · DE · EN',
+    'hero.st1': 'Die erste Sekunde', 'hero.st2': 'entscheidet über den Rest.',
+    'hero.sub': 'Werbung, die nach Werbung aussieht, ist weggewischt, bevor sie gelesen wird. Wir schreiben kurze Videos, die klingen wie jemand, der spricht — und den ersten Satz erfinden wir nicht: er kommt aus dem, was Ihre Kunden bereits gesagt haben.',
+    'hero.cta1': 'Über einen ersten Satz sprechen', 'hero.cta2': 'Den Assistenten fragen',
+    'hero.tick': 'mehr haben Sie nicht, um überhaupt angesehen zu werden',
+    'wall.head': '( 01 ) — DIE HOOK-WAND',
+    'wall.st1': 'Das Produkt ist nicht das Video.', 'wall.st2': 'Es ist der erste Satz.',
+    'wall.lead': 'Sechs Arten zu öffnen, sechs Arten, dieselbe Person zu erwischen. Jede beginnt an einer konkreten Stelle: was man Sie ständig fragt, was man Ihnen entgegenhält, was man Ihnen sagt, ohne gefragt zu werden.',
+    'h1.line': '„Ich dachte, das wäre zu teuer.“',
+    'h1.form': '01 · Der Einwand zuerst',
+    'h1.src': 'Kommt aus einer Frage, die in Ihren Kommentaren immer wiederkehrt.',
+    'h2.line': '„Ich hätte nicht gedacht, dass ich so lange bleibe.“',
+    'h2.form': '02 · Die exakten Worte des Kunden',
+    'h2.src': 'Wörtlich aus einer Bewertung übernommen, nicht umformuliert.',
+    'h3.line': '„Schließen Sie wirklich um 14 Uhr?“',
+    'h3.form': '03 · Die direkte Frage',
+    'h3.src': 'Kommt aus einer Nachricht, die Sie jede Woche erhalten.',
+    'h4.line': '„Sehen Sie drei Sekunden zu, dann entscheiden Sie.“',
+    'h4.form': '04 · Das Bild vor den Worten',
+    'h4.src': 'Kommt aus Ihrem eigenen gefilmten Material, nie von woanders.',
+    'h5.line': '„Kommen Sie nicht rein, wenn Sie es eilig haben.“',
+    'h5.form': '05 · Der Gegenzug',
+    'h5.src': 'Kommt aus dem, was Ihre Stammgäste lächelnd sagen.',
+    'h6.line': '„Man fragt uns immer dasselbe.“',
+    'h6.form': '06 · Die Antwort auf das, was man Sie fragt',
+    'h6.src': 'Kommt aus Ihren eigenen Antworten, denen, die Sie ständig wiederholen.',
+    'wall.note': 'Diese Zeilen sind Beispiele für Formen, hier geschrieben, um die Anatomie eines Hooks zu zeigen. Ihre werden in Ihren Worten geschrieben, aus Ihrem Material.',
+    'roots.head': '( 02 ) — WOHER DIE WORTE KOMMEN',
+    'roots.st1': 'Wir schreiben nichts,', 'roots.st2': 'was Sie nicht schon gehört haben.',
+    'roots.1.t': 'Ihre Bewertungen',
+    'roots.1.d': 'Die exakten Worte Ihrer Kunden, so belassen statt umgeschrieben. Ein Satz aus einer Bewertung öffnet oft besser als drei Tage Ideen.',
+    'roots.2.t': 'Ihre Kommentare und Nachrichten',
+    'roots.2.d': 'Was man Sie in Dauerschleife fragt, und was man Ihnen entgegenhält. Ein häufiger Einwand wird zu einer Werbung, die ihn beantwortet, bevor er überhaupt kommt.',
+    'roots.3.t': 'Was bei Ihnen schon lief',
+    'roots.3.d': 'Ihre älteren Anzeigen, Ihre Beiträge, die funktioniert haben. Wir schauen auf das, was bei Ihnen funktioniert hat, nicht auf das, was anderswo funktioniert.',
+    'roots.stopTag': 'Und wenn es nichts gibt?',
+    'roots.stop': 'Dann hören wir auf und fragen Sie danach. Ohne Material bleibt nur die Erfindung — und eine erfundene Werbung über ein Produkt, das niemand gesehen hat, erkennt man in einer Sekunde. Das ist die eine Regel, über die wir nicht verhandeln.',
+    'del.head': '( 03 ) — WAS SIE BEKOMMEN', 'del.title': 'Die vollständige Mappe, bereit zum Ausspielen',
+    'del.1': '<b>Angles</b> — drei bis fünf verschiedene Gründe anzuhalten, nicht fünfmal derselbe.',
+    'del.2': '<b>Hooks</b> — mehrere Öffnungen pro Angle, jede mit zitierter Quelle.',
+    'del.3': '<b>Skripte</b> — kurz, laut gesprochen, bevor sie aufgeschrieben werden.',
+    'del.4': '<b>Shot-Pläne</b> — was zu sehen ist, in welcher Reihenfolge, mit den Zonen, die die Plattform-Oberfläche verdeckt.',
+    'del.5': '<b>Texte pro Plattform</b> — innerhalb der Zeichengrenzen, mit einer gekürzten Fassung, wenn es überläuft.',
+    'del.6': '<b>Fertige Versionen</b> — in 9:16, bereit, so hochgeladen zu werden.',
+    'del.own': 'Alles gehört Ihnen: die Dateien, die Texte, die Angles, die Quellen. Wenn Sie aufhören, nehmen Sie alles mit.',
+    'never.head': '( 04 ) — WAS WIR NIE TUN',
+    'never.st1': 'Was wir ablehnen,', 'never.st2': 'sagt den Rest.',
+    'never.1': 'Wir fassen Ihr Werbekonto nicht an. Wir verlangen keinerlei Zugang: wir liefern die Creatives, Sie spielen sie aus, oder Ihr Media-Buyer tut es.',
+    'never.2': 'Wir erfinden keine Zahl, keine Bewertung, kein Versprechen über Ihr Produkt. Was wir nicht haben, bleibt leer, und wir fragen Sie danach.',
+    'never.3': 'Wir versprechen keine Performance. Ehrlich kann das niemand, bevor es mit Ihrem Angebot und Ihrem Publikum gelaufen ist.',
+    'never.4': 'Wir geben kein generiertes Video als echten Kunden aus, der sich selbst filmt. Alles Inszenierte steht klar in der Mappe.',
+    'never.5': 'Wir nehmen weder Musik noch Aufnahmen, die uns nicht gehören. Ein Format darf man übernehmen, einen Inhalt nie.',
+    'never.ask': 'Den Assistenten dazu fragen',
+    'small.head': '( 05 ) — KLEIN ANFANGEN',
+    'small.st1': 'Ein erster Satz,', 'small.st2': 'gelesen, bevor etwas wächst.',
+    'small.tag': 'Der erste Satz',
+    'small.1': 'Wir beginnen mit einem bewusst kurzen Satz, geschrieben aus Ihrem Material. Sie lesen ihn vollständig, bevor er für irgendetwas verwendet wird.',
+    'small.2': 'Sie behalten, was Sie wiedererkennen, und streichen den Rest. Was Sie freigeben, wird zur Referenz: der Ton, die Worte, und das, was bei Ihnen nie gesagt wird.',
+    'small.3': 'Erst danach erweitern wir, und nur auf dem Freigegebenen. Nichts skaliert, bevor Sie gesehen haben, wie es aussieht.',
+    'small.honest': 'Wir haben noch keine veröffentlichten Kundenkampagnen. Deshalb zeigen wir Ihnen weder Ergebnisse noch Screenshots noch Referenzstimmen: es gibt keine. Zeigen können wir das Material und die Methode — der Rest wird bei Ihnen gemessen.',
+    'fin.head': '( 06 ) — UND JETZT',
+    'fin.st1': 'Sagen Sie uns, was', 'fin.st2': 'Ihre Kunden längst sagen.',
+    'fin.note': 'Ein Link zu Ihren Bewertungen oder Kommentaren genügt für den Anfang. Wir antworten noch am selben Tag — und wenn wir zu wenig haben, um ehrlich zu schreiben, sagen wir das, statt etwas zu erfinden.',
+    'form.msg2': 'WO KANN MAN IHRE KUNDEN LESEN? (BEWERTUNGEN, KOMMENTARE, NACHRICHTEN)',
+    'fin.back': '← Zurück zu allen Gewerken'
+  }, qa: [
+    ["Haben Sie Ergebnisse zu zeigen?", "Nein, und wir behaupten nichts anderes: wir haben noch keine Kundenkampagne veröffentlicht. Wir zeigen die Methode und das Material, keine Zahlen. Ihre werden bei Ihnen gemessen."],
+    ["Woraus schreiben Sie?", "Aus Ihrem Material: Ihren Bewertungen, Kommentaren, Nachrichten und den Anzeigen, die bei Ihnen schon liefen. Haben wir nichts, erfinden wir es nicht — wir hören auf und fragen Sie danach."],
+    ["Betreuen Sie unser Werbekonto?", "Nein, nie. Wir liefern die Creatives, Sie spielen sie aus, oder Ihr Media-Buyer tut es. Wir verlangen keinen Zugang zu Ihren Konten."],
+    ["Was bekommen wir genau?", "Angles, Hooks, Skripte, Shot-Pläne, die Texte pro Plattform und die fertigen Versionen in 9:16. Alles gehört Ihnen."],
+    ["Wie fangen wir an?", "Mit einem bewusst kurzen ersten Satz, den Sie lesen, bevor er verwendet wird. Was Sie freigeben, wird zur Referenz, und erst danach erweitern wir."],
+    ["Was kostet das?", "Das hängt vom Volumen und vom verfügbaren Material ab. Hinterlassen Sie uns Ihre E-Mail: Sie erhalten noch am selben Tag eine genaue Zahl, unverbindlich."]
+  ]}
+};
+</script>
+<script src="../assets/shell.js?v=3"></script>
+
+</body>
+</html>

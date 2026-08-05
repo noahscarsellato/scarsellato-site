@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'assistant du site — Scarsellato, Luxembourg</title>
+<meta name="description" content="Un assistant entraîné uniquement sur vos informations. Il répond à vos visiteurs 24 h/24 en FR/DE/EN, n'invente jamais, et passe la main dès qu'il n'est pas sûr. Version test gratuite, sans cookies.">
+<link rel="stylesheet" href="../assets/shell.css?v=3">
+<link rel="stylesheet" href="page.css?v=1">
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="loader-core">
+    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
+    <p class="loader-count"><span id="loaderCount">00</span></p>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+  </div>
+</div>
+
+<canvas class="dust" id="dust" aria-hidden="true"></canvas>
+<div class="progress-rail" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="wordmark" href="../">scar<span class="italic gold">sellato</span></a>
+  <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
+  <nav class="top-links" aria-label="Navigation">
+    <a href="../" data-i18n="nav.home">Accueil</a>
+    <a href="../#metiers" data-i18n="nav.metiers">Métiers</a>
+    <a href="./" aria-current="page" data-i18n="nav.this">Assistant du site</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+  <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.test">Version test gratuite</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+</header>
+
+<main id="top">
+
+  <!-- HÉROS -->
+  <section class="pano as-hero" aria-label="L'assistant du site">
+    <div class="pano-bg" data-parallax><img src="../img/world-sante.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="../img/loop-sante.mp4"></video></div>
+    <div class="pano-scrim" aria-hidden="true"></div>
+    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( MÉTIER 04 ) — L'ASSISTANT DU SITE</p>
+    <div class="statement">
+      <span class="chip kicker" data-i18n="hero.kicker">LUXEMBOURG · FR · DE · EN · 24 H/24</span>
+      <p class="st-line big"><span class="st-in" data-i18n="hero.st1">Le vendeur est</span></p>
+      <p class="st-line big"><span class="st-in italic gold" data-i18n="hero.st2">déjà sur la page.</span></p>
+      <p class="sub" data-i18n="hero.sub">Inutile de nous croire sur parole. Le rond doré, en bas à droite, c'est le produit. Il répond à partir de nos informations et de rien d'autre, il ne devine pas, et quand il ne sait pas, il le dit et passe la main.</p>
+      <div class="hero-cta">
+        <a class="btn-pill big magnetic" href="#contact"><span data-i18n="hero.cta1">Version test gratuite</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+        <button class="btn-pill magnetic" type="button" data-ask="Qu'est-ce que tu ne sais pas ?"><span data-i18n="hero.cta2">« Qu'est-ce que tu ne sais pas ? »</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+    <p class="as-pointer" aria-hidden="true">↘<small data-i18n="hero.point">il est là, en bas à droite — posez-lui une vraie question</small></p>
+  </section>
+
+  <!-- (01) LA CONVERSATION TÉMOIN -->
+  <section class="spec" id="spec" aria-label="Une conversation témoin">
+    <div class="spec-head reveal">
+      <p class="chip" aria-hidden="true" data-i18n="spec.head">( 01 ) — UNE CONVERSATION TÉMOIN, DE BOUT EN BOUT</p>
+      <div class="statement">
+        <p class="st-line"><span class="st-in" data-i18n="spec.st1">Cinq questions.</span></p>
+        <p class="st-line"><span class="st-in italic gold" data-i18n="spec.st2">Une seule compte.</span></p>
+      </div>
+      <p class="spec-intro" data-i18n="spec.intro">Voici un échange complet avec l'assistant de cette page. Rien n'est mis en scène : reposez-lui ces questions vous-même, vous obtiendrez la même chose. C'est la quatrième qui nous intéresse.</p>
+    </div>
+
+    <div class="spec-body">
+      <p class="spec-count" aria-hidden="true"><span id="specN">01</span><span class="slash">/</span><span>05</span><small data-i18n="spec.of">échange — conversation témoin</small></p>
+      <div class="spec-thread" aria-hidden="true"><i></i></div>
+      <ol class="turns">
+
+        <li class="turn reveal">
+          <div class="q"><span class="who" data-i18n="spec.who.v">visiteur</span><p data-i18n="sp.1.q">Qu'est-ce que vous installez exactement sur mon site ?</p></div>
+          <div class="a"><span class="who" data-i18n="spec.who.a">assistant</span><p data-i18n="sp.1.a">Un assistant entraîné sur vos informations à vous. Il répond à vos visiteurs à toute heure, en français, en allemand ou en anglais, et il ne sort jamais de ce que vous lui avez donné.</p></div>
+        </li>
+
+        <li class="turn reveal">
+          <div class="q"><span class="who" data-i18n="spec.who.v">visiteur</span><p data-i18n="sp.2.q">Combien de temps avant qu'il soit en ligne ?</p></div>
+          <div class="a"><span class="who" data-i18n="spec.who.a">assistant</span><p data-i18n="sp.2.a">Environ une semaine. Nous commençons par une version test, construite sur vos contenus publics. Vous lisez une transcription complète avant qu'un seul visiteur ne lui parle.</p></div>
+        </li>
+
+        <li class="turn reveal">
+          <div class="q"><span class="who" data-i18n="spec.who.v">visiteur</span><p data-i18n="sp.3.q">Et s'il raconte n'importe quoi à un client ?</p></div>
+          <div class="a"><span class="who" data-i18n="spec.who.a">assistant</span><p data-i18n="sp.3.a">C'est la règle qui passe avant toutes les autres : pas d'invention. Si la réponse n'est pas dans vos informations, il ne la fabrique pas. Il le dit, et il passe la main.</p></div>
+          <button class="turn-ask" type="button" data-ask="Et si l'assistant raconte n'importe quoi à un client ?" data-i18n="spec.again">Reposer cette question à l'assistant ↗</button>
+        </li>
+
+        <li class="turn key reveal">
+          <span class="turn-tag" aria-hidden="true" data-i18n="spec.tag">( le moment )</span>
+          <div class="q"><span class="who" data-i18n="spec.who.v">visiteur</span><p data-i18n="sp.4.q">Vous pouvez le brancher sur notre logiciel de réservation pour qu'il prenne les rendez-vous ?</p></div>
+          <div class="a"><span class="who" data-i18n="spec.who.a">assistant</span><p data-i18n="sp.4.a">Je ne sais pas. Ce n'est pas dans ce que je connais, et je ne vais pas inventer une réponse sur un point technique. Laissez-moi votre e-mail : quelqu'un vous répond le jour même, avec un vrai oui ou un vrai non.</p></div>
+          <p class="turn-note" data-i18n="spec.tagnote">C'est là que tout se joue. Un assistant qui invente une réponse vous coûte la confiance d'un client, et vous ne saurez jamais lequel. Celui-ci s'arrête, le dit, et vous passe la main : la question n'est pas perdue, elle change de mains.</p>
+          <button class="turn-ask" type="button" data-ask="Est-ce que tu peux te brancher sur mon logiciel de réservation pour prendre les rendez-vous ?" data-i18n="spec.again">Reposer cette question à l'assistant ↗</button>
+        </li>
+
+        <li class="turn reveal">
+          <div class="q"><span class="who" data-i18n="spec.who.v">visiteur</span><p data-i18n="sp.5.q">D'accord, je vous laisse mon adresse.</p></div>
+          <div class="a"><span class="who" data-i18n="spec.who.a">assistant</span><p data-i18n="sp.5.a">C'est noté. Votre question et vos coordonnées partent au propriétaire du site. Vous n'avez rien d'autre à faire : c'est lui qui revient vers vous.</p></div>
+        </li>
+
+      </ol>
+      <p class="spec-note reveal" data-i18n="spec.note">Ces cinq questions ne sont pas décoratives. Reposez-les à l'assistant en bas à droite : s'il vous répond autre chose, le problème est chez nous, pas chez vous.</p>
+    </div>
+  </section>
+
+  <!-- (02) CE QU'IL CONNAÎT -->
+  <section class="kb" aria-label="Ce qu'il connaît">
+    <div class="kb-head reveal">
+      <p class="chip" aria-hidden="true" data-i18n="kb.head">( 02 ) — CE QU'IL CONNAÎT, ET RIEN D'AUTRE</p>
+      <div class="statement">
+        <p class="st-line"><span class="st-in" data-i18n="kb.st1">Il n'a pas lu internet.</span></p>
+        <p class="st-line"><span class="st-in italic gold" data-i18n="kb.st2">Il a lu votre maison.</span></p>
+      </div>
+    </div>
+    <div class="kb-grid">
+      <article class="kb-col reveal">
+        <h3 data-i18n="kb.a.title">Ce qu'on lui donne</h3>
+        <p class="col-sub" data-i18n="kb.a.sub">Vos informations, celles que vous choisissez</p>
+        <ul>
+          <li data-i18n="kb.a.1">Vos pages, vos prestations, votre façon de travailler.</li>
+          <li data-i18n="kb.a.2">Vos horaires, vos zones, vos conditions — ce qu'on vous demande dix fois par semaine.</li>
+          <li data-i18n="kb.a.3">Vos documents, si vous le souhaitez : une foire aux questions, une notice, une grille de prestations.</li>
+          <li data-i18n="kb.a.4">Vos limites : ce qu'il n'a pas le droit de dire, vous nous le dites, il ne le dit pas.</li>
+        </ul>
+      </article>
+      <article class="kb-col nope reveal d1">
+        <h3 data-i18n="kb.b.title">Ce qu'il n'a pas</h3>
+        <p class="col-sub" data-i18n="kb.b.sub">Et qu'il ne fera donc jamais</p>
+        <ul>
+          <li data-i18n="kb.b.1">Aucune culture générale improvisée sur votre métier.</li>
+          <li data-i18n="kb.b.2">Aucun chiffre, aucun délai, aucun prix que vous ne lui avez pas donné.</li>
+          <li data-i18n="kb.b.3">Aucun engagement pris à votre place.</li>
+          <li data-i18n="kb.b.4">Aucun cookie, aucun traceur : les messages servent à répondre, et à rien d'autre.</li>
+        </ul>
+      </article>
+    </div>
+    <p class="kb-verdict reveal d2" data-i18n="kb.verdict">Un assistant utile n'est pas celui qui sait tout. C'est celui dont vous connaissez exactement les limites.</p>
+  </section>
+
+  <!-- (03) QUAND IL N'EST PAS SÛR -->
+  <section class="ho" aria-label="Quand il n'est pas sûr">
+    <div class="ho-inner">
+      <div class="ho-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="ho.head">( 03 ) — QUAND IL N'EST PAS SÛR</p>
+        <div class="statement">
+          <p class="st-line"><span class="st-in" data-i18n="ho.st1">Il ne bluffe pas.</span></p>
+          <p class="st-line"><span class="st-in italic gold" data-i18n="ho.st2">Il passe la main.</span></p>
+        </div>
+      </div>
+      <div class="ho-grid">
+        <div class="ho-step reveal">
+          <span class="n">01</span>
+          <h3 data-i18n="ho.1.t">Il le dit</h3>
+          <p data-i18n="ho.1.d">Pas de réponse approximative, pas de formule vague pour donner le change. Il annonce qu'il ne sait pas, et pourquoi : ce n'est pas dans ce qu'on lui a confié.</p>
+        </div>
+        <div class="ho-step reveal d1">
+          <span class="n">02</span>
+          <h3 data-i18n="ho.2.t">Il propose l'humain</h3>
+          <p data-i18n="ho.2.d">Il demande à la personne comment la joindre et lui dit ce qui va se passer ensuite. Un visiteur à qui l'on répond « je transmets » reste. Un visiteur à qui l'on répond à côté s'en va.</p>
+        </div>
+        <div class="ho-step reveal d2">
+          <span class="n">03</span>
+          <h3 data-i18n="ho.3.t">Vous recevez la question</h3>
+          <p data-i18n="ho.3.d">La question et les coordonnées vous arrivent tout de suite. Vous répondez à quelqu'un qui vous attend, au lieu de découvrir un formulaire vide le lendemain.</p>
+        </div>
+      </div>
+      <div class="ho-foot reveal">
+        <p data-i18n="ho.note">C'est le seul moment où l'assistant vous dérange. Le reste du temps, il répond et vous ne voyez rien passer.</p>
+        <button class="btn-pill magnetic" type="button" data-ask="Que se passe-t-il quand tu ne sais pas ?"><span data-i18n="ho.cta">Lui poser la question</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- (04) L'INSTALLATION -->
+  <section class="inst" aria-label="L'installation">
+    <div class="inst-inner">
+      <div class="inst-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="inst.head">( 04 ) — L'INSTALLATION</p>
+        <div class="statement">
+          <p class="st-line"><span class="st-in" data-i18n="inst.st1">Une ligne de code.</span> <span class="st-in italic gold" data-i18n="inst.st2">Environ une semaine.</span></p>
+        </div>
+      </div>
+      <div class="inst-grid">
+        <article class="inst-step reveal">
+          <span class="w" data-i18n="inst.1.w">Jour 0</span>
+          <h3 data-i18n="inst.1.t">La version test</h3>
+          <p data-i18n="inst.1.d">Nous construisons une première version sur vos contenus publics — votre site tel qu'il est aujourd'hui. Vous n'avez rien à préparer et rien à payer.</p>
+        </article>
+        <article class="inst-step reveal d1">
+          <span class="w" data-i18n="inst.2.w">Jours 1 à 5</span>
+          <h3 data-i18n="inst.2.t">On l'affûte</h3>
+          <p data-i18n="inst.2.d">Vous nous dites ce qui manque, ce qui est faux, ce qu'il ne doit pas dire. Nous corrigeons ses sources jusqu'à ce que ses réponses soient les vôtres.</p>
+        </article>
+        <article class="inst-step reveal d2">
+          <span class="w" data-i18n="inst.3.w">Avant la mise en ligne</span>
+          <h3 data-i18n="inst.3.t">Vous validez une transcription</h3>
+          <p data-i18n="inst.3.d">Nous vous envoyons une conversation de test complète. Tant que vous ne l'avez pas approuvée, aucun visiteur ne parle à l'assistant. C'est une règle, pas une option.</p>
+        </article>
+        <article class="inst-step reveal d3">
+          <span class="w" data-i18n="inst.4.w">Ensuite</span>
+          <h3 data-i18n="inst.4.t">Une ligne à coller</h3>
+          <p data-i18n="inst.4.d">Une seule ligne de code dans votre site, et il est là. Rien à migrer, aucun logiciel à installer : il vit à côté de ce que vous avez déjà.</p>
+        </article>
+      </div>
+      <div class="test-card reveal d1">
+        <span class="tag" data-i18n="test.tag">La version test — gratuite</span>
+        <p data-i18n="test.1">Elle est construite sur <b>vos contenus publics</b>, pas sur une démonstration générique. Vous voyez votre maison répondre, pas la nôtre.</p>
+        <p data-i18n="test.2"><b>Rien ne devient public sans vous.</b> La mise en ligne n'a lieu qu'après votre validation d'une transcription de test — c'est la garantie, pas une promesse.</p>
+        <p data-i18n="test.3">Si l'assistant n'est pas à la hauteur sur vos contenus, nous vous le dirons avant vous. Un mauvais assistant sur votre site nous coûte plus cher qu'à vous.</p>
+        <p data-i18n="test.4">Cette page n'affiche aucun prix. Donnez-nous l'adresse de votre site : vous avez le chiffre exact le jour même.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (05) CONTACT -->
+  <section class="as-contact" id="contact" aria-label="Contact">
+    <div class="as-contact-inner">
+      <div class="reveal">
+        <p class="chip" aria-hidden="true" data-i18n="fin.head">( 05 ) — ET MAINTENANT</p>
+        <div class="statement" style="margin-top:1.4rem">
+          <p class="st-line big"><span class="st-in" data-i18n="fin.st1">Donnez-nous</span></p>
+          <p class="st-line big"><span class="st-in italic gold" data-i18n="fin.st2">l'adresse de votre site.</span></p>
+        </div>
+        <p class="note" data-i18n="fin.note">Une ligne suffit. Nous répondons le jour même — et si un assistant n'a pas de sens chez vous, nous le dirons franchement plutôt que de vous en vendre un.</p>
+        <form class="atelier-form" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
+          <input type="hidden" name="_subject" value="Assistant du site — version test (scarsellato.com)">
+          <input type="hidden" name="_next" value="https://scarsellato.com/assistant/#contact">
+          <input type="text" name="_honey" style="display:none">
+          <div class="af-row">
+            <input type="text" name="nom" placeholder="VOTRE NOM" required aria-label="Nom" data-i18n-ph="form.name">
+            <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+          </div>
+          <textarea name="message" placeholder="L'ADRESSE DE VOTRE SITE, ET CE QU'ON VOUS DEMANDE LE PLUS SOUVENT" required aria-label="Message" data-i18n-ph="form.msg2"></textarea>
+          <button class="btn-pill magnetic big" type="submit"><span data-i18n="form.send">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+        </form>
+        <a class="back-home" href="../#metiers" data-i18n="fin.back">← Revoir tous les métiers</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
+
+<div class="chat" id="chat">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — EN DIRECT )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonjour ! Je réponds en direct, uniquement à partir des informations de l'atelier — je ne devine rien. Posez votre question, ou commencez par l'une de celles-ci :</p></div>
+    <div class="chat-choices" id="chatChoices"></div>
+    <form class="chat-form" id="chatForm">
+      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="ÉCRIVEZ VOTRE QUESTION…" aria-label="Votre question" data-i18n-ph="chat.ph">
+      <button class="chat-send" id="chatSend" type="submit" aria-label="Envoyer" data-i18n-aria="chat.sendAria">➤</button>
+    </form>
+    <p class="chat-note" data-i18n="chat.note">Vos messages servent uniquement à vous répondre. 0 cookie, 0 traceur.</p>
+  </div>
+</div>
+
+<script>
+/* Dictionnaire de CETTE page — le FR est la source inline, EN/DE traduisent.
+   Les paires qa[] servent de doublure hors-ligne à l'assistant : réseau muet,
+   la page répond quand même — et chaque réponse doit rester vraie seule. */
+window.PAGE_I18N = {
+  fr: { t: {}, qa: [
+    ["Qu'est-ce que tu ne sais pas ?", "Tout ce qui n'est pas dans les informations de l'atelier : nos affaires internes, ce que fera votre marché demain, ce qu'un autre prestataire pratique. Quand une question sort de ce que je connais, je le dis et je passe la main plutôt que d'inventer."],
+    ["Sur quoi es-tu entraîné ?", "Uniquement sur les informations de l'atelier : ce que nous faisons, comment nous travaillons, nos garanties. Chez un client, c'est le même principe avec SES informations, et rien d'autre."],
+    ["Combien de temps pour l'installer ?", "Environ une semaine. On commence par une version test gratuite, construite sur vos contenus publics. Vous validez une transcription de test avant qu'un visiteur ne puisse me parler."],
+    ["Que se passe-t-il quand tu ne sais pas ?", "Je le dis, je ne devine pas, et je propose de passer la main. Si la personne laisse ses coordonnées, sa question et son contact partent au propriétaire du site."],
+    ["Dans quelles langues réponds-tu ?", "Français, allemand et anglais. Je réponds dans la langue de la question."],
+    ["Est-ce que vous gardez mes messages ?", "Vos messages servent uniquement à vous répondre. Ce site n'utilise ni cookie ni traceur, et aucune donnée n'est revendue."]
+  ]},
+  en: { t: {
+    'meta.title': 'The site assistant — Scarsellato, Luxembourg',
+    'meta.desc': "An assistant trained only on your own information. It answers your visitors 24/7 in FR/DE/EN, never invents anything, and hands over to a human the moment it is unsure. Free test version, cookie-free.",
+    'nav.this': 'Site assistant', 'cta.test': 'Free test version',
+    'hero.chip': '( CRAFT 04 ) — THE SITE ASSISTANT',
+    'hero.kicker': 'LUXEMBOURG · FR · DE · EN · 24/7',
+    'hero.st1': 'The salesman is', 'hero.st2': 'already on the page.',
+    'hero.sub': 'No need to take our word for it. The gold circle in the bottom right corner is the product. It answers from our information and nothing else, it does not guess, and when it does not know, it says so and hands over.',
+    'hero.cta1': 'Free test version', 'hero.cta2': '“What don’t you know?”',
+    'hero.point': 'it is right there, bottom right — ask it something real',
+    'spec.head': '( 01 ) — ONE SPECIMEN CONVERSATION, END TO END',
+    'spec.st1': 'Five questions.', 'spec.st2': 'Only one matters.',
+    'spec.intro': 'Here is a full exchange with the assistant on this page. Nothing is staged: ask it these questions yourself and you will get the same thing. The fourth one is the one we care about.',
+    'spec.of': 'exchange — specimen conversation',
+    'spec.who.v': 'visitor', 'spec.who.a': 'assistant',
+    'spec.again': 'Ask the assistant this question ↗',
+    'spec.tag': '( the moment )',
+    'spec.tagnote': 'This is where it is decided. An assistant that invents an answer costs you a client’s trust, and you will never know which client. This one stops, says so, and hands you the question: it is not lost, it changes hands.',
+    'spec.note': 'These five questions are not decoration. Ask them to the assistant in the bottom right corner: if it answers something else, the problem is ours, not yours.',
+    'sp.1.q': 'What exactly do you install on my site?',
+    'sp.1.a': 'An assistant trained on your own information. It answers your visitors at any hour, in French, German or English, and it never steps outside what you gave it.',
+    'sp.2.q': 'How long before it is live?',
+    'sp.2.a': 'About a week. We start with a test version built on your public content. You read a full transcript before a single visitor talks to it.',
+    'sp.3.q': 'And if it tells a client nonsense?',
+    'sp.3.a': 'That is the rule that comes before all the others: no inventing. If the answer is not in your information, it does not manufacture one. It says so, and it hands over.',
+    'sp.4.q': 'Can you plug it into our booking software so it takes appointments?',
+    'sp.4.a': 'I do not know. That is not part of what I know, and I am not going to invent an answer on a technical point. Leave me your email: someone replies the same day, with a real yes or a real no.',
+    'sp.5.q': 'Fine, here is my address.',
+    'sp.5.a': 'Noted. Your question and your contact details go to the owner of the site. You have nothing else to do: they come back to you.',
+    'kb.head': '( 02 ) — WHAT IT KNOWS, AND NOTHING ELSE',
+    'kb.st1': 'It has not read the internet.', 'kb.st2': 'It has read your house.',
+    'kb.a.title': 'What we give it', 'kb.a.sub': 'Your information, the part you choose',
+    'kb.a.1': 'Your pages, your services, the way you work.',
+    'kb.a.2': 'Your hours, your areas, your conditions — what people ask you ten times a week.',
+    'kb.a.3': 'Your documents, if you want: a list of frequent questions, a leaflet, a service sheet.',
+    'kb.a.4': 'Your limits: whatever it is not allowed to say, you tell us, and it does not say it.',
+    'kb.b.title': 'What it does not have', 'kb.b.sub': 'And will therefore never do',
+    'kb.b.1': 'No improvised general knowledge about your trade.',
+    'kb.b.2': 'No figure, no lead time, no price that you did not give it.',
+    'kb.b.3': 'No commitment made on your behalf.',
+    'kb.b.4': 'No cookie, no tracker: messages serve to answer, and nothing else.',
+    'kb.verdict': 'A useful assistant is not the one that knows everything. It is the one whose limits you know exactly.',
+    'ho.head': '( 03 ) — WHEN IT IS NOT SURE',
+    'ho.st1': 'It does not bluff.', 'ho.st2': 'It hands over.',
+    'ho.1.t': 'It says so',
+    'ho.1.d': 'No approximate answer, no vague wording to save face. It states that it does not know, and why: it is not in what it was given.',
+    'ho.2.t': 'It offers a human',
+    'ho.2.d': 'It asks the person how to reach them and tells them what happens next. A visitor told “I am passing this on” stays. A visitor given a wrong answer leaves.',
+    'ho.3.t': 'You get the question',
+    'ho.3.d': 'The question and the contact details reach you straight away. You reply to someone who is waiting for you, instead of finding an empty form the next day.',
+    'ho.note': 'That is the only moment the assistant disturbs you. The rest of the time it answers and you see nothing go by.',
+    'ho.cta': 'Ask it that question',
+    'inst.head': '( 04 ) — THE INSTALLATION',
+    'inst.st1': 'One line of code.', 'inst.st2': 'About one week.',
+    'inst.1.w': 'Day 0', 'inst.1.t': 'The test version',
+    'inst.1.d': 'We build a first version on your public content — your site as it stands today. You have nothing to prepare and nothing to pay.',
+    'inst.2.w': 'Days 1 to 5', 'inst.2.t': 'We sharpen it',
+    'inst.2.d': 'You tell us what is missing, what is wrong, what it must not say. We correct its sources until its answers are yours.',
+    'inst.3.w': 'Before it goes live', 'inst.3.t': 'You approve a transcript',
+    'inst.3.d': 'We send you a complete test conversation. Until you have approved it, no visitor talks to the assistant. That is a rule, not an option.',
+    'inst.4.w': 'Then', 'inst.4.t': 'One line to paste',
+    'inst.4.d': 'A single line of code in your site and it is there. Nothing to migrate, no software to install: it lives alongside what you already have.',
+    'test.tag': 'The test version — free',
+    'test.1': 'It is built on <b>your public content</b>, not on a generic demo. You watch your house answer, not ours.',
+    'test.2': '<b>Nothing becomes public without you.</b> It goes live only after you approve a test transcript — that is the guarantee, not a promise.',
+    'test.3': 'If the assistant is not good enough on your content, we will tell you before you do. A bad assistant on your site costs us more than it costs you.',
+    'test.4': 'This page shows no price. Give us your site address and you get the exact figure the same day.',
+    'fin.head': '( 05 ) — AND NOW',
+    'fin.st1': 'Give us', 'fin.st2': 'your site address.',
+    'fin.note': 'One line is enough. We reply the same day — and if an assistant makes no sense for you, we will say so plainly rather than sell you one.',
+    'form.msg2': 'YOUR SITE ADDRESS, AND WHAT PEOPLE ASK YOU MOST',
+    'fin.back': '← Back to all crafts'
+  }, qa: [
+    ["What don't you know?", "Everything that is not in the atelier's information: our internal affairs, what your market will do tomorrow, what another supplier charges. When a question falls outside what I know, I say so and hand over rather than invent."],
+    ["What are you trained on?", "Only on the atelier's own information: what we do, how we work, our guarantees. For a client it is the same principle with THEIR information, and nothing else."],
+    ["How long does it take to install?", "About a week. We start with a free test version built on your public content. You approve a test transcript before any visitor can talk to me."],
+    ["What happens when you don't know?", "I say so, I do not guess, and I offer to hand over. If the person leaves their contact details, their question and contact go to the owner of the site."],
+    ["Which languages do you answer in?", "French, German and English. I answer in the language of the question."],
+    ["Do you keep my messages?", "Your messages are used only to answer you. This site uses no cookie and no tracker, and no data is ever resold."]
+  ]},
+  de: { t: {
+    'meta.title': 'Der Website-Assistent — Scarsellato, Luxemburg',
+    'meta.desc': 'Ein Assistent, der ausschließlich auf Ihren eigenen Informationen beruht. Er antwortet Ihren Besuchern rund um die Uhr auf FR/DE/EN, erfindet nie etwas und übergibt an einen Menschen, sobald er unsicher ist. Kostenlose Testversion, ohne Cookies.',
+    'nav.this': 'Website-Assistent', 'cta.test': 'Kostenlose Testversion',
+    'hero.chip': '( GEWERK 04 ) — DER WEBSITE-ASSISTENT',
+    'hero.kicker': 'LUXEMBURG · FR · DE · EN · RUND UM DIE UHR',
+    'hero.st1': 'Der Verkäufer ist', 'hero.st2': 'schon auf der Seite.',
+    'hero.sub': 'Sie müssen uns nicht glauben. Der goldene Kreis unten rechts ist das Produkt. Er antwortet aus unseren Informationen und aus nichts anderem, er rät nicht, und wenn er etwas nicht weiß, sagt er es und übergibt.',
+    'hero.cta1': 'Kostenlose Testversion', 'hero.cta2': '„Was weißt du nicht?“',
+    'hero.point': 'er ist da, unten rechts — stellen Sie ihm eine echte Frage',
+    'spec.head': '( 01 ) — EIN MUSTERGESPRÄCH, VON ANFANG BIS ENDE',
+    'spec.st1': 'Fünf Fragen.', 'spec.st2': 'Nur eine zählt.',
+    'spec.intro': 'Hier ist ein vollständiger Austausch mit dem Assistenten dieser Seite. Nichts ist inszeniert: Stellen Sie ihm diese Fragen selbst, Sie bekommen dasselbe. Die vierte ist die, um die es geht.',
+    'spec.of': 'austausch — mustergespräch',
+    'spec.who.v': 'besucher', 'spec.who.a': 'assistent',
+    'spec.again': 'Diese Frage dem Assistenten stellen ↗',
+    'spec.tag': '( der moment )',
+    'spec.tagnote': 'Hier entscheidet es sich. Ein Assistent, der eine Antwort erfindet, kostet Sie das Vertrauen eines Kunden — und Sie erfahren nie, welches. Dieser hält an, sagt es und übergibt Ihnen die Frage: sie geht nicht verloren, sie wechselt die Hände.',
+    'spec.note': 'Diese fünf Fragen sind keine Dekoration. Stellen Sie sie dem Assistenten unten rechts: Antwortet er etwas anderes, liegt das Problem bei uns, nicht bei Ihnen.',
+    'sp.1.q': 'Was genau installieren Sie auf meiner Website?',
+    'sp.1.a': 'Einen Assistenten, der auf Ihren eigenen Informationen beruht. Er antwortet Ihren Besuchern zu jeder Stunde, auf Französisch, Deutsch oder Englisch, und er verlässt nie das, was Sie ihm gegeben haben.',
+    'sp.2.q': 'Wie lange dauert es, bis er online ist?',
+    'sp.2.a': 'Etwa eine Woche. Wir beginnen mit einer Testversion, gebaut auf Ihren öffentlichen Inhalten. Sie lesen ein vollständiges Protokoll, bevor ein einziger Besucher mit ihm spricht.',
+    'sp.3.q': 'Und wenn er einem Kunden Unsinn erzählt?',
+    'sp.3.a': 'Das ist die Regel, die vor allen anderen kommt: nichts erfinden. Steht die Antwort nicht in Ihren Informationen, baut er sie nicht zusammen. Er sagt es und übergibt.',
+    'sp.4.q': 'Können Sie ihn an unsere Buchungssoftware anschließen, damit er Termine vergibt?',
+    'sp.4.a': 'Das weiß ich nicht. Es gehört nicht zu dem, was ich kenne, und ich werde bei einem technischen Punkt keine Antwort erfinden. Hinterlassen Sie mir Ihre E-Mail: jemand antwortet noch heute, mit einem echten Ja oder einem echten Nein.',
+    'sp.5.q': 'Gut, hier ist meine Adresse.',
+    'sp.5.a': 'Notiert. Ihre Frage und Ihre Kontaktdaten gehen an den Inhaber der Website. Sie müssen nichts weiter tun: er meldet sich bei Ihnen.',
+    'kb.head': '( 02 ) — WAS ER KENNT, UND SONST NICHTS',
+    'kb.st1': 'Er hat nicht das Internet gelesen.', 'kb.st2': 'Er hat Ihr Haus gelesen.',
+    'kb.a.title': 'Was wir ihm geben', 'kb.a.sub': 'Ihre Informationen, die Sie auswählen',
+    'kb.a.1': 'Ihre Seiten, Ihre Leistungen, Ihre Arbeitsweise.',
+    'kb.a.2': 'Ihre Öffnungszeiten, Ihre Gebiete, Ihre Bedingungen — das, was man Sie zehnmal pro Woche fragt.',
+    'kb.a.3': 'Ihre Unterlagen, wenn Sie möchten: häufige Fragen, ein Merkblatt, eine Leistungsübersicht.',
+    'kb.a.4': 'Ihre Grenzen: was er nicht sagen darf, sagen Sie uns — und er sagt es nicht.',
+    'kb.b.title': 'Was er nicht hat', 'kb.b.sub': 'Und deshalb nie tun wird',
+    'kb.b.1': 'Kein improvisiertes Allgemeinwissen über Ihr Fach.',
+    'kb.b.2': 'Keine Zahl, keine Frist, keinen Preis, den Sie ihm nicht gegeben haben.',
+    'kb.b.3': 'Keine Zusage in Ihrem Namen.',
+    'kb.b.4': 'Kein Cookie, kein Tracker: Nachrichten dienen der Antwort, sonst nichts.',
+    'kb.verdict': 'Ein nützlicher Assistent ist nicht der, der alles weiß. Es ist der, dessen Grenzen Sie genau kennen.',
+    'ho.head': '( 03 ) — WENN ER UNSICHER IST',
+    'ho.st1': 'Er blufft nicht.', 'ho.st2': 'Er übergibt.',
+    'ho.1.t': 'Er sagt es',
+    'ho.1.d': 'Keine ungefähre Antwort, keine vage Formulierung, um das Gesicht zu wahren. Er sagt, dass er es nicht weiß, und warum: es steht nicht in dem, was man ihm gegeben hat.',
+    'ho.2.t': 'Er bietet den Menschen an',
+    'ho.2.d': 'Er fragt, wie man die Person erreichen kann, und sagt ihr, was als Nächstes passiert. Ein Besucher, dem man „ich gebe das weiter" sagt, bleibt. Ein Besucher mit einer falschen Antwort geht.',
+    'ho.3.t': 'Sie bekommen die Frage',
+    'ho.3.d': 'Frage und Kontaktdaten erreichen Sie sofort. Sie antworten jemandem, der auf Sie wartet, statt am nächsten Tag ein leeres Formular vorzufinden.',
+    'ho.note': 'Das ist der einzige Moment, in dem der Assistent Sie stört. Sonst antwortet er, und Sie sehen nichts davon.',
+    'ho.cta': 'Ihm diese Frage stellen',
+    'inst.head': '( 04 ) — DIE EINRICHTUNG',
+    'inst.st1': 'Eine Zeile Code.', 'inst.st2': 'Etwa eine Woche.',
+    'inst.1.w': 'Tag 0', 'inst.1.t': 'Die Testversion',
+    'inst.1.d': 'Wir bauen eine erste Version auf Ihren öffentlichen Inhalten — Ihre Website, so wie sie heute ist. Sie müssen nichts vorbereiten und nichts bezahlen.',
+    'inst.2.w': 'Tag 1 bis 5', 'inst.2.t': 'Wir schärfen ihn',
+    'inst.2.d': 'Sie sagen uns, was fehlt, was falsch ist, was er nicht sagen darf. Wir korrigieren seine Quellen, bis seine Antworten Ihre sind.',
+    'inst.3.w': 'Vor dem Livegang', 'inst.3.t': 'Sie geben ein Protokoll frei',
+    'inst.3.d': 'Wir schicken Ihnen ein vollständiges Testgespräch. Solange Sie es nicht freigegeben haben, spricht kein Besucher mit dem Assistenten. Das ist eine Regel, keine Option.',
+    'inst.4.w': 'Danach', 'inst.4.t': 'Eine Zeile zum Einfügen',
+    'inst.4.d': 'Eine einzige Zeile Code in Ihrer Website, und er ist da. Nichts migrieren, keine Software installieren: er lebt neben dem, was Sie bereits haben.',
+    'test.tag': 'Die Testversion — kostenlos',
+    'test.1': 'Sie wird auf <b>Ihren öffentlichen Inhalten</b> gebaut, nicht auf einer allgemeinen Demo. Sie sehen Ihr Haus antworten, nicht unseres.',
+    'test.2': '<b>Nichts wird ohne Sie öffentlich.</b> Der Livegang erfolgt erst, nachdem Sie ein Testprotokoll freigegeben haben — das ist die Garantie, kein Versprechen.',
+    'test.3': 'Wenn der Assistent auf Ihren Inhalten nicht gut genug ist, sagen wir es Ihnen vor Ihnen. Ein schlechter Assistent auf Ihrer Website kostet uns mehr als Sie.',
+    'test.4': 'Diese Seite zeigt keinen Preis. Geben Sie uns Ihre Website-Adresse: Sie erhalten die genaue Zahl noch am selben Tag.',
+    'fin.head': '( 05 ) — UND JETZT',
+    'fin.st1': 'Geben Sie uns', 'fin.st2': 'die Adresse Ihrer Website.',
+    'fin.note': 'Eine Zeile genügt. Wir antworten noch am selben Tag — und wenn ein Assistent bei Ihnen keinen Sinn ergibt, sagen wir das offen, statt Ihnen einen zu verkaufen.',
+    'form.msg2': 'IHRE WEBSITE-ADRESSE UND WAS MAN SIE AM HÄUFIGSTEN FRAGT',
+    'fin.back': '← Zurück zu allen Gewerken'
+  }, qa: [
+    ["Was weißt du nicht?", "Alles, was nicht in den Informationen des Ateliers steht: unsere internen Angelegenheiten, was Ihr Markt morgen tut, was ein anderer Anbieter verlangt. Wenn eine Frage außerhalb dessen liegt, was ich kenne, sage ich es und übergebe, statt zu erfinden."],
+    ["Worauf beruhst du?", "Ausschließlich auf den Informationen des Ateliers: was wir tun, wie wir arbeiten, unsere Garantien. Bei einem Kunden gilt dasselbe Prinzip mit SEINEN Informationen, und mit nichts anderem."],
+    ["Wie lange dauert die Einrichtung?", "Etwa eine Woche. Wir beginnen mit einer kostenlosen Testversion, gebaut auf Ihren öffentlichen Inhalten. Sie geben ein Testprotokoll frei, bevor ein Besucher mit mir sprechen kann."],
+    ["Was passiert, wenn du es nicht weißt?", "Ich sage es, ich rate nicht, und ich biete an zu übergeben. Hinterlässt die Person ihre Kontaktdaten, gehen Frage und Kontakt an den Inhaber der Website."],
+    ["In welchen Sprachen antwortest du?", "Französisch, Deutsch und Englisch. Ich antworte in der Sprache der Frage."],
+    ["Speichern Sie meine Nachrichten?", "Ihre Nachrichten dienen ausschließlich dazu, Ihnen zu antworten. Diese Website nutzt weder Cookies noch Tracker, und keine Daten werden weiterverkauft."]
+  ]}
+};
+
+/* Le fil de la conversation témoin se remplit au scroll et le compteur suit
+   l'échange en cours. Purement décoratif : sans JS (ou en mouvement réduit),
+   le fil reste plein et le compteur affiche 01/05 — la conversation se lit
+   entièrement dans tous les cas. */
+window.onShellScroll = (y, vh) => {
+  const sec = document.getElementById('spec');
+  if (!sec) return;
+  const r = sec.getBoundingClientRect();
+  // dénominateur planché à 1 : viewport de hauteur nulle (impression, onglet
+  // non composité) donnerait une division par zéro.
+  const span = Math.max(1, r.height - vh * 0.45);
+  const p = Math.max(0, Math.min(1, (vh * 0.65 - r.top) / span));
+  sec.style.setProperty('--thread', p.toFixed(3));
+  const n = document.getElementById('specN');
+  if (n) n.textContent = String(Math.min(5, 1 + Math.floor(p * 5))).padStart(2, '0');
+};
+</script>
+<script src="../assets/shell.js?v=3"></script>
+
+</body>
+</html>

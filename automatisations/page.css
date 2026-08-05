@@ -1,0 +1,182 @@
+/* ============================================================
+   PAGE — AUTOMATISATIONS (métier 02)
+   Mécanique signature : LE CIRCUIT QUI SE DESSINE AU SCROLL —
+   un cadran qui tourne dans le héros, une liste de corvées qui se
+   barrent une à une, puis un rail que la tâche parcourt jusqu'au bout.
+   Tout est plancher-lisible : sans JS, le rail est plein, les stations
+   sont allumées et rien n'est masqué.
+   ============================================================ */
+
+/* ---------- héros ---------- */
+.au-hero { display: flex; align-items: flex-end; padding-bottom: 12vh; }
+.au-hero .statement { padding: 0 clamp(1.25rem, 5vw, 4rem); }
+.au-hero .kicker { display: block; margin-bottom: 1.6rem; }
+.au-hero .sub { margin-top: 1.8rem; max-width: 36rem; font-size: 1rem; line-height: 1.7; color: var(--cream); opacity: 0.92; }
+.au-hero .hero-cta { margin-top: 2.4rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+/* le cadran : la même tâche, encore et encore */
+.au-dial {
+  position: absolute; right: clamp(1.25rem, 5vw, 4rem); bottom: calc(12vh + 3.4rem); z-index: 3;
+  width: clamp(9rem, 17vw, 13.5rem); aspect-ratio: 1; display: grid; place-items: center;
+}
+.au-ring { position: absolute; inset: 0; border: 1px solid var(--gold-soft); border-radius: 50%; }
+.au-ring::before { content: ""; position: absolute; inset: 0.75rem; border-radius: 50%; border: 1px dashed rgb(198 165 108 / 0.28); }
+.au-orbit { position: absolute; inset: 0; transform: rotate(var(--rot, 0deg)); }
+.au-orbit i {
+  position: absolute; top: -0.33rem; left: 50%; width: 0.66rem; height: 0.66rem; margin-left: -0.33rem;
+  border-radius: 50%; background: var(--gold); box-shadow: 0 0 14px rgb(198 165 108 / 0.55);
+}
+.au-dial-label {
+  position: relative; z-index: 1; max-width: 7.5rem; text-align: center;
+  font-size: 0.625rem; letter-spacing: 0.2em; line-height: 1.7; text-transform: uppercase; color: var(--cream);
+}
+.au-dial-note {
+  position: absolute; right: clamp(1.25rem, 5vw, 4rem); bottom: 12vh; z-index: 3;
+  width: clamp(9rem, 17vw, 13.5rem); text-align: center;
+  font-size: 0.5625rem; letter-spacing: 0.16em; line-height: 1.8; text-transform: uppercase; color: var(--cream-mut);
+}
+
+/* ---------- (01) les corvées qui se barrent ---------- */
+.chores { padding: 16vh clamp(1.25rem, 5vw, 4rem) 12vh; }
+.chores-head { max-width: 74rem; margin: 0 auto 3.5rem; }
+.chores-head .statement { margin-top: 1.4rem; }
+.chores-intro { margin-top: 1.6rem; font-size: 0.8125rem; letter-spacing: 0.02em; color: var(--cream-mut); max-width: 34rem; }
+.chore-list { list-style: none; max-width: 74rem; margin: 0 auto; border-top: 1px solid rgb(198 165 108 / 0.18); }
+.chore {
+  position: relative; border-bottom: 1px solid rgb(198 165 108 / 0.18);
+  padding: 1.5rem 0.4rem 1.5rem 2.9rem; display: flex; gap: 1.6rem; align-items: baseline; flex-wrap: wrap;
+}
+.chore .mark {
+  position: absolute; left: 0.7rem; top: 1.85rem; width: 0.72rem; height: 0.72rem;
+  border: 1px solid var(--gold-soft); background: transparent;
+  transition: background 0.5s var(--ease), border-color 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.chore-name {
+  position: relative; flex: 0 1 auto; min-width: 12rem; max-width: 26rem;
+  font-family: var(--font-d); font-weight: 340; font-size: 1.2rem; line-height: 1.35; color: var(--cream);
+  transition: color 0.6s var(--ease);
+}
+.chore-name .rule {
+  position: absolute; left: -0.15rem; right: -0.15rem; top: 0.66em; height: 1px;
+  background: var(--gold); transform-origin: 0 50%;
+}
+.chore-then { flex: 1 1 20rem; font-size: 0.9rem; line-height: 1.65; color: var(--cream-mut); transition: color 0.6s var(--ease); }
+.chores-note { max-width: 74rem; margin: 2.4rem auto 0; font-size: 0.8125rem; line-height: 1.7; color: var(--cream-mut); }
+
+/* ---------- (02) le circuit ---------- */
+.circuit { --p: 1; padding: 12vh clamp(1.25rem, 5vw, 4rem); background: var(--noir-deep); }
+.circ-head { max-width: 74rem; margin: 0 auto 3.5rem; }
+.circ-head .statement { margin-top: 1.4rem; }
+.circ-intro { margin-top: 1.6rem; font-size: 0.9rem; line-height: 1.7; color: var(--cream-mut); max-width: 40rem; }
+
+.circ-track { position: relative; max-width: 74rem; margin: 0 auto; padding-top: 4.4rem; }
+.circ-rail { position: absolute; top: 2.2rem; left: 0; right: 0; height: 1px; background: rgb(198 165 108 / 0.2); }
+.circ-fill { position: absolute; inset: 0; background: var(--gold); transform: scaleX(var(--p)); transform-origin: 0 50%; }
+.circ-tokline { position: absolute; top: 2.2rem; left: 0; width: 100%; height: 0; }
+.circ-tok {
+  position: absolute; top: 0; left: calc(var(--p) * 100%); transform: translate(-50%, -50%);
+  display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap;
+  padding: 0.3rem 0.7rem; border: 1px solid var(--gold-soft); border-radius: 999px; background: var(--noir-deep);
+}
+.circ-tok i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--gold); }
+.circ-tok b { font-weight: 400; font-size: 0.5625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+.circ-grid { list-style: none; display: grid; gap: 2.2rem; grid-template-columns: repeat(4, 1fr); }
+.circ-step { position: relative; }
+.circ-step .dot {
+  position: absolute; top: -2.55rem; left: 0; width: 0.7rem; height: 0.7rem; border-radius: 50%;
+  border: 1px solid var(--gold); background: var(--gold);
+  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.circ-step .n { display: block; font-family: var(--font-d); font-size: 2rem; line-height: 1; color: var(--gold); margin-bottom: 0.7rem; }
+.circ-step h3 { font-family: var(--font-d); font-weight: 340; font-size: 1.3rem; margin-bottom: 0.6rem; color: var(--cream); }
+.circ-step p { font-size: 0.9rem; line-height: 1.7; color: var(--cream-mut); }
+.circ-ask { max-width: 74rem; margin: 3.5rem auto 0; }
+
+/* ---------- (03) les quatre interdits ---------- */
+.never { padding: 12vh clamp(1.25rem, 5vw, 4rem); }
+.never-inner { max-width: 74rem; margin: 0 auto; }
+.never-head { margin-bottom: 3rem; }
+.never-head .statement { margin-top: 1.4rem; }
+.never-grid { display: grid; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); background: rgb(198 165 108 / 0.18); border: 1px solid rgb(198 165 108 / 0.18); }
+.never-card { background: var(--noir); padding: 2rem 1.8rem 2.2rem; }
+.never-card .x { display: block; font-size: 1.5rem; line-height: 1; color: var(--gold); margin-bottom: 0.9rem; }
+.never-card h3 { font-family: var(--font-d); font-weight: 340; font-size: 1.25rem; margin-bottom: 0.6rem; }
+.never-card p { font-size: 0.9rem; line-height: 1.7; color: var(--cream-mut); }
+.never-ask { margin-top: 2.6rem; }
+
+/* ---------- (04) le test ---------- */
+.test { padding: 12vh clamp(1.25rem, 5vw, 4rem); background: var(--noir-deep); }
+.test-inner { max-width: 74rem; margin: 0 auto; display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); }
+.test h3 { font-family: var(--font-d); font-weight: 340; font-size: 1.6rem; margin-bottom: 1.4rem; }
+.test ul { list-style: none; counter-reset: step; }
+.test li { position: relative; padding-left: 2.2rem; margin-bottom: 0.95rem; font-size: 0.9rem; line-height: 1.65; color: var(--cream-mut); counter-increment: step; }
+.test li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: 0.05rem; font-family: var(--font-d); font-size: 0.8125rem; color: var(--gold); }
+.test li b { color: var(--cream); font-weight: 400; }
+.test-box { border: 1px solid var(--gold-soft); padding: 2rem 1.8rem; background: rgb(198 165 108 / 0.04); }
+.test-box .tag { display: inline-block; font-size: 0.625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-soft); padding: 0.35rem 0.7rem; margin-bottom: 1.2rem; }
+.test-box p { font-size: 0.9rem; line-height: 1.7; color: var(--cream-mut); margin-bottom: 0.9rem; }
+.test-box p:last-child { margin-bottom: 0; }
+.test-box p b { color: var(--cream); font-weight: 400; }
+
+/* ---------- (05) contact ---------- */
+.au-contact { padding: 14vh clamp(1.25rem, 5vw, 4rem) 10vh; }
+.au-contact-inner { max-width: 74rem; margin: 0 auto; }
+.au-contact .note { margin-top: 1.6rem; font-size: 0.8125rem; line-height: 1.7; color: var(--cream-mut); max-width: 38rem; }
+.back-home { display: inline-block; margin-top: 3rem; font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-mut); text-decoration: none; }
+.back-home:hover { color: var(--gold); }
+
+/* ---------- animations (JS-gated : plancher sans-JS) ----------
+   Sans .js : rien n'est à opacité 0, les corvées sont barrées,
+   le rail est plein et les stations allumées. La page se lit entière. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(1.3rem); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .reveal.d1 { transition-delay: 0.09s; }
+  .js .reveal.d2 { transition-delay: 0.18s; }
+  .js .reveal.d3 { transition-delay: 0.27s; }
+
+  /* la corvée se raye quand elle passe */
+  .js .chore .rule { transform: scaleX(0); transition: transform 0.75s var(--ease) 0.35s; }
+  .js .chore.in .rule { transform: scaleX(1); }
+  .js .chore.in .chore-name { color: var(--cream-mut); transition-delay: 0.5s; }
+  .js .chore.in .chore-then { color: var(--cream); transition-delay: 0.5s; }
+  .js .chore .mark { transform: rotate(0deg); }
+  .js .chore.in .mark { background: var(--gold); border-color: var(--gold); transform: rotate(45deg); transition-delay: 0.35s; }
+
+  /* la station s'allume quand la tâche l'atteint */
+  .js .circ-step .dot { background: var(--noir-deep); }
+  .js .circ-step.lit .dot { background: var(--gold); box-shadow: 0 0 14px rgb(198 165 108 / 0.5); }
+  .js .circ-step .n { color: rgb(198 165 108 / 0.45); transition: color 0.5s var(--ease); }
+  .js .circ-step.lit .n { color: var(--gold); }
+}
+
+@media (max-width: 47rem) {
+  .au-hero { padding-bottom: 8vh; }
+  .au-dial, .au-dial-note { position: static; width: auto; }
+  .au-dial {
+    display: flex; align-items: center; justify-content: flex-start; gap: 1rem; aspect-ratio: auto;
+    margin: 2.6rem clamp(1.25rem, 5vw, 4rem) 0; height: 4.6rem;
+  }
+  .au-ring { position: relative; inset: auto; width: 4.6rem; height: 4.6rem; flex: none; }
+  .au-orbit { inset: auto; position: absolute; top: 0; left: 0; width: 4.6rem; height: 4.6rem; }
+  .au-dial-label { max-width: none; text-align: left; }
+  .au-dial-note { margin: 0.9rem clamp(1.25rem, 5vw, 4rem) 0; text-align: left; }
+
+  .chores, .circuit, .never, .test { padding-top: 9vh; padding-bottom: 9vh; }
+  .au-contact { padding-top: 9vh; }
+  .chore { padding-left: 2.4rem; gap: 0.7rem; }
+  .chore-name { min-width: 100%; max-width: none; }
+
+  /* le rail bascule à la verticale */
+  .circ-track { padding-top: 0; padding-left: 2.2rem; }
+  .circ-rail { top: 0.5rem; bottom: 0.5rem; left: 0; right: auto; width: 1px; height: auto; }
+  .circ-fill { transform: scaleY(var(--p)); transform-origin: 50% 0; }
+  .circ-tokline { top: 0.5rem; bottom: 0.5rem; left: 0; width: 0; height: auto; }
+  .circ-tok { top: calc(var(--p) * 100%); left: 0; }
+  .circ-tok b { display: none; }
+  .circ-tok { padding: 0.3rem; }
+  .circ-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+  .circ-step .dot { top: 0.35rem; left: -2.55rem; }
+  .circ-ask, .never-ask { margin-top: 2.4rem; }
+}

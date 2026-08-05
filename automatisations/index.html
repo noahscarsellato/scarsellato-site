@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automatisations — Scarsellato, Luxembourg</title>
+<meta name="description" content="Devis, rappels, relances, saisies répétées : nous montons le circuit qui les fait tourner sans vous, sur vos outils actuels. Sans migration, vous gardez la main sur ce qui part. Test gratuit sur un cas réel.">
+<link rel="stylesheet" href="../assets/shell.css?v=3">
+<link rel="stylesheet" href="page.css?v=1">
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="loader-core">
+    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
+    <p class="loader-count"><span id="loaderCount">00</span></p>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+  </div>
+</div>
+
+<canvas class="dust" id="dust" aria-hidden="true"></canvas>
+<div class="progress-rail" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="wordmark" href="../">scar<span class="italic gold">sellato</span></a>
+  <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
+  <nav class="top-links" aria-label="Navigation">
+    <a href="../" data-i18n="nav.home">Accueil</a>
+    <a href="../#metiers" data-i18n="nav.metiers">Métiers</a>
+    <a href="./" aria-current="page" data-i18n="nav.this">Automatisations</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+  <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.test">Demander le test</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+</header>
+
+<main id="top">
+
+  <!-- HÉROS -->
+  <section class="pano au-hero" aria-label="Les automatisations">
+    <div class="pano-bg" data-parallax><img src="../img/world-sante.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="../img/loop-sante.mp4"></video></div>
+    <div class="pano-scrim" aria-hidden="true"></div>
+    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( MÉTIER 02 ) — LE TRAVAIL QUI REVIENT</p>
+    <div class="statement">
+      <span class="chip kicker" data-i18n="hero.kicker">LUXEMBOURG · SUR VOS OUTILS ACTUELS</span>
+      <p class="st-line big"><span class="st-in" data-i18n="hero.st1">Il y a un travail</span></p>
+      <p class="st-line big"><span class="st-in italic gold" data-i18n="hero.st2">qui revient chaque semaine.</span></p>
+      <p class="sub" data-i18n="hero.sub">Le même devis à retaper, les mêmes rappels à envoyer, les mêmes informations à recopier d'un outil à l'autre. Rien de difficile. C'est simplement toujours là. Nous montons le circuit qui le fait à votre place, sur les outils que vous avez déjà — et vous gardez le dernier mot sur tout ce qui sort de chez vous.</p>
+      <div class="hero-cta">
+        <a class="btn-pill big magnetic" href="#contact"><span data-i18n="hero.cta1">Test gratuit sur un cas réel</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+        <button class="btn-pill magnetic" type="button" data-ask="Comment se passe le test gratuit sur un cas réel ?"><span data-i18n="hero.cta2">Demander à l'assistant</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+    <div class="au-dial" id="loopDial" aria-hidden="true">
+      <span class="au-ring"></span>
+      <span class="au-orbit"><i></i></span>
+      <span class="au-dial-label" data-i18n="hero.dial">LA MÊME TÂCHE</span>
+    </div>
+    <p class="au-dial-note" aria-hidden="true" data-i18n="hero.dialnote">lundi · mardi · mercredi · jeudi · vendredi · et lundi de nouveau</p>
+  </section>
+
+  <!-- (01) LES CORVÉES -->
+  <section class="chores" id="corvees" aria-label="Ce que nous vous enlevons">
+    <div class="chores-head reveal">
+      <p class="chip" aria-hidden="true" data-i18n="chores.head">( 01 ) — CE QUE NOUS VOUS ENLEVONS</p>
+      <div class="statement">
+        <p class="st-line"><span class="st-in" data-i18n="chores.st1">Ce n'est pas le travail qui pèse.</span></p>
+        <p class="st-line"><span class="st-in italic gold" data-i18n="chores.st2">C'est qu'il recommence.</span></p>
+      </div>
+      <p class="chores-intro" data-i18n="chores.intro">Chaque ligne barrée est une chose qui cesse d'exister pour vous.</p>
+    </div>
+    <ul class="chore-list">
+      <li class="chore reveal">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="chore-name"><span class="rule" aria-hidden="true"></span><span data-i18n="chore.1.n">Les devis à refaire</span></span>
+        <span class="chore-then" data-i18n="chore.1.d">Préparés dès la demande reçue — vous relisez, vous envoyez.</span>
+      </li>
+      <li class="chore reveal d1">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="chore-name"><span class="rule" aria-hidden="true"></span><span data-i18n="chore.2.n">Les rappels de rendez-vous</span></span>
+        <span class="chore-then" data-i18n="chore.2.d">Envoyés la veille, selon la règle que vous avez fixée.</span>
+      </li>
+      <li class="chore reveal">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="chore-name"><span class="rule" aria-hidden="true"></span><span data-i18n="chore.3.n">Les relances</span></span>
+        <span class="chore-then" data-i18n="chore.3.d">Le document qui manque, la réponse qui ne vient pas : relancés sans que vous y pensiez.</span>
+      </li>
+      <li class="chore reveal d1">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="chore-name"><span class="rule" aria-hidden="true"></span><span data-i18n="chore.4.n">Les saisies répétées</span></span>
+        <span class="chore-then" data-i18n="chore.4.d">Une information entrée une fois, reportée partout où elle doit aller.</span>
+      </li>
+      <li class="chore reveal">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="chore-name"><span class="rule" aria-hidden="true"></span><span data-i18n="chore.5.n">Les réponses types</span></span>
+        <span class="chore-then" data-i18n="chore.5.d">Les questions qui reviennent reçoivent la réponse que vous avez validée.</span>
+      </li>
+      <li class="chore reveal d1">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="chore-name"><span class="rule" aria-hidden="true"></span><span data-i18n="chore.6.n">Les informations à réunir avant un rendez-vous</span></span>
+        <span class="chore-then" data-i18n="chore.6.d">Demandées, rassemblées et classées avant que vous ouvriez le dossier.</span>
+      </li>
+    </ul>
+    <p class="chores-note reveal" data-i18n="chores.note">Ce n'est pas un catalogue. Nous ne prenons que ce qui, chez vous, revient vraiment — et nous commençons toujours par une seule tâche.</p>
+  </section>
+
+  <!-- (02) LE CIRCUIT -->
+  <section class="circuit" id="circuit" aria-label="Comment le circuit est monté">
+    <div class="circ-head reveal">
+      <p class="chip" aria-hidden="true" data-i18n="circ.head">( 02 ) — COMMENT LE CIRCUIT EST MONTÉ</p>
+      <div class="statement">
+        <p class="st-line"><span class="st-in" data-i18n="circ.st1">Rien de magique.</span> <span class="st-in italic gold" data-i18n="circ.st2">Un circuit, monté à la main.</span></p>
+      </div>
+      <p class="circ-intro" data-i18n="circ.intro">Nous regardons comment la tâche se fait chez vous aujourd'hui, puis nous la remontons pièce par pièce sur vos outils. Vous voyez le circuit, vous savez ce qu'il fait, vous pouvez l'arrêter.</p>
+    </div>
+
+    <div class="circ-track">
+      <div class="circ-rail" aria-hidden="true"><span class="circ-fill"></span></div>
+      <div class="circ-tokline" aria-hidden="true"><span class="circ-tok"><i></i><b data-i18n="circ.token">UNE TÂCHE</b></span></div>
+      <ol class="circ-grid">
+        <li class="circ-step reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="n" aria-hidden="true">01</span>
+          <h3 data-i18n="circ.1.t">On regarde</h3>
+          <p data-i18n="circ.1.d">Vous nous montrez la tâche telle qu'elle se fait : d'où elle part, ce que vous vérifiez, ce qui vous fait hésiter. Le vrai travail est presque toujours caché là.</p>
+        </li>
+        <li class="circ-step reveal d1">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="n" aria-hidden="true">02</span>
+          <h3 data-i18n="circ.2.t">On monte le circuit</h3>
+          <p data-i18n="circ.2.d">Sur votre boîte mail, votre agenda, vos fichiers, vos formulaires. Rien à migrer, aucun logiciel à installer, vos habitudes ne changent pas.</p>
+        </li>
+        <li class="circ-step reveal d2">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="n" aria-hidden="true">03</span>
+          <h3 data-i18n="circ.3.t">Vous gardez la main</h3>
+          <p data-i18n="circ.3.d">Tout ce qui sort à votre nom passe par vous, aussi longtemps que vous le voulez. Quand une tâche tourne juste, vous pouvez la laisser courir seule.</p>
+        </li>
+        <li class="circ-step reveal d3">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="n" aria-hidden="true">04</span>
+          <h3 data-i18n="circ.4.t">La tâche disparaît</h3>
+          <p data-i18n="circ.4.d">Elle continue d'être faite, à l'heure, chaque fois. Simplement, plus personne ne s'en occupe.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="circ-ask reveal">
+      <button class="btn-pill magnetic" type="button" data-ask="Est-ce que le circuit marche avec les outils que j'utilise déjà ?"><span data-i18n="circ.ask">Ça marche avec mes outils ?</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+    </div>
+  </section>
+
+  <!-- (03) CE QUE ÇA NE FAIT JAMAIS -->
+  <section class="never" aria-label="Ce que le circuit ne fait jamais">
+    <div class="never-inner">
+      <div class="never-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="never.head">( 03 ) — LES QUATRE INTERDITS</p>
+        <div class="statement">
+          <p class="st-line"><span class="st-in" data-i18n="never.st1">Ce qu'il ne fera</span> <span class="st-in italic gold" data-i18n="never.st2">jamais.</span></p>
+        </div>
+      </div>
+      <div class="never-grid">
+        <article class="never-card reveal">
+          <span class="x" aria-hidden="true">×</span>
+          <h3 data-i18n="never.1.t">Rien n'est inventé</h3>
+          <p data-i18n="never.1.d">Si l'information n'existe pas chez vous, le circuit s'arrête et vous prévient. Il ne comble jamais un trou avec une supposition.</p>
+        </article>
+        <article class="never-card reveal d1">
+          <span class="x" aria-hidden="true">×</span>
+          <h3 data-i18n="never.2.t">Rien ne part dans votre dos</h3>
+          <p data-i18n="never.2.d">Ce qui sort à votre nom suit une règle que vous avez validée, et vous pouvez remettre n'importe quelle étape sous votre contrôle.</p>
+        </article>
+        <article class="never-card reveal">
+          <span class="x" aria-hidden="true">×</span>
+          <h3 data-i18n="never.3.t">Aucune migration</h3>
+          <p data-i18n="never.3.d">Vos outils restent vos outils. Nous ne vous déplaçons pas vers une plateforme et il n'y a rien à installer sur votre poste.</p>
+        </article>
+        <article class="never-card reveal d1">
+          <span class="x" aria-hidden="true">×</span>
+          <h3 data-i18n="never.4.t">Vos données restent les vôtres</h3>
+          <p data-i18n="never.4.d">Ni revendues, ni réutilisées ailleurs. Une demande de suppression est honorée sous un jour. Ce site n'a ni cookie ni traceur.</p>
+        </article>
+      </div>
+      <div class="never-ask reveal">
+        <button class="btn-pill magnetic" type="button" data-ask="Qu'est-ce qui part sans mon accord ?"><span data-i18n="never.ask">Qu'est-ce qui part sans mon accord ?</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- (04) LE TEST -->
+  <section class="test" aria-label="Le test sur un cas réel">
+    <div class="test-inner">
+      <div class="reveal">
+        <p class="chip" aria-hidden="true" style="margin-bottom:1.4rem" data-i18n="test.head">( 04 ) — LE TEST, SUR UN CAS RÉEL</p>
+        <h3 data-i18n="test.title">Une tâche. La vôtre. Gratuite.</h3>
+        <ul>
+          <li data-i18n="test.1"><b>Vous choisissez</b> une tâche qui revient — la plus pénible, de préférence.</li>
+          <li data-i18n="test.2"><b>Nous la regardons</b> telle qu'elle se fait chez vous aujourd'hui.</li>
+          <li data-i18n="test.3"><b>Nous montons le circuit</b> sur vos outils, pas sur une démonstration.</li>
+          <li data-i18n="test.4"><b>Vous le voyez tourner</b> sur de vrais dossiers, et vous validez ce qui part.</li>
+          <li data-i18n="test.5"><b>Vous gardez ou vous arrêtez.</b> Sans engagement, sans logiciel resté chez vous.</li>
+        </ul>
+      </div>
+      <div class="test-box reveal d1">
+        <span class="tag" data-i18n="test.tag">Le test — un cas réel, gratuit</span>
+        <p data-i18n="test.p1">Nous ne demandons rien tant que vous n'avez pas vu la tâche disparaître pour de vrai.</p>
+        <p data-i18n="test.p2"><b>Pendant le test, rien ne part sans votre accord.</b> C'est une garantie, pas une intention.</p>
+        <p data-i18n="test.p3">Si la tâche ne se prête pas au circuit, nous le disons. C'est plus rapide pour tout le monde qu'un devis poli.</p>
+        <p data-i18n="test.p4">Le prix vient après, quand on sait exactement ce qu'il y a à monter. Il est donné par écrit, avant de commencer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (05) CONTACT -->
+  <section class="au-contact" id="contact" aria-label="Contact">
+    <div class="au-contact-inner">
+      <div class="reveal">
+        <p class="chip" aria-hidden="true" data-i18n="fin.head">( 05 ) — ET MAINTENANT</p>
+        <div class="statement" style="margin-top:1.4rem">
+          <p class="st-line big"><span class="st-in" data-i18n="fin.st1">Décrivez-nous</span></p>
+          <p class="st-line big"><span class="st-in italic gold" data-i18n="fin.st2">la tâche qui revient.</span></p>
+        </div>
+        <p class="note" data-i18n="fin.note">Une ligne suffit : ce que vous refaites chaque semaine, et avec quels outils. Nous répondons le jour même. Si le circuit n'a pas de sens pour votre maison, nous le dirons franchement plutôt que de vous vendre quelque chose.</p>
+        <form class="atelier-form" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
+          <input type="hidden" name="_subject" value="Automatisations — test sur un cas réel (scarsellato.com)">
+          <input type="hidden" name="_next" value="https://scarsellato.com/automatisations/#contact">
+          <input type="text" name="_honey" style="display:none">
+          <div class="af-row">
+            <input type="text" name="nom" placeholder="VOTRE NOM" required aria-label="Nom" data-i18n-ph="form.name">
+            <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+          </div>
+          <textarea name="message" placeholder="QUELLE TÂCHE REVIENT CHAQUE SEMAINE ?" required aria-label="Message" data-i18n-ph="form.msg3"></textarea>
+          <button class="btn-pill magnetic big" type="submit"><span data-i18n="form.send">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+        </form>
+        <a class="back-home" href="../#metiers" data-i18n="fin.back">← Revoir tous les métiers</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
+
+<div class="chat" id="chat">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — EN DIRECT )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonjour ! Je réponds en direct, uniquement à partir des informations de l'atelier — je ne devine rien. Posez votre question, ou commencez par l'une de celles-ci :</p></div>
+    <div class="chat-choices" id="chatChoices"></div>
+    <form class="chat-form" id="chatForm">
+      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="ÉCRIVEZ VOTRE QUESTION…" aria-label="Votre question" data-i18n-ph="chat.ph">
+      <button class="chat-send" id="chatSend" type="submit" aria-label="Envoyer" data-i18n-aria="chat.sendAria">➤</button>
+    </form>
+    <p class="chat-note" data-i18n="chat.note">Vos messages servent uniquement à vous répondre. 0 cookie, 0 traceur.</p>
+  </div>
+</div>
+
+<script>
+/* Dictionnaire de CETTE page — le FR est la source inline, EN/DE traduisent.
+   Les paires qa[] servent de doublure hors-ligne à l'assistant. */
+window.PAGE_I18N = {
+  fr: { t: {}, qa: [
+    ["Comment se passe le test gratuit ?", "Vous choisissez une tâche qui revient. Nous regardons comment elle se fait chez vous aujourd'hui, nous montons le circuit sur vos outils, et vous le voyez tourner sur de vrais dossiers. C'est gratuit et sans engagement : à la fin, vous gardez ou vous arrêtez."],
+    ["Il faut changer de logiciel ?", "Non. Le circuit se branche sur les outils que vous utilisez déjà : votre boîte mail, votre agenda, vos fichiers, vos formulaires. Rien à migrer, rien à installer sur votre poste."],
+    ["Qu'est-ce qui part sans mon accord ?", "Rien, tant que vous ne l'avez pas décidé. Tout ce qui sort à votre nom suit une règle que vous avez validée, et vous pouvez remettre n'importe quelle étape sous votre contrôle."],
+    ["Quelles tâches vous prenez ?", "Celles qui reviennent et qui suivent toujours les mêmes règles : devis à préparer, rappels de rendez-vous, relances, saisies répétées d'un outil à l'autre, réponses types, informations à réunir avant un rendez-vous."],
+    ["Combien ça coûte ?", "Cela dépend de la tâche et de vos outils : le prix est établi cas par cas, par écrit, avant de commencer. Le test sur un premier cas réel est gratuit — laissez-nous votre e-mail, vous avez une réponse le jour même."],
+    ["Et mes données ?", "Elles restent les vôtres : le circuit travaille dans vos outils, rien n'est revendu ni réutilisé ailleurs, et une demande de suppression est honorée sous un jour. Ce site n'a ni cookie ni traceur."]
+  ]},
+  en: { t: {
+    'meta.title': 'Automations — Scarsellato, Luxembourg',
+    'meta.desc': 'Quotes, reminders, follow-ups, repeated data entry: we build the circuit that runs them without you, on the tools you already use. No migration, and you keep the final say on what goes out. Free test on one real case.',
+    'nav.this': 'Automations', 'cta.test': 'Ask for the test',
+    'hero.chip': '( CRAFT 02 ) — THE WORK THAT KEEPS COMING BACK',
+    'hero.kicker': 'LUXEMBOURG · ON THE TOOLS YOU ALREADY HAVE',
+    'hero.st1': 'There is one job', 'hero.st2': 'that comes back every week.',
+    'hero.sub': 'The same quote retyped, the same reminders sent, the same information copied from one tool into another. None of it is hard. It is simply always there. We build the circuit that does it in your place, on the tools you already have — and you keep the final say on everything that leaves your house.',
+    'hero.cta1': 'Free test on one real case', 'hero.cta2': 'Ask the assistant',
+    'hero.dial': 'THE SAME TASK',
+    'hero.dialnote': 'monday · tuesday · wednesday · thursday · friday · and monday again',
+    'chores.head': '( 01 ) — WHAT WE TAKE OFF YOUR HANDS',
+    'chores.st1': 'It is not the work that weighs.', 'chores.st2': 'It is that it starts again.',
+    'chores.intro': 'Every line struck through is one thing that stops existing for you.',
+    'chore.1.n': 'Quotes to redo', 'chore.1.d': 'Prepared the moment the request lands — you read them over, you send.',
+    'chore.2.n': 'Appointment reminders', 'chore.2.d': 'Sent the day before, following the rule you set.',
+    'chore.3.n': 'Follow-ups', 'chore.3.d': 'The missing document, the answer that never came: chased without you thinking about it.',
+    'chore.4.n': 'Repeated data entry', 'chore.4.d': 'Information entered once, carried over everywhere it has to go.',
+    'chore.5.n': 'Standard replies', 'chore.5.d': 'Recurring questions get the answer you approved.',
+    'chore.6.n': 'The information to gather before a meeting', 'chore.6.d': 'Requested, collected and filed before you open the file.',
+    'chores.note': 'This is not a catalogue. We only take on what genuinely comes back in your house — and we always start with a single task.',
+    'circ.head': '( 02 ) — HOW THE CIRCUIT IS BUILT',
+    'circ.st1': 'Nothing magic.', 'circ.st2': 'A circuit, built by hand.',
+    'circ.intro': 'We look at how the task is done in your house today, then rebuild it piece by piece on your own tools. You see the circuit, you know what it does, you can stop it.',
+    'circ.token': 'ONE TASK',
+    'circ.1.t': 'We watch',
+    'circ.1.d': 'You show us the task as it actually happens: where it starts, what you check, what makes you hesitate. The real work is almost always hidden there.',
+    'circ.2.t': 'We build the circuit',
+    'circ.2.d': 'On your mailbox, your calendar, your files, your forms. Nothing to migrate, no software to install, your habits do not change.',
+    'circ.3.t': 'You keep control',
+    'circ.3.d': 'Anything that goes out in your name passes through you, for as long as you want it to. When a task runs right, you can let it run on its own.',
+    'circ.4.t': 'The chore disappears',
+    'circ.4.d': 'It still gets done, on time, every time. It simply stops being anybody’s job.',
+    'circ.ask': 'Does it work with my tools?',
+    'never.head': '( 03 ) — THE FOUR THINGS IT NEVER DOES',
+    'never.st1': 'What it will', 'never.st2': 'never do.',
+    'never.1.t': 'Nothing is invented',
+    'never.1.d': 'If the information does not exist in your house, the circuit stops and tells you. It never fills a gap with a guess.',
+    'never.2.t': 'Nothing goes out behind your back',
+    'never.2.d': 'Whatever leaves in your name follows a rule you approved, and you can put any step back under your own control.',
+    'never.3.t': 'No migration',
+    'never.3.d': 'Your tools stay your tools. We do not move you onto a platform and there is nothing to install on your machine.',
+    'never.4.t': 'Your data stays yours',
+    'never.4.d': 'Never resold, never reused elsewhere. A deletion request is honoured within a day. This site has no cookies and no trackers.',
+    'never.ask': 'What goes out without my approval?',
+    'test.head': '( 04 ) — THE TEST, ON ONE REAL CASE',
+    'test.title': 'One task. Yours. Free.',
+    'test.1': '<b>You choose</b> a task that keeps coming back — the most tedious one, ideally.',
+    'test.2': '<b>We watch it</b> exactly as it is done in your house today.',
+    'test.3': '<b>We build the circuit</b> on your tools, not on a demo.',
+    'test.4': '<b>You watch it run</b> on real files, and you approve whatever goes out.',
+    'test.5': '<b>You keep it or you stop.</b> No commitment, no software left behind on your machine.',
+    'test.tag': 'The test — one real case, free',
+    'test.p1': 'We ask for nothing until you have seen the chore actually disappear.',
+    'test.p2': '<b>During the test, nothing goes out without your agreement.</b> That is a guarantee, not an intention.',
+    'test.p3': 'If the task does not lend itself to a circuit, we say so. That is faster for everyone than a polite quote.',
+    'test.p4': 'The price comes afterwards, once we know exactly what has to be built. It is given in writing, before anything starts.',
+    'fin.head': '( 05 ) — AND NOW',
+    'fin.st1': 'Tell us about', 'fin.st2': 'the task that keeps coming back.',
+    'fin.note': 'One line is enough: what you redo every week, and with which tools. We reply the same day — and if a circuit makes no sense for your house, we will say so plainly rather than sell you something.',
+    'form.msg3': 'WHICH TASK COMES BACK EVERY WEEK?',
+    'fin.back': '← Back to all crafts'
+  }, qa: [
+    ["How does the free test work?", "You pick one task that keeps coming back. We look at how it is done in your house today, we build the circuit on your tools, and you watch it run on real files. It is free and without commitment: at the end, you keep it or you stop."],
+    ["Do I have to change software?", "No. The circuit plugs into the tools you already use: your mailbox, your calendar, your files, your forms. Nothing to migrate, nothing to install on your machine."],
+    ["What goes out without my approval?", "Nothing, until you decide it. Anything that leaves in your name follows a rule you approved, and you can put any step back under your own control."],
+    ["Which tasks do you take on?", "The ones that come back and always follow the same rules: quotes to prepare, appointment reminders, follow-ups, the same data entered from one tool into another, standard replies, information to gather before a meeting."],
+    ["How much does it cost?", "It depends on the task and on your tools: the price is set case by case, in writing, before anything starts. The test on a first real case is free — leave us your email and you get an answer the same day."],
+    ["What about my data?", "It stays yours: the circuit works inside your own tools, nothing is resold or reused elsewhere, and a deletion request is honoured within a day. This site has no cookies and no trackers."]
+  ]},
+  de: { t: {
+    'meta.title': 'Automatisierungen — Scarsellato, Luxemburg',
+    'meta.desc': 'Angebote, Erinnerungen, Nachfassen, doppelte Eingaben: Wir bauen den Ablauf, der sie ohne Sie erledigt — auf den Werkzeugen, die Sie schon nutzen. Ohne Migration, und Sie behalten das letzte Wort über alles, was rausgeht. Kostenloser Test an einem echten Fall.',
+    'nav.this': 'Automatisierungen', 'cta.test': 'Test anfragen',
+    'hero.chip': '( GEWERK 02 ) — DIE ARBEIT, DIE WIEDERKOMMT',
+    'hero.kicker': 'LUXEMBURG · AUF IHREN VORHANDENEN WERKZEUGEN',
+    'hero.st1': 'Es gibt eine Arbeit,', 'hero.st2': 'die jede Woche wiederkommt.',
+    'hero.sub': 'Dasselbe Angebot neu getippt, dieselben Erinnerungen verschickt, dieselben Angaben von einem Werkzeug ins andere übertragen. Nichts davon ist schwierig. Es ist nur immer da. Wir bauen den Ablauf, der das an Ihrer Stelle erledigt — auf den Werkzeugen, die Sie schon haben. Und Sie behalten das letzte Wort über alles, was Ihr Haus verlässt.',
+    'hero.cta1': 'Kostenloser Test an einem echten Fall', 'hero.cta2': 'Den Assistenten fragen',
+    'hero.dial': 'DIESELBE AUFGABE',
+    'hero.dialnote': 'montag · dienstag · mittwoch · donnerstag · freitag · und wieder montag',
+    'chores.head': '( 01 ) — WAS WIR IHNEN ABNEHMEN',
+    'chores.st1': 'Nicht die Arbeit ist schwer.', 'chores.st2': 'Schwer ist, dass sie von vorn beginnt.',
+    'chores.intro': 'Jede durchgestrichene Zeile ist eine Sache, die für Sie aufhört zu existieren.',
+    'chore.1.n': 'Angebote, die neu getippt werden', 'chore.1.d': 'Vorbereitet, sobald die Anfrage eintrifft — Sie lesen gegen, Sie senden.',
+    'chore.2.n': 'Terminerinnerungen', 'chore.2.d': 'Am Vortag verschickt, nach der Regel, die Sie festgelegt haben.',
+    'chore.3.n': 'Das Nachfassen', 'chore.3.d': 'Das fehlende Dokument, die ausbleibende Antwort: nachgefasst, ohne dass Sie daran denken müssen.',
+    'chore.4.n': 'Doppelte Eingaben', 'chore.4.d': 'Eine Angabe einmal erfasst, überall dorthin übertragen, wo sie hingehört.',
+    'chore.5.n': 'Standardantworten', 'chore.5.d': 'Wiederkehrende Fragen erhalten die Antwort, die Sie freigegeben haben.',
+    'chore.6.n': 'Die Unterlagen vor einem Termin', 'chore.6.d': 'Angefragt, zusammengetragen und abgelegt, bevor Sie die Akte öffnen.',
+    'chores.note': 'Das ist kein Katalog. Wir übernehmen nur das, was bei Ihnen wirklich wiederkehrt — und wir beginnen immer mit einer einzigen Aufgabe.',
+    'circ.head': '( 02 ) — WIE DER ABLAUF GEBAUT WIRD',
+    'circ.st1': 'Nichts Magisches.', 'circ.st2': 'Ein Ablauf, von Hand gebaut.',
+    'circ.intro': 'Wir sehen uns an, wie die Aufgabe heute bei Ihnen erledigt wird, und bauen sie Stück für Stück auf Ihren eigenen Werkzeugen nach. Sie sehen den Ablauf, Sie wissen, was er tut, Sie können ihn anhalten.',
+    'circ.token': 'EINE AUFGABE',
+    'circ.1.t': 'Wir schauen zu',
+    'circ.1.d': 'Sie zeigen uns die Aufgabe so, wie sie wirklich abläuft: wo sie beginnt, was Sie prüfen, was Sie zögern lässt. Dort steckt fast immer die eigentliche Arbeit.',
+    'circ.2.t': 'Wir bauen den Ablauf',
+    'circ.2.d': 'Auf Ihrem Postfach, Ihrem Kalender, Ihren Dateien, Ihren Formularen. Nichts migrieren, keine Software installieren, Ihre Gewohnheiten bleiben.',
+    'circ.3.t': 'Sie behalten die Kontrolle',
+    'circ.3.d': 'Alles, was in Ihrem Namen rausgeht, läuft über Sie — so lange Sie das wollen. Wenn eine Aufgabe sauber läuft, können Sie sie allein laufen lassen.',
+    'circ.4.t': 'Die Aufgabe verschwindet',
+    'circ.4.d': 'Sie wird weiterhin erledigt, pünktlich, jedes Mal. Nur kümmert sich niemand mehr darum.',
+    'circ.ask': 'Klappt das mit meinen Werkzeugen?',
+    'never.head': '( 03 ) — DIE VIER VERBOTE',
+    'never.st1': 'Was er niemals', 'never.st2': 'tun wird.',
+    'never.1.t': 'Nichts wird erfunden',
+    'never.1.d': 'Fehlt die Information bei Ihnen, hält der Ablauf an und meldet sich. Er füllt eine Lücke nie mit einer Vermutung.',
+    'never.2.t': 'Nichts geht hinter Ihrem Rücken raus',
+    'never.2.d': 'Was in Ihrem Namen rausgeht, folgt einer Regel, die Sie freigegeben haben — und Sie können jeden Schritt wieder unter Ihre Kontrolle stellen.',
+    'never.3.t': 'Keine Migration',
+    'never.3.d': 'Ihre Werkzeuge bleiben Ihre Werkzeuge. Wir holen Sie auf keine Plattform, und auf Ihrem Rechner ist nichts zu installieren.',
+    'never.4.t': 'Ihre Daten bleiben Ihre',
+    'never.4.d': 'Weder weiterverkauft noch anderswo verwendet. Eine Löschanfrage wird binnen eines Tages umgesetzt. Diese Seite hat weder Cookies noch Tracker.',
+    'never.ask': 'Was geht ohne meine Freigabe raus?',
+    'test.head': '( 04 ) — DER TEST, AN EINEM ECHTEN FALL',
+    'test.title': 'Eine Aufgabe. Ihre. Kostenlos.',
+    'test.1': '<b>Sie wählen</b> eine Aufgabe, die wiederkehrt — am besten die lästigste.',
+    'test.2': '<b>Wir sehen sie uns an</b>, genau so, wie sie heute bei Ihnen läuft.',
+    'test.3': '<b>Wir bauen den Ablauf</b> auf Ihren Werkzeugen, nicht in einer Demo.',
+    'test.4': '<b>Sie sehen ihn laufen</b>, an echten Vorgängen, und Sie geben frei, was rausgeht.',
+    'test.5': '<b>Sie behalten es oder Sie hören auf.</b> Ohne Verpflichtung, ohne zurückgelassene Software.',
+    'test.tag': 'Der Test — ein echter Fall, kostenlos',
+    'test.p1': 'Wir verlangen nichts, bevor Sie die Aufgabe nicht wirklich haben verschwinden sehen.',
+    'test.p2': '<b>Während des Tests geht nichts ohne Ihr Einverständnis raus.</b> Das ist eine Garantie, keine Absicht.',
+    'test.p3': 'Wenn sich die Aufgabe dafür nicht eignet, sagen wir es. Das ist für alle schneller als ein höfliches Angebot.',
+    'test.p4': 'Der Preis kommt danach, wenn feststeht, was genau zu bauen ist. Er wird schriftlich genannt, bevor es losgeht.',
+    'fin.head': '( 05 ) — UND JETZT',
+    'fin.st1': 'Beschreiben Sie uns', 'fin.st2': 'die Aufgabe, die wiederkehrt.',
+    'fin.note': 'Eine Zeile genügt: was Sie jede Woche neu machen, und mit welchen Werkzeugen. Wir antworten noch am selben Tag — und wenn ein Ablauf für Ihr Haus keinen Sinn ergibt, sagen wir das offen, statt Ihnen etwas zu verkaufen.',
+    'form.msg3': 'WELCHE AUFGABE KOMMT JEDE WOCHE WIEDER?',
+    'fin.back': '← Zurück zu allen Gewerken'
+  }, qa: [
+    ["Wie läuft der kostenlose Test?", "Sie wählen eine Aufgabe, die wiederkehrt. Wir sehen uns an, wie sie heute bei Ihnen erledigt wird, bauen den Ablauf auf Ihren Werkzeugen und Sie sehen ihn an echten Vorgängen laufen. Kostenlos und unverbindlich: am Ende behalten Sie es oder Sie hören auf."],
+    ["Muss ich die Software wechseln?", "Nein. Der Ablauf wird an die Werkzeuge angeschlossen, die Sie schon nutzen: Ihr Postfach, Ihr Kalender, Ihre Dateien, Ihre Formulare. Nichts migrieren, nichts auf Ihrem Rechner installieren."],
+    ["Was geht ohne meine Freigabe raus?", "Nichts, solange Sie es nicht entschieden haben. Alles, was in Ihrem Namen rausgeht, folgt einer Regel, die Sie freigegeben haben — und Sie können jeden Schritt wieder unter Ihre Kontrolle stellen."],
+    ["Welche Aufgaben übernehmen Sie?", "Die, die wiederkehren und immer denselben Regeln folgen: Angebote vorbereiten, Terminerinnerungen, Nachfassen, dieselben Angaben von einem Werkzeug ins andere, Standardantworten, Unterlagen vor einem Termin einsammeln."],
+    ["Was kostet das?", "Das hängt von der Aufgabe und Ihren Werkzeugen ab: der Preis wird von Fall zu Fall festgelegt, schriftlich, bevor es losgeht. Der Test an einem ersten echten Fall ist kostenlos — hinterlassen Sie uns Ihre E-Mail, Sie erhalten noch am selben Tag eine Antwort."],
+    ["Und meine Daten?", "Sie bleiben Ihre: der Ablauf arbeitet in Ihren eigenen Werkzeugen, nichts wird weiterverkauft oder anderswo verwendet, und eine Löschanfrage wird binnen eines Tages umgesetzt. Diese Seite hat weder Cookies noch Tracker."]
+  ]}
+};
+
+/* MÉCANIQUE SIGNATURE — le circuit se dessine au scroll.
+   Purement décoratif : sans JS (ou en mouvement réduit) le rail est plein,
+   les stations sont allumées et la page se lit normalement. */
+window.onShellScroll = (y, vh) => {
+  const H = Math.max(1, vh);
+
+  const dial = document.getElementById('loopDial');
+  if (dial) dial.style.setProperty('--rot', (y * 0.16).toFixed(1) + 'deg');
+
+  const circ = document.getElementById('circuit');
+  if (circ) {
+    const r = circ.getBoundingClientRect();
+    // dénominateur planché à 1 : un viewport dégénéré (impression, onglet non
+    // composité) donnait 0/0 = NaN et cassait la transformation CSS.
+    const span = Math.max(1, r.height * 0.62);
+    const p = Math.max(0, Math.min(1, (H * 0.72 - r.top) / span));
+    circ.style.setProperty('--p', p.toFixed(3));
+    const steps = circ.querySelectorAll('.circ-step');
+    steps.forEach((s, i) => s.classList.toggle('lit', p >= i / steps.length + 0.02));
+  }
+};
+</script>
+<script src="../assets/shell.js?v=3"></script>
+
+</body>
+</html>

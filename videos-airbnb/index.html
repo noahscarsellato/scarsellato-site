@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo &amp; film — les vidéos de logement — Scarsellato, Luxembourg</title>
+<meta name="description" content="À partir des photos que vous avez déjà, nous montons un court film vertical de votre logement — pour vos réseaux, votre page de réservation directe, et le voyageur qui hésite. Une annonce ne peut pas héberger de vidéo ; ce film est à vous. Sans cookies.">
+<link rel="stylesheet" href="../assets/shell.css?v=3">
+<link rel="stylesheet" href="page.css?v=1">
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="loader-core">
+    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
+    <p class="loader-count"><span id="loaderCount">00</span></p>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+  </div>
+</div>
+
+<canvas class="dust" id="dust" aria-hidden="true"></canvas>
+<div class="progress-rail" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="wordmark" href="../">scar<span class="italic gold">sellato</span></a>
+  <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
+  <nav class="top-links" aria-label="Navigation">
+    <a href="../" data-i18n="nav.home">Accueil</a>
+    <a href="../#metiers" data-i18n="nav.metiers">Métiers</a>
+    <a href="./" aria-current="page" data-i18n="nav.this">Les vidéos</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+  <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.send">Envoyer des photos</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+</header>
+
+<main id="top">
+
+  <!-- HÉROS -->
+  <section class="pano vf-hero" aria-label="Les vidéos de logement">
+    <div class="pano-bg" data-parallax><img src="../img/world-immo.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="../img/loop-immo.mp4"></video></div>
+    <div class="pano-scrim" aria-hidden="true"></div>
+    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( MÉTIER 06 ) — LES VIDÉOS DE LOGEMENT</p>
+    <div class="statement">
+      <span class="chip kicker" data-i18n="hero.kicker">LUXEMBOURG · FR · DE · EN</span>
+      <p class="st-line big"><span class="st-in" data-i18n="hero.st1">La photo montre la pièce.</span></p>
+      <p class="st-line big"><span class="st-in italic gold" data-i18n="hero.st2">Le film montre la soirée.</span></p>
+      <p class="sub" data-i18n="hero.sub">À partir des photos que vous avez déjà, nous montons un court film vertical de votre logement : la lumière, le mouvement, ce que l'on ressent en entrant. Rien à tourner, rien à installer. Le fichier est à vous.</p>
+      <div class="hero-cta">
+        <a class="btn-pill big magnetic" href="#contact"><span data-i18n="hero.cta1">Envoyer les photos d'un logement</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+        <button class="btn-pill magnetic" type="button" data-ask="Comment se passe une vidéo de logement, de mes photos au fichier final ?"><span data-i18n="hero.cta2">Demander à l'assistant</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+    <p class="vf-fmt" aria-hidden="true"><b>9:16</b><small data-i18n="hero.fmtnote">format vertical · l'image de fond est une ambiance de l'atelier</small></p>
+  </section>
+
+  <!-- (01) CE QU'UNE PHOTO NE PEUT PAS DIRE — mécanique signature : immobile / vivant -->
+  <section class="gap" id="dip" aria-label="Ce qu'une photo ne peut pas dire">
+    <div class="gap-head reveal">
+      <p class="chip" aria-hidden="true" data-i18n="gap.head">( 01 ) — CE QU'UNE PHOTO NE PEUT PAS DIRE</p>
+      <div class="statement">
+        <p class="st-line"><span class="st-in" data-i18n="gap.st1">Le voyageur ne compare pas des pièces.</span></p>
+        <p class="st-line"><span class="st-in italic gold" data-i18n="gap.st2">Il compare des impressions.</span></p>
+      </div>
+      <p class="gap-lead" data-i18n="gap.lead">Vingt annonces ouvertes dans vingt onglets, les mêmes angles, les mêmes canapés. Une photo prouve que la pièce existe. Elle ne dit pas comment la lumière tombe à vingt heures, ni ce que l'on entend quand on ouvre la fenêtre.</p>
+    </div>
+
+    <div class="diptych reveal d1">
+      <figure class="vframe still">
+        <div class="vmedia">
+          <img src="../img/world-immo.jpg" alt="">
+          <span class="vtag" data-i18n="dip.a.tag">LA PHOTO</span>
+          <span class="vbar" aria-hidden="true"><i></i></span>
+        </div>
+        <figcaption data-i18n="dip.a.cap">Elle tient. Elle attend qu'on l'agrandisse.</figcaption>
+      </figure>
+      <figure class="vframe alive">
+        <div class="vmedia">
+          <img src="../img/world-immo.jpg" alt="">
+          <video class="vid" muted loop playsinline preload="auto" src="../img/loop-immo.mp4"></video>
+          <span class="vtag hot" data-i18n="dip.b.tag">LE FILM</span>
+          <span class="vbar" aria-hidden="true"><i></i></span>
+        </div>
+        <figcaption data-i18n="dip.b.cap">Il avance tout seul. On y est déjà.</figcaption>
+      </figure>
+    </div>
+
+    <p class="dip-hint reveal" data-i18n="dip.hint">Des deux côtés, la même image. À droite, elle respire — c'est tout ce que nous ajoutons.</p>
+    <p class="dip-honest reveal d1" data-i18n="dip.honest">Image d'ambiance produite par l'atelier, pas le logement d'un client. Nous ne publions aucune photo qui ne nous appartient pas : le film que nous faisons pour vous reste entre vos mains.</p>
+  </section>
+
+  <!-- (02) CE QUE NOUS FABRIQUONS -->
+  <section class="made" aria-label="Ce que nous fabriquons">
+    <div class="made-inner">
+      <div class="made-text">
+        <div class="reveal">
+          <p class="chip" aria-hidden="true" data-i18n="made.head">( 02 ) — CE QUE NOUS FABRIQUONS</p>
+          <div class="statement" style="margin-top:1.4rem">
+            <p class="st-line"><span class="st-in" data-i18n="made.st1">Un court film vertical.</span></p>
+            <p class="st-line"><span class="st-in italic gold" data-i18n="made.st2">Fait avec ce que vous avez déjà.</span></p>
+          </div>
+        </div>
+        <ul class="specs reveal d1">
+          <li data-i18n="made.1"><b>Vertical, 9:16</b> — le format des téléphones, sans recadrage bricolé.</li>
+          <li data-i18n="made.2"><b>Uniquement vos photos</b> — celles qui sont déjà en ligne. Nous ne venons pas chez vous.</li>
+          <li data-i18n="made.3"><b>Plusieurs angles par pièce</b> — une entrée, un détail, une vue. Pas un diaporama.</li>
+          <li data-i18n="made.4"><b>Lumière chaude, mouvement lent</b> — on doit avoir envie d'y être, pas d'appuyer sur pause.</li>
+          <li data-i18n="made.5"><b>Le nom du logement</b> en fin de film, sobre.</li>
+          <li data-i18n="made.6"><b>Un fichier, à vous</b> — sans filigrane, sans compte à créer.</li>
+        </ul>
+      </div>
+      <figure class="vframe alive amb reveal d1">
+        <div class="vmedia">
+          <img src="../img/world-gastro.jpg" alt="">
+          <video class="vid" muted loop playsinline preload="auto" src="../img/loop-gastro.mp4"></video>
+          <span class="vtag hot" data-i18n="made.frametag">AMBIANCE</span>
+          <span class="vbar" aria-hidden="true"><i></i></span>
+        </div>
+        <figcaption data-i18n="made.framecap">Image d'ambiance de l'atelier. Le vôtre sera fait de vos photos, de vos pièces, de votre lumière.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- (03) OÙ ELLE VA VRAIMENT — la règle d'honnêteté, en haut et en grand -->
+  <section class="dest" aria-label="Où va la vidéo">
+    <div class="dest-inner">
+      <div class="dest-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="dest.head">( 03 ) — OÙ ELLE VA VRAIMENT</p>
+        <div class="statement" style="margin-top:1.4rem">
+          <p class="st-line"><span class="st-in" data-i18n="dest.st1">Une annonce ne peut pas</span></p>
+          <p class="st-line"><span class="st-in italic gold" data-i18n="dest.st2">héberger une vidéo.</span></p>
+        </div>
+      </div>
+
+      <div class="honest reveal">
+        <span class="mark" aria-hidden="true">*</span>
+        <p data-i18n="dest.honest"><b>Disons-le avant le reste :</b> les plateformes de location n'acceptent que des photos. Votre film ne peut pas être publié sur votre annonce, et personne ne devrait vous laisser croire le contraire. Il est fait pour les endroits qui vous appartiennent.</p>
+      </div>
+
+      <div class="dest-grid">
+        <article class="dest-card reveal">
+          <span class="n">01</span>
+          <h3 data-i18n="dest.1.t">Vos réseaux</h3>
+          <p data-i18n="dest.1.d">Instagram, TikTok, Facebook : le vertical y est chez lui. C'est là qu'on découvre un logement avant même d'avoir des dates en tête.</p>
+        </article>
+        <article class="dest-card reveal d1">
+          <span class="n">02</span>
+          <h3 data-i18n="dest.2.t">Votre réservation directe</h3>
+          <p data-i18n="dest.2.d">Sur votre propre page, le film travaille sans commission — et montre ce qu'une plateforme ne vous laisse pas montrer.</p>
+        </article>
+        <article class="dest-card reveal d2">
+          <span class="n">03</span>
+          <h3 data-i18n="dest.3.t">Au voyageur qui hésite</h3>
+          <p data-i18n="dest.3.d">Il vous écrit, il compare trois logements. Vous lui envoyez trente secondes de chez vous. Il arrête de comparer.</p>
+        </article>
+      </div>
+
+      <div class="dest-ask reveal">
+        <button class="btn-pill magnetic" type="button" data-ask="Est-ce qu'on peut mettre la vidéo sur l'annonce Airbnb ?"><span data-i18n="dest.ask">Et sur l'annonce Airbnb ?</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- (04) COMMENT ÇA SE PASSE -->
+  <section class="how" aria-label="Comment ça se passe">
+    <div class="how-inner">
+      <div class="how-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="how.head">( 04 ) — COMMENT ÇA SE PASSE</p>
+        <div class="statement" style="margin-top:1.4rem">
+          <p class="st-line"><span class="st-in" data-i18n="how.st1">Trois messages.</span> <span class="st-in italic gold" data-i18n="how.st2">Aucun tournage.</span></p>
+        </div>
+      </div>
+      <ol class="steps">
+        <li class="step reveal"><span class="n">01</span>
+          <h3 data-i18n="how.1.t">Vous envoyez les photos</h3>
+          <p data-i18n="how.1.d">Celles d'un seul logement, telles qu'elles sont en ligne. Un lien vers l'annonce suffit.</p>
+        </li>
+        <li class="step reveal d1"><span class="n">02</span>
+          <h3 data-i18n="how.2.t">Nous montons le film</h3>
+          <p data-i18n="how.2.d">Nous choisissons les plans, le rythme, la lumière. Vous n'avez rien à écrire, rien à décrire, rien à valider en cours de route.</p>
+        </li>
+        <li class="step reveal d2"><span class="n">03</span>
+          <h3 data-i18n="how.3.t">Vous recevez le fichier</h3>
+          <p data-i18n="how.3.d">Vertical, prêt à publier. Si un plan ne vous ressemble pas, vous le dites et nous le remontons.</p>
+        </li>
+      </ol>
+      <p class="how-note reveal" data-i18n="how.note">Aucun logiciel à installer, aucun accès à vos comptes. Vos photos ne servent qu'à votre film et ne sont publiées nulle part.</p>
+      <div class="how-ask reveal">
+        <button class="btn-pill magnetic" type="button" data-ask="Quelles photos faut-il pour faire un film de logement ?"><span data-i18n="how.ask">Quelles photos faut-il ?</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- (05) CONTACT -->
+  <section class="vf-contact" id="contact" aria-label="Contact">
+    <div class="vf-contact-inner">
+      <div class="reveal">
+        <p class="chip" aria-hidden="true" data-i18n="fin.head">( 05 ) — ET MAINTENANT</p>
+        <div class="statement" style="margin-top:1.4rem">
+          <p class="st-line big"><span class="st-in" data-i18n="fin.st1">Envoyez-nous les photos</span></p>
+          <p class="st-line big"><span class="st-in italic gold" data-i18n="fin.st2">d'un seul logement.</span></p>
+        </div>
+        <p class="note" data-i18n="fin.note">Un lien vers votre annonce ou un dossier de photos suffit. Nous répondons le jour même — et si le format n'a pas de sens pour votre logement, nous le dirons franchement plutôt que de vous vendre quelque chose.</p>
+        <form class="atelier-form" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
+          <input type="hidden" name="_subject" value="Vidéos de logement — demande (scarsellato.com)">
+          <input type="hidden" name="_next" value="https://scarsellato.com/videos-airbnb/#contact">
+          <input type="text" name="_honey" style="display:none">
+          <div class="af-row">
+            <input type="text" name="nom" placeholder="VOTRE NOM" required aria-label="Nom" data-i18n-ph="form.name">
+            <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+          </div>
+          <textarea name="message" placeholder="OÙ SONT LES PHOTOS DE VOTRE LOGEMENT ?" required aria-label="Message" data-i18n-ph="form.msg3"></textarea>
+          <button class="btn-pill magnetic big" type="submit"><span data-i18n="form.send">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+        </form>
+        <a class="back-home" href="../#metiers" data-i18n="fin.back">← Revoir tous les métiers</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
+
+<div class="chat" id="chat">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — EN DIRECT )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonjour ! Je réponds en direct, uniquement à partir des informations de l'atelier — je ne devine rien. Posez votre question, ou commencez par l'une de celles-ci :</p></div>
+    <div class="chat-choices" id="chatChoices"></div>
+    <form class="chat-form" id="chatForm">
+      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="ÉCRIVEZ VOTRE QUESTION…" aria-label="Votre question" data-i18n-ph="chat.ph">
+      <button class="chat-send" id="chatSend" type="submit" aria-label="Envoyer" data-i18n-aria="chat.sendAria">➤</button>
+    </form>
+    <p class="chat-note" data-i18n="chat.note">Vos messages servent uniquement à vous répondre. 0 cookie, 0 traceur.</p>
+  </div>
+</div>
+
+<script>
+/* Dictionnaire de CETTE page — le FR est la source inline, EN/DE traduisent.
+   Les paires qa[] servent de doublure hors-ligne à l'assistant.
+   Règle non négociable de cette page : une annonce de location ne peut PAS
+   héberger de vidéo. La phrase existe dans les trois langues. */
+window.PAGE_I18N = {
+  fr: { t: {}, qa: [
+    ["Peut-on la mettre sur l'annonce Airbnb ?", "Non. Les plateformes de location n'acceptent que des photos : la vidéo ne peut pas être publiée sur une annonce. Elle est faite pour vos propres canaux — vos réseaux, votre page de réservation directe, et l'envoi direct à un voyageur qui hésite."],
+    ["Il faut venir filmer chez moi ?", "Non. Le film est monté uniquement à partir des photos que vous avez déjà en ligne. Rien à tourner, rien à installer, aucun accès à vos comptes."],
+    ["Combien de photos faut-il ?", "Celles d'un seul logement, telles qu'elles sont en ligne, suffisent. Plus il y a de pièces et d'angles différents, plus le film peut respirer — mais nous partons de ce que vous avez."],
+    ["Ça dure combien de temps ?", "C'est court et vertical, au format des téléphones. La durée suit la matière : nous montons autant de plans que vos photos le permettent vraiment, sans rallonger artificiellement."],
+    ["À qui appartient le film ?", "À vous. Un fichier, sans filigrane, sans compte à créer. Vos photos restent les vôtres : elles ne servent qu'à votre film, et nous ne montrons jamais le logement d'un client sans son accord."],
+    ["Combien ça coûte ?", "C'est un prix fixe, en une fois, sans abonnement. Envoyez-nous le lien de votre annonce et vous avez le chiffre le jour même, sans engagement."]
+  ]},
+  en: { t: {
+    'meta.title': 'Photo & film — property videos — Scarsellato, Luxembourg',
+    'meta.desc': 'From the photos you already have, we cut a short vertical film of your place — for your own channels, your direct-booking page, and the guest who is still hesitating. A rental listing cannot host a video; this one is yours. Cookie-free.',
+    'nav.this': 'The films', 'cta.send': 'Send us photos',
+    'hero.chip': '( CRAFT 06 ) — PROPERTY FILMS',
+    'hero.kicker': 'LUXEMBOURG · FR · DE · EN',
+    'hero.st1': 'A photo shows the room.', 'hero.st2': 'A film shows the evening.',
+    'hero.sub': 'From the photos you already have, we cut a short vertical film of your place: the light, the movement, what it feels like to walk in. Nothing to shoot, nothing to install. The file is yours.',
+    'hero.cta1': 'Send the photos of one place', 'hero.cta2': 'Ask the assistant',
+    'hero.fmtnote': 'vertical format · the background image is an atelier atmosphere',
+    'gap.head': '( 01 ) — WHAT A PHOTO CANNOT SAY',
+    'gap.st1': 'Guests do not compare rooms.', 'gap.st2': 'They compare impressions.',
+    'gap.lead': 'Twenty listings open in twenty tabs, the same angles, the same sofas. A photo proves the room exists. It does not say how the light falls at eight in the evening, or what you hear when you open the window.',
+    'dip.a.tag': 'THE PHOTO', 'dip.a.cap': 'It holds still. It waits to be enlarged.',
+    'dip.b.tag': 'THE FILM', 'dip.b.cap': 'It moves on its own. You are already there.',
+    'dip.hint': 'The same image on both sides. On the right it breathes — that is all we add.',
+    'dip.honest': "An atmosphere image made by the atelier, not a client's property. We publish no photograph that is not ours: the film we make for you stays in your hands.",
+    'made.head': '( 02 ) — WHAT WE MAKE',
+    'made.st1': 'A short vertical film.', 'made.st2': 'Made with what you already have.',
+    'made.1': '<b>Vertical, 9:16</b> — the format phones are built for, with no makeshift cropping.',
+    'made.2': '<b>Your photos only</b> — the ones already online. We do not come to your place.',
+    'made.3': '<b>Several angles per room</b> — a way in, a detail, a view. Not a slideshow.',
+    'made.4': '<b>Warm light, slow movement</b> — it should make you want to be there, not to hit pause.',
+    'made.5': '<b>The name of the place</b> at the end, quietly.',
+    'made.6': '<b>One file, yours</b> — no watermark, no account to create.',
+    'made.frametag': 'ATMOSPHERE',
+    'made.framecap': 'An atelier atmosphere image. Yours will be made of your photos, your rooms, your light.',
+    'dest.head': '( 03 ) — WHERE IT ACTUALLY GOES',
+    'dest.st1': 'A listing cannot', 'dest.st2': 'host a video.',
+    'dest.honest': '<b>Let us say it before anything else:</b> rental platforms accept photos only. Your film cannot be published on your listing, and nobody should let you believe otherwise. It is made for the places that belong to you.',
+    'dest.1.t': 'Your own channels',
+    'dest.1.d': 'Instagram, TikTok, Facebook: vertical is at home there. That is where a place is found before anyone even has dates in mind.',
+    'dest.2.t': 'Your direct booking page',
+    'dest.2.d': 'On your own page the film works with no commission — and shows what a platform will not let you show.',
+    'dest.3.t': 'The guest who hesitates',
+    'dest.3.d': 'They write to you, they are comparing three places. You send them thirty seconds of yours. They stop comparing.',
+    'dest.ask': 'And on the Airbnb listing?',
+    'how.head': '( 04 ) — HOW IT GOES',
+    'how.st1': 'Three messages.', 'how.st2': 'No filming.',
+    'how.1.t': 'You send the photos',
+    'how.1.d': 'The ones for a single place, exactly as they are online. A link to the listing is enough.',
+    'how.2.t': 'We cut the film',
+    'how.2.d': 'We choose the shots, the pace, the light. Nothing to write, nothing to describe, nothing to approve along the way.',
+    'how.3.t': 'You get the file',
+    'how.3.d': 'Vertical, ready to publish. If a shot does not look like you, say so and we cut it again.',
+    'how.note': 'No software to install, no access to your accounts. Your photos serve your film only and are published nowhere.',
+    'how.ask': 'Which photos do you need?',
+    'fin.head': '( 05 ) — AND NOW',
+    'fin.st1': 'Send us the photos', 'fin.st2': 'of one single place.',
+    'fin.note': 'A link to your listing or a folder of photos is enough. We reply the same day — and if the format makes no sense for your place, we will say so plainly rather than sell you something.',
+    'form.msg3': 'WHERE ARE THE PHOTOS OF YOUR PLACE?',
+    'fin.back': '← Back to all crafts'
+  }, qa: [
+    ["Can we put it on the Airbnb listing?", "No. Rental platforms accept photos only, so the video cannot be published on a listing. It is made for your own channels — your social posts, your direct-booking page, and sending it straight to a guest who is hesitating."],
+    ["Do you need to come and film?", "No. The film is cut only from the photos you already have online. Nothing to shoot, nothing to install, no access to your accounts."],
+    ["How many photos do you need?", "The ones for a single place, exactly as they are online, are enough. The more rooms and different angles there are, the more the film can breathe — but we start from what you have."],
+    ["How long is the film?", "Short, and vertical — the format phones are built for. The length follows the material: we cut as many shots as your photos genuinely allow, and we never stretch it artificially."],
+    ["Who owns the film?", "You do. One file, no watermark, no account to create. Your photos stay yours: they serve your film only, and we never show a client's place without their agreement."],
+    ["What does it cost?", "A single fixed price, paid once, no subscription. Send us the link to your listing and you have the figure the same day, with no commitment."]
+  ]},
+  de: { t: {
+    'meta.title': 'Foto & Film — Objektvideos — Scarsellato, Luxemburg',
+    'meta.desc': 'Aus den Fotos, die Sie bereits haben, schneiden wir einen kurzen vertikalen Film Ihrer Unterkunft — für Ihre eigenen Kanäle, Ihre Direktbuchungsseite und für Gäste, die noch zögern. Ein Inserat kann kein Video zeigen; dieser Film gehört Ihnen. Ohne Cookies.',
+    'nav.this': 'Die Filme', 'cta.send': 'Fotos senden',
+    'hero.chip': '( GEWERK 06 ) — OBJEKTFILME',
+    'hero.kicker': 'LUXEMBURG · FR · DE · EN',
+    'hero.st1': 'Das Foto zeigt den Raum.', 'hero.st2': 'Der Film zeigt den Abend.',
+    'hero.sub': 'Aus den Fotos, die Sie bereits haben, schneiden wir einen kurzen vertikalen Film Ihrer Unterkunft: das Licht, die Bewegung, das Gefühl beim Eintreten. Nichts zu drehen, nichts zu installieren. Die Datei gehört Ihnen.',
+    'hero.cta1': 'Fotos einer Unterkunft senden', 'hero.cta2': 'Den Assistenten fragen',
+    'hero.fmtnote': 'vertikales Format · das Hintergrundbild ist eine Atelier-Stimmung',
+    'gap.head': '( 01 ) — WAS EIN FOTO NICHT SAGEN KANN',
+    'gap.st1': 'Gäste vergleichen keine Räume.', 'gap.st2': 'Sie vergleichen Eindrücke.',
+    'gap.lead': 'Zwanzig Inserate in zwanzig Tabs, dieselben Winkel, dieselben Sofas. Ein Foto beweist, dass es den Raum gibt. Es sagt nicht, wie das Licht um acht Uhr abends fällt oder was man hört, wenn man das Fenster öffnet.',
+    'dip.a.tag': 'DAS FOTO', 'dip.a.cap': 'Es steht still. Es wartet darauf, vergrößert zu werden.',
+    'dip.b.tag': 'DER FILM', 'dip.b.cap': 'Er läuft von selbst. Man ist schon da.',
+    'dip.hint': 'Auf beiden Seiten dasselbe Bild. Rechts atmet es — mehr fügen wir nicht hinzu.',
+    'dip.honest': 'Ein Stimmungsbild aus unserem Atelier, nicht die Unterkunft eines Kunden. Wir veröffentlichen kein Foto, das uns nicht gehört: Der Film, den wir für Sie machen, bleibt in Ihren Händen.',
+    'made.head': '( 02 ) — WAS WIR MACHEN',
+    'made.st1': 'Ein kurzer vertikaler Film.', 'made.st2': 'Aus dem, was Sie schon haben.',
+    'made.1': '<b>Vertikal, 9:16</b> — das Format der Telefone, ohne notdürftigen Beschnitt.',
+    'made.2': '<b>Nur Ihre Fotos</b> — die, die bereits online sind. Wir kommen nicht zu Ihnen.',
+    'made.3': '<b>Mehrere Winkel pro Raum</b> — ein Eintreten, ein Detail, eine Aussicht. Keine Diashow.',
+    'made.4': '<b>Warmes Licht, langsame Bewegung</b> — man soll dort sein wollen, nicht auf Pause drücken.',
+    'made.5': '<b>Der Name der Unterkunft</b> am Ende, zurückhaltend.',
+    'made.6': '<b>Eine Datei, Ihre</b> — ohne Wasserzeichen, ohne Konto.',
+    'made.frametag': 'STIMMUNG',
+    'made.framecap': 'Ein Stimmungsbild des Ateliers. Ihrer wird aus Ihren Fotos, Ihren Räumen, Ihrem Licht gemacht.',
+    'dest.head': '( 03 ) — WOHIN ER WIRKLICH GEHT',
+    'dest.st1': 'Ein Inserat kann', 'dest.st2': 'kein Video zeigen.',
+    'dest.honest': '<b>Sagen wir es vor allem anderen:</b> Vermietungsplattformen akzeptieren ausschließlich Fotos. Ihr Film kann nicht auf Ihrem Inserat veröffentlicht werden, und niemand sollte Sie etwas anderes glauben lassen. Er ist für die Orte gemacht, die Ihnen gehören.',
+    'dest.1.t': 'Ihre eigenen Kanäle',
+    'dest.1.d': 'Instagram, TikTok, Facebook: Vertikal ist dort zu Hause. Dort entdeckt man eine Unterkunft, bevor man überhaupt an Daten denkt.',
+    'dest.2.t': 'Ihre Direktbuchungsseite',
+    'dest.2.d': 'Auf Ihrer eigenen Seite arbeitet der Film ohne Provision — und zeigt, was eine Plattform Sie nicht zeigen lässt.',
+    'dest.3.t': 'Der Gast, der zögert',
+    'dest.3.d': 'Er schreibt Ihnen, er vergleicht drei Unterkünfte. Sie schicken ihm dreißig Sekunden von Ihrer. Er hört auf zu vergleichen.',
+    'dest.ask': 'Und auf dem Airbnb-Inserat?',
+    'how.head': '( 04 ) — WIE ES ABLÄUFT',
+    'how.st1': 'Drei Nachrichten.', 'how.st2': 'Kein Dreh.',
+    'how.1.t': 'Sie senden die Fotos',
+    'how.1.d': 'Die einer einzigen Unterkunft, so wie sie online stehen. Ein Link zum Inserat genügt.',
+    'how.2.t': 'Wir schneiden den Film',
+    'how.2.d': 'Wir wählen die Einstellungen, den Rhythmus, das Licht. Nichts zu schreiben, nichts zu beschreiben, nichts zwischendurch freizugeben.',
+    'how.3.t': 'Sie erhalten die Datei',
+    'how.3.d': 'Vertikal, bereit zum Veröffentlichen. Wenn eine Einstellung nicht zu Ihnen passt, sagen Sie es und wir schneiden sie neu.',
+    'how.note': 'Keine Software zu installieren, kein Zugriff auf Ihre Konten. Ihre Fotos dienen nur Ihrem Film und werden nirgends veröffentlicht.',
+    'how.ask': 'Welche Fotos brauchen Sie?',
+    'fin.head': '( 05 ) — UND JETZT',
+    'fin.st1': 'Senden Sie uns die Fotos', 'fin.st2': 'einer einzigen Unterkunft.',
+    'fin.note': 'Ein Link zu Ihrem Inserat oder ein Fotoordner genügt. Wir antworten noch am selben Tag — und wenn das Format für Ihre Unterkunft keinen Sinn ergibt, sagen wir das offen, statt Ihnen etwas zu verkaufen.',
+    'form.msg3': 'WO SIND DIE FOTOS IHRER UNTERKUNFT?',
+    'fin.back': '← Zurück zu allen Gewerken'
+  }, qa: [
+    ["Kann man ihn auf das Airbnb-Inserat stellen?", "Nein. Vermietungsplattformen akzeptieren ausschließlich Fotos, das Video kann also nicht auf einem Inserat veröffentlicht werden. Er ist für Ihre eigenen Kanäle gemacht — Ihre sozialen Netzwerke, Ihre Direktbuchungsseite und den direkten Versand an zögernde Gäste."],
+    ["Müssen Sie bei mir filmen?", "Nein. Der Film wird ausschließlich aus den Fotos geschnitten, die Sie bereits online haben. Nichts zu drehen, nichts zu installieren, kein Zugriff auf Ihre Konten."],
+    ["Wie viele Fotos brauchen Sie?", "Die einer einzigen Unterkunft, so wie sie online stehen, genügen. Je mehr Räume und verschiedene Winkel es gibt, desto mehr kann der Film atmen — aber wir gehen von dem aus, was Sie haben."],
+    ["Wie lang ist der Film?", "Kurz und vertikal, im Format der Telefone. Die Länge richtet sich nach dem Material: Wir schneiden so viele Einstellungen, wie Ihre Fotos wirklich hergeben, ohne künstlich zu strecken."],
+    ["Wem gehört der Film?", "Ihnen. Eine Datei, ohne Wasserzeichen, ohne Konto. Ihre Fotos bleiben Ihre: Sie dienen nur Ihrem Film, und wir zeigen die Unterkunft eines Kunden nie ohne dessen Einverständnis."],
+    ["Was kostet das?", "Ein fester Einmalpreis, kein Abo. Senden Sie uns den Link zu Ihrem Inserat und Sie haben die Zahl noch am selben Tag, unverbindlich."]
+  ]}
+};
+
+/* Mécanique signature : le cadre de droite « prend vie » à mesure qu'on descend.
+   --alive (0 → 1) pilote le lent travelling avant et la barre de lecture.
+   Décoratif uniquement : sans JS, le cadre reste sur l'image fixe et la page se lit. */
+window.onShellScroll = (y, vh) => {
+  const el = document.getElementById('dip');
+  if (!el) return;
+  // on mesure les CADRES, pas la section : le mouvement doit se jouer
+  // pendant qu'ils sont à l'écran, pas avant qu'ils n'apparaissent.
+  const box = el.querySelector('.diptych') || el;
+  const r = box.getBoundingClientRect();
+  // dénominateur planché à 1 : un viewport dégénéré (onglet non composité,
+  // impression) donnerait 0/0 = NaN et figerait la transformation.
+  const p = Math.max(0, Math.min(1, (vh - r.top) / Math.max(1, r.height + vh)));
+  el.style.setProperty('--alive', p.toFixed(3));
+};
+</script>
+<script src="../assets/shell.js?v=3"></script>
+
+</body>
+</html>

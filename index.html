@@ -187,7 +187,7 @@
         <p class="svc-desc" data-i18n="svc2.desc">Devis, rappels, suivis, saisies répétitives : nous construisons le circuit qui les fait tourner sans vous. Sur vos outils existants, sans migration, avec vous qui gardez la main sur ce qui part.</p>
         <div class="svc-foot">
           <p class="svc-anchor" data-i18n="svc2.anchor">Test gratuit sur un cas réel</p>
-          <a class="svc-link" href="#contact" data-i18n="svc2.link">Nous décrire votre cas ↗</a>
+          <a class="svc-link" href="automatisations/" data-i18n="svc2.link">Voir la page Automatisations ↗</a>
         </div>
       </article>
 
@@ -207,7 +207,28 @@
         <p class="svc-desc" data-i18n="svc4.desc">Un assistant qui répond à vos visiteurs à toute heure — uniquement à partir de VOS informations, jamais d'invention. Il passe la main dès qu'il n'est pas sûr et vous transmet les coordonnées des intéressés. Celui de cette page en est un.</p>
         <div class="svc-foot">
           <p class="svc-anchor" data-i18n="svc4.anchor">Version test gratuite sur vos contenus</p>
-          <button class="svc-link" type="button" id="svcTryBot" data-i18n="svc4.link">Essayer le nôtre, ici, maintenant ↗</button>
+          <a class="svc-link" href="assistant/" data-i18n="svc4.link">Voir la page Assistant ↗</a>
+          <button class="svc-link" type="button" id="svcTryBot" data-i18n="svc4.try">Ou l'essayer ici, maintenant ↗</button>
+        </div>
+      </article>
+
+      <article class="svc">
+        <p class="svc-idx" aria-hidden="true">05</p>
+        <h3 class="svc-name"><span data-i18n="svc5.name">Publicités UGC</span></h3>
+        <p class="svc-desc" data-i18n="svc5.desc">Des publicités courtes qui ressemblent à quelqu'un qui parle, pas à une annonce. Écrites à partir de VOS avis, de VOS commentaires, des mots de vos vrais clients — jamais d'argument inventé sur un produit que nous n'aurions pas compris.</p>
+        <div class="svc-foot">
+          <p class="svc-anchor" data-i18n="svc5.anchor">Un premier lot, relu avant toute diffusion</p>
+          <a class="svc-link" href="ugc/" data-i18n="svc5.link">Voir la page UGC ↗</a>
+        </div>
+      </article>
+
+      <article class="svc">
+        <p class="svc-idx" aria-hidden="true">06</p>
+        <h3 class="svc-name"><span data-i18n="svc6.name">Vidéos de logement</span></h3>
+        <p class="svc-desc" data-i18n="svc6.desc">À partir des photos que vous avez déjà, un court film vertical de votre logement — pour vos réseaux, votre page de réservation directe, et pour l'envoyer au voyageur qui hésite encore. Rien à tourner.</p>
+        <div class="svc-foot">
+          <p class="svc-anchor" data-i18n="svc6.anchor">Vos photos suffisent</p>
+          <a class="svc-link" href="videos-airbnb/" data-i18n="svc6.link">Voir la page Vidéos ↗</a>
         </div>
       </article>
     </div>
@@ -350,7 +371,7 @@ const I18N = {
       'svc2.name': 'Automations',
       'svc2.desc': 'Quotes, reminders, follow-ups, repetitive data entry: we build the circuit that runs them without you. On your existing tools, no migration, and you keep control over what goes out.',
       'svc2.anchor': 'Free test on one real case',
-      'svc2.link': 'Describe your case ↗',
+      'svc2.link': 'See the Automations page ↗',
       'svc3.name': 'Sites &amp; worlds',
       'svc3.desc': 'From a single page to a complete world — drawn by hand, never a template. Multilingual, cookie-free, with a real path from visitor to inquiry. The six worlds above are ours: click, they open.',
       'svc3.anchor': 'From €690 · upkeep €39/month',
@@ -358,7 +379,16 @@ const I18N = {
       'svc4.name': 'Site assistant',
       'svc4.desc': 'An assistant that answers your visitors at any hour — only from YOUR information, never invented. It hands over the moment it is unsure, and passes you the contact details of interested visitors. The one on this page is one of them.',
       'svc4.anchor': 'Free test version on your content',
-      'svc4.link': 'Try ours, here, right now ↗',
+      'svc4.link': 'See the Assistant page ↗',
+      'svc4.try': 'Or try it here, right now ↗',
+      'svc5.name': 'UGC ads',
+      'svc5.desc': "Short ads that look like someone talking, not like an advert. Written from YOUR reviews, YOUR comments, the words your actual customers use — never an invented claim about a product we never understood.",
+      'svc5.anchor': 'A first batch, reviewed before anything runs',
+      'svc5.link': 'See the UGC page ↗',
+      'svc6.name': 'Property films',
+      'svc6.desc': 'From the photos you already have, a short vertical film of your place — for your social channels, your direct-booking page, and to send to the guest who is still hesitating. Nothing to shoot.',
+      'svc6.anchor': 'Your existing photos are enough',
+      'svc6.link': 'See the Films page ↗',
       'trust1': '<b>Free pilot</b> — judge the real thing',
       'trust2': '<b>Week 1</b> — nothing goes out without your approval',
       'trust3': '<b>First month</b> — money back',
@@ -452,7 +482,7 @@ const I18N = {
       'svc2.name': 'Automatisierungen',
       'svc2.desc': 'Angebote, Erinnerungen, Nachfassen, wiederkehrende Eingaben: wir bauen den Kreislauf, der sie ohne Sie laufen lässt. Auf Ihren bestehenden Werkzeugen, ohne Migration — und Sie behalten die Kontrolle darüber, was rausgeht.',
       'svc2.anchor': 'Kostenloser Test an einem echten Fall',
-      'svc2.link': 'Ihren Fall beschreiben ↗',
+      'svc2.link': 'Zur Seite Automatisierungen ↗',
       'svc3.name': 'Seiten &amp; Welten',
       'svc3.desc': 'Von der Einzelseite bis zur vollständigen Welt — von Hand gezeichnet, niemals ein Template. Mehrsprachig, ohne Cookies, mit einem echten Weg vom Besucher zur Anfrage. Die sechs Welten oben sind unsere: klicken Sie, sie öffnen sich.',
       'svc3.anchor': 'Ab 690 € · Pflege 39 €/Monat',
@@ -460,7 +490,16 @@ const I18N = {
       'svc4.name': 'Website-Assistent',
       'svc4.desc': 'Ein Assistent, der Ihren Besuchern zu jeder Stunde antwortet — ausschließlich aus IHREN Informationen, nie erfunden. Er übergibt, sobald er unsicher ist, und übermittelt Ihnen die Kontaktdaten der Interessenten. Der auf dieser Seite ist einer davon.',
       'svc4.anchor': 'Kostenlose Testversion auf Ihren Inhalten',
-      'svc4.link': 'Unseren jetzt ausprobieren ↗',
+      'svc4.link': 'Zur Seite Assistent ↗',
+      'svc4.try': 'Oder ihn jetzt ausprobieren ↗',
+      'svc5.name': 'UGC-Werbung',
+      'svc5.desc': 'Kurze Werbung, die aussieht wie jemand, der spricht — nicht wie eine Anzeige. Geschrieben aus IHREN Bewertungen, IHREN Kommentaren, den Worten Ihrer echten Kunden — nie ein erfundenes Argument über ein Produkt, das wir nicht verstanden haben.',
+      'svc5.anchor': 'Ein erster Satz, geprüft vor jeder Ausspielung',
+      'svc5.link': 'Zur Seite UGC ↗',
+      'svc6.name': 'Unterkunftsfilme',
+      'svc6.desc': 'Aus den Fotos, die Sie bereits haben, ein kurzer vertikaler Film Ihrer Unterkunft — für Ihre Kanäle, Ihre Direktbuchungsseite und für den Gast, der noch zögert. Nichts zu drehen.',
+      'svc6.anchor': 'Ihre vorhandenen Fotos genügen',
+      'svc6.link': 'Zur Seite Filme ↗',
       'trust1': '<b>Kostenloser Pilot</b> — Sie urteilen am Ergebnis',
       'trust2': '<b>Woche 1</b> — nichts geht ohne Ihr Einverständnis raus',
       'trust3': '<b>Erster Monat</b> — Geld zurück',

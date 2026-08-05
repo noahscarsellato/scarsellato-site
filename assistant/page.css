@@ -1,0 +1,163 @@
+/* ============================================================
+   PAGE — L'ASSISTANT DU SITE (métier 04)
+   Mécanique signature : LA CONVERSATION TÉMOIN — un échange qui
+   se déroule au scroll (fil doré + compteur d'échange), avec le
+   moment « je ne sais pas » comme centre de gravité de la page.
+   Le produit est déjà là : l'assistant en bas à droite EST l'argument.
+   ============================================================ */
+
+.spec p, .kb p, .ho p, .inst p, .as-contact p, .turn p { overflow-wrap: break-word; }
+
+/* ---------- héros ---------- */
+.as-hero { display: flex; align-items: flex-end; padding-bottom: 12vh; }
+.as-hero .statement { padding: 0 clamp(1.25rem, 5vw, 4rem); }
+.as-hero .kicker { display: block; margin-bottom: 1.6rem; }
+.as-hero .sub { margin-top: 1.8rem; max-width: 35rem; font-size: 1rem; line-height: 1.7; color: var(--cream); opacity: 0.92; }
+.as-hero .hero-cta { margin-top: 2.4rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.as-pointer {
+  position: absolute; right: clamp(1.25rem, 5vw, 4rem); bottom: 12vh; z-index: 3;
+  max-width: min(18rem, 62vw); text-align: right;
+  font-family: var(--font-d); font-weight: 340; font-size: clamp(3.4rem, 8vw, 6rem); line-height: 0.9;
+  color: var(--gold); opacity: 0.92;
+}
+.as-pointer small {
+  display: block; margin-top: 0.9rem; font-family: var(--font-b); font-size: 0.625rem;
+  letter-spacing: 0.2em; line-height: 1.9; text-transform: uppercase; color: var(--cream-mut);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .as-pointer { animation: point-drift 4.2s var(--ease) infinite; }
+  @keyframes point-drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(0.35rem, 0.35rem); } }
+}
+
+/* ---------- (01) la conversation témoin ---------- */
+.spec { --thread: 1; padding: 16vh clamp(1.25rem, 5vw, 4rem) 12vh; }
+.spec-head { max-width: 74rem; margin: 0 auto 4rem; }
+.spec-head .statement { margin-top: 1.4rem; }
+.spec-intro { margin-top: 1.8rem; max-width: 38rem; font-size: 0.9375rem; line-height: 1.75; color: var(--cream-mut); }
+
+.spec-body { position: relative; max-width: 74rem; margin: 0 auto; padding-left: 2.4rem; }
+.spec-thread { position: absolute; left: 0.36rem; top: 0.5rem; bottom: 4.5rem; width: 1px; background: rgb(198 165 108 / 0.18); }
+.spec-thread i { display: block; height: 100%; background: linear-gradient(180deg, var(--gold), #8a6a33); transform: scaleY(var(--thread, 1)); transform-origin: 50% 0; }
+
+.spec-count {
+  position: sticky; top: 5.4rem; z-index: 3; width: fit-content; margin-left: auto;
+  display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 2.5rem;
+  padding: 0.5rem 0.8rem; background: rgb(9 12 14 / 0.6); backdrop-filter: blur(6px);
+  border: 1px solid rgb(198 165 108 / 0.18);
+  font-family: var(--font-d); font-size: 1.15rem; color: var(--gold); font-variant-numeric: tabular-nums;
+}
+.spec-count .slash { color: rgb(198 165 108 / 0.5); }
+.spec-count span + span:not(.slash) { color: var(--cream-mut); }
+.spec-count small { font-family: var(--font-b); font-size: 0.5625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-mut); margin-left: 0.5rem; }
+
+.turns { list-style: none; max-width: 46rem; }
+.turn { position: relative; padding-bottom: 3.2rem; }
+.turn::before {
+  content: ""; position: absolute; left: -2.4rem; top: 0.45rem; width: 0.72rem; height: 0.72rem;
+  border-radius: 50%; border: 1px solid var(--gold-soft); background: var(--noir);
+}
+.turn.key::before { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 5px rgb(198 165 108 / 0.12); }
+.who { display: block; font-size: 0.5625rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream-mut); margin-bottom: 0.5rem; }
+.turn .q { margin-bottom: 1.1rem; }
+.turn .q p { font-family: var(--font-d); font-style: italic; font-weight: 340; font-size: clamp(1.15rem, 2.4vw, 1.5rem); line-height: 1.35; color: var(--cream); }
+.turn .a { background: rgb(198 165 108 / 0.05); border-left: 2px solid var(--gold-soft); padding: 1rem 1.2rem; }
+.turn .a .who { color: var(--gold); opacity: 0.8; }
+.turn .a p { font-size: 0.9375rem; line-height: 1.7; color: var(--cream-mut); }
+
+.turn.key { padding-bottom: 3.6rem; }
+.turn-tag { display: inline-block; margin-bottom: 1rem; padding: 0.35rem 0.7rem; border: 1px solid var(--gold-soft); font-size: 0.5625rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
+.turn.key .a { background: rgb(198 165 108 / 0.09); border-left-color: var(--gold); padding: 1.3rem 1.4rem; }
+.turn.key .a p { color: var(--cream); font-size: 1.0625rem; line-height: 1.65; }
+.turn-note { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid rgb(198 165 108 / 0.16); max-width: 36rem; font-size: 0.875rem; line-height: 1.7; color: var(--cream-mut); }
+.turn-ask {
+  margin-top: 1.2rem; background: none; border: 0; padding: 0 0 0.2rem;
+  font-family: inherit; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--cream-mut); border-bottom: 1px solid var(--gold-soft); transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.turn-ask:hover { color: var(--gold); border-color: var(--gold); }
+.spec-note { margin-top: 1rem; max-width: 40rem; font-size: 0.875rem; line-height: 1.75; color: var(--cream); }
+
+/* ---------- (02) ce qu'il connaît ---------- */
+.kb { padding: 12vh clamp(1.25rem, 5vw, 4rem); background: var(--noir-deep); }
+.kb-head { max-width: 74rem; margin: 0 auto 3.5rem; }
+.kb-head .statement { margin-top: 1.4rem; }
+.kb-grid {
+  max-width: 74rem; margin: 0 auto; display: grid; gap: 1px;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  background: rgb(198 165 108 / 0.18); border: 1px solid rgb(198 165 108 / 0.18);
+}
+.kb-col { background: var(--noir-deep); padding: 2rem 1.8rem 2.4rem; }
+.kb-col.nope { background: var(--noir); }
+.kb-col h3 { font-family: var(--font-d); font-weight: 340; font-size: 1.5rem; margin-bottom: 0.4rem; color: var(--gold); }
+.kb-col.nope h3 { color: var(--cream); }
+.kb-col .col-sub { font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream-mut); margin-bottom: 2rem; }
+.kb-col ul { list-style: none; }
+.kb-col li { position: relative; padding-left: 1.5rem; margin-bottom: 0.95rem; font-size: 0.9rem; line-height: 1.65; color: var(--cream-mut); }
+.kb-col li::before { content: "—"; position: absolute; left: 0; color: var(--gold); }
+.kb-col.nope li::before { content: "×"; color: rgb(179 172 161 / 0.75); }
+.kb-verdict { max-width: 74rem; margin: 3rem auto 0; font-family: var(--font-d); font-weight: 340; font-style: italic; font-size: clamp(1.2rem, 2.6vw, 1.7rem); line-height: 1.4; color: var(--cream); }
+
+/* ---------- (03) quand il n'est pas sûr ---------- */
+.ho { padding: 12vh clamp(1.25rem, 5vw, 4rem); }
+.ho-inner { max-width: 74rem; margin: 0 auto; }
+.ho-head { margin-bottom: 3.5rem; }
+.ho-head .statement { margin-top: 1.4rem; }
+.ho-grid { display: grid; gap: 2.4rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+.ho-step { border-top: 1px solid var(--gold-soft); padding-top: 1.4rem; }
+.ho-step .n { font-family: var(--font-d); font-size: 2.2rem; color: var(--gold); line-height: 1; display: block; margin-bottom: 0.7rem; }
+.ho-step h3 { font-family: var(--font-d); font-weight: 340; font-size: 1.35rem; margin-bottom: 0.6rem; }
+.ho-step p { font-size: 0.9rem; line-height: 1.7; color: var(--cream-mut); }
+.ho-foot { margin-top: 3.5rem; display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap; justify-content: space-between; border-top: 1px solid rgb(198 165 108 / 0.16); padding-top: 2rem; }
+.ho-foot p { max-width: 34rem; font-size: 0.9375rem; line-height: 1.7; color: var(--cream); }
+
+/* ---------- (04) l'installation ---------- */
+.inst { padding: 12vh clamp(1.25rem, 5vw, 4rem); background: var(--noir-deep); }
+.inst-inner { max-width: 74rem; margin: 0 auto; }
+.inst-head { margin-bottom: 3.5rem; }
+.inst-head .statement { margin-top: 1.4rem; }
+.inst-grid { display: grid; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); background: rgb(198 165 108 / 0.18); border: 1px solid rgb(198 165 108 / 0.18); }
+.inst-step { background: var(--noir-deep); padding: 1.8rem 1.5rem 2rem; }
+.inst-step .w { display: block; font-size: 0.625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+.inst-step h3 { font-family: var(--font-d); font-weight: 340; font-size: 1.25rem; margin-bottom: 0.6rem; }
+.inst-step p { font-size: 0.875rem; line-height: 1.7; color: var(--cream-mut); }
+.test-card { margin: 3rem 0 0 auto; max-width: 46rem; border: 1px solid var(--gold-soft); padding: 2rem 1.8rem; background: rgb(198 165 108 / 0.04); }
+.test-card .tag { display: inline-block; font-size: 0.625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-soft); padding: 0.35rem 0.7rem; margin-bottom: 1.2rem; }
+.test-card p { font-size: 0.9rem; line-height: 1.7; color: var(--cream-mut); margin-bottom: 0.9rem; }
+.test-card p:last-child { margin-bottom: 0; }
+.test-card p b { color: var(--cream); font-weight: 400; }
+
+/* ---------- (05) contact ---------- */
+.as-contact { padding: 14vh clamp(1.25rem, 5vw, 4rem) 10vh; }
+.as-contact-inner { max-width: 74rem; margin: 0 auto; }
+.as-contact .note { margin-top: 1.6rem; font-size: 0.8125rem; line-height: 1.7; color: var(--cream-mut); max-width: 38rem; }
+.back-home { display: inline-block; margin-top: 3rem; font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-mut); text-decoration: none; }
+.back-home:hover { color: var(--gold); }
+
+/* ---------- révélations (JS-gated : plancher sans-JS) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(1.3rem); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .reveal.d1 { transition-delay: 0.09s; }
+  .js .reveal.d2 { transition-delay: 0.18s; }
+  .js .reveal.d3 { transition-delay: 0.27s; }
+}
+
+/* ---------- petits écrans ---------- */
+@media (max-width: 60rem) {
+  /* le compteur d'échange vit dans la marge droite : sous 60 rem il n'y a
+     plus de marge, il chevaucherait la conversation. On le retire. */
+  .spec-count { display: none; }
+}
+@media (max-width: 47rem) {
+  .as-hero { padding-bottom: 8vh; }
+  .as-pointer { position: static; margin: 2.8rem clamp(1.25rem, 5vw, 4rem) 0; max-width: none; text-align: left; }
+  .as-pointer small { text-align: left; }
+  .spec, .kb, .ho, .inst { padding-top: 9vh; padding-bottom: 9vh; }
+  .as-contact { padding-top: 9vh; }
+  .spec-head { margin-bottom: 3rem; }
+  .spec-body { padding-left: 1.5rem; }
+  .turn::before { left: -1.5rem; }
+  .turn .a, .turn.key .a { padding: 0.9rem 1rem; }
+  .ho-foot { justify-content: flex-start; }
+  .test-card { margin-top: 2.4rem; padding: 1.6rem 1.3rem; }
+}
