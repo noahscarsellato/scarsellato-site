@@ -550,6 +550,45 @@ html:not(.js) .pano-bg video, html:not(.js) .cor-bg video { display: none; }
 .chat-choice:hover { color: var(--gold); border-color: var(--gold); }
 
 
+/* ---------- (04) LES MÉTIERS — ce que l'atelier fait vraiment ---------- */
+.services { padding: 18vh clamp(1.25rem, 5vw, 4rem) 14vh; position: relative; }
+.svc-head { max-width: 74rem; margin: 0 auto 4.5rem; }
+.svc-head .statement { margin-top: 1.6rem; }
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); gap: 1px; max-width: 74rem; margin: 0 auto; background: rgb(198 165 108 / 0.18); border: 1px solid rgb(198 165 108 / 0.18); }
+.svc { background: var(--noir); padding: 2.2rem 1.8rem 2rem; display: flex; flex-direction: column; gap: 0.9rem; position: relative; transition: background 0.5s var(--ease); }
+.svc:hover { background: var(--noir-deep); }
+.svc-idx { font-size: 0.625rem; letter-spacing: 0.22em; color: var(--gold); }
+.svc-name { font-family: var(--font-d); font-weight: 340; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.05; color: var(--cream); }
+.svc-name .tm { font-size: 0.4em; vertical-align: super; color: var(--gold); }
+.svc-desc { font-size: 0.875rem; line-height: 1.65; color: var(--cream-mut); }
+.svc-foot { margin-top: auto; padding-top: 1.2rem; border-top: 1px solid rgb(198 165 108 / 0.16); display: flex; flex-direction: column; gap: 0.5rem; }
+.svc-anchor { font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+.svc-link { font-size: 0.75rem; color: var(--cream-mut); text-decoration: none; border-bottom: 1px solid var(--gold-soft); align-self: flex-start; padding-bottom: 2px; background: none; transition: color 0.25s var(--ease), border-color 0.25s var(--ease); }
+.svc-link:hover { color: var(--gold); border-color: var(--gold); }
+/* le voile de départ n'existe QUE si le JS peut le lever (plancher sans-JS, comme .js .kw) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .svc { opacity: 0; transform: translateY(1.4rem); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), background 0.5s var(--ease); }
+  .js .svc.in { opacity: 1; transform: none; }
+  .js .svc:nth-child(2) { transition-delay: 0.09s; } .js .svc:nth-child(3) { transition-delay: 0.18s; } .js .svc:nth-child(4) { transition-delay: 0.27s; }
+}
+/* la parole honnête : garanties réelles, jamais de faux témoignages */
+.trust { max-width: 74rem; margin: 4.5rem auto 0; display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem; }
+.trust li { list-style: none; font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-mut); border: 1px solid rgb(198 165 108 / 0.22); padding: 0.5rem 0.85rem; }
+.trust li b { color: var(--gold); font-weight: 400; }
+.svc-note { max-width: 74rem; margin: 2rem auto 0; font-size: 0.8125rem; line-height: 1.7; color: var(--cream-mut); }
+.svc-note a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-soft); }
+
+/* ---------- assistant en direct : la saisie ---------- */
+.chat-form { display: flex; gap: 0.4rem; padding: 0.7rem 1rem 0.9rem; border-top: 1px solid rgb(198 165 108 / 0.16); }
+.chat-input { flex: 1; min-width: 0; background: var(--noir); border: 1px solid var(--gold-soft); color: var(--cream); font-family: var(--font-b); font-size: 0.8125rem; padding: 0.55rem 0.7rem; }
+.chat-input::placeholder { color: rgb(179 172 161 / 0.6); letter-spacing: 0.06em; }
+.chat-input:focus { outline: none; border-color: var(--gold); }
+.chat-send { background: none; border: 1px solid var(--gold-soft); color: var(--gold); padding: 0 0.85rem; font-size: 0.9rem; transition: background 0.25s var(--ease), color 0.25s var(--ease); }
+.chat-send:hover:not(:disabled) { background: var(--gold); color: var(--noir); }
+.chat-send:disabled { opacity: 0.45; }
+.chat-msg.pending { color: var(--cream-mut); font-style: italic; }
+.chat-note { padding: 0 1rem 0.9rem; font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(179 172 161 / 0.65); }
+
 /* le curseur natif disparaît — seul le nôtre existe (desktop) */
 @media (pointer: fine) { *, a, button, input, textarea, select, label { cursor: none !important; } }
 
@@ -557,4 +596,7 @@ html:not(.js) .pano-bg video, html:not(.js) .cor-bg video { display: none; }
    doit rester APRÈS les règles du formulaire (égalité de spécificité) */
 @media (max-width: 47rem) {
   .atelier-form input[type="text"], .atelier-form input[type="email"], .atelier-form textarea { font-size: 1rem; }
+  .chat-input { font-size: 1rem; }
+  .services { padding: 12vh 1.25rem 10vh; }
+  .svc-head { margin-bottom: 3rem; }
 }
