@@ -192,7 +192,11 @@ html:not(.js) .loader { display: none; }
   font-family: var(--font-d); font-weight: 340;
   font-size: clamp(1.9rem, 4.6vw, 3.9rem);
   line-height: 1.06; letter-spacing: -0.02em;
+  /* overflow:hidden masque le reveal des lettres — mais il coupait aussi les
+     jambages (g, y, p, j). Il clippe au bord du PADDING : on rend donc de la
+     place sous la ligne, et la marge négative rétablit le rythme d'origine. */
   overflow: hidden;
+  padding-bottom: 0.34em; margin-bottom: -0.34em;
 }
 .st-line.big { font-size: clamp(2.6rem, 7.5vw, 6.4rem); }
 .st-in { display: inline-block; }
@@ -439,6 +443,13 @@ html:not(.js) .spec-line { opacity: 1; transform: none; }
 
 /* ---------- mobile ---------- */
 @media (max-width: 47rem) {
+  /* le héros : « Des mondes. Pas des pages. » passait sur une zone claire de la
+     photo et devenait illisible sur téléphone (retour Noah 08-09). */
+  .hero .pano-scrim {
+    background:
+      linear-gradient(180deg, rgb(9 12 14 / 0.72) 0%, rgb(9 12 14 / 0.55) 38%, rgb(9 12 14 / 0.42) 62%, rgb(9 12 14 / 0.86) 100%);
+  }
+  .st-hero .st-line { text-shadow: 0 2px 22px rgb(9 12 14 / 0.75), 0 1px 3px rgb(9 12 14 / 0.6); }
   .hero-crafts { bottom: 6.2rem; letter-spacing: 0.1em; line-height: 1.9; font-size: 0.6875rem; }
   .live-line, .top-links { display: none; }
   .lang-switch { margin-left: auto; }

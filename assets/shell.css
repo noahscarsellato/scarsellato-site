@@ -116,7 +116,9 @@ html:not(.js) .loader { display: none; }
 .chip-tl { position: absolute; top: 5.2rem; left: clamp(1.25rem, 4vw, 3rem); z-index: 3; }
 .chip-br { position: absolute; bottom: 2rem; right: clamp(1.25rem, 4vw, 3rem); z-index: 3; }
 .whisper-tr { position: absolute; top: 5.4rem; right: clamp(1.25rem, 4vw, 3rem); z-index: 3; }
-.st-line { transform: skewY(var(--vskew, 0deg)); font-family: var(--font-d); font-weight: 340; font-size: clamp(1.9rem, 4.6vw, 3.9rem); line-height: 1.06; letter-spacing: -0.02em; overflow: hidden; }
+/* overflow:hidden sert au masque du reveal ; il clippe au bord du padding,
+   d'où le padding-bottom qui rend leur place aux jambages (g, y, p, j). */
+.st-line { transform: skewY(var(--vskew, 0deg)); font-family: var(--font-d); font-weight: 340; font-size: clamp(1.9rem, 4.6vw, 3.9rem); line-height: 1.06; letter-spacing: -0.02em; overflow: hidden; padding-bottom: 0.34em; margin-bottom: -0.34em; }
 .st-line.big { font-size: clamp(2.4rem, 6.4vw, 5.4rem); }
 .st-in { display: inline-block; }
 .statement { position: relative; z-index: 2; }
