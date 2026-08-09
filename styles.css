@@ -199,6 +199,10 @@ html:not(.js) .loader { display: none; }
   padding-bottom: 0.34em; margin-bottom: -0.34em;
 }
 .st-line.big { font-size: clamp(2.6rem, 7.5vw, 6.4rem); }
+/* le héros est découpé lettre par lettre : chaque .ch est un inline-block dont la
+   boîte descend sous la ligne de base, il faut donc plus de marge qu'ailleurs
+   (mesuré : 22 px coupés, 11 px restants avec 0.34em — 0.78em ramène à 0). */
+.st-hero .st-line { padding-bottom: 0.78em; margin-bottom: -0.78em; }
 .st-in { display: inline-block; }
 
 /* wordmark massif — l'objet */
