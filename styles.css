@@ -216,6 +216,12 @@ html:not(.js) .loader { display: none; }
     transition-delay: calc(var(--l, 0) * 0.16s + var(--i, 0) * 0.024s + 0.08s);
   }
 }
+.hero-crafts {
+  position: absolute; left: clamp(1.25rem, 5vw, 4rem); bottom: 8.5rem; z-index: 3;
+  max-width: min(46rem, 82vw);
+  font-size: clamp(0.7rem, 1.15vw, 0.8125rem); letter-spacing: 0.14em; line-height: 2;
+  text-transform: uppercase; color: var(--cream); opacity: 0.9;
+}
 .scroll-cue {
   position: absolute; left: 1.2rem; bottom: 3rem; z-index: 3;
   writing-mode: vertical-rl; font-size: 0.625rem; letter-spacing: 0.3em; color: var(--cream-mut);
@@ -426,6 +432,7 @@ html:not(.js) .spec-line { opacity: 1; transform: none; }
 
 /* ---------- mobile ---------- */
 @media (max-width: 47rem) {
+  .hero-crafts { bottom: 6.2rem; letter-spacing: 0.1em; line-height: 1.9; font-size: 0.6875rem; }
   .live-line, .top-links { display: none; }
   .lang-switch { margin-left: auto; }
   .lang-switch button { padding: 0.5rem 0.4rem; }
