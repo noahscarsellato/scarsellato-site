@@ -409,6 +409,13 @@ html:not(.js) .spec-line { opacity: 1; transform: none; }
 }
 .finale-core .btn-pill { margin-top: 1.6rem; }
 .finale-note { margin-top: 0.8rem; font-size: 0.6875rem; letter-spacing: 0.22em; color: var(--cream-mut); }
+.finale-appro { margin-top: 1.4rem; }
+.finale-appro a {
+  font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--cream-mut); text-decoration: none; border-bottom: 1px solid var(--gold-soft); padding-bottom: 3px;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.finale-appro a:hover { color: var(--gold); border-color: var(--gold); }
 .giant-wordmark {
   position: relative; z-index: 2;
   margin-top: 8vh; text-align: center;
