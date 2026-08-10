@@ -178,7 +178,10 @@ html:not(.js) .loader { display: none; }
 .chat-msg.bot { background: rgb(198 165 108 / 0.08); border-left: 2px solid var(--gold); color: var(--cream); }
 .chat-msg.user { background: rgb(198 165 108 / 0.16); color: var(--cream); margin-left: auto; }
 .chat-msg.pending { color: var(--cream-mut); font-style: italic; }
-.chat-choices { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.6rem 1rem 1rem; border-top: 1px solid rgb(198 165 108 / 0.16); }
+.chat-sugg-toggle { display: block; width: 100%; text-align: left; background: none; border: none; border-top: 1px solid rgb(198 165 108 / 0.16); color: var(--cream-mut); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1rem 0.45rem; cursor: pointer; transition: color 0.25s var(--ease); }
+.chat-sugg-toggle:hover { color: var(--gold); }
+.chat-choices { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.15rem 1rem 0.9rem; }
+.chat-choices.collapsed { display: none; }
 .chat-choice { background: none; border: 1px solid var(--gold-soft); border-radius: 999px; color: var(--cream-mut); font-size: 0.72rem; padding: 0.42rem 0.75rem; transition: color 0.25s var(--ease), border-color 0.25s var(--ease); }
 .chat-choice:hover { color: var(--gold); border-color: var(--gold); }
 .chat-form { display: flex; gap: 0.4rem; padding: 0.7rem 1rem 0.9rem; border-top: 1px solid rgb(198 165 108 / 0.16); }

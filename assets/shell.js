@@ -30,6 +30,7 @@
         'chat.head': '( ASSISTANT — LIVE )', 'chat.closeAria': 'Close',
         'chat.greet': 'Hello! I answer live, only from the atelier’s own information — I never guess. Ask your question, or start with one of these:',
         'chat.ph': 'WRITE YOUR QUESTION…', 'chat.sendAria': 'Send',
+        'chat.sugg': 'Suggested questions',
         'chat.note': 'Your messages are used only to answer you. 0 cookies, 0 trackers.',
         'chat.typing': 'The assistant is writing…',
         'chat.offline': 'The assistant is not answering right now — write to noah@scarsellato.com, same-day reply.'
@@ -47,6 +48,7 @@
         'chat.head': '( ASSISTENT — LIVE )', 'chat.closeAria': 'Schließen',
         'chat.greet': 'Guten Tag! Ich antworte live, ausschließlich aus den Informationen des Ateliers — ich rate nie. Stellen Sie Ihre Frage, oder beginnen Sie mit einer davon:',
         'chat.ph': 'SCHREIBEN SIE IHRE FRAGE…', 'chat.sendAria': 'Senden',
+        'chat.sugg': 'Fragevorschläge',
         'chat.note': 'Ihre Nachrichten dienen nur dazu, Ihnen zu antworten. 0 Cookies, 0 Tracker.',
         'chat.typing': 'Der Assistent schreibt…',
         'chat.offline': 'Der Assistent antwortet gerade nicht — schreiben Sie an noah@scarsellato.com, Antwort am selben Tag.'
@@ -250,6 +252,10 @@
     const history = [];
     let busy = false;
 
+    /* Les suggestions se replient : visibles à l'ouverture (porte d'entrée),
+       repliées dès la première question — sinon elles mangent le journal. */
+    let setSugg = () => {};
+
     const say = (role, text, cls) => {
       const p = document.createElement('p');
       p.className = 'chat-msg ' + role + (cls ? ' ' + cls : '');
@@ -261,6 +267,7 @@
     const ask = async (question, fallback) => {
       if (busy || !question) return;
       busy = true; snd.disabled = true;
+      setSugg(false);
       say('user', question);
       const pending = say('bot', D.t['chat.typing'] || 'L’assistant écrit…', 'pending');
       let answer = null;
@@ -288,6 +295,19 @@
       b.onclick = () => ask(q, a);
       ch.appendChild(b);
     });
+    if (ch.children.length) {
+      const sw = document.createElement('button');
+      sw.className = 'chat-sugg-toggle'; sw.type = 'button';
+      sw.setAttribute('aria-controls', 'chatChoices');
+      setSugg = open => {
+        ch.classList.toggle('collapsed', !open);
+        sw.setAttribute('aria-expanded', String(open));
+        sw.textContent = (D.t['chat.sugg'] || 'Questions suggérées') + (open ? ' ▾' : ' ▸');
+      };
+      sw.onclick = () => setSugg(ch.classList.contains('collapsed'));
+      ch.parentNode.insertBefore(sw, ch);
+      setSugg(true);
+    }
     fm.addEventListener('submit', ev => {
       ev.preventDefault();
       const q = inp.value.trim();
