@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scarsellato — L'atelier digital, Luxembourg</title>
 <meta name="description" content="Atelier digital à Luxembourg : réponse et relance de vos demandes, automatisations, sites sur mesure et assistant de site. Pilote gratuit, sans cookies.">
-<link rel="stylesheet" href="styles.css?v=23">
+<link rel="stylesheet" href="styles.css?v=24">
 </head>
 <body>
 
@@ -51,8 +51,10 @@
       <p class="st-line"><span class="st-in" data-i18n="hero.st1">Des mondes.</span></p>
       <p class="st-line"><span class="st-in italic gold" data-i18n="hero.st2">Pas des pages.</span></p>
     </div>
+    <!-- la ligne des métiers vit AU-DESSUS du wordmark, dans le flux — en absolu
+         (bottom fixe) elle traversait les lettres géantes selon la largeur d'écran -->
+    <p class="hero-crafts" data-i18n="hero.crafts">Sites sur mesure · Réponse à vos demandes · Automatisations · Assistant de site · Publicités · Vidéos de logement</p>
     <h1 class="megamark" id="megaMark" aria-label="Scarsellato">scarsellato<span class="tm">™</span></h1>
-        <p class="hero-crafts" data-i18n="hero.crafts">Sites sur mesure · Réponse à vos demandes · Automatisations · Assistant de site · Publicités · Vidéos de logement</p>
     <p class="scroll-cue" aria-hidden="true"><span data-i18n="hero.cue">DÉFILER</span><span class="cue-line"></span></p>
     <p class="chip chip-br" aria-hidden="true">49.61° N · 6.13° E — FR · DE · EN · IT</p>
   </section>
@@ -242,6 +244,8 @@
           </a>
         </div>
         <div class="v-specs" id="vSpecs" aria-hidden="true"></div>
+        <nav class="v-nav" id="vNav" aria-label="Aller à un site"></nav>
+        <a class="void-grid-link" href="realisations/" data-i18n="void.grid">Tout voir en grille ↗</a>
       </div>
     </div>
   </section>
@@ -251,7 +255,7 @@
     <div class="num-grid">
       <div class="num"><span class="numeral" data-count="6">6</span><span class="num-cap" data-i18n="num1.cap">mondes construits, tous visitables ci-dessus</span></div>
       <div class="num"><span class="numeral" data-count="0">0</span><span class="num-cap" data-i18n="num2.cap">cookie, zéro traceur</span></div>
-      <div class="num"><span class="numeral" data-count="100">100</span><span class="num-cap" data-i18n="num3.cap">% dessiné à la main</span></div>
+      <div class="num"><span class="numeral" data-count="100">100</span><span class="num-cap" data-i18n="num3.cap">% sur mesure, zéro template</span></div>
     </div>
   </section>
 
@@ -296,6 +300,7 @@ const I18N = {
     days: ['DIMANCHE','LUNDI','MARDI','MERCREDI','JEUDI','VENDREDI','SAMEDI'],
     months: ['JANVIER','FÉVRIER','MARS','AVRIL','MAI','JUIN','JUILLET','AOÛT','SEPTEMBRE','OCTOBRE','NOVEMBRE','DÉCEMBRE'],
     mailto: 'mailto:noah@scarsellato.com?subject=Parlons%20de%20mon%20monde',
+    flow: { label: 'RYTHME', modes: ['POSÉ', 'NORMAL', 'RAPIDE'] },
     specs: [
       ['SITE 01 — M-IMM / GRUND', 'RÉCIT — 6 CHAPITRES', 'RIDEAU DIRECTIONNEL + MORPH DE MONDE', 'ÉLÉVATION DESSINÉE AU SCROLL', '0 COOKIE · 0 TRACEUR'],
       ['SITE 02 — PHY-C / ESCH', 'ARCHÉTYPE LUMIÈRE — PAPIER & EUCALYPTUS', 'SCHÉMA DU CORPS ANIMÉ', 'RENDEZ-VOUS SANS TÉLÉPHONE', 'RAPPELS — LA VEILLE, PROMIS'],
@@ -320,6 +325,7 @@ const I18N = {
     days: ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'],
     months: ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'],
     mailto: 'mailto:noah@scarsellato.com?subject=Let%27s%20talk%20about%20my%20world',
+    flow: { label: 'PACE', modes: ['SLOW', 'NORMAL', 'FAST'] },
     specs: [
       ['SITE 01 — M-IMM / GRUND', 'NARRATIVE — 6 CHAPTERS', 'DIRECTIONAL CURTAIN + WORLD MORPH', 'ELEVATION DRAWN ON SCROLL', '0 COOKIES · 0 TRACKERS'],
       ['SITE 02 — PHY-C / ESCH', 'LIGHT ARCHETYPE — PAPER & EUCALYPTUS', 'ANIMATED BODY DIAGRAM', 'APPOINTMENTS WITHOUT A PHONE CALL', 'REMINDERS — THE DAY BEFORE, PROMISED'],
@@ -366,6 +372,7 @@ const I18N = {
       'kin.chip1': 'RESPONSE — SAME DAY ↗',
       'kin.chip2': '0 COOKIES · 0 TRACKERS',
       'void.head': '( 04 ) — THE ATELIER · BUILT BY HAND',
+      'void.grid': 'See everything as a grid ↗',
       'svc.head': '( 01 ) — THE CRAFTS · WHAT WE DO',
       'svc.st1': 'The website is',
       'svc.st2': 'only a door.',
@@ -403,7 +410,7 @@ const I18N = {
       'svc.note': 'We are a young atelier: rather than borrowed logos and testimonials, we prefer to let you try everything before you pay anything. Write one line — <a href="#contact">same-day reply</a>.',
       'num1.cap': 'worlds built — all open to visit above',
       'num2.cap': 'cookies, zero trackers',
-      'num3.cap': '% drawn by hand',
+      'num3.cap': '% made to measure, zero templates',
       'fin.head': '( 05 ) — AND NOW',
       'fin.st1': 'Let’s talk about',
       'fin.st2': 'your world.',
@@ -435,6 +442,7 @@ const I18N = {
     days: ['SONNTAG','MONTAG','DIENSTAG','MITTWOCH','DONNERSTAG','FREITAG','SAMSTAG'],
     months: ['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'],
     mailto: 'mailto:noah@scarsellato.com?subject=Sprechen%20wir%20%C3%BCber%20meine%20Welt',
+    flow: { label: 'TEMPO', modes: ['RUHIG', 'NORMAL', 'SCHNELL'] },
     specs: [
       ['SITE 01 — M-IMM / GRUND', 'ERZÄHLUNG — 6 KAPITEL', 'RICHTUNGSVORHANG + WELT-MORPH', 'AUFRISS ZEICHNET SICH BEIM SCROLLEN', '0 COOKIES · 0 TRACKER'],
       ['SITE 02 — PHY-C / ESCH', 'ARCHETYP LICHT — PAPIER & EUKALYPTUS', 'ANIMIERTES KÖRPERSCHEMA', 'TERMINE OHNE TELEFON', 'ERINNERUNGEN — AM VORTAG, VERSPROCHEN'],
@@ -481,6 +489,7 @@ const I18N = {
       'kin.chip1': 'ANTWORT — NOCH AM SELBEN TAG ↗',
       'kin.chip2': '0 COOKIES · 0 TRACKER',
       'void.head': '( 04 ) — DAS ATELIER · VON HAND GEBAUT',
+      'void.grid': 'Alles im Raster ansehen ↗',
       'svc.head': '( 01 ) — DIE GEWERKE · WAS WIR TUN',
       'svc.st1': 'Die Website ist',
       'svc.st2': 'nur eine Tür.',
@@ -518,7 +527,7 @@ const I18N = {
       'svc.note': 'Wir sind ein junges Atelier: statt geliehener Logos und Testimonials lassen wir Sie lieber alles ausprobieren, bevor Sie irgendetwas bezahlen. Schreiben Sie eine Zeile — <a href="#contact">Antwort am selben Tag</a>.',
       'num1.cap': 'welten gebaut — alle oben zu besuchen',
       'num2.cap': 'cookies, null tracker',
-      'num3.cap': '% von hand gezeichnet',
+      'num3.cap': '% maßgefertigt, null templates',
       'fin.head': '( 05 ) — UND JETZT',
       'fin.st1': 'Sprechen wir über',
       'fin.st2': 'Ihre Welt.',
@@ -684,6 +693,22 @@ if (!reduced) {
   const voidIdxEl = document.getElementById('voidIdx');
   const finale = document.querySelector('.finale');
 
+  // ---------- rail de l'atelier : un point = un site, un clic = on y saute ----------
+  // (noms propres — pas de traduction)
+  const V_NAMES = ['M Immobilier', 'Physio Concept', 'Antichi Sapori', 'Verde', 'Kohnen & Fils', 'Maxime Roda'];
+  const vNav = document.getElementById('vNav');
+  V_NAMES.forEach((name, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'v-dot';
+    b.dataset.name = name; b.setAttribute('aria-label', name);
+    b.addEventListener('click', () => {
+      const top = scrollY + voidTrack.getBoundingClientRect().top;
+      scrollTo({ top: top + ((i + 0.5) / 6) * (voidTrack.offsetHeight - innerHeight), behavior: 'smooth' });
+    });
+    vNav.appendChild(b);
+  });
+  const vDots = [...vNav.children];
+
   let swayX = 0, swayY = 0, tSwayX = 0, tSwayY = 0;
   let mx = innerWidth / 2, my = innerHeight / 2;
   let rawV = 0, skew = 0, lastY = scrollY;
@@ -737,6 +762,7 @@ if (!reduced) {
     const vi = Math.min(5, Math.floor(vp * 6));
     const local = vp * 6 - vi;
     voidIdxEl.textContent = String(vi + 1).padStart(2, '0');
+    vDots.forEach((d, i) => d.classList.toggle('on', i === vi));
     vScreens.forEach((s, i) => {
       s.classList.toggle('on', i === vi);
       s.style.transform = i === vi
@@ -752,6 +778,42 @@ if (!reduced) {
     forming = fr.top < vh * 0.55 && fr.bottom > vh * 0.5;
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+
+  // ---------- rythme de défilement : le visiteur choisit la longueur du voyage ----------
+  // le chip multiplie la hauteur des trois pistes scrubbées (--flow) ; au changement,
+  // on restaure la position RELATIVE (même progression dans la même piste) pour ne pas sauter
+  const FLOW = I18N[LANG].flow;
+  const FLOW_V = [1.4, 1, 0.55];
+  let flowI = 1;
+  try { const s = parseInt(localStorage.getItem('scar-flow'), 10); if (s >= 0 && s <= 2) flowI = s; } catch (e) {}
+  const flowTracks = [corTrack, kinTrack, voidTrack];
+  const flowBtn = document.createElement('button');
+  flowBtn.type = 'button'; flowBtn.className = 'flow-chip';
+  const applyFlow = () => {
+    document.documentElement.style.setProperty('--flow', FLOW_V[flowI]);
+    flowBtn.textContent = `${FLOW.label} · ${FLOW.modes[flowI]}`;
+  };
+  applyFlow();
+  document.body.appendChild(flowBtn);
+  flowBtn.addEventListener('click', () => {
+    const vh = innerHeight;
+    const infos = flowTracks.map(t => { const r = t.getBoundingClientRect(); return { t, top: r.top, bottom: r.bottom, h: t.offsetHeight }; });
+    const inside = infos.find(o => o.top <= 0 && o.bottom > vh);
+    const f = inside ? clamp01(-inside.top / Math.max(inside.h - vh, 1)) : 0;
+    flowI = (flowI + 1) % 3;
+    try { localStorage.setItem('scar-flow', String(flowI)); } catch (e) {}
+    applyFlow();
+    if (inside) {
+      const nh = inside.t.offsetHeight;
+      scrollTo({ top: scrollY + inside.t.getBoundingClientRect().top + f * (nh - vh), behavior: 'instant' });
+    } else {
+      // au-dessous de pistes rétrécies/agrandies : compenser leur delta pour rester sur place
+      let d = 0;
+      infos.forEach(o => { if (o.bottom <= 0) d += o.t.offsetHeight - o.h; });
+      if (d) scrollBy({ top: d, behavior: 'instant' });
+    }
+    update();
+  });
 
   // ---------- curseur : point + anneau ----------
   const ring = document.createElement('div'); ring.className = 'cursor-ring';
