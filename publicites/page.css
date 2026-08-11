@@ -1,0 +1,142 @@
+/* ============================================================
+   PAGE — LES PUBLICITÉS (métier 07)
+   Parti pris : pas de démonstration spectaculaire — la page EST
+   la démonstration : les règles avant l'offre, l'absence de
+   références dite en grand, chaque promesse au conditionnel
+   sauf celles de conduite. Mécanique sobre : cadres d'ambiance
+   partagés (vframe) + révélations, rien piloté au scroll.
+   Règle d'images : uniquement nos visuels d'ambiance — aucune
+   capture de compte client (il n'y en a pas, et c'est écrit).
+   ============================================================ */
+
+/* ---------- héros ---------- */
+.pb-hero { display: flex; align-items: flex-end; padding-bottom: 12vh; }
+.pb-hero .statement { padding: 0 clamp(1.25rem, 5vw, 4rem); }
+.pb-hero .kicker { display: block; margin-bottom: 1.6rem; }
+.pb-hero .sub {
+  margin-top: 1.8rem; max-width: 34rem; font-size: 1rem; line-height: 1.7; color: var(--cream);
+  opacity: 0.92;
+}
+.pb-hero .hero-cta { margin-top: 2.4rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.pb-fmt { position: absolute; right: clamp(1.25rem, 5vw, 4rem); bottom: 12vh; z-index: 3; text-align: right; max-width: 15rem; }
+.pb-fmt b {
+  display: block; font-family: var(--font-d); font-weight: 340; font-size: clamp(2.6rem, 8vw, 6rem);
+  line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums;
+}
+.pb-fmt small { display: block; font-size: 0.625rem; letter-spacing: 0.2em; line-height: 1.8; text-transform: uppercase; color: var(--cream-mut); margin-top: 0.6rem; }
+
+/* ---------- le cadre d'ambiance (mécanique partagée de l'atelier) ---------- */
+.vframe { display: flex; flex-direction: column; gap: 0.9rem; min-width: 0; }
+.vmedia {
+  position: relative; aspect-ratio: 9 / 16; overflow: hidden;
+  border: 1px solid rgb(198 165 108 / 0.22); background: var(--noir-deep);
+}
+.vmedia img, .vmedia video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.vmedia::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(180deg, rgb(9 12 14 / 0.55) 0%, transparent 24%, transparent 60%, rgb(9 12 14 / 0.74) 100%);
+}
+html:not(.js) .vmedia video { display: none; }
+.js .vmedia video { opacity: 0; transition: opacity 1.3s var(--ease); }
+.js .vmedia video.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .vmedia video { display: none; } }
+.vtag {
+  position: absolute; top: 0.7rem; left: 0.7rem; z-index: 3;
+  font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream);
+  background: rgb(9 12 14 / 0.72); border: 1px solid var(--gold-soft); padding: 0.3rem 0.55rem;
+}
+.vtag.hot { color: var(--noir); background: var(--gold); border-color: var(--gold); }
+.vbar { position: absolute; left: 0.7rem; right: 0.7rem; bottom: 0.85rem; z-index: 3; display: block; height: 1px; background: rgb(234 226 216 / 0.26); }
+.vbar i { display: block; height: 100%; width: 4%; background: var(--gold); }
+.vframe figcaption { font-size: 0.75rem; line-height: 1.6; color: var(--cream-mut); }
+@media (prefers-reduced-motion: no-preference) {
+  .vframe.amb .vmedia img, .vframe.amb .vmedia video { animation: pb-burn 24s var(--ease) infinite alternate; }
+  @keyframes pb-burn { from { transform: scale(1.04); } to { transform: scale(1.17) translateY(-2.5%); } }
+  .vframe.amb .vbar i { animation: pb-fill 13s linear infinite; }
+  @keyframes pb-fill { from { width: 4%; } to { width: 100%; } }
+}
+
+/* ---------- (01) où sont vos clients ---------- */
+.gap { padding: 14vh clamp(1.25rem, 5vw, 4rem) 12vh; }
+.gap-head { max-width: 74rem; margin: 0 auto; }
+.gap-head .statement { margin-top: 1.4rem; }
+.gap-lead { margin-top: 1.8rem; max-width: 38rem; font-size: 0.95rem; line-height: 1.75; color: var(--cream-mut); }
+.gap-second { margin-top: 1.2rem; max-width: 38rem; font-size: 0.95rem; line-height: 1.75; color: var(--cream-mut); }
+
+/* ---------- (02) ce que nous tenons ---------- */
+.made { padding: 12vh clamp(1.25rem, 5vw, 4rem); background: var(--noir-deep); }
+.made-inner {
+  max-width: 74rem; margin: 0 auto; display: grid; align-items: start;
+  gap: clamp(2.4rem, 5vw, 4rem); grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+}
+.made .vframe.amb { width: 100%; max-width: 17rem; justify-self: end; }
+.specs { list-style: none; margin-top: 2.6rem; border-top: 1px solid rgb(198 165 108 / 0.18); }
+.specs li {
+  position: relative; padding: 0.95rem 0 0.95rem 1.6rem; border-bottom: 1px solid rgb(198 165 108 / 0.12);
+  font-size: 0.9rem; line-height: 1.65; color: var(--cream-mut);
+}
+.specs li::before { content: "—"; position: absolute; left: 0; color: var(--gold); }
+.specs li b { color: var(--cream); font-weight: 400; }
+
+/* ---------- (03) les règles d'abord ---------- */
+.dest { padding: 12vh clamp(1.25rem, 5vw, 4rem); }
+.dest-inner { max-width: 74rem; margin: 0 auto; }
+.dest-head { margin-bottom: 3rem; }
+.honest {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  border-left: 2px solid var(--gold); background: rgb(198 165 108 / 0.05); padding: 1.4rem 1.6rem;
+}
+.honest .mark { font-family: var(--font-d); font-size: 1.6rem; color: var(--gold); line-height: 1; }
+.honest p { font-size: 0.95rem; line-height: 1.75; color: var(--cream-mut); }
+.honest p b { color: var(--cream); font-weight: 400; }
+.dest-grid {
+  margin-top: 3.5rem; display: grid; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  background: rgb(198 165 108 / 0.18); border: 1px solid rgb(198 165 108 / 0.18);
+}
+.dest-card { background: var(--noir); padding: 2rem 1.7rem 2.2rem; }
+.dest-card .n { display: block; font-family: var(--font-d); font-size: 2rem; line-height: 1; color: var(--gold); margin-bottom: 0.8rem; }
+.dest-card h3 { font-family: var(--font-d); font-weight: 340; font-size: 1.3rem; margin-bottom: 0.6rem; }
+.dest-card p { font-size: 0.875rem; line-height: 1.7; color: var(--cream-mut); }
+.dest-ask { margin-top: 2.6rem; }
+
+/* ---------- (04) comment ça se passe ---------- */
+.how { padding: 12vh clamp(1.25rem, 5vw, 4rem); background: var(--noir-deep); }
+.how-inner { max-width: 74rem; margin: 0 auto; }
+.how-head { margin-bottom: 3.5rem; }
+.steps { list-style: none; display: grid; gap: 2.4rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+.step { border-top: 1px solid var(--gold-soft); padding-top: 1.4rem; }
+.step .n { display: block; font-family: var(--font-d); font-size: 2.2rem; line-height: 1; color: var(--gold); margin-bottom: 0.7rem; }
+.step h3 { font-family: var(--font-d); font-weight: 340; font-size: 1.35rem; margin-bottom: 0.6rem; }
+.step p { font-size: 0.9rem; line-height: 1.7; color: var(--cream-mut); }
+.how-note { margin-top: 3rem; max-width: 40rem; font-size: 0.8125rem; line-height: 1.75; color: var(--cream-mut); }
+.how-ask { margin-top: 2rem; }
+
+/* ---------- (05) contact ---------- */
+.pb-contact { padding: 14vh clamp(1.25rem, 5vw, 4rem) 10vh; }
+.pb-contact-inner { max-width: 74rem; margin: 0 auto; }
+.pb-contact .note { margin-top: 1.6rem; max-width: 38rem; font-size: 0.8125rem; line-height: 1.7; color: var(--cream-mut); }
+.back-home { display: inline-block; margin-top: 3rem; font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-mut); text-decoration: none; }
+.back-home:hover { color: var(--gold); }
+
+/* ---------- révélations (JS-gated : plancher sans-JS) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(1.3rem); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .reveal.d1 { transition-delay: 0.09s; }
+  .js .reveal.d2 { transition-delay: 0.18s; }
+  .js .reveal.d3 { transition-delay: 0.27s; }
+}
+
+/* ---------- téléphone ---------- */
+@media (max-width: 47rem) {
+  .pb-hero { padding-bottom: 8vh; }
+  .pb-fmt { position: static; margin: 2.4rem clamp(1.25rem, 5vw, 4rem) 0; text-align: left; max-width: none; }
+  .gap, .made, .dest, .how { padding-top: 9vh; padding-bottom: 9vh; }
+  .pb-contact { padding-top: 9vh; }
+  .made-inner { grid-template-columns: 1fr; }
+  .made .vframe.amb { justify-self: start; max-width: 12.5rem; }
+  .specs li { font-size: 0.875rem; }
+  .vtag { font-size: 0.45rem; letter-spacing: 0.14em; padding: 0.25rem 0.4rem; }
+  .vbar { left: 0.5rem; right: 0.5rem; }
+  .vframe figcaption { font-size: 0.6875rem; }
+}

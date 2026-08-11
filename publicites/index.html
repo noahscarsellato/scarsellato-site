@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publicités — vos campagnes Meta, tenues chaque semaine — Scarsellato, Luxembourg</title>
+<meta name="description" content="Nous gérons vos campagnes Facebook et Instagram sur votre propre compte publicitaire : le budget reste sur votre carte, les décisions se prennent chaque semaine chiffres en main, et le compte-rendu mensuel dit aussi ce qui n'a pas marché. Sans cookies.">
+<link rel="stylesheet" href="../assets/shell.css?v=5">
+<link rel="stylesheet" href="page.css?v=1">
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="loader-core">
+    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
+    <p class="loader-count"><span id="loaderCount">00</span></p>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+  </div>
+</div>
+
+<canvas class="dust" id="dust" aria-hidden="true"></canvas>
+<div class="progress-rail" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="wordmark" href="../">scar<span class="italic gold">sellato</span></a>
+  <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
+  <nav class="top-links" aria-label="Navigation">
+    <a href="../" data-i18n="nav.home">Accueil</a>
+    <a href="../#metiers" data-i18n="nav.metiers">Métiers</a>
+    <a href="./" aria-current="page" data-i18n="nav.this">Les publicités</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+  <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.send">Parler de votre activité</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+</header>
+
+<main id="top">
+
+  <!-- HÉROS -->
+  <section class="pano pb-hero" aria-label="Les publicités">
+    <div class="pano-bg" data-parallax><img src="../img/world-sante.jpg" alt=""><video class="vid" muted loop playsinline preload="auto" src="../img/loop-sante.mp4"></video></div>
+    <div class="pano-scrim" aria-hidden="true"></div>
+    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( MÉTIER 07 ) — LES PUBLICITÉS</p>
+    <div class="statement">
+      <span class="chip kicker" data-i18n="hero.kicker">LUXEMBOURG · FR · DE · EN</span>
+      <p class="st-line big"><span class="st-in" data-i18n="hero.st1">Un bon site attend d'être trouvé.</span></p>
+      <p class="st-line big"><span class="st-in italic gold" data-i18n="hero.st2">Une campagne part chercher.</span></p>
+      <p class="sub" data-i18n="hero.sub">Nous gérons vos campagnes Facebook et Instagram — sur votre propre compte publicitaire, pour les entreprises d'ici qui veulent des demandes, pas des applaudissements. Le budget reste sur votre carte. Les décisions se prennent chaque semaine, chiffres en main.</p>
+      <div class="hero-cta">
+        <a class="btn-pill big magnetic" href="#contact"><span data-i18n="hero.cta1">Parler de votre activité</span><span class="pill-dot" aria-hidden="true">↗</span></a>
+        <button class="btn-pill magnetic" type="button" data-ask="Comment se passe la gestion d'une campagne publicitaire, du premier message au compte-rendu ?"><span data-i18n="hero.cta2">Demander à l'assistant</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+    <p class="pb-fmt" aria-hidden="true"><b data-i18n="hero.fmtb">7 j</b><small data-i18n="hero.fmtnote">première campagne en ligne en sept jours · l'image de fond est une ambiance de l'atelier</small></p>
+  </section>
+
+  <!-- (01) OÙ SONT VOS CLIENTS -->
+  <section class="gap" aria-label="Où sont vos clients">
+    <div class="gap-head reveal">
+      <p class="chip" aria-hidden="true" data-i18n="gap.head">( 01 ) — OÙ SONT VOS CLIENTS</p>
+      <div class="statement">
+        <p class="st-line"><span class="st-in" data-i18n="gap.st1">Vos futurs clients ne vous cherchent pas.</span></p>
+        <p class="st-line"><span class="st-in italic gold" data-i18n="gap.st2">Ils font défiler.</span></p>
+      </div>
+      <p class="gap-lead" data-i18n="gap.lead">Le bouche-à-oreille travaille bien, mais lentement. Et la personne qui aura besoin de vous le mois prochain ne tape rien dans Google ce soir — elle fait défiler son téléphone. Une campagne tenue met votre métier dans ce fil, au bon rayon de kilomètres, sans attendre qu'on pense à vous.</p>
+      <p class="gap-second" data-i18n="gap.second">C'est tout ce qu'une publicité peut faire : arriver au bon moment, dire une chose juste, et proposer une porte. Le reste — répondre vite, tenir la promesse — reste votre métier, et le nôtre est de ne dépenser votre budget que là où cette porte s'ouvre.</p>
+    </div>
+  </section>
+
+  <!-- (02) CE QUE NOUS TENONS -->
+  <section class="made" aria-label="Ce que nous tenons">
+    <div class="made-inner">
+      <div class="made-text">
+        <div class="reveal">
+          <p class="chip" aria-hidden="true" data-i18n="made.head">( 02 ) — CE QUE NOUS TENONS</p>
+          <div class="statement" style="margin-top:1.4rem">
+            <p class="st-line"><span class="st-in" data-i18n="made.st1">Des campagnes tenues,</span></p>
+            <p class="st-line"><span class="st-in italic gold" data-i18n="made.st2">pas des campagnes lancées.</span></p>
+          </div>
+        </div>
+        <ul class="specs reveal d1">
+          <li data-i18n="made.1"><b>Vos campagnes sur Meta</b> — Facebook et Instagram, là où l'attention locale passe ses soirées.</li>
+          <li data-i18n="made.2"><b>Plusieurs annonces à la fois</b> — chacune parle à un client différent. C'est l'atelier d'à côté qui fabrique les visuels, et qui les renouvelle avant qu'ils ne s'usent.</li>
+          <li data-i18n="made.3"><b>Des décisions chaque semaine</b> — ce qui coûte sans rapporter est coupé, ce qui travaille reçoit le budget. Chaque décision a son chiffre.</li>
+          <li data-i18n="made.4"><b>Un rayon, pas le monde</b> — votre ville et ses environs, dans vos langues.</li>
+          <li data-i18n="made.5"><b>Un compte-rendu mensuel en langage clair</b> — dépense, demandes, coût par demande. Les mauvais mois y figurent avec le diagnostic.</li>
+          <li data-i18n="made.6"><b>La page d'arrivée alignée</b> — l'endroit où mène l'annonce dit exactement ce qu'elle promet. Si votre site ne peut pas recevoir, nous le disons avant de dépenser.</li>
+        </ul>
+      </div>
+      <figure class="vframe alive amb reveal d1">
+        <div class="vmedia">
+          <img src="../img/world-sante.jpg" alt="">
+          <video class="vid" muted loop playsinline preload="auto" src="../img/loop-sante.mp4"></video>
+          <span class="vtag hot" data-i18n="made.frametag">AMBIANCE</span>
+          <span class="vbar" aria-hidden="true"><i></i></span>
+        </div>
+        <figcaption data-i18n="made.framecap">Image d'ambiance de l'atelier. Vos annonces seront faites de votre métier, de vos gens, de votre lumière.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- (03) LES RÈGLES D'ABORD — l'honnêteté avant l'offre -->
+  <section class="dest" aria-label="Les règles">
+    <div class="dest-inner">
+      <div class="dest-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="dest.head">( 03 ) — LES RÈGLES D'ABORD</p>
+        <div class="statement" style="margin-top:1.4rem">
+          <p class="st-line"><span class="st-in" data-i18n="dest.st1">Votre compte, votre budget,</span></p>
+          <p class="st-line"><span class="st-in italic gold" data-i18n="dest.st2">nos décisions expliquées.</span></p>
+        </div>
+      </div>
+
+      <div class="honest reveal">
+        <span class="mark" aria-hidden="true">*</span>
+        <p data-i18n="dest.honest"><b>Disons-le avant le reste :</b> nous n'avons pas encore de campagnes clientes publiées. Vous ne verrez donc ici ni captures d'écran, ni pourcentages, ni témoignages — il n'y en a pas. Ce que nous pouvons montrer, ce sont les règles ci-dessous, et les premiers chiffres se feront sur nos propres campagnes avant les vôtres. Les premiers clients le sauront, et leurs conditions le reconnaîtront.</p>
+      </div>
+
+      <div class="dest-grid">
+        <article class="dest-card reveal">
+          <span class="n">01</span>
+          <h3 data-i18n="dest.1.t">Le compte est à vous</h3>
+          <p data-i18n="dest.1.d">Le compte publicitaire est à votre nom, le budget part de votre carte, le plafond mensuel est fixé par écrit. Nous recevons un accès de gestion — jamais votre argent — et vous pouvez le retirer en deux clics.</p>
+        </article>
+        <article class="dest-card reveal d1">
+          <span class="n">02</span>
+          <h3 data-i18n="dest.2.t">Aucun chiffre promis</h3>
+          <p data-i18n="dest.2.d">Personne ne peut honnêtement promettre un coût par demande avant d'avoir diffusé chez vous. Nous promettons la discipline — des décisions hebdomadaires, expliquées — pas un résultat que nous n'avons pas encore mesuré.</p>
+        </article>
+        <article class="dest-card reveal d2">
+          <span class="n">03</span>
+          <h3 data-i18n="dest.3.t">Sous un vrai budget, nous refusons</h3>
+          <p data-i18n="dest.3.d">Une campagne a besoin d'environ 300 € par mois pour apprendre — cet argent va à Meta, pas à nous. En dessous, elle ne produit que du bruit, et nous préférons vous le dire que de le dépenser.</p>
+        </article>
+        <article class="dest-card reveal d3">
+          <span class="n">04</span>
+          <h3 data-i18n="dest.4.t">Chaque mois, vous pouvez partir</h3>
+          <p data-i18n="dest.4.d">Après le démarrage, la gestion se reconduit mois par mois. Aucun engagement long : un compte-rendu honnête est la seule chose qui doive vous retenir.</p>
+        </article>
+      </div>
+
+      <div class="dest-ask reveal">
+        <button class="btn-pill magnetic" type="button" data-ask="Pourquoi refusez-vous les petits budgets publicitaires ?"><span data-i18n="dest.ask">Pourquoi refuser un petit budget ?</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- (04) COMMENT ÇA SE PASSE -->
+  <section class="how" aria-label="Comment ça se passe">
+    <div class="how-inner">
+      <div class="how-head reveal">
+        <p class="chip" aria-hidden="true" data-i18n="how.head">( 04 ) — COMMENT ÇA SE PASSE</p>
+        <div class="statement" style="margin-top:1.4rem">
+          <p class="st-line"><span class="st-in" data-i18n="how.st1">Par écrit, chez vous,</span> <span class="st-in italic gold" data-i18n="how.st2">semaine après semaine.</span></p>
+        </div>
+      </div>
+      <ol class="steps">
+        <li class="step reveal"><span class="n">01</span>
+          <h3 data-i18n="how.1.t">On parle de votre activité</h3>
+          <p data-i18n="how.1.d">Ce que vous vendez, à qui, dans quel rayon, ce qu'une demande vaut pour vous. Par écrit — un appel seulement si vous préférez. Le prix de la gestion vous est donné par écrit avant tout engagement.</p>
+        </li>
+        <li class="step reveal d1"><span class="n">02</span>
+          <h3 data-i18n="how.2.t">Tout se met en place chez vous</h3>
+          <p data-i18n="how.2.d">Votre compte, la mesure des demandes, la page d'arrivée, les premières annonces. Première campagne en ligne en sept jours — et rien ne se lance sans votre accord écrit sur le plafond.</p>
+        </li>
+        <li class="step reveal d2"><span class="n">03</span>
+          <h3 data-i18n="how.3.t">Chaque semaine, on taille</h3>
+          <p data-i18n="how.3.d">Les annonces qui coûtent sans rapporter sont coupées, les visuels fatigués remplacés par des frais. Chaque mois, le compte-rendu arrive — bon ou mauvais, avec le diagnostic.</p>
+        </li>
+      </ol>
+      <p class="how-note reveal" data-i18n="how.note">La gestion est un forfait mensuel fixe, donné par écrit avant de commencer. Votre budget publicitaire est à part : il part de votre carte, directement chez Meta — il ne transite jamais par nous.</p>
+      <div class="how-ask reveal">
+        <button class="btn-pill magnetic" type="button" data-ask="Que contient le compte-rendu mensuel d'une campagne ?"><span data-i18n="how.ask">Que contient le compte-rendu ?</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- (05) CONTACT -->
+  <section class="pb-contact" id="contact" aria-label="Contact">
+    <div class="pb-contact-inner">
+      <div class="reveal">
+        <p class="chip" aria-hidden="true" data-i18n="fin.head">( 05 ) — ET MAINTENANT</p>
+        <div class="statement" style="margin-top:1.4rem">
+          <p class="st-line big"><span class="st-in" data-i18n="fin.st1">Parlez-nous de</span></p>
+          <p class="st-line big"><span class="st-in italic gold" data-i18n="fin.st2">votre activité.</span></p>
+        </div>
+        <p class="note" data-i18n="fin.note">Deux lignes suffisent : ce que vous faites, et où. Nous répondons le jour même — et si une campagne n'a pas de sens pour vous en ce moment, nous le dirons franchement plutôt que de vous vendre quelque chose.</p>
+        <form class="atelier-form" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
+          <input type="hidden" name="_subject" value="Publicités — demande (scarsellato.com)">
+          <input type="hidden" name="_next" value="https://scarsellato.com/publicites/#contact">
+          <input type="text" name="_honey" style="display:none">
+          <div class="af-row">
+            <input type="text" name="nom" placeholder="VOTRE NOM" required aria-label="Nom" data-i18n-ph="form.name">
+            <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+          </div>
+          <textarea name="message" placeholder="QUE FAITES-VOUS, ET OÙ ?" required aria-label="Message" data-i18n-ph="form.msg3"></textarea>
+          <button class="btn-pill magnetic big" type="submit"><span data-i18n="form.send">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+        </form>
+        <a class="back-home" href="../#metiers" data-i18n="fin.back">← Revoir tous les métiers</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
+
+<div class="chat" id="chat">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — EN DIRECT )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonjour ! Je réponds en direct, uniquement à partir des informations de l'atelier — je ne devine rien. Posez votre question, ou commencez par l'une de celles-ci :</p></div>
+    <div class="chat-choices" id="chatChoices"></div>
+    <form class="chat-form" id="chatForm">
+      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="ÉCRIVEZ VOTRE QUESTION…" aria-label="Votre question" data-i18n-ph="chat.ph">
+      <button class="chat-send" id="chatSend" type="submit" aria-label="Envoyer" data-i18n-aria="chat.sendAria">➤</button>
+    </form>
+    <p class="chat-note" data-i18n="chat.note">Vos messages servent uniquement à vous répondre. 0 cookie, 0 traceur.</p>
+  </div>
+</div>
+
+<script>
+/* Dictionnaire de CETTE page — le FR est la source inline, EN/DE traduisent.
+   Règles non négociables de cette page, dans les trois langues :
+   le compte publicitaire appartient au client, le budget ne transite jamais
+   par nous, aucun résultat n'est promis avant d'avoir été mesuré, et
+   l'absence de campagnes clientes publiées est dite, pas maquillée. */
+window.PAGE_I18N = {
+  fr: { t: {}, qa: [
+    ["Combien ça coûte ?", "La gestion est un forfait mensuel fixe, avec un démarrage en une fois — les deux donnés par écrit avant tout engagement. Votre budget publicitaire est à part : il part de votre carte, directement chez Meta, jamais par nous. Écrivez-nous deux lignes sur votre activité et vous avez les chiffres le jour même."],
+    ["Vous garantissez des résultats ?", "Non. Personne ne peut honnêtement promettre un coût par demande avant d'avoir diffusé chez vous. Nous promettons la discipline : des décisions chaque semaine, chiffres en main, et un compte-rendu mensuel qui dit aussi ce qui n'a pas marché."],
+    ["À qui appartient le compte publicitaire ?", "À vous, toujours. Le compte est à votre nom, le budget sur votre carte, le plafond fixé par écrit. Nous recevons un accès de gestion, que vous pouvez retirer en deux clics."],
+    ["Quel budget publicitaire faut-il ?", "Comptez environ 300 € par mois pour que la campagne puisse apprendre — cet argent va à Meta, pas à nous. En dessous, nous préférons refuser : ce serait dépenser pour du bruit."],
+    ["Pourquoi Meta et pas Google ?", "Pour un commerce local, c'est là que l'attention passe ses soirées, et c'est le terrain où des visuels renouvelés font la différence. Google a du sens pour certains métiers — si c'est le vôtre, nous vous le dirons plutôt que de vous vendre Meta par principe."],
+    ["Vous avez des références ?", "Pas encore de campagnes clientes publiées — c'est écrit sur la page, et nous préférons le dire que d'emprunter les chiffres des autres. Les premiers chiffres se font sur nos propres campagnes, et les premiers clients auront des conditions qui reconnaissent qu'ils sont les premiers."]
+  ]},
+  en: { t: {
+    'meta.title': 'Ads — your Meta campaigns, tended every week — Scarsellato, Luxembourg',
+    'meta.desc': "We run your Facebook and Instagram campaigns on your own ad account: the budget stays on your card, decisions are made weekly with the numbers in hand, and the monthly report includes what did not work. Cookie-free.",
+    'nav.this': 'The ads', 'cta.send': 'Tell us about your business',
+    'hero.chip': '( CRAFT 07 ) — PAID ADS',
+    'hero.kicker': 'LUXEMBOURG · FR · DE · EN',
+    'hero.st1': 'A good website waits to be found.', 'hero.st2': 'A campaign goes looking.',
+    'hero.sub': 'We run your Facebook and Instagram campaigns — on your own ad account, for local businesses that want inquiries, not applause. The budget stays on your card. Decisions are made every week, with the numbers in hand.',
+    'hero.cta1': 'Tell us about your business', 'hero.cta2': 'Ask the assistant',
+    'hero.fmtb': '7 d',
+    'hero.fmtnote': 'first campaign live within seven days · the background image is an atmosphere image from the atelier',
+    'gap.head': '( 01 ) — WHERE YOUR CUSTOMERS ARE',
+    'gap.st1': 'Your future customers are not searching for you.', 'gap.st2': 'They are scrolling.',
+    'gap.lead': "Word of mouth works well, but slowly. And the person who will need you next month is not typing anything into Google tonight — they are scrolling on their phone. A well-tended campaign puts your craft into that feed, within the right radius, without waiting to be thought of.",
+    'gap.second': "That is all an ad can do: arrive at the right moment, say one true thing, and offer a door. The rest — replying fast, keeping the promise — remains your craft, and ours is to spend your budget only where that door opens.",
+    'made.head': '( 02 ) — WHAT WE TEND',
+    'made.st1': 'Campaigns that are tended,', 'made.st2': 'not campaigns that are launched.',
+    'made.1': '<b>Your campaigns on Meta</b> — Facebook and Instagram, where local attention spends its evenings.',
+    'made.2': '<b>Several ads at once</b> — each speaks to a different customer. The atelier next door makes the visuals, and replaces them before they wear out.',
+    'made.3': '<b>Decisions every week</b> — what costs without returning is cut, what works receives the budget. Every decision has its number.',
+    'made.4': '<b>A radius, not the world</b> — your city and its surroundings, in your languages.',
+    'made.5': '<b>A monthly report in plain language</b> — spend, inquiries, cost per inquiry. Bad months appear in it, with the diagnosis.',
+    'made.6': '<b>The landing page aligned</b> — the place the ad leads to says exactly what the ad promises. If your website cannot receive, we say so before spending.',
+    'made.frametag': 'ATMOSPHERE',
+    'made.framecap': 'An atelier atmosphere image. Your ads will be made of your craft, your people, your light.',
+    'dest.head': '( 03 ) — THE RULES FIRST',
+    'dest.st1': 'Your account, your budget,', 'dest.st2': 'our decisions explained.',
+    'dest.honest': "<b>Let us say it before anything else:</b> we have no published client campaigns yet. So you will see no screenshots, no percentages, no testimonials here — there are none. What we can show are the rules below, and the first numbers will be made on our own campaigns before yours. The first clients will know it, and their terms will acknowledge it.",
+    'dest.1.t': 'The account is yours',
+    'dest.1.d': 'The ad account is in your name, the budget leaves from your card, the monthly ceiling is agreed in writing. We receive management access — never your money — and you can revoke it in two clicks.',
+    'dest.2.t': 'No numbers promised',
+    'dest.2.d': 'Nobody can honestly promise a cost per inquiry before having run ads for your business. We promise the discipline — weekly decisions, explained — not a result we have not yet measured.',
+    'dest.3.t': 'Below a real budget, we decline',
+    'dest.3.d': 'A campaign needs around €300 per month to learn — that money goes to Meta, not to us. Below that it only produces noise, and we would rather tell you than spend it.',
+    'dest.4.t': 'Every month, you can leave',
+    'dest.4.d': 'After the start, the engagement renews month by month. No long commitment: an honest report is the only thing that should keep you.',
+    'dest.ask': 'Why decline a small budget?',
+    'how.head': '( 04 ) — HOW IT GOES',
+    'how.st1': 'In writing, on your side,', 'how.st2': 'week after week.',
+    'how.1.t': 'We talk about your business',
+    'how.1.d': 'What you sell, to whom, within which radius, what an inquiry is worth to you. In writing — a call only if you prefer. The management fee is given to you in writing before any commitment.',
+    'how.2.t': 'Everything is set up on your side',
+    'how.2.d': 'Your account, the measurement of inquiries, the landing page, the first ads. First campaign live within seven days — and nothing launches without your written agreement on the ceiling.',
+    'how.3.t': 'Every week, we prune',
+    'how.3.d': 'Ads that cost without returning are cut, tired visuals are replaced with fresh ones. Every month the report arrives — good or bad, with the diagnosis.',
+    'how.note': 'The management fee is a fixed monthly amount, given in writing before we start. Your advertising budget is separate: it leaves from your card, directly to Meta — it never passes through us.',
+    'how.ask': 'What is in the monthly report?',
+    'fin.head': '( 05 ) — AND NOW',
+    'fin.st1': 'Tell us about', 'fin.st2': 'your business.',
+    'fin.note': 'Two lines are enough: what you do, and where. We reply the same day — and if a campaign makes no sense for you right now, we will say so plainly rather than sell you something.',
+    'form.msg3': 'WHAT DO YOU DO, AND WHERE?',
+    'fin.back': '← Back to all crafts'
+  }, qa: [
+    ["What does it cost?", "The management fee is a fixed monthly amount, with a one-time setup — both given in writing before any commitment. Your advertising budget is separate: it leaves from your card, directly to Meta, never through us. Write us two lines about your business and you have the figures the same day."],
+    ["Do you guarantee results?", "No. Nobody can honestly promise a cost per inquiry before having run ads for your business. We promise the discipline: decisions every week with the numbers in hand, and a monthly report that also says what did not work."],
+    ["Who owns the ad account?", "You do, always. The account is in your name, the budget on your card, the ceiling agreed in writing. We receive management access, which you can revoke in two clicks."],
+    ["What advertising budget is needed?", "Count on around €300 per month so the campaign can learn — that money goes to Meta, not to us. Below that, we would rather decline: it would be spending for noise."],
+    ["Why Meta and not Google?", "For a local business, that is where attention spends its evenings, and it is the ground where fresh visuals make the difference. Google makes sense for some crafts — if yours is one of them, we will tell you rather than sell you Meta on principle."],
+    ["Do you have references?", "No published client campaigns yet — it is written on the page, and we would rather say it than borrow other people's numbers. The first numbers are being made on our own campaigns, and the first clients will get terms that acknowledge they are the first."]
+  ]},
+  de: { t: {
+    'meta.title': 'Werbeanzeigen — Ihre Meta-Kampagnen, wöchentlich gepflegt — Scarsellato, Luxemburg',
+    'meta.desc': 'Wir führen Ihre Facebook- und Instagram-Kampagnen auf Ihrem eigenen Werbekonto: Das Budget bleibt auf Ihrer Karte, Entscheidungen fallen wöchentlich mit den Zahlen in der Hand, und der Monatsbericht nennt auch, was nicht funktioniert hat. Ohne Cookies.',
+    'nav.this': 'Die Anzeigen', 'cta.send': 'Von Ihrem Geschäft erzählen',
+    'hero.chip': '( GEWERK 07 ) — WERBEANZEIGEN',
+    'hero.kicker': 'LUXEMBURG · FR · DE · EN',
+    'hero.st1': 'Eine gute Website wartet, gefunden zu werden.', 'hero.st2': 'Eine Kampagne geht suchen.',
+    'hero.sub': 'Wir führen Ihre Facebook- und Instagram-Kampagnen — auf Ihrem eigenen Werbekonto, für Unternehmen von hier, die Anfragen wollen, keinen Applaus. Das Budget bleibt auf Ihrer Karte. Entscheidungen fallen jede Woche, mit den Zahlen in der Hand.',
+    'hero.cta1': 'Von Ihrem Geschäft erzählen', 'hero.cta2': 'Den Assistenten fragen',
+    'hero.fmtb': '7 T',
+    'hero.fmtnote': 'erste Kampagne binnen sieben Tagen online · das Hintergrundbild ist ein Stimmungsbild aus dem Atelier',
+    'gap.head': '( 01 ) — WO IHRE KUNDEN SIND',
+    'gap.st1': 'Ihre künftigen Kunden suchen nicht nach Ihnen.', 'gap.st2': 'Sie scrollen.',
+    'gap.lead': 'Mundpropaganda arbeitet gut, aber langsam. Und wer Sie nächsten Monat brauchen wird, tippt heute Abend nichts in Google — er scrollt auf seinem Telefon. Eine gepflegte Kampagne bringt Ihr Gewerk in diesen Feed, im richtigen Umkreis, ohne darauf zu warten, dass man an Sie denkt.',
+    'gap.second': 'Mehr kann eine Anzeige nicht leisten: im richtigen Moment ankommen, eine wahre Sache sagen und eine Tür anbieten. Der Rest — schnell antworten, das Versprechen halten — bleibt Ihr Handwerk. Unseres ist, Ihr Budget nur dort auszugeben, wo diese Tür aufgeht.',
+    'made.head': '( 02 ) — WAS WIR PFLEGEN',
+    'made.st1': 'Kampagnen, die gepflegt werden,', 'made.st2': 'nicht Kampagnen, die man startet.',
+    'made.1': '<b>Ihre Kampagnen auf Meta</b> — Facebook und Instagram, wo die Aufmerksamkeit vor Ort ihre Abende verbringt.',
+    'made.2': '<b>Mehrere Anzeigen zugleich</b> — jede spricht einen anderen Kunden an. Das Atelier nebenan macht die Visuals und ersetzt sie, bevor sie sich abnutzen.',
+    'made.3': '<b>Entscheidungen jede Woche</b> — was kostet, ohne zu bringen, wird gestrichen; was arbeitet, bekommt das Budget. Jede Entscheidung hat ihre Zahl.',
+    'made.4': '<b>Ein Umkreis, nicht die Welt</b> — Ihre Stadt und ihre Umgebung, in Ihren Sprachen.',
+    'made.5': '<b>Ein Monatsbericht in klarer Sprache</b> — Ausgaben, Anfragen, Kosten pro Anfrage. Schlechte Monate stehen darin, mit der Diagnose.',
+    'made.6': '<b>Die Zielseite stimmig</b> — die Seite, zu der die Anzeige führt, sagt genau, was die Anzeige verspricht. Kann Ihre Website nicht empfangen, sagen wir es, bevor wir ausgeben.',
+    'made.frametag': 'STIMMUNG',
+    'made.framecap': 'Ein Stimmungsbild des Ateliers. Ihre Anzeigen entstehen aus Ihrem Gewerk, Ihren Menschen, Ihrem Licht.',
+    'dest.head': '( 03 ) — DIE REGELN ZUERST',
+    'dest.st1': 'Ihr Konto, Ihr Budget,', 'dest.st2': 'unsere Entscheidungen erklärt.',
+    'dest.honest': '<b>Sagen wir es vor allem anderen:</b> Wir haben noch keine veröffentlichten Kundenkampagnen. Sie sehen hier also weder Screenshots noch Prozentzahlen noch Referenzen — es gibt keine. Was wir zeigen können, sind die Regeln unten; die ersten Zahlen entstehen auf unseren eigenen Kampagnen, bevor sie auf Ihren entstehen. Die ersten Kunden werden das wissen, und ihre Konditionen werden es anerkennen.',
+    'dest.1.t': 'Das Konto gehört Ihnen',
+    'dest.1.d': 'Das Werbekonto läuft auf Ihren Namen, das Budget geht von Ihrer Karte ab, die monatliche Obergrenze wird schriftlich festgelegt. Wir erhalten einen Verwaltungszugang — nie Ihr Geld — und Sie können ihn mit zwei Klicks entziehen.',
+    'dest.2.t': 'Keine Zahlen versprochen',
+    'dest.2.d': 'Niemand kann ehrlich Kosten pro Anfrage versprechen, bevor bei Ihnen geschaltet wurde. Wir versprechen die Disziplin — wöchentliche, erklärte Entscheidungen — nicht ein Ergebnis, das wir noch nicht gemessen haben.',
+    'dest.3.t': 'Unter einem echten Budget lehnen wir ab',
+    'dest.3.d': 'Eine Kampagne braucht rund 300 € im Monat, um zu lernen — dieses Geld geht an Meta, nicht an uns. Darunter erzeugt sie nur Rauschen, und wir sagen es Ihnen lieber, als es auszugeben.',
+    'dest.4.t': 'Jeden Monat können Sie gehen',
+    'dest.4.d': 'Nach dem Start verlängert sich die Betreuung Monat für Monat. Keine lange Bindung: Ein ehrlicher Bericht ist das Einzige, was Sie halten sollte.',
+    'dest.ask': 'Warum ein kleines Budget ablehnen?',
+    'how.head': '( 04 ) — WIE ES ABLÄUFT',
+    'how.st1': 'Schriftlich, bei Ihnen,', 'how.st2': 'Woche für Woche.',
+    'how.1.t': 'Wir sprechen über Ihr Geschäft',
+    'how.1.d': 'Was Sie verkaufen, an wen, in welchem Umkreis, was eine Anfrage für Sie wert ist. Schriftlich — ein Anruf nur, wenn Sie es vorziehen. Der Betreuungspreis wird Ihnen vor jeder Verpflichtung schriftlich genannt.',
+    'how.2.t': 'Alles entsteht bei Ihnen',
+    'how.2.d': 'Ihr Konto, die Messung der Anfragen, die Zielseite, die ersten Anzeigen. Erste Kampagne binnen sieben Tagen online — und nichts startet ohne Ihre schriftliche Zusage zur Obergrenze.',
+    'how.3.t': 'Jede Woche wird beschnitten',
+    'how.3.d': 'Anzeigen, die kosten, ohne zu bringen, werden gestrichen; müde Visuals durch frische ersetzt. Jeden Monat kommt der Bericht — gut oder schlecht, mit der Diagnose.',
+    'how.note': 'Die Betreuung ist ein fester Monatsbetrag, schriftlich genannt, bevor wir beginnen. Ihr Werbebudget ist getrennt: Es geht von Ihrer Karte direkt an Meta — es läuft nie über uns.',
+    'how.ask': 'Was steht im Monatsbericht?',
+    'fin.head': '( 05 ) — UND JETZT',
+    'fin.st1': 'Erzählen Sie uns von', 'fin.st2': 'Ihrem Geschäft.',
+    'fin.note': 'Zwei Zeilen genügen: was Sie tun, und wo. Wir antworten noch am selben Tag — und wenn eine Kampagne für Sie gerade keinen Sinn ergibt, sagen wir das offen, statt Ihnen etwas zu verkaufen.',
+    'form.msg3': 'WAS MACHEN SIE, UND WO?',
+    'fin.back': '← Zurück zu allen Gewerken'
+  }, qa: [
+    ["Was kostet das?", "Die Betreuung ist ein fester Monatsbetrag, mit einer einmaligen Einrichtung — beides schriftlich genannt, vor jeder Verpflichtung. Ihr Werbebudget ist getrennt: Es geht von Ihrer Karte direkt an Meta, nie über uns. Schreiben Sie uns zwei Zeilen zu Ihrem Geschäft und Sie haben die Zahlen noch am selben Tag."],
+    ["Garantieren Sie Ergebnisse?", "Nein. Niemand kann ehrlich Kosten pro Anfrage versprechen, bevor bei Ihnen geschaltet wurde. Wir versprechen die Disziplin: Entscheidungen jede Woche mit den Zahlen in der Hand, und einen Monatsbericht, der auch nennt, was nicht funktioniert hat."],
+    ["Wem gehört das Werbekonto?", "Ihnen, immer. Das Konto läuft auf Ihren Namen, das Budget auf Ihrer Karte, die Obergrenze wird schriftlich festgelegt. Wir erhalten einen Verwaltungszugang, den Sie mit zwei Klicks entziehen können."],
+    ["Welches Werbebudget braucht es?", "Rechnen Sie mit rund 300 € im Monat, damit die Kampagne lernen kann — dieses Geld geht an Meta, nicht an uns. Darunter lehnen wir lieber ab: Es wäre Geld für Rauschen."],
+    ["Warum Meta und nicht Google?", "Für ein lokales Geschäft verbringt die Aufmerksamkeit dort ihre Abende, und dort machen frische Visuals den Unterschied. Google ergibt für manche Gewerke Sinn — gehört Ihres dazu, sagen wir es Ihnen, statt Ihnen aus Prinzip Meta zu verkaufen."],
+    ["Haben Sie Referenzen?", "Noch keine veröffentlichten Kundenkampagnen — das steht auf der Seite, und wir sagen es lieber, als fremde Zahlen zu leihen. Die ersten Zahlen entstehen auf unseren eigenen Kampagnen, und die ersten Kunden bekommen Konditionen, die anerkennen, dass sie die ersten sind."]
+  ]}
+};
+</script>
+<script src="../assets/shell.js?v=5"></script>
+
+</body>
+</html>
