@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+  CARTE DE VISITE — Scarsellato · Zéro lead perdu (agences immobilières)
+  Format d'impression : 85 × 55 mm fini + 3 mm de fond perdu = 91 × 61 mm par page.
+  Zone de sécurité : rien d'important à moins de 4 mm du bord fini (7 mm du bord de page).
+  Page 1 = recto (noir), page 2 = verso (crème, écrivable au stylo).
+  Régénérer le PDF : node build.js   (depuis ce dossier)
+  TÉLÉPHONE : remplir data-phone sur <body> puis régénérer — vide = ligne masquée.
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Carte de visite — Scarsellato</title>
+<style>
+@font-face { font-family: 'Fraunces'; src: url('../../fonts/fraunces-latin.woff2') format('woff2'); font-weight: 300 600; font-style: normal; }
+@font-face { font-family: 'Fraunces'; src: url('../../fonts/fraunces-italic-latin.woff2') format('woff2'); font-weight: 300 600; font-style: italic; }
+@page { size: 91mm 61mm; margin: 0; }
+:root {
+  --noir: #0d1114; --noir-deep: #090c0e; --cream: #eae2d8; --cream-mut: #b3aca1;
+  --gold: #c6a56c; --gold-ink: #8a6a33; --gold-soft: rgb(198 165 108 / 0.4);
+  --font-d: 'Fraunces', Georgia, serif; --font-b: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #777; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.card { width: 91mm; height: 61mm; position: relative; overflow: hidden; page-break-after: always; break-after: page; }
+.card:last-child { page-break-after: auto; break-after: auto; }
+/* le contenu vit dans la zone de sécurité : 3 mm de fond perdu + 4 mm de marge */
+.safe { position: absolute; inset: 7mm; }
+.caps { font-family: var(--font-b); font-size: 5.2pt; letter-spacing: 0.2em; text-transform: uppercase; }
+
+/* ---------- RECTO ---------- */
+.front { background: var(--noir); color: var(--cream); }
+.front::before { /* le fil d'or du site, en haut à gauche — déborde dans le fond perdu exprès */
+  content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 0.6mm;
+  background: linear-gradient(90deg, #8a6a33, var(--gold));
+}
+.front .word { position: absolute; top: 7mm; left: 0; font-family: var(--font-d); font-weight: 340; font-size: 30pt; line-height: 1; letter-spacing: -0.01em; }
+.front .word i { color: var(--gold); }
+.front .what { position: absolute; top: 22mm; left: 0; color: var(--gold); font-size: 5pt; }
+.front .who { position: absolute; bottom: 0; left: 0; right: 0; border-top: 0.2mm solid var(--gold-soft); padding-top: 2.2mm; display: flex; justify-content: space-between; align-items: flex-end; }
+.front .name { font-family: var(--font-d); font-size: 9pt; line-height: 1.1; }
+.front .name small { display: block; font-family: var(--font-b); font-size: 5pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream-mut); margin-top: 0.8mm; }
+.front .contact { text-align: right; font-family: var(--font-b); font-size: 6pt; line-height: 1.55; color: var(--cream); }
+.front .contact .ph:empty { display: none; }
+
+/* ---------- VERSO (crème : on écrit dessus au stylo) ---------- */
+.back { background: var(--cream); color: var(--noir); }
+.back .lbl { position: absolute; top: 0; left: 0; color: var(--gold-ink); }
+.back .line { position: absolute; top: 9.5mm; left: 0; width: 46mm; height: 9mm; border-bottom: 0.25mm solid var(--noir); }
+.back .line::after { content: ""; }
+.back .tested { position: absolute; top: 21mm; left: 0; width: 46mm; font-family: var(--font-b); font-size: 5.4pt; color: #4a4f53; display: flex; align-items: flex-end; gap: 1mm; white-space: nowrap; }
+.back .tested .blank { flex: 1; border-bottom: 0.18mm solid #8b8f92; height: 3mm; }
+.back .with { position: absolute; bottom: 0; left: 0; width: 48mm; }
+.back .with p { font-family: var(--font-d); font-size: 10pt; line-height: 1.15; font-weight: 340; white-space: nowrap; }
+.back .with p i { color: var(--gold-ink); }
+.back .with small { display: block; margin-top: 1.4mm; font-family: var(--font-b); font-size: 5.2pt; color: #4a4f53; line-height: 1.4; }
+.back .qr { position: absolute; top: 0; right: 0; width: 22mm; text-align: center; }
+.back .qr img { display: block; width: 19mm; height: 19mm; margin: 0 auto; }
+.back .qr .caps { display: block; margin-top: 2mm; font-size: 4.6pt; letter-spacing: 0.16em; color: var(--noir); line-height: 1.5; }
+.back .qr .caps b { color: var(--gold-ink); font-weight: 600; }
+.back .url { position: absolute; bottom: 0; right: 0; width: 22mm; text-align: center; font-family: var(--font-b); font-size: 5pt; color: #4a4f53; }
+</style>
+</head>
+<body data-phone="+352 621 171 448">
+
+<!-- RECTO -->
+<section class="card front">
+  <div class="safe">
+    <p class="word">scar<i>sellato</i></p>
+    <p class="what caps">Zéro lead perdu — agences immobilières</p>
+    <div class="who">
+      <p class="name">Noah Scarsellato</p>
+      <p class="contact"><span class="ph" id="ph"></span><br id="phbr">noah@scarsellato.com<br>scarsellato.com</p>
+    </div>
+  </div>
+</section>
+
+<!-- VERSO -->
+<section class="card back">
+  <div class="safe">
+    <span class="lbl caps">Votre temps de réponse</span>
+    <div class="line"></div>
+    <p class="tested">Testé le<span class="blank"></span>sur une annonce</p>
+    <div class="with">
+      <p>Avec nous : <i>quelques minutes.</i></p>
+      <small>Soirs et week-ends compris · FR · DE · EN</small>
+    </div>
+    <div class="qr">
+      <img src="qr-immobilier.svg" alt="QR — scarsellato.com/immobilier">
+      <span class="caps"><b>Pilote 14 jours</b><br>gratuit</span>
+    </div>
+    <p class="url">scarsellato.com/immobilier</p>
+  </div>
+</section>
+
+<script>
+  // téléphone : une seule source (data-phone sur <body>) ; vide = ligne masquée
+  const ph = document.body.dataset.phone.trim();
+  document.getElementById('ph').textContent = ph;
+  if (!ph) document.getElementById('phbr').remove();
+</script>
+</body>
+</html>

@@ -100,7 +100,9 @@
 }
 
 @media (max-width: 47rem) {
-  .rr-hero { padding-bottom: 8vh; }
+  /* téléphone : le héros passe en colonne (le cadran se range sous le texte au lieu
+     de lui voler la moitié de la largeur) et laisse de la place au chip du haut */
+  .rr-hero { padding-bottom: 8vh; padding-top: 8.5rem; flex-direction: column; justify-content: flex-end; align-items: stretch; }
   .rr-clockface { position: static; margin: 2.4rem clamp(1.25rem, 5vw, 4rem) 0; text-align: left; }
   .rr-clockface small { text-align: left; }
   .night, .mech, .ladder, .incl { padding-top: 9vh; padding-bottom: 9vh; }

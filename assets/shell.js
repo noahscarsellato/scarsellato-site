@@ -326,3 +326,8 @@
     window.scarAsk = (q) => { tp(true); ask(q, null); };
   }
 })();
+
+// barre du haut en verre dépoli après l'ouverture (passe minimale 2026-11-14)
+(() => { const tb = document.querySelector('.topbar'); if (!tb) return;
+  const on = () => tb.classList.toggle('is-scrolled', scrollY > 40);
+  on(); addEventListener('scroll', on, { passive: true }); })();

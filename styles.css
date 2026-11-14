@@ -690,3 +690,44 @@ html:not(.js) .pano-bg video, html:not(.js) .cor-bg video { display: none; }
   .services { padding: 12vh 1.25rem 10vh; }
   .svc-head { margin-bottom: 3rem; }
 }
+
+/* ==========================================================================
+   PASSE MINIMALE — 2026-11-14 (Noah : « plus minimal, élégant, avec des effets »)
+   Moins de boîtes, plus d'air. Les étiquettes deviennent du texte fin précédé
+   d'un trait ; la barre du haut se pose en verre dépoli dès qu'on quitte l'ouverture.
+   ========================================================================== */
+.live-line { display: none !important; }
+.topbar {
+  transition: background 0.6s var(--ease), backdrop-filter 0.6s var(--ease), padding 0.6s var(--ease), border-color 0.6s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.topbar.is-scrolled {
+  background: rgb(9 12 14 / 0.55);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  backdrop-filter: blur(18px) saturate(1.15);
+  border-bottom-color: rgb(198 165 108 / 0.10);
+  padding-top: 0.7rem; padding-bottom: 0.7rem;
+}
+.chip {
+  background: none; -webkit-backdrop-filter: none; backdrop-filter: none; border: 0;
+  padding: 0; display: inline-flex; align-items: center; gap: 0.9rem;
+  color: var(--cream-mut); letter-spacing: 0.24em;
+  text-shadow: 0 1px 14px rgb(0 0 0 / 0.55);
+}
+.chip::before {
+  content: ""; width: 1.6rem; height: 1px; flex: none;
+  background: var(--gold); opacity: 0.7;
+}
+.hero .chip-tl { display: none; }
+.whisper { opacity: 0.7; letter-spacing: 0.2em; }
+.trust { gap: 0.4rem 0; }
+.trust li { border: 0; padding: 0.3rem 1.1rem 0.3rem 0; position: relative; }
+.trust li:not(:last-child)::after {
+  content: ""; position: absolute; right: 0.45rem; top: 50%;
+  width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: 0.55;
+}
+.dust { opacity: 0.55; }
+a, button { -webkit-tap-highlight-color: transparent; }
+@media (prefers-reduced-motion: no-preference) {
+  .pano-bg video.vid, .cor-bg video.vid { transition: opacity 1.2s var(--ease); }
+}
