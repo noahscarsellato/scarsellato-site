@@ -745,3 +745,30 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 .hero-immo:hover { background: var(--gold); color: #0b0e10; border-color: var(--gold); }
 @media (max-width: 47rem) { .hero-immo { font-size: 0.625rem; letter-spacing: 0.1em; margin-bottom: 1.1rem; } }
+
+/* MENU IDENTIQUE PARTOUT + MENU MOBILE (2026-11-15, Noah : « make sure that every page has the same tabs ») */
+.top-links a[aria-current="page"] { color: var(--gold); }
+.nav-toggle { display: none; }
+@media (max-width: 47rem) {
+  .nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center; min-width: 2.6rem; height: 2.3rem;
+    padding: 0 0.85rem; border: 1px solid var(--gold-soft); border-radius: 999px; background: rgb(9 12 14 / 0.35);
+    color: var(--cream); font: inherit; font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+  }
+  body.nav-open .topbar { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  body.nav-open .top-links {
+    display: flex; position: fixed; inset: 0; z-index: 80; margin: 0;
+    flex-direction: column; align-items: center; justify-content: center; gap: 1.7rem;
+    background: rgb(9 12 14 / 0.97);
+  }
+  body.nav-open .top-links a { font-size: 0.875rem; letter-spacing: 0.26em; }
+  body.nav-open .nav-toggle, body.nav-open .wordmark { position: relative; z-index: 81; }
+  body.nav-open { overflow: hidden; }
+}
+/* écrans moyens (tablette / petit portable) : 6 onglets + CTA ne tiennent pas -> CTA rond, onglets resserrés */
+@media (min-width: 47.01rem) and (max-width: 80rem) {
+  .top-links { gap: 1.05rem; }
+  .top-links a { letter-spacing: 0.14em; }
+  .topbar .btn-pill .pill-label { display: none; }
+  .topbar .btn-pill { padding: 0.55rem; }
+}

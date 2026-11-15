@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>L'approche — Scarsellato, Luxembourg</title>
 <meta name="description" content="Une entreprise a une philosophie avant d'avoir un site. Mon travail : trouver ce qu'elle ressent et le rendre visible. École d'art, dessin, un peu de psychologie — et très peu de clients à la fois.">
-<link rel="stylesheet" href="../assets/shell.css?v=6">
+<link rel="stylesheet" href="../assets/shell.css?v=8">
 <link rel="stylesheet" href="page.css?v=1">
 </head>
 <body>
@@ -25,11 +25,12 @@
 <header class="topbar">
   <a class="wordmark" href="../">scar<span class="italic gold">sellato</span></a>
   <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
-  <nav class="top-links" aria-label="Navigation">
+  <nav class="top-links" id="topLinks" aria-label="Navigation">
     <a href="../" data-i18n="nav.home">Accueil</a>
     <a href="../#metiers" data-i18n="nav.metiers">Métiers</a>
     <a href="../immobilier/" data-i18n="nav.immo">Immobilier</a>
-    <a href="./" aria-current="page" data-i18n="nav.this">L'approche</a>
+    <a href="../realisations/" data-i18n="nav.real">Réalisations</a>
+    <a href="../approche/" aria-current="page" data-i18n="nav.appro">L'approche</a>
     <a href="#parler" data-i18n="nav.contact">Contact</a>
   </nav>
   <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
@@ -37,6 +38,7 @@
     <button type="button" data-lang="en">EN</button>
     <button type="button" data-lang="de">DE</button>
   </div>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="topLinks">Menu</button>
   <a class="btn-pill magnetic" href="#parler"><span class="pill-label" data-i18n="cta.talk">Parler de votre projet</span><span class="pill-dot" aria-hidden="true">↗</span></a>
 </header>
 
@@ -365,7 +367,7 @@ window.PAGE_I18N = {
   wrap.style.setProperty('--draw', '0.18');
 })();
 </script>
-<script src="../assets/shell.js?v=7"></script>
+<script src="../assets/shell.js?v=8"></script>
 
 </body>
 </html>

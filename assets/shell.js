@@ -22,7 +22,7 @@
       days: ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'],
       months: ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'],
       t: {
-        'nav.home': 'Home', 'nav.metiers': 'Crafts', 'nav.immo': 'Real estate', 'nav.atelier': 'Atelier', 'nav.contact': 'Contact',
+        'nav.home': 'Home', 'nav.metiers': 'Crafts', 'nav.immo': 'Real estate', 'nav.real': 'Work', 'nav.appro': 'Approach', 'nav.atelier': 'Atelier', 'nav.contact': 'Contact',
         'cta.talk': 'Start a project',
         'form.name': 'YOUR NAME', 'form.email': 'YOUR E-MAIL', 'form.msg': 'TELL US ABOUT YOUR SITUATION…', 'form.send': 'Send',
         'foot': 'SCARSELLATO — THE DIGITAL ATELIER · LUXEMBOURG · © 2026 · NO COOKIES, NO TRACKERS',
@@ -40,7 +40,7 @@
       days: ['SONNTAG','MONTAG','DIENSTAG','MITTWOCH','DONNERSTAG','FREITAG','SAMSTAG'],
       months: ['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'],
       t: {
-        'nav.home': 'Start', 'nav.metiers': 'Gewerke', 'nav.immo': 'Immobilien', 'nav.atelier': 'Atelier', 'nav.contact': 'Kontakt',
+        'nav.home': 'Start', 'nav.metiers': 'Gewerke', 'nav.immo': 'Immobilien', 'nav.real': 'Arbeiten', 'nav.appro': 'Ansatz', 'nav.atelier': 'Atelier', 'nav.contact': 'Kontakt',
         'cta.talk': 'Projekt besprechen',
         'form.name': 'IHR NAME', 'form.email': 'IHRE E-MAIL', 'form.msg': 'ERZÄHLEN SIE UNS VON IHRER SITUATION…', 'form.send': 'Senden',
         'foot': 'SCARSELLATO — DAS DIGITALE ATELIER · LUXEMBURG · © 2026 · OHNE COOKIES, OHNE TRACKER',
@@ -331,3 +331,13 @@
 (() => { const tb = document.querySelector('.topbar'); if (!tb) return;
   const on = () => tb.classList.toggle('is-scrolled', scrollY > 40);
   on(); addEventListener('scroll', on, { passive: true }); })();
+
+/* MENU MOBILE (2026-11-15) — sur téléphone les onglets passent dans un panneau plein écran */
+(() => {
+  const b = document.querySelector('.nav-toggle'); if (!b) return;
+  const set = o => { document.body.classList.toggle('nav-open', o); b.setAttribute('aria-expanded', String(o)); b.textContent = o ? '✕' : 'Menu'; };
+  b.addEventListener('click', () => set(!document.body.classList.contains('nav-open')));
+  document.querySelectorAll('.top-links a').forEach(a => a.addEventListener('click', () => set(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+  addEventListener('resize', () => { if (innerWidth > 752) set(false); });
+})();

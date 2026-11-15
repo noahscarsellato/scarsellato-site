@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scarsellato — L'atelier digital, Luxembourg</title>
 <meta name="description" content="Atelier digital à Luxembourg : réponse et relance de vos demandes, automatisations, sites sur mesure et assistant de site. Pilote gratuit, sans cookies.">
-<link rel="stylesheet" href="styles.css?v=26">
+<link rel="stylesheet" href="styles.css?v=28">
 </head>
 <body>
 
@@ -23,12 +23,12 @@
 
 <header class="topbar">
   <a class="wordmark" href="#top">scar<span class="italic gold">sellato</span></a>
-  <nav class="top-links" aria-label="Navigation">
+  <nav class="top-links" id="topLinks" aria-label="Navigation">
+    <a href="#top" aria-current="page" data-i18n="nav.home">Accueil</a>
     <a href="#metiers" data-i18n="nav.metiers">Métiers</a>
     <a href="immobilier/" data-i18n="nav.immo">Immobilier</a>
     <a href="realisations/" data-i18n="nav.real">Réalisations</a>
     <a href="approche/" data-i18n="nav.appro">L'approche</a>
-    <a href="#traversee" data-i18n="nav.traversee">Traversée</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
   <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
@@ -36,6 +36,7 @@
     <button type="button" data-lang="en">EN</button>
     <button type="button" data-lang="de">DE</button>
   </div>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="topLinks">Menu</button>
   <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.talk">Parler d'un projet</span><span class="pill-dot" aria-hidden="true">↗</span></a>
 </header>
 
@@ -307,6 +308,7 @@ const I18N = {
     t: {
       'nav.traversee': 'Crossing',
       'nav.atelier': 'Atelier',
+      'nav.home': 'Home',
       'nav.metiers': 'Crafts',
       'nav.immo': 'Real estate',
       'hero.immo': 'Real estate agency? Zero lost leads',
@@ -416,6 +418,7 @@ const I18N = {
     t: {
       'nav.traversee': 'Passage',
       'nav.atelier': 'Atelier',
+      'nav.home': 'Start',
       'nav.metiers': 'Gewerke',
       'nav.immo': 'Immobilien',
       'hero.immo': 'Immobilienagentur? Kein Lead geht verloren',
@@ -968,6 +971,16 @@ if (tryBtn) tryBtn.addEventListener('click', () => {
   tp(true);
   if (!history.length) ask(d.t['chat.tryQ'] || "Comment fonctionne l'assistant que vous installez sur mon site ?", null);
 });
+})();
+
+/* MENU MOBILE (2026-11-15) — sur téléphone les onglets passent dans un panneau plein écran */
+(() => {
+  const b = document.querySelector('.nav-toggle'); if (!b) return;
+  const set = o => { document.body.classList.toggle('nav-open', o); b.setAttribute('aria-expanded', String(o)); b.textContent = o ? '✕' : 'Menu'; };
+  b.addEventListener('click', () => set(!document.body.classList.contains('nav-open')));
+  document.querySelectorAll('.top-links a').forEach(a => a.addEventListener('click', () => set(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+  addEventListener('resize', () => { if (innerWidth > 752) set(false); });
 })();
 </script>
 
