@@ -22,7 +22,7 @@
       days: ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'],
       months: ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'],
       t: {
-        'nav.home': 'Home', 'nav.metiers': 'Crafts', 'nav.atelier': 'Atelier', 'nav.contact': 'Contact',
+        'nav.home': 'Home', 'nav.metiers': 'Crafts', 'nav.immo': 'Real estate', 'nav.atelier': 'Atelier', 'nav.contact': 'Contact',
         'cta.talk': 'Start a project',
         'form.name': 'YOUR NAME', 'form.email': 'YOUR E-MAIL', 'form.msg': 'TELL US ABOUT YOUR SITUATION…', 'form.send': 'Send',
         'foot': 'SCARSELLATO — THE DIGITAL ATELIER · LUXEMBOURG · © 2026 · NO COOKIES, NO TRACKERS',
@@ -40,7 +40,7 @@
       days: ['SONNTAG','MONTAG','DIENSTAG','MITTWOCH','DONNERSTAG','FREITAG','SAMSTAG'],
       months: ['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'],
       t: {
-        'nav.home': 'Start', 'nav.metiers': 'Gewerke', 'nav.atelier': 'Atelier', 'nav.contact': 'Kontakt',
+        'nav.home': 'Start', 'nav.metiers': 'Gewerke', 'nav.immo': 'Immobilien', 'nav.atelier': 'Atelier', 'nav.contact': 'Kontakt',
         'cta.talk': 'Projekt besprechen',
         'form.name': 'IHR NAME', 'form.email': 'IHRE E-MAIL', 'form.msg': 'ERZÄHLEN SIE UNS VON IHRER SITUATION…', 'form.send': 'Senden',
         'foot': 'SCARSELLATO — DAS DIGITALE ATELIER · LUXEMBURG · © 2026 · OHNE COOKIES, OHNE TRACKER',
