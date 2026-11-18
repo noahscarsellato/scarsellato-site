@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Work — Scarsellato, Luxembourg</title>
-<meta name="description" content="Three demonstration worlds built from scratch — open them, they are real — and what the atelier runs for itself. Cookie-free.">
+<meta name="description" content="Four demonstration worlds built from scratch — open them, they are real — and what the atelier runs for itself. Cookie-free.">
 <link rel="stylesheet" href="../assets/v3.css?v=4">
 <style>
 /* ===== Work — its own character: a photographer's portfolio. Dark, image-first, very little text at once ===== */
@@ -33,7 +33,7 @@
 .wk-hero .hero-foot { padding-top: 40px; }
 
 /* --- 01: the contact sheet (paper, tight frames, hover zoom) --- */
-.wk-sheetgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 8px; background: #e6dfd3; border: 1px solid var(--line-l); border-radius: 6px; }
+.wk-sheetgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 8px; background: #e6dfd3; border: 1px solid var(--line-l); border-radius: 6px; }
 .wk-fr { background: var(--paper); display: flex; flex-direction: column; }
 .wk-shot { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: radial-gradient(120% 95% at 30% 18%, #1d252a, #0d1114 72%); }
 .wk-shot::before { content: attr(data-name); position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); text-align: center; padding: .1em .2em .14em; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.1; color: rgb(198 165 108 / .32); transition: opacity .6s var(--ease); }
@@ -109,7 +109,6 @@
 
 @media (max-width: 860px) {
   .wk-sheetgrid { grid-template-columns: 1fr 1fr; }
-  .wk-sheetgrid .wk-fr:first-child { grid-column: 1 / -1; }
   .wk-honest, .wk-cinehead { grid-template-columns: 1fr; }
   .wk-plate { grid-template-columns: 1fr; }
   .wk-plate .wk-pl-img, .wk-plate[data-side] .wk-pl-img { grid-column: 1; grid-row: 1; margin-inline: calc(-1 * var(--wk-bleed)); border-radius: 0; aspect-ratio: 4 / 3; height: auto; }
@@ -162,7 +161,7 @@
         <figure class="wk-f wk-f2 fade" style="--d:300"><img src="../img/world-sante.jpg" alt=""><span class="wk-t" data-i18n="a2.tag">Health</span></figure>
         <figure class="wk-f wk-f3 fade" style="--d:450"><img src="../img/world-gastro.jpg" alt=""><span class="wk-t" data-i18n="a3.tag">Gastronomy</span></figure>
         <h1 class="h-xl">
-          <span class="lm"><span style="--i:0" data-i18n="h.l1">Three worlds.</span></span>
+          <span class="lm"><span style="--i:0" data-i18n="h.l1">Four worlds.</span></span>
           <span class="lm"><span style="--i:1" data-i18n="h.l2"><span class="it">All of them open.</span></span></span>
         </h1>
       </div>
@@ -175,7 +174,7 @@
       </div>
     </div>
     <div class="wrap hero-foot fade" style="--d:900">
-      <p class="idx" data-i18n="h.f1">[ 03 ] — worlds online · 0 templates</p>
+      <p class="idx" data-i18n="h.f1">[ 04 ] — worlds online · 0 templates</p>
       <p class="idx" data-i18n="h.f2">Demonstration worlds · invented businesses</p>
     </div>
   </section>
@@ -185,7 +184,7 @@
     <div class="wrap">
       <div class="crafts-head">
         <div>
-          <p class="idx" data-i18n="w.idx">[ <b>01</b> ] — The three worlds</p>
+          <p class="idx" data-i18n="w.idx">[ <b>01</b> ] — The four worlds</p>
           <h2 class="h-l" style="margin-top:22px">
             <span class="lm"><span style="--i:0" data-i18n="w.l1">Each world serves</span></span>
             <span class="lm"><span style="--i:1;color:var(--gold-deep)" class="it" data-i18n="w.l2">a different trade.</span></span>
@@ -221,10 +220,19 @@
             <div class="wk-meta"><span class="idx" data-i18n="w.m">Invented business</span><a class="btn ghost" href="../spec-demos/roda/" target="_blank" rel="noopener"><span class="roll" data-i18n="w.open">Open the site</span><span class="arr">↗</span></a></div>
           </div>
         </article>
+        <article class="wk-fr">
+          <a class="wk-shot" data-name="Ferro" href="../spec-demos/ferro/" target="_blank" rel="noopener"><span class="wk-tg" data-i18n="w.tag">Demonstration</span><img src="../spec-demos/ferro/img/s15-rear-1280.webp" alt="Demonstration world — performance garage" data-i18n-aria="d4.alt" loading="lazy"><span class="wk-no" aria-hidden="true">04A</span></a>
+          <div class="wk-cap">
+            <h3>Ferro<span class="it gold">.</span></h3>
+            <p class="mut" data-i18n="d4.s">Performance garage · chassis &amp; brakes</p>
+            <div class="chips wk-notes" data-i18n="d4.c"><span>Workshop archetype — black italic capitals</span><span>The brake disc turns as you scroll</span><span>Before / after ledger</span><span>Drift &amp; GT race loops</span><span><b>0</b> cookies · <b>0</b> trackers</span></div>
+            <div class="wk-meta"><span class="idx" data-i18n="w.m">Invented business</span><a class="btn ghost" href="../spec-demos/ferro/" target="_blank" rel="noopener"><span class="roll" data-i18n="w.open">Open the site</span><span class="arr">↗</span></a></div>
+          </div>
+        </article>
       </div>
       <div class="wk-honest fade" style="--d:200">
         <h3 data-i18n="hon.h">Let us say it <span class="it gold">upfront.</span></h3>
-        <p data-i18n="hon.p">These three houses do not exist. We are a young atelier, so we show no borrowed logos, no testimonials, no "trusted by". What you see here is our work, in full, yours to judge in one click — it is the only honest proof we can give you today.</p>
+        <p data-i18n="hon.p">These four houses do not exist. We are a young atelier, so we show no borrowed logos, no testimonials, no "trusted by". What you see here is our work, in full, yours to judge in one click — it is the only honest proof we can give you today.</p>
       </div>
     </div>
   </section>
@@ -391,7 +399,7 @@
 <script>
 window.PAGE_I18N = {
   en: { qa: [
-    ["Are these three sites real clients?", "No, and we say so on the page: they are demonstration worlds, built for businesses we invented. The atelier is young — rather than borrowed logos, we would rather let you open everything and judge the work yourself."],
+    ["Are these four sites real clients?", "No, and we say so on the page: they are demonstration worlds, built for businesses we invented. The atelier is young — rather than borrowed logos, we would rather let you open everything and judge the work yourself."],
     ["Can I really visit them?", "Yes, completely. Each thumbnail opens the full site in a new tab — animations, pages, forms. Nothing here is a still image."],
     ["What does a site like that cost?", "There is no listed price: every world is quoted individually, because a single page and a complete world are not the same work. Leave us your email with two lines about your project and you get an honest figure the same day."],
     ["How long does one take to build?", "A first glimpse of YOUR world arrives in days, not months — you judge the real thing before any commitment."],
@@ -400,23 +408,25 @@ window.PAGE_I18N = {
   ] },
   fr: { t: {
     'meta.title': 'Réalisations — Scarsellato, Luxembourg',
-    'meta.desc': "Trois mondes de démonstration construits sur mesure, sans template — ouvrez-les, ils sont réels — et ce que l'atelier fait tourner pour lui-même. Sans cookies.",
+    'meta.desc': "Quatre mondes de démonstration construits sur mesure, sans template — ouvrez-les, ils sont réels — et ce que l'atelier fait tourner pour lui-même. Sans cookies.",
     'h.idx': '[ <b>Réalisations</b> ] — sur mesure, visitable',
-    'h.l1': 'Trois mondes.', 'h.l2': '<span class="it">Tous ouvrables.</span>',
+    'h.l1': 'Quatre mondes.', 'h.l2': '<span class="it">Tous ouvrables.</span>',
     'h.lede': "Pas des captures d'écran, pas des maquettes : des sites entiers, en ligne, que vous pouvez parcourir maintenant. Ils ont été construits pour des entreprises que nous avons inventées — c'est ce qui nous permet de tout montrer, sans rien cacher derrière un accord de confidentialité.",
     'h.cta1': 'Ouvrir les mondes', 'h.cta2': "Parler d'un projet",
-    'h.f1': '[ 03 ] — mondes en ligne · 0 template', 'h.f2': 'Mondes de démonstration · entreprises fictives',
-    'w.idx': '[ <b>01</b> ] — Les trois mondes', 'w.l1': 'Chaque monde répond', 'w.l2': 'à un métier différent.',
+    'h.f1': '[ 04 ] — mondes en ligne · 0 template', 'h.f2': 'Mondes de démonstration · entreprises fictives',
+    'w.idx': '[ <b>01</b> ] — Les quatre mondes', 'w.l1': 'Chaque monde répond', 'w.l2': 'à un métier différent.',
     'w.lede': "Chaque vignette ouvre le site complet dans un nouvel onglet — animations, pages, formulaires. Rien n'est une image fixe.",
     'w.tag': 'Démonstration', 'w.m': 'Entreprise fictive', 'w.open': 'Ouvrir le site',
     'd1.alt': 'Monde de démonstration — cuisine verte', 'd1.s': 'Cuisine verte · concept',
     'd1.c': "<span>Archétype bold-organic</span><span>Le bol qui s'ouvre — ingrédients + kcal</span><span>Slider 3D — la carte</span><span>Révélation immersive du lieu</span><span><b>0</b> cookie · <b>0</b> traceur</span>",
     'd2.alt': 'Monde de démonstration — entreprise de construction', 'd2.s': 'Construction · depuis 1957',
     'd2.c': '<span>Archétype bâtisseur — depuis 1957</span><span>La maison se construit au scroll</span><span>Registre — déjà construit</span><span>Annotations de chantier</span><span><b>0</b> cookie · <b>0</b> traceur</span>',
+    'd4.alt': 'Monde de démonstration — atelier de performance', 'd4.s': 'Atelier de performance · châssis &amp; freinage',
+    'd4.c': "<span>Archétype atelier — capitales italiques noires</span><span>Le disque de frein tourne au scroll</span><span>Registre avant / après</span><span>Boucles drift &amp; course GT</span><span><b>0</b> cookie · <b>0</b> traceur</span>",
     'd3.alt': 'Monde de démonstration — athlète', 'd3.s': 'Athlète · portrait',
     'd3.c': "<span>Archétype storyteller — papier &amp; néon</span><span>L'équipement s'assemble au scroll</span><span>Musée du palmarès</span><span>Sur le ring / hors du ring</span><span><b>0</b> cookie · <b>0</b> traceur</span>",
     'hon.h': 'Disons-le <span class="it gold">tout de suite.</span>',
-    'hon.p': "Ces trois maisons n'existent pas. Nous sommes un jeune atelier et nous n'affichons donc ni logos empruntés, ni témoignages, ni « ils nous font confiance ». Ce que vous voyez ici est notre travail, en entier, jugeable en un clic — c'est la seule preuve honnête que nous puissions vous donner aujourd'hui.",
+    'hon.p': "Ces quatre maisons n'existent pas. Nous sommes un jeune atelier et nous n'affichons donc ni logos empruntés, ni témoignages, ni « ils nous font confiance ». Ce que vous voyez ici est notre travail, en entier, jugeable en un clic — c'est la seule preuve honnête que nous puissions vous donner aujourd'hui.",
     'v.idx': '[ <b>02</b> ] — Le métier derrière', 'v.l1': 'Sites &amp;', 'v.l2': 'mondes.',
     'v.lede': "De la page unique au monde complet — dessiné sur mesure, jamais un template. Multilingue, sans cookies, avec un vrai chemin pour qu'un visiteur devienne une demande.",
     'v.m': 'Chiffré après un échange',
@@ -443,7 +453,7 @@ window.PAGE_I18N = {
     'k.lede': "Nous préférons vous laisser juger sur pièces plutôt que sur des promesses : <b>un aperçu de votre monde arrive en jours, pas en mois</b>, et tous nos services commencent par un essai gratuit. S'il n'y a rien d'utile à faire pour vous, nous vous le dirons — c'est moins cher pour tout le monde.",
     'k.msg': 'DEUX LIGNES SUR VOTRE PROJET', 'k.ask': "Demander à l'assistant", 'k.back': '← Revoir tous les métiers'
   }, qa: [
-    ["Ces trois sites sont des vrais clients ?", "Non, et nous le disons sur la page : ce sont des mondes de démonstration, construits pour des entreprises que nous avons inventées. L'atelier est jeune — plutôt que des logos empruntés, nous préférons vous laisser tout ouvrir et juger le travail vous-même."],
+    ["Ces quatre sites sont des vrais clients ?", "Non, et nous le disons sur la page : ce sont des mondes de démonstration, construits pour des entreprises que nous avons inventées. L'atelier est jeune — plutôt que des logos empruntés, nous préférons vous laisser tout ouvrir et juger le travail vous-même."],
     ["Je peux vraiment les visiter ?", "Oui, entièrement. Chaque vignette ouvre le site complet dans un nouvel onglet — animations, pages, formulaires. Rien n'est une image fixe."],
     ["Combien coûte un site comme ça ?", "Il n'y a pas de tarif affiché : chaque monde est chiffré sur mesure, parce qu'une page unique et un monde complet ne demandent pas le même travail. Laissez-nous votre e-mail avec deux lignes sur votre projet, vous aurez un chiffre honnête le jour même."],
     ["Combien de temps pour en construire un ?", "Un premier aperçu de VOTRE monde arrive en jours, pas en mois — vous jugez sur pièces avant tout engagement."],
@@ -452,23 +462,25 @@ window.PAGE_I18N = {
   ] },
   de: { t: {
     'meta.title': 'Arbeiten — Scarsellato, Luxemburg',
-    'meta.desc': 'Drei von Grund auf gebaute Demonstrationswelten — öffnen Sie sie, sie sind echt — und was das Atelier für sich selbst betreibt. Ohne Cookies.',
+    'meta.desc': 'Vier von Grund auf gebaute Demonstrationswelten — öffnen Sie sie, sie sind echt — und was das Atelier für sich selbst betreibt. Ohne Cookies.',
     'h.idx': '[ <b>Arbeiten</b> ] — maßgeschneidert, begehbar',
-    'h.l1': 'Drei Welten.', 'h.l2': '<span class="it">Alle begehbar.</span>',
+    'h.l1': 'Vier Welten.', 'h.l2': '<span class="it">Alle begehbar.</span>',
     'h.lede': 'Keine Screenshots, keine Mockups: vollständige Websites, online, die Sie jetzt erkunden können. Sie wurden für Unternehmen gebaut, die wir erfunden haben — genau das erlaubt uns, alles zu zeigen, ohne etwas hinter einer Geheimhaltungsvereinbarung zu verstecken.',
     'h.cta1': 'Die Welten öffnen', 'h.cta2': 'Projekt besprechen',
-    'h.f1': '[ 03 ] — Welten online · 0 Templates', 'h.f2': 'Demo-Welten · erfundene Unternehmen',
-    'w.idx': '[ <b>01</b> ] — Die drei Welten', 'w.l1': 'Jede Welt steht', 'w.l2': 'für ein anderes Gewerk.',
+    'h.f1': '[ 04 ] — Welten online · 0 Templates', 'h.f2': 'Demo-Welten · erfundene Unternehmen',
+    'w.idx': '[ <b>01</b> ] — Die vier Welten', 'w.l1': 'Jede Welt steht', 'w.l2': 'für ein anderes Gewerk.',
     'w.lede': 'Jede Vorschau öffnet die komplette Website in einem neuen Tab — Animationen, Seiten, Formulare. Nichts davon ist ein Standbild.',
     'w.tag': 'Demonstration', 'w.m': 'Erfundenes Unternehmen', 'w.open': 'Website öffnen',
     'd1.alt': 'Demonstrationswelt — grüne Küche', 'd1.s': 'Grüne Küche · Konzept',
     'd1.c': '<span>Archetyp bold-organic</span><span>Die Schale öffnet sich — Zutaten + kcal</span><span>3D-Slider — die Karte</span><span>Immersive Enthüllung des Ortes</span><span><b>0</b> Cookies · <b>0</b> Tracker</span>',
     'd2.alt': 'Demonstrationswelt — Bauunternehmen', 'd2.s': 'Bau · seit 1957',
     'd2.c': '<span>Archetyp Baumeister — seit 1957</span><span>Das Haus baut sich beim Scrollen auf</span><span>Register — bereits gebaut</span><span>Baustellen-Notizen</span><span><b>0</b> Cookies · <b>0</b> Tracker</span>',
+    'd4.alt': 'Demonstrationswelt — Performance-Werkstatt', 'd4.s': 'Performance-Werkstatt · Fahrwerk &amp; Bremsen',
+    'd4.c': '<span>Werkstatt-Archetyp — schwarze kursive Versalien</span><span>Die Bremsscheibe dreht sich beim Scrollen</span><span>Vorher / Nachher-Liste</span><span>Drift- &amp; GT-Rennloops</span><span><b>0</b> Cookies · <b>0</b> Tracker</span>',
     'd3.alt': 'Demonstrationswelt — Athlet', 'd3.s': 'Athlet · Porträt',
     'd3.c': '<span>Archetyp Storyteller — Papier &amp; Neon</span><span>Die Ausrüstung setzt sich beim Scrollen zusammen</span><span>Museum der Erfolge</span><span>Im Ring / außerhalb des Rings</span><span><b>0</b> Cookies · <b>0</b> Tracker</span>',
     'hon.h': 'Sagen wir es <span class="it gold">gleich.</span>',
-    'hon.p': 'Diese drei Häuser gibt es nicht. Wir sind ein junges Atelier und zeigen deshalb weder geliehene Logos noch Testimonials noch „Sie vertrauen uns“. Was Sie hier sehen, ist unsere Arbeit, vollständig, mit einem Klick beurteilbar — es ist der einzige ehrliche Beweis, den wir Ihnen heute geben können.',
+    'hon.p': 'Diese vier Häuser gibt es nicht. Wir sind ein junges Atelier und zeigen deshalb weder geliehene Logos noch Testimonials noch „Sie vertrauen uns“. Was Sie hier sehen, ist unsere Arbeit, vollständig, mit einem Klick beurteilbar — es ist der einzige ehrliche Beweis, den wir Ihnen heute geben können.',
     'v.idx': '[ <b>02</b> ] — Das Gewerk dahinter', 'v.l1': 'Websites &amp;', 'v.l2': 'Welten.',
     'v.lede': 'Von der einzelnen Seite bis zur ganzen Welt — nach Maß gezeichnet, nie eine Vorlage. Mehrsprachig, ohne Cookies, mit einem echten Weg, auf dem ein Besucher zur Anfrage wird.',
     'v.m': 'Angebot nach einem Gespräch',
@@ -495,7 +507,7 @@ window.PAGE_I18N = {
     'k.lede': 'Wir lassen Sie lieber das Ergebnis beurteilen als ein Versprechen: <b>ein erster Blick auf Ihre Welt kommt in Tagen, nicht in Monaten</b>, und jeder Service beginnt mit einem kostenlosen Test. Wenn es nichts Sinnvolles für Sie zu tun gibt, sagen wir das — das ist für alle günstiger.',
     'k.msg': 'ZWEI ZEILEN ZU IHREM PROJEKT', 'k.ask': 'Den Assistenten fragen', 'k.back': '← Zurück zu allen Gewerken'
   }, qa: [
-    ["Sind diese drei Seiten echte Kunden?", "Nein, und wir sagen es auf der Seite: Es sind Demonstrationswelten, gebaut für Unternehmen, die wir erfunden haben. Das Atelier ist jung — statt geliehener Logos lassen wir Sie lieber alles öffnen und die Arbeit selbst beurteilen."],
+    ["Sind diese vier Seiten echte Kunden?", "Nein, und wir sagen es auf der Seite: Es sind Demonstrationswelten, gebaut für Unternehmen, die wir erfunden haben. Das Atelier ist jung — statt geliehener Logos lassen wir Sie lieber alles öffnen und die Arbeit selbst beurteilen."],
     ["Kann ich sie wirklich besuchen?", "Ja, vollständig. Jede Vorschau öffnet die komplette Website in einem neuen Tab — Animationen, Seiten, Formulare. Nichts davon ist ein Standbild."],
     ["Was kostet so eine Website?", "Es gibt keinen ausgewiesenen Preis: Jede Welt wird individuell kalkuliert, denn eine Einzelseite und eine vollständige Welt sind nicht dieselbe Arbeit. Hinterlassen Sie uns Ihre E-Mail mit zwei Zeilen zu Ihrem Projekt, Sie erhalten noch am selben Tag eine ehrliche Zahl."],
     ["Wie lange dauert der Bau?", "Ein erster Blick auf IHRE Welt kommt in Tagen, nicht Monaten — Sie beurteilen das Ergebnis, bevor Sie sich festlegen."],
