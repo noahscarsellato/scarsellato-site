@@ -1,289 +1,499 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Réalisations — Scarsellato, Luxembourg</title>
-<meta name="description" content="Trois mondes de démonstration construits sur mesure, sans template — ouvrez-les, ils sont réels — et ce que l'atelier fait tourner pour lui-même. Sans cookies.">
-<link rel="stylesheet" href="../assets/shell.css?v=8">
-<link rel="stylesheet" href="page.css?v=1">
+<title>Work — Scarsellato, Luxembourg</title>
+<meta name="description" content="Three demonstration worlds built from scratch — open them, they are real — and what the atelier runs for itself. Cookie-free.">
+<link rel="stylesheet" href="../assets/v3.css?v=4">
+<style>
+/* ===== Work — its own character: a photographer's portfolio. Dark, image-first, very little text at once ===== */
+:root { --wk-bleed: max(clamp(16px, 4vw, 56px), calc((100vw - 1240px) / 2)); --wk-ink: #07090b; }
+
+/* --- hero: three staggered frames, the headline in the free space --- */
+.wk-hero { background: var(--wk-ink); padding-top: 104px; }
+.wk-hero h1 .it { color: var(--gold); }
+.wk-stage { position: relative; height: clamp(480px, 62svh, 720px); }
+.wk-f { position: absolute; margin: 0; overflow: hidden; border-radius: 4px; background: var(--noir-2); box-shadow: 0 40px 90px rgb(0 0 0 / .5); }
+.wk-f img, .wk-f video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wk-f1 { right: 0; top: 0; width: 46%; height: 76%; }
+.wk-f1 video { filter: saturate(.85) brightness(.82); }
+.wk-f1::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgb(7 9 11 / .9) 0%, rgb(7 9 11 / 0) 38%), linear-gradient(0deg, rgb(7 9 11 / .85) 0%, rgb(7 9 11 / 0) 42%); }
+.wk-f2 { left: 6%; top: 0; width: 23%; height: 46%; }
+.wk-f3 { left: 33%; top: 15%; width: 17%; height: 28%; }
+.wk-f2 img, .wk-f3 img { animation: wk-drift 24s ease-in-out infinite alternate; }
+.wk-f3 img { animation-delay: -9s; }
+@keyframes wk-drift { from { transform: scale(1); } to { transform: scale(1.07); } }
+.wk-f .wk-t { position: absolute; left: 10px; top: 10px; z-index: 2; font-family: var(--mono); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; background: rgb(7 9 11 / .72); color: var(--cream); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.wk-f1 .wk-t { left: auto; right: 12px; }
+.wk-stage h1 { position: absolute; left: 0; bottom: 0; z-index: 3; max-width: 100%; padding-bottom: .1em; line-height: 1.06; font-size: clamp(2.8rem, 7.2vw, 7rem); text-shadow: 0 2px 40px rgb(7 9 11 / .7); }
+.wk-low { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; align-items: end; margin-top: clamp(24px, 3vw, 40px); }
+.wk-low .lede { margin-top: 0; color: rgb(234 226 216 / .74); max-width: 52ch; }
+.wk-low .ctas { margin-top: 0; }
+.wk-hero .hero-foot { padding-top: 40px; }
+
+/* --- 01: the contact sheet (paper, tight frames, hover zoom) --- */
+.wk-sheetgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 8px; background: #e6dfd3; border: 1px solid var(--line-l); border-radius: 6px; }
+.wk-fr { background: var(--paper); display: flex; flex-direction: column; }
+.wk-shot { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: radial-gradient(120% 95% at 30% 18%, #1d252a, #0d1114 72%); }
+.wk-shot::before { content: attr(data-name); position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); text-align: center; padding: .1em .2em .14em; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.1; color: rgb(198 165 108 / .32); transition: opacity .6s var(--ease); }
+.wk-shot.ok::before { opacity: 0; }
+.wk-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease), filter 1.4s var(--ease); filter: saturate(.9); }
+.wk-shot img.off { display: none; }
+.wk-fr:hover .wk-shot img, .wk-shot:focus-visible img { transform: scale(1.07); filter: saturate(1.05); }
+.wk-shot .wk-tg { position: absolute; left: 10px; top: 10px; z-index: 2; background: var(--gold); color: var(--noir); padding: 3px 7px; font-family: var(--mono); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; }
+.wk-shot .wk-no { position: absolute; right: 10px; bottom: 8px; z-index: 2; font-family: var(--mono); font-size: .6rem; letter-spacing: .14em; color: var(--gold); background: rgb(7 9 11 / .6); padding: 2px 6px; border-radius: 3px; }
+.wk-cap { padding: 18px 16px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.wk-cap h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.45rem, 2vw, 1.8rem); line-height: 1.12; padding-bottom: .06em; }
+.wk-cap .mut { font-size: .92rem; }
+.wk-notes { gap: 2px 0; }
+.wk-notes span, .light .wk-notes span { border: 0; padding: 0; border-radius: 0; font-size: .6rem; letter-spacing: .1em; color: var(--ink-mut); }
+.wk-notes span:not(:last-child)::after { content: "·"; margin: 0 .55em; color: var(--gold-deep); }
+.wk-cap .wk-meta { margin-top: auto; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.wk-cap .wk-meta .idx { opacity: .55; font-size: .62rem; }
+.wk-cap .btn { padding: .8em 1.2em; font-size: .64rem; }
+.wk-honest { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(20px, 4vw, 60px); align-items: baseline; margin-top: clamp(40px, 5vw, 64px); padding-top: clamp(24px, 3vw, 34px); border-top: 1px solid var(--line-l); }
+.wk-honest h3 { font-family: var(--serif); font-weight: 350; font-size: clamp(1.6rem, 2.8vw, 2.4rem); line-height: 1.14; padding-bottom: .08em; }
+.wk-honest h3 .gold { color: var(--gold-deep); }
+.wk-honest p { color: var(--ink-mut); max-width: 62ch; }
+
+/* --- 02: the cinematic band --- */
+.wk-cine { background: var(--wk-ink); }
+.wk-cine .h-l .it { color: var(--gold); }
+.wk-cinehead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px clamp(30px, 6vw, 100px); align-items: end; margin-bottom: clamp(40px, 5vw, 64px); }
+.wk-cinehead .lede { margin: 0; }
+.wk-reel { position: relative; margin-inline: calc(-1 * var(--wk-bleed)); padding: clamp(26px, 4vw, 56px) var(--wk-bleed); background: #030405; }
+.wk-reel::before, .wk-reel::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb(198 165 108 / .55), transparent); }
+.wk-reel::before { top: 0; } .wk-reel::after { bottom: 0; }
+.wk-reel .media-frame { max-width: 1240px; margin-inline: auto; border-radius: 6px; border-color: rgb(198 165 108 / .2); box-shadow: 0 50px 120px rgb(0 0 0 / .7); }
+.wk-reel .play { right: 18px; bottom: 18px; padding: 9px 15px; }
+.wk-reel .play:hover { background: var(--gold); color: var(--noir); }
+.wk-reelcap { max-width: 1240px; margin: 16px auto 0; display: flex; justify-content: space-between; gap: 16px; }
+.wk-reelcap .idx { opacity: .55; }
+
+/* --- 03: the plates (full-bleed images, huge italic names, slow scale on scroll) --- */
+.wk-plates { background: var(--noir); }
+.wk-plate { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 clamp(14px, 2vw, 24px); align-items: end; margin-bottom: clamp(90px, 12vw, 170px); }
+.wk-plate:last-child { margin-bottom: 0; }
+.wk-pl-img { position: relative; margin: 0; overflow: hidden; aspect-ratio: 16 / 10; background: var(--noir-2); grid-row: 1; }
+.wk-pl-img img, .wk-pl-img video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1.08)); transform-origin: 50% 50%; will-change: transform; }
+.wk-pl-img::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.wk-pl-txt { position: relative; z-index: 2; grid-row: 1; padding-bottom: .4em; }
+.wk-pl-k { margin-bottom: 14px; }
+.wk-pl-name { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(3rem, 7vw, 6.6rem); line-height: 1.08; letter-spacing: -.025em; padding: 0 .08em .12em 0; text-shadow: 0 2px 30px rgb(7 9 11 / .6); }
+.wk-pl-txt > p.mut { margin-top: 10px; font-size: 1.04rem; line-height: 1.5; }
+.wk-pl-meta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 24px; }
+.wk-pl-meta .idx { opacity: .5; }
+/* image left, bleeding off the left edge; the name leans over its darkened right edge */
+.wk-plate[data-side="l"] .wk-pl-img { grid-column: 1 / 9; margin-left: calc(-1 * var(--wk-bleed)); border-radius: 0 6px 6px 0; }
+.wk-plate[data-side="l"] .wk-pl-img::after { background: linear-gradient(270deg, rgb(13 17 20 / .92) 0%, rgb(13 17 20 / 0) 34%); }
+.wk-plate[data-side="l"] .wk-pl-txt { grid-column: 8 / 13; }
+/* image right, bleeding off the right edge */
+.wk-plate[data-side="r"] .wk-pl-img { grid-column: 5 / 13; margin-right: calc(-1 * var(--wk-bleed)); border-radius: 6px 0 0 6px; }
+.wk-plate[data-side="r"] .wk-pl-img::after { background: linear-gradient(90deg, rgb(13 17 20 / .92) 0%, rgb(13 17 20 / 0) 34%); }
+.wk-plate[data-side="r"] .wk-pl-txt { grid-column: 1 / 6; }
+/* full width, edge to edge, the caption set into a deep scrim */
+.wk-plate[data-side="w"] .wk-pl-img { grid-column: 1 / 13; margin-inline: calc(-1 * var(--wk-bleed)); aspect-ratio: auto; height: clamp(440px, 82svh, 860px); }
+.wk-plate[data-side="w"] .wk-pl-img::after { background: linear-gradient(0deg, rgb(13 17 20 / .94) 0%, rgb(13 17 20 / .55) 30%, rgb(13 17 20 / 0) 58%), linear-gradient(90deg, rgb(13 17 20 / .6), rgb(13 17 20 / 0) 50%); }
+.wk-plate[data-side="w"] .wk-pl-txt { grid-column: 1 / 9; padding-bottom: clamp(26px, 4vw, 56px); }
+/* the fourth plate: an empty frame, not shot yet */
+.wk-blank { grid-column: 1 / 8; grid-row: 1; aspect-ratio: 16 / 10; border: 1px dashed rgb(198 165 108 / .45); border-radius: 8px; display: grid; place-items: center; background: radial-gradient(60% 60% at 50% 50%, rgb(198 165 108 / .07), transparent 70%), var(--noir); }
+.wk-blank i { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 22px var(--gold); animation: wk-breathe 3.6s ease-in-out infinite; }
+@keyframes wk-breathe { 0%, 100% { transform: scale(.8); opacity: .55; } 50% { transform: scale(1.25); opacity: 1; } }
+.wk-plate[data-side="b"] .wk-pl-txt { grid-column: 9 / 13; }
+
+/* --- 04: colophon (the atelier is its own client) --- */
+.wk-colo.tiles { background: none; border: 0; border-radius: 0; gap: clamp(24px, 3vw, 48px); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); overflow: visible; }
+.light .wk-colo .tile { background: none; padding: 26px 0 0; border-top: 1px solid var(--ink); }
+.wk-colo .tile .k { font-size: clamp(3.2rem, 5vw, 4.6rem); line-height: 1.05; padding-bottom: .08em; font-weight: 300; }
+
+@media (max-width: 860px) {
+  .wk-sheetgrid { grid-template-columns: 1fr 1fr; }
+  .wk-sheetgrid .wk-fr:first-child { grid-column: 1 / -1; }
+  .wk-honest, .wk-cinehead { grid-template-columns: 1fr; }
+  .wk-plate { grid-template-columns: 1fr; }
+  .wk-plate .wk-pl-img, .wk-plate[data-side] .wk-pl-img { grid-column: 1; grid-row: 1; margin-inline: calc(-1 * var(--wk-bleed)); border-radius: 0; aspect-ratio: 4 / 3; height: auto; }
+  .wk-plate[data-side] .wk-pl-txt { grid-column: 1; grid-row: 2; padding: 22px 0 0; }
+  .wk-plate .wk-pl-img::after, .wk-plate[data-side] .wk-pl-img::after { background: linear-gradient(0deg, rgb(13 17 20 / .5), rgb(13 17 20 / 0) 40%); }
+  .wk-blank { grid-column: 1; grid-row: 1; aspect-ratio: 16 / 9; }
+  .wk-reelcap { flex-direction: column; gap: 6px; }
+}
+@media (max-width: 760px) {
+  .wk-stage { height: auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 10px; }
+  .wk-f { position: relative; inset: auto; width: auto; height: auto; }
+  .wk-f1 { grid-column: 1 / -1; aspect-ratio: 16 / 11; }
+  .wk-f2 { aspect-ratio: 4 / 5; }
+  .wk-f3 { aspect-ratio: 1; align-self: end; margin-bottom: 26px; }
+  .wk-stage h1 { position: relative; grid-column: 1 / -1; margin-top: 18px; }
+  .wk-low { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .wk-sheetgrid { grid-template-columns: 1fr; padding: 6px; gap: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wk-f2 img, .wk-f3 img, .wk-blank i { animation: none; }
+  .wk-pl-img img, .wk-pl-img video { transform: none; }
+}
+</style>
 </head>
 <body>
 
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="loader-core">
-    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
-    <p class="loader-count"><span id="loaderCount">00</span></p>
-    <div class="loader-bar"><span id="loaderBar"></span></div>
-  </div>
-</div>
-
-<canvas class="dust" id="dust" aria-hidden="true"></canvas>
-<div class="progress-rail" aria-hidden="true"></div>
-
-<header class="topbar">
-  <a class="wordmark" href="../">scar<span class="italic gold">sellato</span></a>
-  <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
-  <nav class="top-links" id="topLinks" aria-label="Navigation">
-    <a href="../" data-i18n="nav.home">Accueil</a>
-    <a href="../#metiers" data-i18n="nav.metiers">Métiers</a>
-    <a href="../immobilier/" data-i18n="nav.immo">Immobilier</a>
-    <a href="../realisations/" aria-current="page" data-i18n="nav.real">Réalisations</a>
-    <a href="../approche/" data-i18n="nav.appro">L'approche</a>
-    <a href="#parler" data-i18n="nav.contact">Contact</a>
-  </nav>
-  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
-    <button type="button" data-lang="fr">FR</button>
-    <button type="button" data-lang="en">EN</button>
-    <button type="button" data-lang="de">DE</button>
-  </div>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="topLinks">Menu</button>
-  <a class="btn-pill magnetic" href="../#metiers"><span class="pill-label" data-i18n="cta.metiers">Voir les métiers</span><span class="pill-dot" aria-hidden="true">↗</span></a>
-</header>
+<nav class="nav" aria-label="Navigation">
+  <a class="mark" href="../">scar<span class="it gold">sellato</span></a>
+  <ul>
+    <li><a href="../#metiers" data-i18n="nav.crafts">Crafts</a></li>
+    <li><a href="../approche/" data-i18n="nav.approach">Approach</a></li>
+    <li><a href="../immobilier/" data-i18n="nav.immo">Real estate</a></li>
+    <li><a href="../realisations/" aria-current="page" data-i18n="nav.work">Work</a></li>
+  </ul>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button><button type="button" data-lang="de">DE</button></div>
+  <button class="nav-toggle" type="button" aria-expanded="false" data-i18n="nav.menu">Menu</button>
+  <a class="btn gold" href="#contact"><span class="roll" data-i18n="nav.write">Write</span></a>
+</nav>
 
 <main id="top">
 
-  <!-- HÉROS -->
-  <section class="pano re-hero" aria-label="Réalisations">
-    <div class="pano-bg" data-parallax><img src="../img/world-gastro.jpg?v=2" alt=""><video class="vid" muted loop playsinline preload="auto" src="../img/loop-gastro.mp4?v=2"></video></div>
-    <div class="pano-scrim" aria-hidden="true"></div>
-    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( RÉALISATIONS ) — SUR MESURE, VISITABLE</p>
-    <div class="statement">
-      <span class="chip kicker" data-i18n="hero.kicker">MONDES DE DÉMONSTRATION · ENTREPRISES FICTIVES</span>
-      <p class="st-line big"><span class="st-in" data-i18n="hero.st1">Trois mondes.</span></p>
-      <p class="st-line big"><span class="st-in italic gold" data-i18n="hero.st2">Tous ouvrables.</span></p>
-      <p class="sub" data-i18n="hero.sub">Pas des captures d'écran, pas des maquettes : des sites entiers, en ligne, que vous pouvez parcourir maintenant. Ils ont été construits pour des entreprises que nous avons inventées — c'est ce qui nous permet de tout montrer, sans rien cacher derrière un accord de confidentialité.</p>
-    </div>
-    <p class="re-count" aria-hidden="true"><b>03</b><small data-i18n="hero.countnote">mondes en ligne · 0 template</small></p>
-  </section>
-
-  <!-- HONNÊTETÉ, EN HAUT ET PAS EN NOTE DE BAS DE PAGE -->
-  <section class="worlds" id="mondes" aria-label="Les trois mondes">
-    <div class="honest reveal">
-      <span class="mark" aria-hidden="true">*</span>
-      <p data-i18n="honest.text"><b>Disons-le tout de suite :</b> ces trois maisons n'existent pas. Nous sommes un jeune atelier et nous n'affichons donc ni logos empruntés, ni témoignages, ni « ils nous font confiance ». Ce que vous voyez ici est notre travail, en entier, jugeable en un clic — c'est la seule preuve honnête que nous puissions vous donner aujourd'hui.</p>
-    </div>
-
-    <div class="worlds-head reveal" style="margin-top:4rem">
-      <p class="chip" aria-hidden="true" data-i18n="worlds.head">( 01 ) — LES TROIS MONDES</p>
-      <div class="statement">
-        <p class="st-line"><span class="st-in" data-i18n="worlds.st1">Chaque monde répond</span></p>
-        <p class="st-line"><span class="st-in italic gold" data-i18n="worlds.st2">à un métier différent.</span></p>
+  <!-- ===== HERO — three staggered frames, the headline in the free space ===== -->
+  <section class="hero dark wk-hero" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="h.idx">[ <b>Work</b> ] — made to measure, yours to open</p>
+      <div class="wk-stage">
+        <figure class="wk-f wk-f1 fade" style="--d:150"><video autoplay muted loop playsinline preload="metadata" poster="../img/world-immo.jpg" src="../img/loop-immo.mp4" aria-hidden="true"></video><span class="wk-t" data-i18n="a1.tag">Real estate</span></figure>
+        <figure class="wk-f wk-f2 fade" style="--d:300"><img src="../img/world-sante.jpg" alt=""><span class="wk-t" data-i18n="a2.tag">Health</span></figure>
+        <figure class="wk-f wk-f3 fade" style="--d:450"><img src="../img/world-gastro.jpg" alt=""><span class="wk-t" data-i18n="a3.tag">Gastronomy</span></figure>
+        <h1 class="h-xl">
+          <span class="lm"><span style="--i:0" data-i18n="h.l1">Three worlds.</span></span>
+          <span class="lm"><span style="--i:1" data-i18n="h.l2"><span class="it">All of them open.</span></span></span>
+        </h1>
       </div>
-    </div>
-
-    <div class="w-grid">
-      <article class="w-card reveal">
-        <a class="w-shot" href="../spec-demos/verde/" target="_blank" rel="noopener">
-          <span class="w-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="w-tag" data-i18n="tag.demo">Démonstration</span>
-          <img src="../spec-demos/verde/img/interieur.jpg" alt="Monde de démonstration — cuisine verte">
-          <span class="w-open" data-i18n="w.open">Ouvrir le site ↗</span>
-        </a>
-        <h3 class="w-name">Verde<span class="tm">.</span></h3>
-        <p class="w-sector" data-i18n="w4.sector">Cuisine verte · concept</p>
-        <ul class="w-specs" data-specs="0"></ul>
-      </article>
-
-      <article class="w-card reveal d1">
-        <a class="w-shot" href="../spec-demos/kohnen-fils/" target="_blank" rel="noopener">
-          <span class="w-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="w-tag" data-i18n="tag.demo">Démonstration</span>
-          <img src="../spec-demos/kohnen-fils/img/maison.webp" alt="Monde de démonstration — entreprise de construction">
-          <span class="w-open" data-i18n="w.open">Ouvrir le site ↗</span>
-        </a>
-        <h3 class="w-name">Kohnen &amp; Fils<span class="tm">.</span></h3>
-        <p class="w-sector" data-i18n="w5.sector">Construction · depuis 1957</p>
-        <ul class="w-specs" data-specs="1"></ul>
-      </article>
-
-      <article class="w-card reveal d2">
-        <a class="w-shot" href="../spec-demos/roda/" target="_blank" rel="noopener">
-          <span class="w-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="w-tag" data-i18n="tag.demo">Démonstration</span>
-          <img src="../spec-demos/roda/img/gear.webp" alt="Monde de démonstration — athlète">
-          <span class="w-open" data-i18n="w.open">Ouvrir le site ↗</span>
-        </a>
-        <h3 class="w-name">Maxime Roda<span class="tm">.</span></h3>
-        <p class="w-sector" data-i18n="w6.sector">Athlète · portrait</p>
-        <ul class="w-specs" data-specs="2"></ul>
-      </article>
-    </div>
-  </section>
-
-  <!-- (02) CE QUE NOUS FAISONS TOURNER POUR NOUS-MÊMES -->
-  <section class="own" aria-label="Ce que nous faisons tourner pour nous-mêmes">
-    <div class="own-inner">
-      <div class="own-head reveal">
-        <p class="chip" aria-hidden="true" data-i18n="own.head">( 02 ) — L'ATELIER EST SON PROPRE CLIENT</p>
-        <div class="statement">
-          <p class="st-line"><span class="st-in" data-i18n="own.st1">Ce que nous vendons,</span></p>
-          <p class="st-line"><span class="st-in italic gold" data-i18n="own.st2">nous le faisons tourner ici.</span></p>
+      <div class="wk-low">
+        <p class="lede fade" style="--d:550" data-i18n="h.lede">Not screenshots, not mockups: entire sites, online, that you can walk through right now. They were built for businesses we invented — which is exactly what lets us show everything, with nothing hidden behind an NDA.</p>
+        <div class="ctas fade" style="--d:700">
+          <a class="btn" href="#mondes"><span class="roll" data-i18n="h.cta1">Open the worlds</span></a>
+          <a class="btn ghost" href="#contact"><span class="roll" data-i18n="h.cta2">Start a project</span><span class="arr">↗</span></a>
         </div>
       </div>
-      <div class="own-grid">
-        <article class="own-item reveal">
-          <p class="live" data-i18n="own.live">En service</p>
-          <h3 data-i18n="own1.t">L'assistant de ce site</h3>
-          <p data-i18n="own1.d">Celui en bas à droite. Il répond à partir de nos seules informations, passe la main quand il n'est pas sûr, et nous transmet les coordonnées des visiteurs intéressés. C'est exactement ce que nous installons chez vous — testez-le, c'est le produit.</p>
-          <p class="act"><button type="button" data-ask="Qu'est-ce que vous savez faire exactement, et qu'est-ce que vous ne savez pas ?" data-i18n="own1.cta">Le pousser dans ses retranchements ↗</button></p>
+    </div>
+    <div class="wrap hero-foot fade" style="--d:900">
+      <p class="idx" data-i18n="h.f1">[ 03 ] — worlds online · 0 templates</p>
+      <p class="idx" data-i18n="h.f2">Demonstration worlds · invented businesses</p>
+    </div>
+  </section>
+
+  <!-- ===== 01 — THE CONTACT SHEET: the three demo sites, each one opens ===== -->
+  <section class="sec light sheet" id="mondes" data-reveal>
+    <div class="wrap">
+      <div class="crafts-head">
+        <div>
+          <p class="idx" data-i18n="w.idx">[ <b>01</b> ] — The three worlds</p>
+          <h2 class="h-l" style="margin-top:22px">
+            <span class="lm"><span style="--i:0" data-i18n="w.l1">Each world serves</span></span>
+            <span class="lm"><span style="--i:1;color:var(--gold-deep)" class="it" data-i18n="w.l2">a different trade.</span></span>
+          </h2>
+        </div>
+        <p class="lede fade" style="--d:300;max-width:40ch" data-i18n="w.lede">Each thumbnail opens the full site in a new tab — animations, pages, forms. Nothing here is a still image.</p>
+      </div>
+      <div class="wk-sheetgrid fade" style="--d:150">
+        <article class="wk-fr">
+          <a class="wk-shot" data-name="Verde" href="../spec-demos/verde/" target="_blank" rel="noopener"><span class="wk-tg" data-i18n="w.tag">Demonstration</span><img src="../spec-demos/verde/img/interieur.jpg" alt="Demonstration world — green cuisine" data-i18n-aria="d1.alt" loading="lazy"><span class="wk-no" aria-hidden="true">01A</span></a>
+          <div class="wk-cap">
+            <h3>Verde<span class="it gold">.</span></h3>
+            <p class="mut" data-i18n="d1.s">Green cuisine · concept</p>
+            <div class="chips wk-notes" data-i18n="d1.c"><span>Bold-organic archetype</span><span>The bowl that opens — ingredients + kcal</span><span>3D slider — the menu</span><span>Immersive reveal of the place</span><span><b>0</b> cookies · <b>0</b> trackers</span></div>
+            <div class="wk-meta"><span class="idx" data-i18n="w.m">Invented business</span><a class="btn ghost" href="../spec-demos/verde/" target="_blank" rel="noopener"><span class="roll" data-i18n="w.open">Open the site</span><span class="arr">↗</span></a></div>
+          </div>
         </article>
-        <article class="own-item reveal d1">
-          <p class="live" data-i18n="own.live">En service</p>
-          <h3 data-i18n="own2.t">Notre propre boîte de réception</h3>
-          <p data-i18n="own2.d">Le système « Réponse &amp; Relance » que nous proposons tourne d'abord sur nos demandes à nous : tri, réponse, relance. Nous ne vendons pas un mécanisme que nous n'utilisons pas nous-mêmes.</p>
-          <p class="act"><a href="../reponse-relance/" data-i18n="own2.cta">Voir comment il fonctionne ↗</a></p>
+        <article class="wk-fr">
+          <a class="wk-shot" data-name="Kohnen &amp; Fils" href="../spec-demos/kohnen-fils/" target="_blank" rel="noopener"><span class="wk-tg" data-i18n="w.tag">Demonstration</span><img src="../spec-demos/kohnen-fils/img/maison.webp" alt="Demonstration world — construction company" data-i18n-aria="d2.alt" loading="lazy"><span class="wk-no" aria-hidden="true">02A</span></a>
+          <div class="wk-cap">
+            <h3>Kohnen &amp; Fils<span class="it gold">.</span></h3>
+            <p class="mut" data-i18n="d2.s">Construction · since 1957</p>
+            <div class="chips wk-notes" data-i18n="d2.c"><span>Builder archetype — since 1957</span><span>The house builds itself on scroll</span><span>Ledger — already built</span><span>Site annotations</span><span><b>0</b> cookies · <b>0</b> trackers</span></div>
+            <div class="wk-meta"><span class="idx" data-i18n="w.m">Invented business</span><a class="btn ghost" href="../spec-demos/kohnen-fils/" target="_blank" rel="noopener"><span class="roll" data-i18n="w.open">Open the site</span><span class="arr">↗</span></a></div>
+          </div>
         </article>
-        <article class="own-item reveal d2">
-          <p class="live" data-i18n="own.live">En service</p>
-          <h3 data-i18n="own3.t">Ce site lui-même</h3>
-          <p data-i18n="own3.d">Construit de zéro, sans template, sans bibliothèque, sans constructeur de pages, sans cookie ni traceur — y compris le monde en 3D de la page d'accueil. Si vous vous demandez ce que nous savons faire, vous êtes déjà dedans.</p>
-          <p class="act"><a href="../" data-i18n="own3.cta">Retourner à l'accueil ↗</a></p>
+        <article class="wk-fr">
+          <a class="wk-shot" data-name="Maxime Roda" href="../spec-demos/roda/" target="_blank" rel="noopener"><span class="wk-tg" data-i18n="w.tag">Demonstration</span><img src="../spec-demos/roda/img/gear.webp" alt="Demonstration world — athlete" data-i18n-aria="d3.alt" loading="lazy"><span class="wk-no" aria-hidden="true">03A</span></a>
+          <div class="wk-cap">
+            <h3>Maxime Roda<span class="it gold">.</span></h3>
+            <p class="mut" data-i18n="d3.s">Athlete · portrait</p>
+            <div class="chips wk-notes" data-i18n="d3.c"><span>Storyteller archetype — paper &amp; neon</span><span>The gear assembles on scroll</span><span>Museum of the record</span><span>In the ring / out of the ring</span><span><b>0</b> cookies · <b>0</b> trackers</span></div>
+            <div class="wk-meta"><span class="idx" data-i18n="w.m">Invented business</span><a class="btn ghost" href="../spec-demos/roda/" target="_blank" rel="noopener"><span class="roll" data-i18n="w.open">Open the site</span><span class="arr">↗</span></a></div>
+          </div>
         </article>
+      </div>
+      <div class="wk-honest fade" style="--d:200">
+        <h3 data-i18n="hon.h">Let us say it <span class="it gold">upfront.</span></h3>
+        <p data-i18n="hon.p">These three houses do not exist. We are a young atelier, so we show no borrowed logos, no testimonials, no "trusted by". What you see here is our work, in full, yours to judge in one click — it is the only honest proof we can give you today.</p>
       </div>
     </div>
   </section>
 
-  <!-- CLÔTURE -->
-  <section class="re-end" id="parler" aria-label="Parler d'un projet">
-    <div class="re-end-inner reveal">
-      <p class="chip" aria-hidden="true" data-i18n="end.head">( 03 ) — ET LE VÔTRE</p>
-      <div class="statement" style="margin-top:1.4rem">
-        <p class="st-line big"><span class="st-in" data-i18n="end.st1">Le quatrième monde</span></p>
-        <p class="st-line big"><span class="st-in italic gold" data-i18n="end.st2">n'est pas encore construit.</span></p>
+  <!-- ===== 02 — THE CRAFT, FILMED: a wide cinematic band ===== -->
+  <section class="sec dark sheet wk-cine" id="sites" data-reveal>
+    <div class="wrap">
+      <div class="wk-cinehead">
+        <div>
+          <p class="idx" data-i18n="v.idx">[ <b>02</b> ] — The craft behind them</p>
+          <h2 class="h-l" style="margin-top:22px">
+            <span class="lm"><span style="--i:0" data-i18n="v.l1">Websites &amp;</span></span>
+            <span class="lm"><span style="--i:1" class="it" data-i18n="v.l2">worlds.</span></span>
+          </h2>
+        </div>
+        <p class="lede fade" style="--d:300" data-i18n="v.lede">From a single page to a complete world — drawn to measure, never a template. Multilingual, cookie-free, with a real path for a visitor to become an inquiry.</p>
       </div>
-      <p class="note" data-i18n="end.note">Nous préférons vous laisser juger sur pièces plutôt que sur des promesses : <b>un aperçu de votre monde arrive en jours, pas en mois</b>, et tous nos services commencent par un essai gratuit. S'il n'y a rien d'utile à faire pour vous, nous vous le dirons — c'est moins cher pour tout le monde.</p>
-      <div class="cta-row">
-        <a class="btn-pill big magnetic" href="../#contact"><span data-i18n="end.cta1">Parler d'un projet</span><span class="pill-dot" aria-hidden="true">↗</span></a>
-        <button class="btn-pill magnetic" type="button" data-ask="J'ai vu vos mondes de démonstration. Comment se passe la construction d'un site avec vous ?"><span data-i18n="end.cta2">Demander à l'assistant</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      <div class="wk-reel fade" style="--d:200">
+        <div class="media-frame">
+          <video autoplay muted loop playsinline preload="metadata" src="../media/sites-card.mp4" aria-hidden="true"></video>
+          <button class="play" type="button" data-full="../media/sites-explainer.mp4" data-i18n="play">▶ Watch full size</button>
+        </div>
+        <div class="wk-reelcap"><p class="idx" data-i18n="v.m">Quoted after a conversation</p><p class="idx" data-i18n="ex">[ example ]</p></div>
       </div>
-      <a class="back-home" href="../#metiers" data-i18n="end.back">← Revoir tous les métiers</a>
     </div>
   </section>
 
+  <!-- ===== 03 — THREE ATMOSPHERES: full-bleed plates ===== -->
+  <section class="sec dark sheet wk-plates" id="atmospheres" data-reveal>
+    <div class="wrap">
+      <div class="crafts-head">
+        <div>
+          <p class="idx" data-i18n="a.idx">[ <b>03</b> ] — Three atmospheres</p>
+          <h2 class="h-l" style="margin-top:22px">
+            <span class="lm"><span style="--i:0" data-i18n="a.l1">Before reading a word,</span></span>
+            <span class="lm"><span style="--i:1" class="it gold" data-i18n="a.l2">people feel something.</span></span>
+          </h2>
+        </div>
+        <p class="lede fade" style="--d:300;max-width:40ch" data-i18n="a.lede">Three atmospheres, one per trade — no client behind them, only the feeling a site can give before anything is explained.</p>
+      </div>
+
+      <div class="wk-plate" data-side="l">
+        <figure class="wk-pl-img"><video muted loop playsinline preload="none" poster="../img/world-immo.jpg" data-loop="../img/loop-immo.mp4" aria-hidden="true"></video></figure>
+        <div class="wk-pl-txt fade" style="--d:150">
+          <p class="idx wk-pl-k"><b>03.1</b> · <span data-i18n="a1.tag">Real estate</span></p>
+          <h3 class="wk-pl-name" data-i18n="a1.h">real estate<span class="it gold">.</span></h3>
+          <p class="mut" data-i18n="a1.p">A story of neighbourhoods.<br>Same-day response.</p>
+          <div class="wk-pl-meta"><a class="btn ghost" href="../immobilier/"><span class="roll" data-i18n="pl.immo">The real-estate page</span><span class="arr">↗</span></a><span class="idx" data-i18n="ex">[ example ]</span></div>
+        </div>
+      </div>
+
+      <div class="wk-plate" data-side="r">
+        <figure class="wk-pl-img"><video muted loop playsinline preload="none" poster="../img/world-sante.jpg" data-loop="../img/loop-sante.mp4" aria-hidden="true"></video></figure>
+        <div class="wk-pl-txt fade" style="--d:150">
+          <p class="idx wk-pl-k"><b>03.2</b> · <span data-i18n="a2.tag">Health</span></p>
+          <h3 class="wk-pl-name" data-i18n="a2.h">health<span class="it gold">.</span></h3>
+          <p class="mut" data-i18n="a2.p">Light as care.<br>Book without a phone call.</p>
+          <div class="wk-pl-meta"><a class="btn ghost" href="#contact"><span class="roll" data-i18n="pl.like">A world like this one</span><span class="arr">↗</span></a><span class="idx" data-i18n="ex">[ example ]</span></div>
+        </div>
+      </div>
+
+      <div class="wk-plate" data-side="w">
+        <figure class="wk-pl-img"><video muted loop playsinline preload="none" poster="../img/world-gastro.jpg" data-loop="../img/loop-gastro.mp4" aria-hidden="true"></video></figure>
+        <div class="wk-pl-txt fade" style="--d:150">
+          <p class="idx wk-pl-k"><b>03.3</b> · <span data-i18n="a3.tag">Gastronomy</span></p>
+          <h3 class="wk-pl-name">gastronomia<span class="it gold">.</span></h3>
+          <p class="mut" data-i18n="a3.p">Lume di candela.<br>The table is set.</p>
+          <div class="wk-pl-meta"><a class="btn ghost" href="#contact"><span class="roll" data-i18n="pl.like">A world like this one</span><span class="arr">↗</span></a><span class="idx" data-i18n="ex">[ example ]</span></div>
+        </div>
+      </div>
+
+      <div class="wk-plate" data-side="b">
+        <div class="wk-blank fade" aria-hidden="true"><i></i></div>
+        <div class="wk-pl-txt fade" style="--d:150">
+          <p class="idx wk-pl-k" data-i18n="a4.idx">YOUR-NAME · YOUR-CITY / 2026</p>
+          <h3 class="wk-pl-name" data-i18n="a4.h">yours<span class="it gold">.</span></h3>
+          <p class="mut" data-i18n="a4.p">A first glimpse of your world arrives in days, not months.</p>
+          <div class="wk-pl-meta"><a class="btn ghost" href="#contact"><span class="roll" data-i18n="h.cta2">Start a project</span><span class="arr">↗</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 04 — THE ATELIER IS ITS OWN CLIENT: a colophon ===== -->
+  <section class="sec light sheet" id="atelier" data-reveal>
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="idx" data-i18n="o.idx">[ <b>04</b> ] — The atelier is its own client</p>
+          <h2 class="h-l" style="margin-top:22px">
+            <span class="lm"><span style="--i:0" data-i18n="o.l1">What we sell,</span></span>
+            <span class="lm"><span style="--i:1;color:var(--gold-deep)" class="it" data-i18n="o.l2">we run right here.</span></span>
+          </h2>
+        </div>
+      </div>
+      <div class="tiles wk-colo fade" style="--d:200">
+        <div class="tile">
+          <p class="k">01</p>
+          <p class="idx" data-i18n="o.live">Running</p>
+          <h3 data-i18n="o1.h">The assistant on this site</h3>
+          <p data-i18n="o1.p">The one at the bottom right. It answers from our information only, hands off when it is unsure, and passes us the contact details of interested visitors. It is exactly what we install for you — try it, it is the product.</p>
+          <p style="margin-top:18px"><button class="btn ghost" type="button" data-ask="What exactly can you do, and what can you not do?" data-ask-fr="Qu'est-ce que vous savez faire exactement, et qu'est-ce que vous ne savez pas ?" data-ask-de="Was können Sie genau, und was können Sie nicht?"><span class="roll" data-i18n="o1.b">Push it to its limits</span><span class="arr">↗</span></button></p>
+        </div>
+        <div class="tile">
+          <p class="k">02</p>
+          <p class="idx" data-i18n="o.live">Running</p>
+          <h3 data-i18n="o2.h">Our own inbox</h3>
+          <p data-i18n="o2.p">The "Answer &amp; Follow-up" system we offer runs first on our own inquiries: sorting, replying, following up. We do not sell a mechanism we do not use ourselves.</p>
+          <p style="margin-top:18px"><a class="btn ghost" href="../reponse-relance/"><span class="roll" data-i18n="o2.b">See how it works</span><span class="arr">↗</span></a></p>
+        </div>
+        <div class="tile">
+          <p class="k">03</p>
+          <p class="idx" data-i18n="o.live">Running</p>
+          <h3 data-i18n="o3.h">This site itself</h3>
+          <p data-i18n="o3.p">Built from scratch, no template, no library, no page builder, no cookies or trackers. If you are wondering what we can do, you are already inside it.</p>
+          <p style="margin-top:18px"><a class="btn ghost" href="../"><span class="roll" data-i18n="o3.b">Back to the homepage</span><span class="arr">↗</span></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact dark sheet" id="contact" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="k.idx">[ <b>05</b> ] — And yours</p>
+      <h2 class="h-xl" style="margin-top:22px">
+        <span class="lm"><span style="--i:0" data-i18n="k.l1">The fourth world</span></span>
+        <span class="lm"><span style="--i:1" class="it gold" data-i18n="k.l2">is not built yet.</span></span>
+      </h2>
+      <p class="lede fade" style="--d:400;margin-top:28px" data-i18n="k.lede">We would rather let you judge the real thing than a promise: <b>a first glimpse of your world arrives in days, not months</b>, and every service starts with a free trial. If there is nothing useful for us to do for you, we will say so — it is cheaper for everyone.</p>
+      <form class="form fade" style="--d:550" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
+        <input type="hidden" name="_subject" value="New message — scarsellato.com · Work">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row">
+          <input type="text" name="name" placeholder="YOUR NAME" required aria-label="Name" data-i18n-ph="form.name">
+          <input type="email" name="email" placeholder="YOUR E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+        </div>
+        <textarea name="message" placeholder="TWO LINES ABOUT YOUR PROJECT" required aria-label="Message" data-i18n-ph="k.msg"></textarea>
+        <div style="display:flex;flex-wrap:wrap;gap:12px"><button class="btn gold" type="submit"><span class="roll" data-i18n="form.send">Send to the atelier</span><span class="arr">↗</span></button><button class="btn ghost" type="button" data-ask="I have seen your demonstration worlds. How does building a site with you work?" data-ask-fr="J'ai vu vos mondes de démonstration. Comment se passe la construction d'un site avec vous ?" data-ask-de="Ich habe Ihre Demonstrationswelten gesehen. Wie läuft der Bau einer Website mit Ihnen ab?"><span class="roll" data-i18n="k.ask">Ask the assistant</span><span class="arr">↗</span></button></div>
+      </form>
+      <a class="back" href="../#metiers" data-i18n="k.back">← Back to all crafts</a>
+      <p class="giant" aria-hidden="true">scar<span class="it">sellato</span></p>
+      <div class="foot"><p class="idx" data-i18n="foot.l">Scarsellato — digital atelier · Luxembourg · © 2026</p><p class="idx" data-i18n="foot.r">0 cookies · 0 trackers</p></div>
+    </div>
+  </section>
 </main>
 
-<p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
-
 <div class="chat" id="chat">
-  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="A question? Open the assistant" data-i18n-aria="chat.toggleAria">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
   </button>
-  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
-    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — EN DIRECT )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
-    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonjour ! Je réponds en direct, uniquement à partir des informations de l'atelier — je ne devine rien. Posez votre question, ou commencez par l'une de celles-ci :</p></div>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Atelier assistant" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — LIVE )</p><button class="chat-close" id="chatClose" type="button" aria-label="Close" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Hello! I answer live, only from the atelier's own information — I never guess. Ask your question, or start with one of these:</p></div>
     <div class="chat-choices" id="chatChoices"></div>
     <form class="chat-form" id="chatForm">
-      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="ÉCRIVEZ VOTRE QUESTION…" aria-label="Votre question" data-i18n-ph="chat.ph">
-      <button class="chat-send" id="chatSend" type="submit" aria-label="Envoyer" data-i18n-aria="chat.sendAria">➤</button>
+      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="WRITE YOUR QUESTION…" aria-label="Your question" data-i18n-ph="chat.ph">
+      <button class="chat-send" id="chatSend" type="submit" aria-label="Send" data-i18n-aria="chat.sendAria">➤</button>
     </form>
-    <p class="chat-note" data-i18n="chat.note">Vos messages servent uniquement à vous répondre. 0 cookie, 0 traceur.</p>
+    <p class="chat-note" data-i18n="chat.note">Your messages are used only to answer you. 0 cookies, 0 trackers.</p>
   </div>
 </div>
 
 <script>
-/* Fiches techniques des trois mondes — mêmes lignes que l'atelier de l'accueil,
-   traduites. Injectées par index (data-specs) pour éviter trois blocs dupliqués. */
-window.PAGE_SPECS = {
-  fr: [
-    ['Archétype bold-organic', 'Le bol qui s\'ouvre — ingrédients + kcal', 'Slider 3D — la carte', 'Révélation immersive du lieu', '0 cookie · 0 traceur'],
-    ['Archétype bâtisseur — depuis 1957', 'La maison se construit au scroll', 'Registre — déjà construit', 'Annotations de chantier', '0 cookie · 0 traceur'],
-    ['Archétype storyteller — papier &amp; néon', 'L\'équipement s\'assemble au scroll', 'Musée du palmarès', 'Sur le ring / hors du ring', '0 cookie · 0 traceur']
-  ],
-  en: [
-    ['Bold-organic archetype', 'The bowl that opens — ingredients + kcal', '3D slider — the menu', 'Immersive reveal of the place', '0 cookies · 0 trackers'],
-    ['Builder archetype — since 1957', 'The house builds itself on scroll', 'Ledger — already built', 'Site annotations', '0 cookies · 0 trackers'],
-    ['Storyteller archetype — paper &amp; neon', 'The gear assembles on scroll', 'Museum of the record', 'In the ring / out of the ring', '0 cookies · 0 trackers']
-  ],
-  de: [
-    ['Archetyp bold-organic', 'Die Schale öffnet sich — Zutaten + kcal', '3D-Slider — die Karte', 'Immersive Enthüllung des Ortes', '0 Cookies · 0 Tracker'],
-    ['Archetyp Baumeister — seit 1957', 'Das Haus baut sich beim Scrollen auf', 'Register — bereits gebaut', 'Baustellen-Notizen', '0 Cookies · 0 Tracker'],
-    ['Archetyp Storyteller — Papier &amp; Neon', 'Die Ausrüstung setzt sich beim Scrollen zusammen', 'Museum der Erfolge', 'Im Ring / außerhalb des Rings', '0 Cookies · 0 Tracker']
-  ]
-};
-
 window.PAGE_I18N = {
-  fr: { t: {}, qa: [
-    ["Ces trois sites sont des vrais clients ?", "Non, et nous le disons sur la page : ce sont des mondes de démonstration, construits pour des entreprises que nous avons inventées. L'atelier est jeune — plutôt que des logos empruntés, nous préférons vous laisser tout ouvrir et juger le travail vous-même."],
-    ["Je peux vraiment les visiter ?", "Oui, entièrement. Chaque vignette ouvre le site complet dans un nouvel onglet — animations, pages, formulaires. Rien n'est une image fixe."],
-    ["Combien coûte un site comme ça ?", "Il n'y a pas de tarif affiché : chaque monde est chiffré sur mesure, parce qu'une page unique et un monde complet ne demandent pas le même travail. Laissez-nous votre e-mail avec deux lignes sur votre projet, vous aurez un chiffre honnête le jour même."],
-    ["Combien de temps pour en construire un ?", "Un premier aperçu de VOTRE monde arrive en jours, pas en mois — vous jugez sur pièces avant tout engagement."],
-    ["Vous utilisez WordPress ou un constructeur ?", "Ni l'un ni l'autre. Tout est construit de zéro, sans bibliothèque ni constructeur de pages — avec l'aide d'outils d'IA, puis relu et testé par nous, page par page. C'est ce qui rend les pages légères, rapides et sans cookie."],
-    ["Et si je veux juste voir avant de décider ?", "C'est exactement l'idée de cette page. Et pour les services, tout commence par un essai gratuit — vous décidez après avoir vu, pas avant."]
-  ]},
-  en: { t: {
-    'meta.title': 'Work — Scarsellato, Luxembourg',
-    'meta.desc': "Three demonstration worlds built from scratch — open them, they are real — and what the atelier runs for itself. Cookie-free.",
-    'nav.this': 'Work', 'cta.metiers': 'See the crafts',
-    'hero.chip': '( WORK ) — MADE TO MEASURE, YOURS TO OPEN',
-    'hero.kicker': 'DEMONSTRATION WORLDS · INVENTED BUSINESSES',
-    'hero.st1': 'Three worlds.', 'hero.st2': 'All of them open.',
-    'hero.sub': 'Not screenshots, not mockups: entire sites, online, that you can walk through right now. They were built for businesses we invented — which is exactly what lets us show everything, with nothing hidden behind an NDA.',
-    'hero.countnote': 'worlds online · 0 templates',
-    'honest.text': "<b>Let us say it upfront:</b> these three houses do not exist. We are a young atelier, so we show no borrowed logos, no testimonials, no \"trusted by\". What you see here is our work, in full, yours to judge in one click — it is the only honest proof we can give you today.",
-    'worlds.head': '( 01 ) — THE THREE WORLDS',
-    'worlds.st1': 'Each world serves', 'worlds.st2': 'a different trade.',
-    'tag.demo': 'Demonstration', 'w.open': 'Open the site ↗',
-    'w1.sector': 'Real estate · Grund', 'w2.sector': 'Health · Esch', 'w3.sector': 'Gastronomy · Differdange',
-    'w4.sector': 'Green cuisine · concept', 'w5.sector': 'Construction · since 1957', 'w6.sector': 'Athlete · portrait',
-    'own.head': '( 02 ) — THE ATELIER IS ITS OWN CLIENT',
-    'own.st1': 'What we sell,', 'own.st2': 'we run right here.',
-    'own.live': 'Running',
-    'own1.t': 'The assistant on this site',
-    'own1.d': 'The one at the bottom right. It answers from our information only, hands off when it is unsure, and passes us the contact details of interested visitors. It is exactly what we install for you — try it, it is the product.',
-    'own1.cta': 'Push it to its limits ↗',
-    'own2.t': 'Our own inbox',
-    'own2.d': 'The "Answer &amp; Follow-up" system we offer runs first on our own inquiries: sorting, replying, following up. We do not sell a mechanism we do not use ourselves.',
-    'own2.cta': 'See how it works ↗',
-    'own3.t': 'This site itself',
-    'own3.d': 'Built from scratch, no template, no library, no page builder, no cookies or trackers — including the 3D world on the homepage. If you are wondering what we can do, you are already inside it.',
-    'own3.cta': 'Back to the homepage ↗',
-    'end.head': '( 03 ) — AND YOURS',
-    'end.st1': 'The fourth world', 'end.st2': 'is not built yet.',
-    'end.note': 'We would rather let you judge the real thing than a promise: <b>a first glimpse of your world arrives in days, not months</b>, and every service starts with a free trial. If there is nothing useful for us to do for you, we will say so — it is cheaper for everyone.',
-    'end.cta1': 'Start a project', 'end.cta2': 'Ask the assistant',
-    'end.back': '← Back to all crafts'
-  }, qa: [
+  en: { qa: [
     ["Are these three sites real clients?", "No, and we say so on the page: they are demonstration worlds, built for businesses we invented. The atelier is young — rather than borrowed logos, we would rather let you open everything and judge the work yourself."],
     ["Can I really visit them?", "Yes, completely. Each thumbnail opens the full site in a new tab — animations, pages, forms. Nothing here is a still image."],
     ["What does a site like that cost?", "There is no listed price: every world is quoted individually, because a single page and a complete world are not the same work. Leave us your email with two lines about your project and you get an honest figure the same day."],
     ["How long does one take to build?", "A first glimpse of YOUR world arrives in days, not months — you judge the real thing before any commitment."],
     ["Do you use WordPress or a builder?", "Neither. Everything is built from scratch, with no library and no page builder — with the help of AI tools, then reviewed and tested by us, page by page. That is what makes the pages light, fast and cookie-free."],
     ["What if I just want to look before deciding?", "That is exactly what this page is for. And for the services, everything starts with a free trial — you decide after seeing, not before."]
-  ]},
+  ] },
+  fr: { t: {
+    'meta.title': 'Réalisations — Scarsellato, Luxembourg',
+    'meta.desc': "Trois mondes de démonstration construits sur mesure, sans template — ouvrez-les, ils sont réels — et ce que l'atelier fait tourner pour lui-même. Sans cookies.",
+    'h.idx': '[ <b>Réalisations</b> ] — sur mesure, visitable',
+    'h.l1': 'Trois mondes.', 'h.l2': '<span class="it">Tous ouvrables.</span>',
+    'h.lede': "Pas des captures d'écran, pas des maquettes : des sites entiers, en ligne, que vous pouvez parcourir maintenant. Ils ont été construits pour des entreprises que nous avons inventées — c'est ce qui nous permet de tout montrer, sans rien cacher derrière un accord de confidentialité.",
+    'h.cta1': 'Ouvrir les mondes', 'h.cta2': "Parler d'un projet",
+    'h.f1': '[ 03 ] — mondes en ligne · 0 template', 'h.f2': 'Mondes de démonstration · entreprises fictives',
+    'w.idx': '[ <b>01</b> ] — Les trois mondes', 'w.l1': 'Chaque monde répond', 'w.l2': 'à un métier différent.',
+    'w.lede': "Chaque vignette ouvre le site complet dans un nouvel onglet — animations, pages, formulaires. Rien n'est une image fixe.",
+    'w.tag': 'Démonstration', 'w.m': 'Entreprise fictive', 'w.open': 'Ouvrir le site',
+    'd1.alt': 'Monde de démonstration — cuisine verte', 'd1.s': 'Cuisine verte · concept',
+    'd1.c': "<span>Archétype bold-organic</span><span>Le bol qui s'ouvre — ingrédients + kcal</span><span>Slider 3D — la carte</span><span>Révélation immersive du lieu</span><span><b>0</b> cookie · <b>0</b> traceur</span>",
+    'd2.alt': 'Monde de démonstration — entreprise de construction', 'd2.s': 'Construction · depuis 1957',
+    'd2.c': '<span>Archétype bâtisseur — depuis 1957</span><span>La maison se construit au scroll</span><span>Registre — déjà construit</span><span>Annotations de chantier</span><span><b>0</b> cookie · <b>0</b> traceur</span>',
+    'd3.alt': 'Monde de démonstration — athlète', 'd3.s': 'Athlète · portrait',
+    'd3.c': "<span>Archétype storyteller — papier &amp; néon</span><span>L'équipement s'assemble au scroll</span><span>Musée du palmarès</span><span>Sur le ring / hors du ring</span><span><b>0</b> cookie · <b>0</b> traceur</span>",
+    'hon.h': 'Disons-le <span class="it gold">tout de suite.</span>',
+    'hon.p': "Ces trois maisons n'existent pas. Nous sommes un jeune atelier et nous n'affichons donc ni logos empruntés, ni témoignages, ni « ils nous font confiance ». Ce que vous voyez ici est notre travail, en entier, jugeable en un clic — c'est la seule preuve honnête que nous puissions vous donner aujourd'hui.",
+    'v.idx': '[ <b>02</b> ] — Le métier derrière', 'v.l1': 'Sites &amp;', 'v.l2': 'mondes.',
+    'v.lede': "De la page unique au monde complet — dessiné sur mesure, jamais un template. Multilingue, sans cookies, avec un vrai chemin pour qu'un visiteur devienne une demande.",
+    'v.m': 'Chiffré après un échange',
+    'a.idx': '[ <b>03</b> ] — Trois atmosphères', 'a.l1': 'Avant de lire un mot,', 'a.l2': 'on ressent quelque chose.',
+    'a.lede': "Trois atmosphères, une par métier — aucun client derrière, seulement le sentiment qu'un site peut donner avant toute explication.",
+    'a1.tag': 'Immobilier', 'a1.h': 'immobilier<span class="it gold">.</span>', 'a1.p': 'Un récit de quartiers.<br>Réponse le jour même.',
+    'a2.tag': 'Santé', 'a2.h': 'santé<span class="it gold">.</span>', 'a2.p': 'La lumière comme soin.<br>Rendez-vous sans téléphone.',
+    'a3.tag': 'Gastronomie', 'a3.p': 'Lume di candela.<br>La table se dresse.',
+    'a4.idx': 'VOTRE-NOM · VOTRE-VILLE / 2026', 'a4.h': 'le vôtre<span class="it gold">.</span>',
+    'a4.p': 'Un aperçu de votre monde arrive en jours, pas en mois.',
+    'pl.immo': 'La page immobilier', 'pl.like': 'Un monde comme celui-ci',
+    'o.idx': "[ <b>04</b> ] — L'atelier est son propre client", 'o.l1': 'Ce que nous vendons,', 'o.l2': 'nous le faisons tourner ici.',
+    'o.live': 'En service',
+    'o1.h': "L'assistant de ce site",
+    'o1.p': "Celui en bas à droite. Il répond à partir de nos seules informations, passe la main quand il n'est pas sûr, et nous transmet les coordonnées des visiteurs intéressés. C'est exactement ce que nous installons chez vous — testez-le, c'est le produit.",
+    'o1.b': 'Le pousser dans ses retranchements',
+    'o2.h': 'Notre propre boîte de réception',
+    'o2.p': 'Le système « Réponse &amp; Relance » que nous proposons tourne d\'abord sur nos demandes à nous : tri, réponse, relance. Nous ne vendons pas un mécanisme que nous n\'utilisons pas nous-mêmes.',
+    'o2.b': 'Voir comment il fonctionne',
+    'o3.h': 'Ce site lui-même',
+    'o3.p': 'Construit de zéro, sans template, sans bibliothèque, sans constructeur de pages, sans cookie ni traceur. Si vous vous demandez ce que nous savons faire, vous êtes déjà dedans.',
+    'o3.b': "Retourner à l'accueil",
+    'k.idx': '[ <b>05</b> ] — Et le vôtre', 'k.l1': 'Le quatrième monde', 'k.l2': "n'est pas encore construit.",
+    'k.lede': "Nous préférons vous laisser juger sur pièces plutôt que sur des promesses : <b>un aperçu de votre monde arrive en jours, pas en mois</b>, et tous nos services commencent par un essai gratuit. S'il n'y a rien d'utile à faire pour vous, nous vous le dirons — c'est moins cher pour tout le monde.",
+    'k.msg': 'DEUX LIGNES SUR VOTRE PROJET', 'k.ask': "Demander à l'assistant", 'k.back': '← Revoir tous les métiers'
+  }, qa: [
+    ["Ces trois sites sont des vrais clients ?", "Non, et nous le disons sur la page : ce sont des mondes de démonstration, construits pour des entreprises que nous avons inventées. L'atelier est jeune — plutôt que des logos empruntés, nous préférons vous laisser tout ouvrir et juger le travail vous-même."],
+    ["Je peux vraiment les visiter ?", "Oui, entièrement. Chaque vignette ouvre le site complet dans un nouvel onglet — animations, pages, formulaires. Rien n'est une image fixe."],
+    ["Combien coûte un site comme ça ?", "Il n'y a pas de tarif affiché : chaque monde est chiffré sur mesure, parce qu'une page unique et un monde complet ne demandent pas le même travail. Laissez-nous votre e-mail avec deux lignes sur votre projet, vous aurez un chiffre honnête le jour même."],
+    ["Combien de temps pour en construire un ?", "Un premier aperçu de VOTRE monde arrive en jours, pas en mois — vous jugez sur pièces avant tout engagement."],
+    ["Vous utilisez WordPress ou un constructeur ?", "Ni l'un ni l'autre. Tout est construit de zéro, sans bibliothèque ni constructeur de pages — avec l'aide d'outils d'IA, puis relu et testé par nous, page par page. C'est ce qui rend les pages légères, rapides et sans cookie."],
+    ["Et si je veux juste voir avant de décider ?", "C'est exactement l'idée de cette page. Et pour les services, tout commence par un essai gratuit — vous décidez après avoir vu, pas avant."]
+  ] },
   de: { t: {
     'meta.title': 'Arbeiten — Scarsellato, Luxemburg',
     'meta.desc': 'Drei von Grund auf gebaute Demonstrationswelten — öffnen Sie sie, sie sind echt — und was das Atelier für sich selbst betreibt. Ohne Cookies.',
-    'nav.this': 'Arbeiten', 'cta.metiers': 'Zu den Gewerken',
-    'hero.chip': '( ARBEITEN ) — MASSGESCHNEIDERT, BEGEHBAR',
-    'hero.kicker': 'DEMO-WELTEN · ERFUNDENE UNTERNEHMEN',
-    'hero.st1': 'Drei Welten.', 'hero.st2': 'Alle begehbar.',
-    'hero.sub': 'Keine Screenshots, keine Mockups: vollständige Websites, online, die Sie jetzt erkunden können. Sie wurden für Unternehmen gebaut, die wir erfunden haben — genau das erlaubt uns, alles zu zeigen, ohne etwas hinter einer Geheimhaltungsvereinbarung zu verstecken.',
-    'hero.countnote': 'Welten online · 0 Templates',
-    'honest.text': '<b>Sagen wir es gleich:</b> Diese drei Häuser gibt es nicht. Wir sind ein junges Atelier und zeigen deshalb weder geliehene Logos noch Testimonials noch „Sie vertrauen uns“. Was Sie hier sehen, ist unsere Arbeit, vollständig, mit einem Klick beurteilbar — es ist der einzige ehrliche Beweis, den wir Ihnen heute geben können.',
-    'worlds.head': '( 01 ) — DIE DREI WELTEN',
-    'worlds.st1': 'Jede Welt steht', 'worlds.st2': 'für ein anderes Gewerk.',
-    'tag.demo': 'Demonstration', 'w.open': 'Website öffnen ↗',
-    'w1.sector': 'Immobilien · Grund', 'w2.sector': 'Gesundheit · Esch', 'w3.sector': 'Gastronomie · Differdingen',
-    'w4.sector': 'Grüne Küche · Konzept', 'w5.sector': 'Bau · seit 1957', 'w6.sector': 'Athlet · Porträt',
-    'own.head': '( 02 ) — DAS ATELIER IST SEIN EIGENER KUNDE',
-    'own.st1': 'Was wir verkaufen,', 'own.st2': 'betreiben wir hier selbst.',
-    'own.live': 'In Betrieb',
-    'own1.t': 'Der Assistent dieser Seite',
-    'own1.d': 'Der unten rechts. Er antwortet ausschließlich auf Grundlage unserer Informationen, gibt ab, sobald er unsicher ist, und übermittelt uns die Kontaktdaten interessierter Besucher. Genau das richten wir bei Ihnen ein — probieren Sie ihn aus, er ist das Produkt.',
-    'own1.cta': 'Ihn an seine Grenzen bringen ↗',
-    'own2.t': 'Unser eigenes Postfach',
-    'own2.d': 'Das System „Antwort &amp; Nachfassen“, das wir anbieten, arbeitet zuerst mit unseren eigenen Anfragen: sortieren, antworten, nachfassen. Wir verkaufen keinen Mechanismus, den wir nicht selbst benutzen.',
-    'own2.cta': 'So funktioniert es ↗',
-    'own3.t': 'Diese Seite selbst',
-    'own3.d': 'Von Grund auf gebaut, ohne Template, ohne Bibliothek, ohne Baukasten, ohne Cookies oder Tracker — einschließlich der 3D-Welt auf der Startseite. Wenn Sie sich fragen, was wir können: Sie sind bereits mittendrin.',
-    'own3.cta': 'Zurück zur Startseite ↗',
-    'end.head': '( 03 ) — UND IHRE',
-    'end.st1': 'Die vierte Welt', 'end.st2': 'ist noch nicht gebaut.',
-    'end.note': 'Wir lassen Sie lieber das Ergebnis beurteilen als ein Versprechen: <b>ein erster Blick auf Ihre Welt kommt in Tagen, nicht Monaten</b>, und jeder Service beginnt mit einem kostenlosen Test. Wenn es nichts Sinnvolles für Sie zu tun gibt, sagen wir das — das ist für alle günstiger.',
-    'end.cta1': 'Projekt besprechen', 'end.cta2': 'Den Assistenten fragen',
-    'end.back': '← Zurück zu allen Gewerken'
+    'h.idx': '[ <b>Arbeiten</b> ] — maßgeschneidert, begehbar',
+    'h.l1': 'Drei Welten.', 'h.l2': '<span class="it">Alle begehbar.</span>',
+    'h.lede': 'Keine Screenshots, keine Mockups: vollständige Websites, online, die Sie jetzt erkunden können. Sie wurden für Unternehmen gebaut, die wir erfunden haben — genau das erlaubt uns, alles zu zeigen, ohne etwas hinter einer Geheimhaltungsvereinbarung zu verstecken.',
+    'h.cta1': 'Die Welten öffnen', 'h.cta2': 'Projekt besprechen',
+    'h.f1': '[ 03 ] — Welten online · 0 Templates', 'h.f2': 'Demo-Welten · erfundene Unternehmen',
+    'w.idx': '[ <b>01</b> ] — Die drei Welten', 'w.l1': 'Jede Welt steht', 'w.l2': 'für ein anderes Gewerk.',
+    'w.lede': 'Jede Vorschau öffnet die komplette Website in einem neuen Tab — Animationen, Seiten, Formulare. Nichts davon ist ein Standbild.',
+    'w.tag': 'Demonstration', 'w.m': 'Erfundenes Unternehmen', 'w.open': 'Website öffnen',
+    'd1.alt': 'Demonstrationswelt — grüne Küche', 'd1.s': 'Grüne Küche · Konzept',
+    'd1.c': '<span>Archetyp bold-organic</span><span>Die Schale öffnet sich — Zutaten + kcal</span><span>3D-Slider — die Karte</span><span>Immersive Enthüllung des Ortes</span><span><b>0</b> Cookies · <b>0</b> Tracker</span>',
+    'd2.alt': 'Demonstrationswelt — Bauunternehmen', 'd2.s': 'Bau · seit 1957',
+    'd2.c': '<span>Archetyp Baumeister — seit 1957</span><span>Das Haus baut sich beim Scrollen auf</span><span>Register — bereits gebaut</span><span>Baustellen-Notizen</span><span><b>0</b> Cookies · <b>0</b> Tracker</span>',
+    'd3.alt': 'Demonstrationswelt — Athlet', 'd3.s': 'Athlet · Porträt',
+    'd3.c': '<span>Archetyp Storyteller — Papier &amp; Neon</span><span>Die Ausrüstung setzt sich beim Scrollen zusammen</span><span>Museum der Erfolge</span><span>Im Ring / außerhalb des Rings</span><span><b>0</b> Cookies · <b>0</b> Tracker</span>',
+    'hon.h': 'Sagen wir es <span class="it gold">gleich.</span>',
+    'hon.p': 'Diese drei Häuser gibt es nicht. Wir sind ein junges Atelier und zeigen deshalb weder geliehene Logos noch Testimonials noch „Sie vertrauen uns“. Was Sie hier sehen, ist unsere Arbeit, vollständig, mit einem Klick beurteilbar — es ist der einzige ehrliche Beweis, den wir Ihnen heute geben können.',
+    'v.idx': '[ <b>02</b> ] — Das Gewerk dahinter', 'v.l1': 'Websites &amp;', 'v.l2': 'Welten.',
+    'v.lede': 'Von der einzelnen Seite bis zur ganzen Welt — nach Maß gezeichnet, nie eine Vorlage. Mehrsprachig, ohne Cookies, mit einem echten Weg, auf dem ein Besucher zur Anfrage wird.',
+    'v.m': 'Angebot nach einem Gespräch',
+    'a.idx': '[ <b>03</b> ] — Drei Atmosphären', 'a.l1': 'Bevor man ein Wort liest,', 'a.l2': 'spürt man etwas.',
+    'a.lede': 'Drei Atmosphären, eine pro Gewerk — kein Kunde dahinter, nur das Gefühl, das eine Website vermitteln kann, bevor irgendetwas erklärt wird.',
+    'a1.tag': 'Immobilien', 'a1.h': 'immobilien<span class="it gold">.</span>', 'a1.p': 'Eine Erzählung der Viertel.<br>Antwort am selben Tag.',
+    'a2.tag': 'Gesundheit', 'a2.h': 'gesundheit<span class="it gold">.</span>', 'a2.p': 'Licht als Therapie.<br>Termine ohne Telefon.',
+    'a3.tag': 'Gastronomie', 'a3.p': 'Lume di candela.<br>Der Tisch deckt sich.',
+    'a4.idx': 'IHR-NAME · IHRE-STADT / 2026', 'a4.h': 'ihre welt<span class="it gold">.</span>',
+    'a4.p': 'Ein erster Blick auf Ihre Welt kommt in Tagen, nicht in Monaten.',
+    'pl.immo': 'Die Immobilien-Seite', 'pl.like': 'Eine Welt wie diese',
+    'o.idx': '[ <b>04</b> ] — Das Atelier ist sein eigener Kunde', 'o.l1': 'Was wir verkaufen,', 'o.l2': 'betreiben wir hier selbst.',
+    'o.live': 'In Betrieb',
+    'o1.h': 'Der Assistent dieser Seite',
+    'o1.p': 'Der unten rechts. Er antwortet ausschließlich auf Grundlage unserer Informationen, gibt ab, sobald er unsicher ist, und übermittelt uns die Kontaktdaten interessierter Besucher. Genau das richten wir bei Ihnen ein — probieren Sie ihn aus, er ist das Produkt.',
+    'o1.b': 'Ihn an seine Grenzen bringen',
+    'o2.h': 'Unser eigenes Postfach',
+    'o2.p': 'Das System „Antwort &amp; Nachfassen“, das wir anbieten, arbeitet zuerst mit unseren eigenen Anfragen: sortieren, antworten, nachfassen. Wir verkaufen keinen Mechanismus, den wir nicht selbst benutzen.',
+    'o2.b': 'So funktioniert es',
+    'o3.h': 'Diese Seite selbst',
+    'o3.p': 'Von Grund auf gebaut, ohne Template, ohne Bibliothek, ohne Baukasten, ohne Cookies oder Tracker. Wenn Sie sich fragen, was wir können: Sie sind bereits mittendrin.',
+    'o3.b': 'Zurück zur Startseite',
+    'k.idx': '[ <b>05</b> ] — Und Ihre', 'k.l1': 'Die vierte Welt', 'k.l2': 'ist noch nicht gebaut.',
+    'k.lede': 'Wir lassen Sie lieber das Ergebnis beurteilen als ein Versprechen: <b>ein erster Blick auf Ihre Welt kommt in Tagen, nicht in Monaten</b>, und jeder Service beginnt mit einem kostenlosen Test. Wenn es nichts Sinnvolles für Sie zu tun gibt, sagen wir das — das ist für alle günstiger.',
+    'k.msg': 'ZWEI ZEILEN ZU IHREM PROJEKT', 'k.ask': 'Den Assistenten fragen', 'k.back': '← Zurück zu allen Gewerken'
   }, qa: [
     ["Sind diese drei Seiten echte Kunden?", "Nein, und wir sagen es auf der Seite: Es sind Demonstrationswelten, gebaut für Unternehmen, die wir erfunden haben. Das Atelier ist jung — statt geliehener Logos lassen wir Sie lieber alles öffnen und die Arbeit selbst beurteilen."],
     ["Kann ich sie wirklich besuchen?", "Ja, vollständig. Jede Vorschau öffnet die komplette Website in einem neuen Tab — Animationen, Seiten, Formulare. Nichts davon ist ein Standbild."],
@@ -291,24 +501,53 @@ window.PAGE_I18N = {
     ["Wie lange dauert der Bau?", "Ein erster Blick auf IHRE Welt kommt in Tagen, nicht Monaten — Sie beurteilen das Ergebnis, bevor Sie sich festlegen."],
     ["Nutzen Sie WordPress oder einen Baukasten?", "Weder noch. Alles wird von Grund auf gebaut, ohne Bibliothek und ohne Baukasten — mit Hilfe von KI-Werkzeugen, dann von uns Seite für Seite geprüft und getestet. Das macht die Seiten leicht, schnell und cookiefrei."],
     ["Und wenn ich erst mal nur schauen möchte?", "Genau dafür ist diese Seite da. Und bei den Services beginnt alles mit einem kostenlosen Test — Sie entscheiden, nachdem Sie gesehen haben, nicht vorher."]
-  ]}
+  ] }
 };
-
-/* Les fiches techniques sont injectées avant shell.js pour que le moteur
-   de révélation observe des listes déjà remplies. */
+/* assistant prompts on buttons follow the page language (same resolution order as v3.js) */
 (() => {
-  let lang = null;
-  try { lang = localStorage.getItem('scar-lang'); } catch (e) {}
-  lang = (new URLSearchParams(location.search).get('lang') || lang || (navigator.language || 'fr').slice(0, 2)).toLowerCase();
-  if (!window.PAGE_SPECS[lang]) lang = 'fr';
-  const specs = window.PAGE_SPECS[lang];
-  document.querySelectorAll('.w-specs[data-specs]').forEach(ul => {
-    const list = specs[Number(ul.dataset.specs)] || [];
-    ul.innerHTML = list.map(l => '<li>' + l + '</li>').join('');
-  });
+  let L = null; try { L = localStorage.getItem('scar-lang'); } catch (e) {}
+  L = (new URLSearchParams(location.search).get('lang') || L || 'en').toLowerCase();
+  if (L !== 'fr' && L !== 'de') return;
+  document.querySelectorAll('[data-ask-' + L + ']').forEach(b => { b.dataset.ask = b.getAttribute('data-ask-' + L); });
 })();
 </script>
-<script src="../assets/shell.js?v=8"></script>
-
+<script>
+/* Work page only: graceful demo thumbnails, plates that play only while seen, slow scale on scroll */
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // contact sheet: a missing thumbnail leaves the dark frame with the world's name, never a broken icon
+  document.querySelectorAll('.wk-shot img').forEach(i => {
+    const shot = i.closest('.wk-shot');
+    const ok = () => shot.classList.add('ok'), off = () => i.classList.add('off');
+    if (i.complete) { if (i.naturalWidth) ok(); else if (i.currentSrc) off(); }
+    i.addEventListener('load', ok); i.addEventListener('error', off);
+  });
+  // plate loops: load + play only while on screen
+  const vids = [...document.querySelectorAll('.wk-pl-img video[data-loop]')];
+  if (!reduce && 'IntersectionObserver' in window) {
+    const vio = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { if (!v.getAttribute('src')) v.src = v.dataset.loop; v.play().catch(() => {}); }
+      else if (v.getAttribute('src')) v.pause();
+    }), { threshold: 0.15 });
+    vids.forEach(v => vio.observe(v));
+  }
+  // slow scale on scroll: each plate settles from 1.12 to 1 as it crosses the screen
+  if (reduce) return;
+  const plates = [...document.querySelectorAll('.wk-pl-img')];
+  let raf = 0;
+  const tick = () => {
+    raf = 0; const vh = innerHeight;
+    plates.forEach(f => {
+      const r = f.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return;
+      const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+      f.style.setProperty('--z', (1.12 - 0.12 * p).toFixed(4));
+    });
+  };
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+  addEventListener('resize', tick); tick();
+})();
+</script>
+<script src="../assets/v3.js?v=4"></script>
 </body>
 </html>

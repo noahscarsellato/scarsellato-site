@@ -1,988 +1,420 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Scarsellato — L'atelier digital, Luxembourg</title>
-<meta name="description" content="Atelier digital à Luxembourg : réponse et relance de vos demandes, automatisations, sites sur mesure et assistant de site. Pilote gratuit, sans cookies.">
-<link rel="stylesheet" href="styles.css?v=28">
+<title>Scarsellato — Digital atelier, Luxembourg</title>
+<meta name="description" content="A digital atelier in Luxembourg. A company has a philosophy before it has a website: I find it, then make it visible. Bespoke websites, answer &amp; follow-up, automations and a site assistant.">
+<link rel="stylesheet" href="assets/v3.css?v=4">
 </head>
 <body>
 
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="loader-core">
-    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
-    <p class="loader-count"><span id="loaderCount">00</span></p>
-    <div class="loader-bar"><span id="loaderBar"></span></div>
-  </div>
-</div>
-
-<canvas class="dust" id="dust" aria-hidden="true"></canvas>
-<div class="progress-rail" aria-hidden="true"></div>
-
-<header class="topbar">
-  <a class="wordmark" href="#top">scar<span class="italic gold">sellato</span></a>
-  <nav class="top-links" id="topLinks" aria-label="Navigation">
-    <a href="#top" aria-current="page" data-i18n="nav.home">Accueil</a>
-    <a href="#metiers" data-i18n="nav.metiers">Métiers</a>
-    <a href="immobilier/" data-i18n="nav.immo">Immobilier</a>
-    <a href="realisations/" data-i18n="nav.real">Réalisations</a>
-    <a href="approche/" data-i18n="nav.appro">L'approche</a>
-    <a href="#contact" data-i18n="nav.contact">Contact</a>
-  </nav>
-  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
-    <button type="button" data-lang="fr">FR</button>
-    <button type="button" data-lang="en">EN</button>
-    <button type="button" data-lang="de">DE</button>
-  </div>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="topLinks">Menu</button>
-  <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.talk">Parler d'un projet</span><span class="pill-dot" aria-hidden="true">↗</span></a>
-</header>
+<nav class="nav" aria-label="Navigation">
+  <a class="mark" href="./">scar<span class="it gold">sellato</span></a>
+  <ul>
+    <li><a href="#metiers" data-i18n="nav.crafts">Crafts</a></li>
+    <li><a href="approche/" data-i18n="nav.approach">Approach</a></li>
+    <li><a href="immobilier/" data-i18n="nav.immo">Real estate</a></li>
+    <li><a href="realisations/" data-i18n="nav.work">Work</a></li>
+  </ul>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button><button type="button" data-lang="de">DE</button></div>
+  <button class="nav-toggle" type="button" aria-expanded="false" data-i18n="nav.menu">Menu</button>
+  <a class="btn gold" href="#contact"><span class="roll" data-i18n="nav.write">Write</span></a>
+</nav>
 
 <main id="top">
 
-  <!-- (01) MONDE D'OUVERTURE — l'image est l'interface -->
-  <section class="pano hero" aria-label="Ouverture">
-    <div class="pano-bg" id="heroBg"><img src="img/world-immo.jpg?v=2" alt=""><video class="vid" muted loop playsinline preload="auto" src="img/loop-immo.mp4?v=2"></video></div>
-    <div class="pano-scrim" aria-hidden="true"></div>
-    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( SCARSELLATO ) — ATELIER DIGITAL · LUXEMBOURG</p>
-    <div class="statement st-hero">
-      <p class="st-line"><span class="st-in" data-i18n="hero.st1">Des mondes.</span></p>
-      <p class="st-line"><span class="st-in italic gold" data-i18n="hero.st2">Pas des pages.</span></p>
-    </div>
-    <!-- la ligne des métiers vit AU-DESSUS du wordmark, dans le flux — en absolu
-         (bottom fixe) elle traversait les lettres géantes selon la largeur d'écran -->
-    <p class="hero-crafts" data-i18n="hero.crafts">Sites sur mesure · Réponse à vos demandes · Automatisations · Assistant de site</p>
-    <a class="hero-immo" href="immobilier/"><span data-i18n="hero.immo">Agence immobilière ? Zéro lead perdu</span> <span aria-hidden="true">↗</span></a>
-    <h1 class="megamark" id="megaMark" aria-label="Scarsellato">scarsellato<span class="tm">™</span></h1>
-    <p class="scroll-cue" aria-hidden="true"><span data-i18n="hero.cue">DÉFILER</span><span class="cue-line"></span></p>
-  </section>
-
-  <!-- statement noir -->
-  <section class="statement-block" aria-label="Promesse">
-    <p class="st-line big"><span class="st-in" data-i18n="promise.st1">Répondre.</span></p>
-    <p class="st-line big"><span class="st-in italic gold" data-i18n="promise.st2">Le jour même.</span></p>
-  </section>
-
-  <!-- (01) LES MÉTIERS — ce que nous faisons, dit tout de suite (retour terrain 08-06 :
-       les visiteurs voyaient la galerie avant l'offre et ne comprenaient pas notre métier) -->
-  <section class="services" id="metiers" aria-label="Les métiers">
-    <div class="svc-head">
-      <p class="chip" aria-hidden="true" data-i18n="svc.head">( 01 ) — LES MÉTIERS · CE QUE NOUS FAISONS</p>
-      <div class="statement">
-        <p class="st-line big"><span class="st-in" data-i18n="svc.st1">Le site n'est</span></p>
-        <p class="st-line big"><span class="st-in italic gold" data-i18n="svc.st2">qu'une porte.</span></p>
+  <!-- ===== HERO — paper ===== -->
+  <section class="hero light" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="h.idx">[ <b>Digital atelier</b> ] — Luxembourg · EN · FR · DE</p>
+      <h1 class="h-xl">
+        <span class="lm"><span style="--i:0" data-i18n="h.l1">A company has</span></span>
+        <span class="lm"><span style="--i:1" data-i18n="h.l2">a <span class="it">philosophy.</span></span></span>
+      </h1>
+      <p class="lede fade" style="--d:450" data-i18n="h.lede">Before it has a website, before it has a logo, it has a reason to exist, a way of treating people, something it wants you to feel when you walk through its door. My work is to find that — and make it visible on screen.</p>
+      <div class="ctas fade" style="--d:650">
+        <a class="btn" href="#metiers"><span class="roll" data-i18n="h.cta1">See the crafts</span></a>
+        <a class="btn ghost" href="#contact"><span class="roll" data-i18n="h.cta2">Tell me about your house</span><span class="arr">↗</span></a>
       </div>
     </div>
-
-    <div class="svc-grid">
-      <article class="svc">
-        <p class="svc-idx" aria-hidden="true">01</p>
-        <h3 class="svc-name"><span data-i18n="svc1.name">Réponse &amp; Relance</span><span class="tm">™</span></h3>
-        <p class="svc-desc" data-i18n="svc1.desc">Chaque demande reçoit une vraie réponse en quelques minutes — soirs et week-ends compris, dans la langue du client. Puis nous relançons jusqu'à ce que ce soit oui ou non. Vous ne perdez plus la demande qui arrive un vendredi à 22 h.</p>
-        <div class="svc-foot">
-          <p class="svc-anchor" data-i18n="svc1.anchor">Pilote 14 jours — gratuit</p>
-          <a class="svc-link" href="reponse-relance/" data-i18n="svc1.link">Voir la page Réponse &amp; Relance ↗</a>
-          <a class="svc-link" href="immobilier/" data-i18n="svc1.link2">Agences immobilières : Zéro lead perdu ↗</a>
-        </div>
-      </article>
-
-      <article class="svc">
-        <p class="svc-idx" aria-hidden="true">02</p>
-        <h3 class="svc-name"><span data-i18n="svc2.name">Automatisations</span></h3>
-        <p class="svc-desc" data-i18n="svc2.desc">Devis, rappels, suivis, saisies répétitives : nous construisons le circuit qui les fait tourner sans vous. Sur vos outils existants, sans migration — et vous gardez la main sur ce qui part.</p>
-        <div class="svc-foot">
-          <p class="svc-anchor" data-i18n="svc2.anchor">Test gratuit sur un cas réel</p>
-          <a class="svc-link" href="automatisations/" data-i18n="svc2.link">Voir la page Automatisations ↗</a>
-        </div>
-      </article>
-
-      <article class="svc">
-        <p class="svc-idx" aria-hidden="true">03</p>
-        <h3 class="svc-name"><span data-i18n="svc3.name">Sites &amp; mondes</span></h3>
-        <p class="svc-desc" data-i18n="svc3.desc">De la page unique au monde complet — conçu sur mesure, jamais un template. Multilingue, sans cookies, avec un vrai chemin pour qu'un visiteur devienne une demande. Les trois mondes ci-dessous sont les nôtres : cliquez, ils s'ouvrent.</p>
-        <div class="svc-foot">
-          <p class="svc-anchor" data-i18n="svc3.anchor">Sur mesure — chiffré après un échange</p>
-          <a class="svc-link" href="realisations/" data-i18n="svc3.link">Voir les réalisations ↗</a>
-        </div>
-      </article>
-
-      <article class="svc">
-        <p class="svc-idx" aria-hidden="true">04</p>
-        <h3 class="svc-name"><span data-i18n="svc4.name">Assistant du site</span></h3>
-        <p class="svc-desc" data-i18n="svc4.desc">Un assistant qui répond à vos visiteurs à toute heure — uniquement à partir de VOS informations, jamais d'invention. Il passe la main dès qu'il n'est pas sûr et vous transmet les coordonnées des intéressés. Celui de cette page en est un.</p>
-        <div class="svc-foot">
-          <p class="svc-anchor" data-i18n="svc4.anchor">Version test gratuite sur vos contenus</p>
-          <a class="svc-link" href="assistant/" data-i18n="svc4.link">Voir la page Assistant ↗</a>
-          <button class="svc-link" type="button" id="svcTryBot" data-i18n="svc4.try">Ou l'essayer ici, maintenant ↗</button>
-        </div>
-      </article>
-
-
-
+    <div class="wrap hero-foot fade" style="--d:900">
+      <p class="idx" data-i18n="h.f1">[ 00 ] — one line, without lifting the pen</p>
+      <p class="idx" data-i18n="h.f2">Scroll ↓</p>
     </div>
-
-    <ul class="trust" aria-label="Nos garanties">
-      <li data-i18n="trust1"><b>Pilote gratuit</b> — vous jugez sur pièces</li>
-      <li data-i18n="trust2"><b>Semaine 1</b> — rien ne part sans votre accord</li>
-      <li data-i18n="trust3"><b>Premier mois</b> — satisfait ou remboursé</li>
-      <li data-i18n="trust4"><b>3 pilotes</b> en parallèle, pas plus</li>
-      <li data-i18n="trust5"><b>FR · DE · EN</b> — Luxembourg</li>
-      <li data-i18n="trust6"><b>0 cookie</b> · 0 traceur · RGPD</li>
-    </ul>
-    <p class="svc-note" data-i18n="svc.note">Nous sommes un jeune atelier : plutôt que des logos et des témoignages empruntés, nous préférons vous laisser tout essayer avant de payer quoi que ce soit. Écrivez une ligne — <a href="#contact">réponse le jour même</a>.</p>
   </section>
 
-  <!-- (02) LA TRAVERSÉE — plein écran, monde après monde -->
-  <section class="corridor" id="traversee" aria-label="La traversée">
-    <div class="cor-head">
-      <p class="chip" aria-hidden="true" data-i18n="cor.head">( 02 ) — LA TRAVERSÉE · LA CAMÉRA AVANCE</p>
+  <!-- ===== CONVICTION ===== -->
+  <section class="conv dark sheet" data-reveal>
+    <div class="wrap conv-grid">
+      <div>
+        <p class="idx" data-i18n="c.idx">[ <b>01</b> ] — What I believe</p>
+        <h2 class="h-l" style="margin-top:22px">
+          <span class="lm"><span style="--i:0" data-i18n="c.l1">Before reading a word,</span></span>
+          <span class="lm"><span style="--i:1" data-i18n="c.l2">people feel something.</span></span>
+          <span class="lm"><span style="--i:2" class="it gold" data-i18n="c.l3">Everything starts there.</span></span>
+        </h2>
+        <p class="lede fade" style="--d:400" data-i18n="c.lede">Calm, urgency, trust or suspicion: that first feeling decides whether your visitors write to you or close the tab. So I never start with the pages — I start with what your house wants people to feel.</p>
+      </div>
+      <figure class="portrait fade" style="--d:300">
+        <canvas id="portrait" data-src="img/world-sante.jpg" aria-hidden="true"></canvas>
+        <figcaption class="idx" data-i18n="c.cap">[ Portrait — Noah, the atelier ]</figcaption>
+      </figure>
     </div>
-    <div class="cor-track">
-      <div class="cor-sticky">
-        <div class="cor-world" id="corWorld">
-          <div class="cor-floor" aria-hidden="true"></div>
-          <i class="streak" style="--sz:-500px;  --sx:-40vw"></i>
-          <i class="streak" style="--sz:-1100px; --sx:41vw"></i>
-          <i class="streak" style="--sz:-1800px; --sx:-43vw"></i>
-          <i class="streak" style="--sz:-2600px; --sx:39vw"></i>
-          <i class="streak" style="--sz:-3300px; --sx:-38vw"></i>
-          <i class="streak" style="--sz:-4100px; --sx:42vw"></i>
-          <i class="streak" style="--sz:-5000px; --sx:-41vw"></i>
-          <i class="streak" style="--sz:-5900px; --sx:40vw"></i>
-          <article class="cor-room" data-z="0">
-            <div class="cor-bg"><img src="img/world-immo.jpg?v=2" alt="Monde immobilier"><video class="vid" muted loop playsinline preload="auto" src="img/loop-immo.mp4?v=2"></video></div>
-            <div class="cor-scrim"></div>
-            <p class="whisper r-tr" data-i18n="room1.whisper">Un récit de quartiers.<br>Réponse le jour même.</p>
-            <h3 class="room-title"><span data-i18n="room1.title">immobilier</span><span class="tm">.</span></h3>
-          </article>
-          <article class="cor-room" data-z="-2200">
-            <div class="cor-bg"><img src="img/world-sante.jpg?v=2" alt="Monde santé"><video class="vid" muted loop playsinline preload="auto" src="img/loop-sante.mp4?v=2"></video></div>
-            <div class="cor-scrim"></div>
-            <p class="whisper r-tr" data-i18n="room2.whisper">La lumière comme soin.<br>Rendez-vous sans téléphone.</p>
-            <h3 class="room-title"><span data-i18n="room2.title">santé</span><span class="tm">.</span></h3>
-          </article>
-          <article class="cor-room" data-z="-4400">
-            <div class="cor-bg"><img src="img/world-gastro.jpg?v=2" alt="Monde gastronomie"><video class="vid" muted loop playsinline preload="auto" src="img/loop-gastro.mp4?v=2"></video></div>
-            <div class="cor-scrim"></div>
-            <p class="whisper r-tr" data-i18n="room3.whisper">Lume di candela.<br>La table se dresse.</p>
-            <h3 class="room-title"><span data-i18n="room3.title">gastronomia</span><span class="tm">.</span></h3>
-          </article>
-          <div class="cor-room cor-final" data-z="-6600">
-            <h3 class="room-title final"><span data-i18n="final.title">le vôtre</span><span class="gold">.</span></h3>
-            <p class="chip" data-i18n="final.chip">VOTRE-NOM · VOTRE-VILLE / 2026</p>
+  </section>
+
+  <div class="marquee dark" aria-hidden="true">
+    <div class="marquee-track" data-i18n="mq">
+      <span>Never a template</span><span>same-day reply</span><span>Never borrowed proof</span><span>no cookies, no trackers</span><span>Never anything invented</span><span>few houses, followed for years</span>
+      <span>Never a template</span><span>same-day reply</span><span>Never borrowed proof</span><span>no cookies, no trackers</span><span>Never anything invented</span><span>few houses, followed for years</span>
+    </div>
+  </div>
+
+  <!-- ===== ORIGIN ===== -->
+  <section class="origin dark" data-reveal>
+    <div class="wrap">
+      <div class="two">
+        <div>
+          <p class="idx" data-i18n="o.idx">[ <b>02</b> ] — Where it comes from</p>
+          <h2 class="h-l" style="margin-top:22px">
+            <span class="lm"><span style="--i:0" data-i18n="o.l1">I come from drawing,</span></span>
+            <span class="lm"><span style="--i:1" class="it gold" data-i18n="o.l2">not from code.</span></span>
+          </h2>
+        </div>
+        <p class="lede fade" style="--d:300;align-self:end" data-i18n="o.lede">I went to art school: design, drawing, composition. You learn one thing there before all the others — look for a long time before you draw anything. It has stayed my method, and it is why I never start a website from a template.</p>
+      </div>
+      <div class="cols">
+        <div class="col fade" style="--d:100">
+          <p class="glyph">✎</p>
+          <h3 data-i18n="o.a.t">Drawing</h3>
+          <p class="mut" data-i18n="o.a.d">A page is composed like an image: what you see first, what comes next, what is left to breathe. Rhythm, space, light — a draughtsman's decisions, not technical settings. That is why two sites by the same hand never look alike.</p>
+        </div>
+        <div class="col fade" style="--d:250">
+          <p class="glyph">◎</p>
+          <h3 data-i18n="o.b.t">The visitor's mind</h3>
+          <p class="mut" data-i18n="o.b.d">Why one page inspires trust and another does not, why people hesitate, why they write or close the tab. It is not there to manipulate anyone — it is there so nothing stands between you and the person who already wanted to talk to you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CRAFTS ===== -->
+  <section class="crafts dark" id="metiers" data-reveal>
+    <div class="wrap">
+      <div class="crafts-head">
+        <div>
+          <p class="idx" data-i18n="m.idx">[ <b>03</b> ] — The crafts · four, no more</p>
+          <h2 class="h-l" style="margin-top:22px">
+            <span class="lm"><span style="--i:0" data-i18n="m.l1">The website is</span></span>
+            <span class="lm"><span style="--i:1" class="it gold" data-i18n="m.l2">only a door.</span></span>
+          </h2>
+        </div>
+        <p class="lede fade" style="--d:300;max-width:40ch" data-i18n="m.lede">Behind the door, someone has to answer. The atelier's four crafts all do the same thing: make sure nobody who wanted to talk to you leaves without an answer.</p>
+      </div>
+      <div class="cgrid">
+        <article class="card fade" style="--d:0">
+          <div class="vis"><span class="tag" data-i18n="k1.tag">Websites &amp; worlds</span><canvas data-ht="img/world-immo.jpg"></canvas><img src="img/world-immo.jpg" alt="" loading="lazy"><video class="mock mock-vid" data-src="media/sites-card.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><button class="play" type="button" data-full="media/sites-explainer.mp4" data-i18n="play">▶ Watch full size</button></div>
+          <div class="body">
+            <h3 data-i18n="k1.h">Websites &amp; <span class="it gold">worlds</span></h3>
+            <p class="mut" data-i18n="k1.p">From a single page to a complete world — drawn to measure, never a template. Multilingual, cookie-free, with a real path for a visitor to become an inquiry.</p>
+            <div class="meta"><span class="idx" data-i18n="k1.m">Quoted after a conversation</span><a class="btn ghost" href="realisations/"><span class="roll" data-i18n="k1.b">See the work</span><span class="arr">↗</span></a></div>
           </div>
+        </article>
+        <article class="card fade" style="--d:120">
+          <div class="vis"><span class="tag" data-i18n="k2.tag">Answer &amp; Follow-up</span><canvas data-shape="rr"></canvas>
+            <video class="mock mock-vid" data-src="media/rr-card.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><button class="play" type="button" data-full="media/rr-explainer.mp4" data-i18n="play">▶ Watch full size</button></div>
+          <div class="body">
+            <h3 data-i18n="k2.h">Answer &amp; <span class="it gold">Follow-up</span></h3>
+            <p class="mut" data-i18n="k2.p">Every inquiry gets a real answer within minutes — evenings and weekends included, in the client's language. Then we follow up until it is a yes or a no. No more inquiries lost on a Friday at 10 pm.</p>
+            <div class="meta"><span class="idx" data-i18n="k2.m">14-day pilot — free</span><a class="btn ghost" href="reponse-relance/"><span class="roll" data-i18n="kx.b">See the craft</span><span class="arr">↗</span></a></div>
+          </div>
+        </article>
+        <article class="card fade" style="--d:0">
+          <div class="vis"><span class="tag" data-i18n="k3.tag">Automations</span><canvas data-shape="auto"></canvas>
+            <video class="mock mock-vid" data-src="media/auto-card.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><button class="play" type="button" data-full="media/auto-explainer.mp4" data-i18n="play">▶ Watch full size</button></div>
+          <div class="body">
+            <h3 data-i18n="k3.h"><span class="it gold">Automations</span></h3>
+            <p class="mut" data-i18n="k3.p">Quotes, reminders, follow-ups, repetitive data entry: I build the circuit that runs them without you. On the tools you already use, no migration — and you keep control of what goes out.</p>
+            <div class="meta"><span class="idx" data-i18n="k3.m">Free test on a real case</span><a class="btn ghost" href="automatisations/"><span class="roll" data-i18n="kx.b">See the craft</span><span class="arr">↗</span></a></div>
+          </div>
+        </article>
+        <article class="card fade" style="--d:120">
+          <div class="vis"><span class="tag" data-i18n="k4.tag">Site assistant</span><canvas data-shape="bot"></canvas>
+            <video class="mock mock-vid" data-src="media/bot-card.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><button class="play" type="button" data-full="media/bot-explainer.mp4" data-i18n="play">▶ Watch full size</button></div>
+          <div class="body">
+            <h3 data-i18n="k4.h">Site <span class="it gold">assistant</span></h3>
+            <p class="mut" data-i18n="k4.p">It answers your visitors at any hour — only from your information, never invented. It hands over the moment it is unsure and passes you the contact details of the people who are interested.</p>
+            <div class="meta"><span class="idx" data-i18n="k4.m">Free test version</span><a class="btn ghost" href="assistant/"><span class="roll" data-i18n="kx.b">See the craft</span><span class="arr">↗</span></a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== METHOD — pinned horizontal ===== -->
+  <section class="process light sheet" id="methode">
+    <div class="stick">
+      <div class="wrap" data-reveal>
+        <p class="idx" data-i18n="p.idx">[ <b>04</b> ] — How we work together</p>
+        <h2 class="h-l" style="margin-top:18px">
+          <span class="lm"><span style="--i:0" data-i18n="p.l1">Few projects, and we</span></span>
+          <span class="lm"><span style="--i:1" class="it" data-i18n="p.l2">learn from each other.</span></span>
+        </h2>
+      </div>
+      <div class="wrap bar"><span class="idx" id="pCount">[ 01 / 04 ]</span><span class="rail"><i id="pFill"></i></span></div>
+      <div class="ptrack" id="pTrack">
+        <article class="step"><p class="num">01</p><h3 data-i18n="s1.h">We talk, at length, before I draw.</h3><p data-i18n="s1.p">In writing, at your pace, in English, French or German. You teach me your trade — its words, its seasons, what irritates you about your competitors. I cannot make visible something I have not understood.</p></article>
+        <article class="step"><p class="num">02</p><h3 data-i18n="s2.h">You see something real very quickly.</h3><p data-i18n="s2.p">A glimpse of your world arrives in days, not months. Not a document: a page that moves, that you open on your phone. We judge the real thing — it is more honest than an illustrated quote.</p></article>
+        <article class="step"><p class="num">03</p><h3 data-i18n="s3.h">You correct me, and you are often right.</h3><p data-i18n="s3.p">It is your house, not my gallery. When you tell me "that is not us", the site rings truer. I have an opinion and I defend it once — after that, you decide.</p></article>
+        <article class="step"><p class="num">04</p><h3 data-i18n="s4.h">I stay after it goes live.</h3><p data-i18n="s4.p">A house moves: new services, new photographs, new seasons. I would rather follow a few clients for a long time than deliver many sites and forget them.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHILOSOPHY — stacked chapters ===== -->
+  <section class="philo dark sheet" id="philosophie">
+    <div class="wrap" data-reveal>
+      <p class="idx" data-i18n="ph.idx">[ <b>05</b> ] — The philosophy, in four chapters</p>
+      <h2 class="h-l" style="margin:22px 0 clamp(40px,5vw,70px)">
+        <span class="lm"><span style="--i:0" data-i18n="ph.l1">A way of working</span></span>
+        <span class="lm"><span style="--i:1" class="it gold" data-i18n="ph.l2">shows in its refusals.</span></span>
+      </h2>
+    </div>
+    <div class="wrap chapters">
+      <article class="chap" style="--k:0">
+        <header><span class="idx">[ <b>01</b> / 04 ]</span><h3 data-i18n="ch1.h">The questions I ask you</h3><span class="idx kw" data-i18n="ch1.k">before drawing</span></header>
+        <div class="cbody">
+          <ul data-i18n="ch1.ul">
+            <li><strong>Why did you start this trade?</strong><span>Not the version for the bank manager. The real one.</span></li>
+            <li><strong>What should someone feel when they walk through your door?</strong><span>Trust, calm, desire, safety, respect — it is never the same word, and everything follows from it.</span></li>
+            <li><strong>What are you proud of that nobody notices?</strong><span>That is almost always the thing to show first.</span></li>
+            <li><strong>What are you working towards?</strong><span>A site that ignores where the house is going freezes it in what it was last year.</span></li>
+          </ul>
+          <canvas class="cdots" data-glyph="?" aria-hidden="true"></canvas>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- (03) MANIFESTE CINÉTIQUE — le texte vit sur l'image -->
-  <section class="kinetic" aria-label="Manifeste">
-    <div class="kin-track">
-      <div class="kin-sticky">
-        <div class="pano-bg"><img src="img/world-sante.jpg?v=2" alt=""><video class="vid" muted loop playsinline preload="auto" src="img/loop-sante.mp4?v=2"></video></div>
-        <div class="kin-scrim" aria-hidden="true"></div>
-        <p class="chip chip-tl" aria-hidden="true" data-i18n="kin.head">( 03 ) — CE QUE NOUS CROYONS</p>
-        <p class="kin-text" id="kinText" data-i18n="kin.text">un site n'est pas ✦ une carte de visite. c'est la première poignée de main ∿ le premier rendez-vous ⇌ la première réponse. nous construisons des pages qui respirent ✦ qui racontent — et qui répondent, le jour même.</p>
-        <p class="chip kin-chip1" aria-hidden="true" data-i18n="kin.chip1">RÉPONSE — LE JOUR MÊME ↗</p>
-        <p class="chip kin-chip2" aria-hidden="true" data-i18n="kin.chip2">0 COOKIE · 0 TRACEUR</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- (04) L'ATELIER — les sites dans le vide, fiche technique qui s'écrit -->
-  <section class="void" id="atelier" aria-label="L'atelier">
-    <div class="void-track">
-      <div class="void-sticky">
-        <p class="chip chip-tl" aria-hidden="true" data-i18n="void.head">( 04 ) — L'ATELIER · SUR MESURE</p>
-        <p class="void-counter chip" aria-hidden="true"><span id="voidIdx">01</span> / 03</p>
-        <div class="void-stage">
-          <a class="v-screen" data-i="0" href="spec-demos/verde/index.html" target="_blank" rel="noopener">
-            <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="spec-demos/verde/img/interieur.jpg" alt="Site Verde"></div>
-            <div class="v-reflect" aria-hidden="true"><img src="spec-demos/verde/img/interieur.jpg" alt=""></div>
-          </a>
-          <a class="v-screen" data-i="1" href="spec-demos/kohnen-fils/index.html" target="_blank" rel="noopener">
-            <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="spec-demos/kohnen-fils/img/maison.webp" alt="Site Kohnen &amp; Fils"></div>
-            <div class="v-reflect" aria-hidden="true"><img src="spec-demos/kohnen-fils/img/maison.webp" alt=""></div>
-          </a>
-          <a class="v-screen" data-i="2" href="spec-demos/roda/index.html" target="_blank" rel="noopener">
-            <div class="frame"><div class="frame-bar"><i></i><i></i><i></i></div><img src="spec-demos/roda/img/gear.webp" alt="Site Maxime Roda"></div>
-            <div class="v-reflect" aria-hidden="true"><img src="spec-demos/roda/img/gear.webp" alt=""></div>
-          </a>
+      </article>
+      <article class="chap" style="--k:1">
+        <header><span class="idx">[ <b>02</b> / 04 ]</span><h3 data-i18n="ch2.h">How a feeling becomes a website</h3><span class="idx kw" data-i18n="ch2.k">every decision can be explained</span></header>
+        <div class="cbody">
+          <ul data-i18n="ch2.ul">
+            <li><strong>"I want them to feel safe"</strong><span>Slow rhythm, plenty of space, nothing blinking.<em>A hurried page conveys urgency. A calm page conveys control.</em></span></li>
+            <li><strong>"We are a house of craftsmen"</strong><span>Material in the foreground, the gesture shown, the text stepping back.<em>People believe what they watch being made, not what is asserted.</em></span></li>
+            <li><strong>"Our clients hesitate for a long time"</strong><span>Objections answered in the order they actually arrive.<em>A hesitation nobody addresses becomes a tab that gets closed.</em></span></li>
+          </ul>
+          <canvas class="cdots" data-glyph="~" aria-hidden="true"></canvas>
         </div>
-        <div class="v-specs" id="vSpecs" aria-hidden="true"></div>
-        <nav class="v-nav" id="vNav" aria-label="Aller à un site"></nav>
-        <a class="void-grid-link" href="realisations/" data-i18n="void.grid">Tout voir en grille ↗</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- (05) chiffres -->
-  <section class="numbers" aria-label="Les chiffres">
-    <div class="num-grid">
-      <div class="num"><span class="numeral" data-count="3">3</span><span class="num-cap" data-i18n="num1.cap">mondes construits, tous visitables ci-dessus</span></div>
-      <div class="num"><span class="numeral" data-count="0">0</span><span class="num-cap" data-i18n="num2.cap">cookie, zéro traceur</span></div>
-      <div class="num"><span class="numeral" data-count="100">100</span><span class="num-cap" data-i18n="num3.cap">% sur mesure, zéro template</span></div>
-    </div>
-  </section>
-
-  <!-- (06) FINALE — monde gastro -->
-  <section class="pano finale" id="contact" aria-label="Contact">
-    <div class="pano-bg"><img src="img/world-gastro.jpg?v=2" alt=""><video class="vid" muted loop playsinline preload="auto" src="img/loop-gastro.mp4?v=2"></video></div>
-    <div class="pano-scrim deep" aria-hidden="true"></div>
-    <div class="finale-core">
-      <p class="chip" aria-hidden="true" data-i18n="fin.head">( 05 ) — ET MAINTENANT</p>
-      <div class="statement">
-        <p class="st-line big"><span class="st-in" data-i18n="fin.st1">Parlons de</span></p>
-        <p class="st-line big"><span class="st-in italic gold" data-i18n="fin.st2">votre monde.</span></p>
-      </div>
-      <a class="btn-pill magnetic big" id="mailCta" href="mailto:noah@scarsellato.com?subject=Parlons%20de%20mon%20monde"><span class="pill-label" data-i18n="fin.cta">Écrire à l'atelier</span><span class="pill-dot" aria-hidden="true">↗</span></a>
-      <p class="finale-note" data-i18n="fin.note">RÉPONSE LE JOUR MÊME — PROMIS.</p>
-      <p class="finale-appro"><a href="approche/" data-i18n="fin.appro">Pourquoi je construis comme ça — l'approche ↗</a></p>
-      <form class="atelier-form" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
-        <input type="hidden" name="_subject" value="Nouveau message — scarsellato.com">
-        <input type="hidden" name="_next" value="https://scarsellato.com/#contact">
-        <input type="text" name="_honey" style="display:none">
-        <div class="af-row">
-          <input type="text" name="nom" placeholder="VOTRE NOM" required aria-label="Nom" data-i18n-ph="form.name">
-          <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+      </article>
+      <article class="chap" style="--k:2">
+        <header><span class="idx">[ <b>03</b> / 04 ]</span><h3 data-i18n="ch3.h">What I will not do</h3><span class="idx kw" data-i18n="ch3.k">the list is short because it is true</span></header>
+        <div class="cbody">
+          <ul data-i18n="ch3.ul">
+            <li><strong>Never a template</strong><span>No bought theme, no recoloured mock-up. If your site could belong to another house by swapping the logo, I have failed.</span></li>
+            <li><strong>Never borrowed proof</strong><span>No client logos I do not have, no invented testimonials, no decorative figures. I would rather tell you the atelier is young.</span></li>
+            <li><strong>Never cookies or trackers</strong><span>Not here, not on what I deliver. A fast page does not need to follow you around to work.</span></li>
+            <li><strong>Never anything invented</strong><span>Not in a text, not in an automatic reply to your customers. If a piece of information is missing, we ask for it — we do not fill the gap.</span></li>
+          </ul>
+          <canvas class="cdots" data-glyph="×" aria-hidden="true"></canvas>
         </div>
-        <textarea name="message" placeholder="PARLEZ-NOUS DE VOTRE MONDE…" required aria-label="Message" data-i18n-ph="form.msg"></textarea>
-        <button class="btn-pill magnetic big" type="submit"><span class="pill-label" data-i18n="form.send">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+      </article>
+      <article class="chap" style="--k:3">
+        <header><span class="idx">[ <b>04</b> / 04 ]</span><h3 data-i18n="ch4.h">What does not change, afterwards</h3><span class="idx kw" data-i18n="ch4.k">few houses, followed for years</span></header>
+        <div class="cbody">
+          <ul data-i18n="ch4.ul">
+            <li><strong>I stay after it goes live</strong><span>A house moves: new services, new photographs, new seasons. The site follows.</span></li>
+            <li><strong>Few projects at a time</strong><span>Deliberately. I would rather follow a few houses for years than deliver many sites and forget them.</span></li>
+            <li><strong>A same-day reply</strong><span>To every message. And if I am not the right person for your project, I will tell you plainly.</span></li>
+          </ul>
+          <canvas class="cdots" data-glyph="∞" aria-hidden="true"></canvas>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq light sheet" id="faq" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="f.idx">[ <b>FAQ</b> ] — The questions people ask me</p>
+      <h2 class="h-l" style="margin:22px 0 clamp(40px,5vw,70px)">
+        <span class="lm"><span style="--i:0" data-i18n="f.l1">Honestly,</span></span>
+        <span class="lm"><span style="--i:1;color:var(--gold-deep)" class="it" data-i18n="f.l2">before we start.</span></span>
+      </h2>
+      <div class="acc">
+        <details><summary><span class="idx">[ 01 ]</span><span class="t" data-i18n="q1">How exactly do you work?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a1">We talk first — at length, in writing, at your pace. I look for what your house wants people to feel. Then I draw, you see a real preview within days, you correct it, and I refine until it is right.</p></div></div></details>
+        <details><summary><span class="idx">[ 02 ]</span><span class="t" data-i18n="q2">Why no templates?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a2">Because a template imposes a shape before anyone has listened. If your site could become another house's by swapping the logo, it is not telling yours.</p></div></div></details>
+        <details><summary><span class="idx">[ 03 ]</span><span class="t" data-i18n="q3">How much does it cost?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a3">There is no listed price: every project is quoted individually after a conversation, because a single page and a complete world are not the same work. Tell me in two lines what you want to do and you get an honest figure the same day.</p></div></div></details>
+        <details><summary><span class="idx">[ 04 ]</span><span class="t" data-i18n="q4">How many projects do you take?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a4">Few at a time, deliberately. I would rather follow a handful of houses for a long time than deliver many sites and forget them.</p></div></div></details>
+        <details><summary><span class="idx">[ 05 ]</span><span class="t" data-i18n="q5">What if I do not like what you propose?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a5">You say so, and it helps: it teaches me your limit. I have an opinion, I defend it once, and then you decide — it is your house.</p></div></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact dark sheet" id="contact" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="k.idx">[ <b>06</b> ] — And you</p>
+      <h2 class="h-xl" style="margin-top:22px">
+        <span class="lm"><span style="--i:0" data-i18n="k.l1">Tell me</span></span>
+        <span class="lm"><span style="--i:1" class="it gold" data-i18n="k.l2">why you do this.</span></span>
+      </h2>
+      <p class="lede fade" style="--d:400;margin-top:28px" data-i18n="k.lede">Not your budget, not the number of pages: your trade, and what you want people to feel. One line is enough — I reply the same day, and if I am not the right person for your project, I will say so plainly.</p>
+      <form class="form fade" style="--d:550" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
+        <input type="hidden" name="_subject" value="New message — scarsellato.com">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row">
+          <input type="text" name="name" placeholder="YOUR NAME" required aria-label="Name" data-i18n-ph="form.name">
+          <input type="email" name="email" placeholder="YOUR E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+        </div>
+        <textarea name="message" placeholder="WHY DO YOU DO THIS WORK?" required aria-label="Message" data-i18n-ph="k.msg"></textarea>
+        <div><button class="btn gold" type="submit"><span class="roll" data-i18n="form.send">Send to the atelier</span><span class="arr">↗</span></button></div>
       </form>
-
+      <p class="giant" aria-hidden="true">scar<span class="it">sellato</span></p>
+      <div class="foot"><p class="idx" data-i18n="foot.l">Scarsellato — digital atelier · Luxembourg · © 2026</p><p class="idx" data-i18n="foot.r">0 cookies · 0 trackers</p></div>
     </div>
-    <p class="giant-wordmark" aria-hidden="true">scar<span class="italic">sellato</span></p>
-    <p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
   </section>
-
 </main>
 
-<script>
-// ---------- i18n — FR est la source (inline), EN/DE par dictionnaire ----------
-const I18N = {
-  fr: {
-    title: 'Scarsellato — L’atelier digital, Luxembourg',
-    desc: 'Atelier digital à Luxembourg : réponse et relance de vos demandes, automatisations, sites sur mesure et assistant de site. Pilote gratuit, sans cookies.',
-    days: ['DIMANCHE','LUNDI','MARDI','MERCREDI','JEUDI','VENDREDI','SAMEDI'],
-    months: ['JANVIER','FÉVRIER','MARS','AVRIL','MAI','JUIN','JUILLET','AOÛT','SEPTEMBRE','OCTOBRE','NOVEMBRE','DÉCEMBRE'],
-    mailto: 'mailto:noah@scarsellato.com?subject=Parlons%20de%20mon%20monde',
-    flow: { label: 'RYTHME', modes: ['POSÉ', 'NORMAL', 'RAPIDE'] },
-    specs: [
-      ['SITE 01 — VERDE / CONCEPT', 'ARCHÉTYPE BOLD-ORGANIC', 'LE BOL QUI S’OUVRE — INGRÉDIENTS + KCAL', 'SLIDER 3D — LA CARTE', 'RÉVÉLATION IMMERSIVE DU LIEU'],
-      ['SITE 02 — KOHNEN / CONSTRUCTION', 'ARCHÉTYPE BÂTISSEUR — DEPUIS 1957', 'LA MAISON SE CONSTRUIT AU SCROLL', 'REGISTRE — DÉJÀ CONSTRUIT', 'ANNOTATIONS DE CHANTIER'],
-      ['SITE 03 — RODA / ATHLÈTE', 'ARCHÉTYPE STORYTELLER — PAPIER & NÉON', 'L’ÉQUIPEMENT S’ASSEMBLE AU SCROLL', 'MUSÉE DU PALMARÈS', 'SUR LE RING / HORS DU RING']
-    ],
-    qa: [
-      ["Que faites-vous exactement ?", "Quatre métiers : répondre et relancer vos demandes à votre place, automatiser les tâches répétitives, construire votre site, et installer un assistant comme moi. Descendez à LES MÉTIERS — tout y est."],
-      ["Comment marche le pilote gratuit ?", "Quatorze jours, sur vos vraies demandes, sans engagement. La première semaine, vous validez chaque réponse avant qu'elle parte — rien ne part sans votre accord. À la fin, vous décidez."],
-      ["Combien ça coûte ?", "Nous ne travaillons pas sur catalogue : chaque projet est chiffré sur mesure, parce qu'une page unique et un monde complet ne demandent pas le même travail. Dites-nous en une ligne ce que vous voulez faire — vous avez un chiffre honnête le jour même, et les services commencent par un essai gratuit."],
-      ["Cet assistant, je peux l'avoir ?", "Oui — c'est notre métier 04. Nous en construisons un sur VOS informations : il répond à vos visiteurs à toute heure, ne devine jamais, et vous transmet les coordonnées des intéressés. Version test gratuite pour commencer."],
-      ["Et mes données, les cookies ?", "Zéro cookie, zéro traceur, ici comme sur les sites que nous livrons. Vos messages dans cette fenêtre servent uniquement à vous répondre. RGPD respecté, suppression sur demande."],
-      ["Je veux voir des exemples", "Remontez à L'ATELIER — trois mondes déjà construits (cuisine verte, construction, athlète). Cliquez sur l'écran affiché : le site s'ouvre pour de vrai."]
-    ],
-    t: {}
-  },
-  en: {
-    title: 'Scarsellato — The digital atelier, Luxembourg',
-    desc: 'Digital atelier in Luxembourg: answering and following up on your inquiries, automations, custom websites and a site assistant. Free pilot, cookie-free.',
-    days: ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'],
-    months: ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'],
-    mailto: 'mailto:noah@scarsellato.com?subject=Let%27s%20talk%20about%20my%20world',
-    flow: { label: 'PACE', modes: ['SLOW', 'NORMAL', 'FAST'] },
-    specs: [
-      ['SITE 01 — VERDE / CONCEPT', 'BOLD-ORGANIC ARCHETYPE', 'THE BOWL THAT OPENS — INGREDIENTS + KCAL', '3D SLIDER — THE MENU', 'IMMERSIVE REVEAL OF THE PLACE'],
-      ['SITE 02 — KOHNEN / CONSTRUCTION', 'BUILDER ARCHETYPE — SINCE 1957', 'THE HOUSE BUILDS ITSELF ON SCROLL', 'LEDGER — ALREADY BUILT', 'CONSTRUCTION-SITE NOTES'],
-      ['SITE 03 — RODA / ATHLETE', 'STORYTELLER ARCHETYPE — PAPER & NEON', 'THE GEAR ASSEMBLES ON SCROLL', 'MUSEUM OF TITLES', 'IN THE RING / OUT OF THE RING']
-    ],
-    qa: [
-      ["What exactly do you do?", "Four crafts: answering and following up on your inquiries for you, automating repetitive work, building your website, and installing an assistant like me. Scroll to THE CRAFTS — it's all there."],
-      ["How does the free pilot work?", "Fourteen days, on your real inquiries, no commitment. In week one you approve every reply before it goes out — nothing leaves without your green light. At the end, you decide."],
-      ["How much does it cost?", "We do not work from a price list: every project is quoted individually, because a single page and a complete world are not the same work. Tell us in one line what you want to do — you get an honest figure the same day, and every service starts with a free trial."],
-      ["Can I have this assistant?", "Yes — that's craft 04. We build one on YOUR information: it answers your visitors around the clock, never guesses, and passes you the contact details of interested people. Free test version to start."],
-      ["What about my data and cookies?", "Zero cookies, zero trackers — here and on every site we deliver. Your messages in this window are used only to answer you. GDPR respected, deletion on request."],
-      ["I want to see examples", "Scroll back to THE ATELIER — three worlds already built (green cuisine, construction, athlete). Click the screen on display: the real site opens."]
-    ],
-    t: {
-      'nav.traversee': 'Crossing',
-      'nav.atelier': 'Atelier',
-      'nav.home': 'Home',
-      'nav.metiers': 'Crafts',
-      'nav.immo': 'Real estate',
-      'hero.immo': 'Real estate agency? Zero lost leads',
-      'nav.real': 'Work',
-      'nav.appro': 'Approach',
-      'nav.contact': 'Contact',
-      'cta.talk': 'Start a project',
-      'hero.chip': '( SCARSELLATO ) — DIGITAL ATELIER · LUXEMBOURG',
-      'hero.whisper': 'Every world is made to measure —<br>image, motion, response.<br>No templates, ever.',
-      'hero.st1': 'Worlds.',
-      'hero.st2': 'Not pages.',
-      'hero.crafts': 'Bespoke websites · Answering your inquiries · Automations · Site assistant',
-      'hero.cue': 'SCROLL',
-      'promise.st1': 'We answer.',
-      'promise.st2': 'Same day.',
-      'cor.head': '( 02 ) — THE CROSSING · THE CAMERA MOVES FORWARD',
-      'room1.whisper': 'A story of neighbourhoods.<br>Same-day response.',
-      'room1.title': 'real estate',
-      'room2.whisper': 'Light as care.<br>Book without a phone call.',
-      'room2.title': 'health',
-      'room3.whisper': 'Lume di candela.<br>The table is set.',
-      'room3.title': 'gastronomia',
-      'final.title': 'yours',
-      'final.chip': 'YOUR-NAME · YOUR-CITY / 2026',
-      'kin.head': '( 03 ) — WHAT WE BELIEVE',
-      'kin.text': 'a website is not ✦ a business card. it is the first handshake ∿ the first appointment ⇌ the first answer. we build pages that breathe ✦ that tell stories — and that answer, the same day.',
-      'kin.chip1': 'RESPONSE — SAME DAY ↗',
-      'kin.chip2': '0 COOKIES · 0 TRACKERS',
-      'void.head': '( 04 ) — THE ATELIER · MADE TO MEASURE',
-      'void.grid': 'See everything as a grid ↗',
-      'svc.head': '( 01 ) — THE CRAFTS · WHAT WE DO',
-      'svc.st1': 'The website is',
-      'svc.st2': 'only a door.',
-      'svc1.name': 'Answer &amp; Follow-up',
-      'svc1.desc': 'Every inquiry gets a real reply within minutes — evenings and weekends included, in the customer’s own language. Then we follow up until it is a yes or a no. You no longer lose the inquiry that lands on a Friday at 10 pm.',
-      'svc1.anchor': '14-day pilot — free',
-      'svc1.link': 'See the Answer &amp; Follow-up page ↗',
-      'svc1.link2': 'Real estate agencies: Zero lost leads ↗',
-      'svc2.name': 'Automations',
-      'svc2.desc': 'Quotes, reminders, follow-ups, repetitive data entry: we build the machinery that runs them without you. On your existing tools, no migration, and you keep control over what goes out.',
-      'svc2.anchor': 'Free test on one real case',
-      'svc2.link': 'See the Automations page ↗',
-      'svc3.name': 'Sites &amp; worlds',
-      'svc3.desc': 'From a single page to a complete world — custom-made, never a template. Multilingual, cookie-free, with a real path from visitor to inquiry. The three worlds below are ours: click, they open.',
-      'svc3.anchor': 'Made to measure — quoted after we talk',
-      'svc3.link': 'See our work ↗',
-      'svc4.name': 'Site assistant',
-      'svc4.desc': 'An assistant that answers your visitors at any hour — only from YOUR information, never invented. It hands off the moment it is unsure, and passes you the contact details of interested visitors. The one on this page is one of them.',
-      'svc4.anchor': 'Free test version on your content',
-      'svc4.link': 'See the Assistant page ↗',
-      'svc4.try': 'Or try it here, right now ↗',
-      'trust1': '<b>Free pilot</b> — judge by the real thing',
-      'trust2': '<b>Week 1</b> — nothing goes out without your approval',
-      'trust3': '<b>First month</b> — money back',
-      'trust4': '<b>3 pilots</b> at a time, no more',
-      'trust5': '<b>FR · DE · EN</b> — Luxembourg',
-      'trust6': '<b>0 cookies</b> · 0 trackers · GDPR',
-      'svc.note': 'We are a young atelier: rather than borrowed logos and testimonials, we prefer to let you try everything before you pay anything. Write one line — <a href="#contact">same-day reply</a>.',
-      'num1.cap': 'worlds built — all open to visit above',
-      'num2.cap': 'cookies, zero trackers',
-      'num3.cap': '% made to measure, zero templates',
-      'fin.head': '( 05 ) — AND NOW',
-      'fin.st1': 'Let’s talk about',
-      'fin.st2': 'your world.',
-      'fin.cta': 'Write to the atelier',
-      'fin.note': 'SAME-DAY RESPONSE — PROMISED.',
-      'fin.appro': 'Why I build this way — the approach ↗',
-      'form.name': 'YOUR NAME',
-      'form.email': 'YOUR E-MAIL',
-      'form.msg': 'TELL US ABOUT YOUR WORLD…',
-      'form.send': 'Send',
-      'foot': 'SCARSELLATO — THE DIGITAL ATELIER · LUXEMBOURG · © 2026 · NO COOKIES, NO TRACKERS',
-      'chat.toggleAria': 'A question? Open the assistant',
-      'chat.panelAria': 'Atelier assistant',
-      'chat.head': '( ASSISTANT — LIVE )',
-      'chat.closeAria': 'Close',
-      'chat.greet': 'Hello! I answer live, only from the atelier’s own information — I never guess. Ask your question, or start with one of these:',
-      'chat.ph': 'WRITE YOUR QUESTION…',
-      'chat.sendAria': 'Send',
-      'chat.note': 'Your messages are used only to answer you. 0 cookies, 0 trackers.',
-      'chat.typing': 'The assistant is writing…',
-      'chat.sugg': 'Suggested questions',
-      'chat.offline': 'The assistant is not answering right now — write to noah@scarsellato.com, same-day reply.',
-      'chat.tryQ': 'How does the assistant you install on my site work?'
-    }
-  },
-  de: {
-    title: 'Scarsellato — Das digitale Atelier, Luxemburg',
-    desc: 'Digitales Atelier in Luxemburg: Anfragen beantworten und nachfassen, Automatisierungen, handgebaute Websites und ein Website-Assistent. Kostenloser Pilot, ohne Cookies.',
-    days: ['SONNTAG','MONTAG','DIENSTAG','MITTWOCH','DONNERSTAG','FREITAG','SAMSTAG'],
-    months: ['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'],
-    mailto: 'mailto:noah@scarsellato.com?subject=Sprechen%20wir%20%C3%BCber%20meine%20Welt',
-    flow: { label: 'TEMPO', modes: ['RUHIG', 'NORMAL', 'SCHNELL'] },
-    specs: [
-      ['SITE 01 — VERDE / CONCEPT', 'ARCHETYP BOLD-ORGANIC', 'DIE SCHALE ÖFFNET SICH — ZUTATEN + KCAL', '3D-SLIDER — DIE KARTE', 'IMMERSIVE ENTHÜLLUNG DES ORTES'],
-      ['SITE 02 — KOHNEN / BAU', 'ARCHETYP BAUMEISTER — SEIT 1957', 'DAS HAUS BAUT SICH BEIM SCROLLEN', 'REGISTER — BEREITS GEBAUT', 'BAUSTELLEN-NOTIZEN'],
-      ['SITE 03 — RODA / ATHLET', 'ARCHETYP STORYTELLER — PAPIER & NEON', 'DIE AUSRÜSTUNG MONTIERT SICH BEIM SCROLLEN', 'MUSEUM DER ERFOLGE', 'IM RING / AUSSERHALB DES RINGS']
-    ],
-    qa: [
-      ["Was machen Sie genau?", "Vier Gewerke: Ihre Anfragen beantworten und nachfassen, wiederkehrende Arbeit automatisieren, Ihre Website bauen und einen Assistenten wie mich einrichten. Scrollen Sie zu DIE GEWERKE — dort steht alles."],
-      ["Wie funktioniert der kostenlose Pilot?", "Vierzehn Tage, mit Ihren echten Anfragen, ohne Verpflichtung. In Woche eins geben Sie jede Antwort frei, bevor sie rausgeht — nichts geht ohne Ihr Einverständnis. Am Ende entscheiden Sie."],
-      ["Was kostet das?", "Wir arbeiten nicht mit Preislisten: Jedes Projekt wird individuell kalkuliert, denn eine Einzelseite und eine vollständige Welt sind nicht dieselbe Arbeit. Sagen Sie uns in einer Zeile, was Sie vorhaben — Sie erhalten noch am selben Tag einen ehrlichen Preis, und die Leistungen beginnen mit einem kostenlosen Test."],
-      ["Kann ich diesen Assistenten haben?", "Ja — das ist Gewerk 04. Wir bauen einen aus IHREN Informationen: Er antwortet Ihren Besuchern rund um die Uhr, rät nie und übermittelt Ihnen die Kontaktdaten der Interessenten. Kostenlose Testversion zum Start."],
-      ["Und meine Daten, die Cookies?", "Null Cookies, null Tracker — hier wie auf allen Seiten, die wir liefern. Ihre Nachrichten in diesem Fenster dienen nur dazu, Ihnen zu antworten. DSGVO eingehalten, Löschung auf Wunsch."],
-      ["Ich möchte Beispiele sehen", "Scrollen Sie zurück zum ATELIER — drei bereits gebaute Welten (grüne Küche, Bau, Athlet). Klicken Sie auf den angezeigten Bildschirm: Die echte Website öffnet sich."]
-    ],
-    t: {
-      'nav.traversee': 'Passage',
-      'nav.atelier': 'Atelier',
-      'nav.home': 'Start',
-      'nav.metiers': 'Gewerke',
-      'nav.immo': 'Immobilien',
-      'hero.immo': 'Immobilienagentur? Kein Lead geht verloren',
-      'nav.real': 'Arbeiten',
-      'nav.appro': 'Ansatz',
-      'nav.contact': 'Kontakt',
-      'cta.talk': 'Projekt besprechen',
-      'hero.chip': '( SCARSELLATO ) — DIGITALES ATELIER · LUXEMBURG',
-      'hero.whisper': 'Jede Welt ist maßgeschneidert —<br>Bild, Bewegung, Antwort.<br>Keine Templates, niemals.',
-      'hero.st1': 'Welten.',
-      'hero.st2': 'Keine Seiten.',
-      'hero.crafts': 'Maßgefertigte Websites · Antwort auf Ihre Anfragen · Automatisierungen · Website-Assistent',
-      'hero.cue': 'SCROLLEN',
-      'promise.st1': 'Wir antworten.',
-      'promise.st2': 'Noch am selben Tag.',
-      'cor.head': '( 02 ) — DIE PASSAGE · DIE KAMERA FÄHRT NACH VORN',
-      'room1.whisper': 'Eine Erzählung der Viertel.<br>Antwort am selben Tag.',
-      'room1.title': 'immobilien',
-      'room2.whisper': 'Licht als Therapie.<br>Termine ohne Telefon.',
-      'room2.title': 'gesundheit',
-      'room3.whisper': 'Lume di candela.<br>Der Tisch deckt sich.',
-      'room3.title': 'gastronomia',
-      'final.title': 'ihre welt',
-      'final.chip': 'IHR-NAME · IHRE-STADT / 2026',
-      'kin.head': '( 03 ) — WORAN WIR GLAUBEN',
-      'kin.text': 'eine website ist keine ✦ visitenkarte. sie ist der erste händedruck ∿ der erste termin ⇌ die erste antwort. wir bauen seiten, die atmen ✦ die erzählen — und die antworten, noch am selben tag.',
-      'kin.chip1': 'ANTWORT — NOCH AM SELBEN TAG ↗',
-      'kin.chip2': '0 COOKIES · 0 TRACKER',
-      'void.head': '( 04 ) — DAS ATELIER · MASSGESCHNEIDERT',
-      'void.grid': 'Alles im Raster ansehen ↗',
-      'svc.head': '( 01 ) — DIE GEWERKE · WAS WIR TUN',
-      'svc.st1': 'Die Website ist',
-      'svc.st2': 'nur eine Tür.',
-      'svc1.name': 'Antwort &amp; Nachfassen',
-      'svc1.desc': 'Jede Anfrage erhält innerhalb von Minuten eine echte Antwort — auch abends und am Wochenende, in der Sprache des Kunden. Danach fassen wir nach, bis es ein Ja oder ein Nein ist. Die Anfrage vom Freitagabend um 22 Uhr geht Ihnen nicht mehr verloren.',
-      'svc1.anchor': '14-Tage-Pilot — kostenlos',
-      'svc1.link': 'Zur Seite Antwort &amp; Nachfassen ↗',
-      'svc1.link2': 'Immobilienagenturen: Kein Lead geht verloren ↗',
-      'svc2.name': 'Automatisierungen',
-      'svc2.desc': 'Angebote, Erinnerungen, Nachfassen, wiederkehrende Eingaben: Wir bauen das Räderwerk, das sie ohne Sie laufen lässt. Auf Ihren bestehenden Tools, ohne Migration — und Sie behalten die Kontrolle darüber, was rausgeht.',
-      'svc2.anchor': 'Kostenloser Test an einem echten Fall',
-      'svc2.link': 'Zur Seite Automatisierungen ↗',
-      'svc3.name': 'Seiten &amp; Welten',
-      'svc3.desc': 'Von der Einzelseite bis zur vollständigen Welt — maßgeschneidert, niemals ein Template. Mehrsprachig, ohne Cookies, mit einem echten Weg vom Besucher zur Anfrage. Die drei Welten unten sind unsere: Klicken Sie, sie öffnen sich.',
-      'svc3.anchor': 'Maßgefertigt — Preis nach einem Gespräch',
-      'svc3.link': 'Unsere Arbeiten ansehen ↗',
-      'svc4.name': 'Website-Assistent',
-      'svc4.desc': 'Ein Assistent, der Ihren Besuchern zu jeder Stunde antwortet — ausschließlich aus IHREN Informationen, nichts Erfundenes. Er übergibt an Sie, sobald er unsicher ist, und übermittelt Ihnen die Kontaktdaten der Interessenten. Der auf dieser Seite ist einer davon.',
-      'svc4.anchor': 'Kostenlose Testversion auf Ihren Inhalten',
-      'svc4.link': 'Zur Seite Assistent ↗',
-      'svc4.try': 'Oder gleich hier ausprobieren ↗',
-      'trust1': '<b>Kostenloser Pilot</b> — Sie beurteilen das Ergebnis',
-      'trust2': '<b>Woche 1</b> — nichts geht ohne Ihr Einverständnis raus',
-      'trust3': '<b>Erster Monat</b> — Geld zurück',
-      'trust4': '<b>3 Pilotprojekte</b> gleichzeitig, nicht mehr',
-      'trust5': '<b>FR · DE · EN</b> — Luxemburg',
-      'trust6': '<b>0 Cookies</b> · 0 Tracker · DSGVO',
-      'svc.note': 'Wir sind ein junges Atelier: statt geliehener Logos und Testimonials lassen wir Sie lieber alles ausprobieren, bevor Sie irgendetwas bezahlen. Schreiben Sie eine Zeile — <a href="#contact">Antwort am selben Tag</a>.',
-      'num1.cap': 'welten gebaut — alle oben zu besuchen',
-      'num2.cap': 'cookies, null tracker',
-      'num3.cap': '% maßgefertigt, null templates',
-      'fin.head': '( 05 ) — UND JETZT',
-      'fin.st1': 'Sprechen wir über',
-      'fin.st2': 'Ihre Welt.',
-      'fin.cta': 'Dem Atelier schreiben',
-      'fin.note': 'ANTWORT AM SELBEN TAG — VERSPROCHEN.',
-      'fin.appro': 'Warum ich so baue — der Ansatz ↗',
-      'form.name': 'IHR NAME',
-      'form.email': 'IHRE E-MAIL',
-      'form.msg': 'ERZÄHLEN SIE UNS VON IHRER WELT…',
-      'form.send': 'Senden',
-      'foot': 'SCARSELLATO — DAS DIGITALE ATELIER · LUXEMBURG · © 2026 · OHNE COOKIES, OHNE TRACKER',
-      'chat.toggleAria': 'Eine Frage? Assistent öffnen',
-      'chat.panelAria': 'Atelier-Assistent',
-      'chat.head': '( ASSISTENT — LIVE )',
-      'chat.closeAria': 'Schließen',
-      'chat.greet': 'Guten Tag! Ich antworte live, ausschließlich aus den Informationen des Ateliers — ich rate nie. Stellen Sie Ihre Frage, oder beginnen Sie mit einer davon:',
-      'chat.ph': 'SCHREIBEN SIE IHRE FRAGE…',
-      'chat.sendAria': 'Senden',
-      'chat.note': 'Ihre Nachrichten dienen nur dazu, Ihnen zu antworten. 0 Cookies, 0 Tracker.',
-      'chat.typing': 'Der Assistent schreibt…',
-      'chat.sugg': 'Fragevorschläge',
-      'chat.offline': 'Der Assistent antwortet gerade nicht — schreiben Sie an noah@scarsellato.com, Antwort am selben Tag.',
-      'chat.tryQ': 'Wie funktioniert der Assistent, den Sie auf meiner Website einrichten?'
-    }
-  }
-};
-let stored = null;
-try { stored = localStorage.getItem('scar-lang'); } catch (e) {}
-let LANG = (new URLSearchParams(location.search).get('lang') || stored || (navigator.language || 'fr').slice(0, 2)).toLowerCase();
-if (!I18N[LANG]) LANG = 'fr';
-const applyI18n = (scope = document) => {
-  // scope ≠ document pour les blocs parsés après le premier passage (chat) —
-  // ne JAMAIS repasser sur tout le document : le moteur a déjà splitté kin/statements en spans
-  const d = I18N[LANG];
-  document.documentElement.lang = LANG;
-  document.title = d.title;
-  document.querySelector('meta[name="description"]').setAttribute('content', d.desc);
-  scope.querySelectorAll('[data-i18n]').forEach(el => { const s = d.t[el.dataset.i18n]; if (s != null) el.innerHTML = s; });
-  scope.querySelectorAll('[data-i18n-ph]').forEach(el => { const s = d.t[el.dataset.i18nPh]; if (s != null) el.placeholder = s; });
-  scope.querySelectorAll('[data-i18n-aria]').forEach(el => { const s = d.t[el.dataset.i18nAria]; if (s != null) el.setAttribute('aria-label', s); });
-  const mail = document.getElementById('mailCta'); if (mail) mail.href = d.mailto;
-  document.querySelectorAll('#langSwitch [data-lang]').forEach(b => b.setAttribute('aria-current', String(b.dataset.lang === LANG)));
-};
-applyI18n();
-document.querySelectorAll('#langSwitch [data-lang]').forEach(b => b.addEventListener('click', () => {
-  if (b.dataset.lang === LANG) return;
-  try { localStorage.setItem('scar-lang', b.dataset.lang); } catch (e) {}
-  const u = new URL(location.href); u.searchParams.set('lang', b.dataset.lang);
-  location.replace(u.href);
-}));
-</script>
-
-<script>
-document.documentElement.classList.add('js');
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const clamp01 = v => Math.max(0, Math.min(1, v));
-
-// barre du haut en verre dépoli après l'ouverture (passe minimale 2026-11-14)
-(() => { const tb = document.querySelector('.topbar'); if (!tb) return;
-  const on = () => tb.classList.toggle('is-scrolled', scrollY > 40);
-  on(); addEventListener('scroll', on, { passive: true }); })();
-
-// ---------- horloge vivante ----------
-const liveLine = document.getElementById('liveLine'); // retiré du header (passe minimale 2026-11-14)
-const JOURS = I18N[LANG].days;
-const MOIS = I18N[LANG].months;
-const tickClock = () => {
-  const d = new Date(), p = n => String(n).padStart(2, '0');
-  liveLine.textContent = `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())} [LUX] — ${JOURS[d.getDay()]} ${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}`;
-};
-if (liveLine) { tickClock(); setInterval(tickClock, 1000); }
-
-// ---------- preloader ----------
-const loader = document.getElementById('loader');
-if (reduced) { loader.remove(); document.documentElement.classList.add('ready'); }
-else {
-  const cnt = document.getElementById('loaderCount'), bar = document.getElementById('loaderBar');
-  const t0 = performance.now(), DUR = 1400;
-  let finished = false;
-  const finish = () => {
-    if (finished) return; finished = true;
-    cnt.textContent = '100'; bar.style.transform = 'scaleX(1)';
-    loader.classList.add('done');
-    document.documentElement.classList.add('ready');
-    setTimeout(() => loader.remove(), 1300);
-  };
-  const tick = now => {
-    if (finished) return;
-    const p = clamp01((now - t0) / DUR);
-    cnt.textContent = String(Math.floor(p * 100)).padStart(2, '0');
-    bar.style.transform = `scaleX(${p})`;
-    if (p < 1) requestAnimationFrame(tick); else finish();
-  };
-  requestAnimationFrame(tick);
-  setTimeout(finish, DUR + 500);
-}
-
-// ---------- lettres : le wordmark massif + statements ----------
-const splitChars = (el, lineIndex) => {
-  const nodes = [...el.childNodes];
-  el.textContent = '';
-  let i = 0;
-  nodes.forEach(n => {
-    const txt = n.textContent;
-    const wrap = n.nodeType === 1 ? n : null;
-    [...txt].forEach(c => {
-      const s = document.createElement('span');
-      s.className = 'ch'; s.style.setProperty('--i', i); s.style.setProperty('--l', lineIndex);
-      s.textContent = c === ' ' ? ' ' : c;
-      if (wrap) { const w = wrap.cloneNode(false); w.appendChild(s); el.appendChild(w); }
-      else el.appendChild(s);
-      i++;
-    });
-  });
-};
-splitChars(document.getElementById('megaMark'), 2);
-document.querySelectorAll('.st-hero .st-in').forEach((el, li) => splitChars(el, li));
-
-// ---------- manifeste cinétique : mots en spans ----------
-const kin = document.getElementById('kinText');
-kin.innerHTML = kin.textContent.trim().split(/\s+/).map(w =>
-  /^[✦∿⇌⌂—]$/.test(w) ? `<span class="kw glyph">${w}</span>` : `<span class="kw">${w}</span>`).join(' ');
-const kws = [...kin.querySelectorAll('.kw')];
-
-// ---------- fiches techniques de l'atelier (traduites via I18N) ----------
-const SPECS = I18N[LANG].specs;
-const vSpecs = document.getElementById('vSpecs');
-vSpecs.innerHTML = SPECS.map((list, si) =>
-  `<ul class="spec-list" data-i="${si}">` + list.map(l => `<li class="spec-line">${l}</li>`).join('') + '</ul>').join('');
-const specLists = [...vSpecs.querySelectorAll('.spec-list')];
-const vScreens = [...document.querySelectorAll('.v-screen')];
-
-// ---------- compteurs ----------
-const cio = new IntersectionObserver(es => {
-  es.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target, end = parseInt(el.dataset.count, 10); cio.unobserve(el);
-    if (reduced) return;
-    let t0n = null;
-    const step = ts => { if (!t0n) t0n = ts; const p = Math.min((ts - t0n) / 1100, 1);
-      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
-    requestAnimationFrame(step);
-  });
-}, { threshold: 0.6 });
-document.querySelectorAll('.numeral').forEach(el => cio.observe(el));
-
-// ---------- les métiers se lèvent un par un ----------
-// FILET DE SÉCURITÉ (leçon 07-26, classe « l'observateur ne se déclenche jamais ») :
-// les cartes partent à opacity:0 — si l'IO ne tire pas (viewport dégénéré, onglet en arrière-plan,
-// hauteur nulle), la section entière serait INVISIBLE. Après 2,5 s, tout se révèle quoi qu'il arrive.
-const svcCards = [...document.querySelectorAll('.svc')];
-const revealSvc = el => { el.classList.add('in'); sio.unobserve(el); };
-const sio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) revealSvc(e.target); }), { threshold: 0.15 });
-svcCards.forEach(el => sio.observe(el));
-setTimeout(() => svcCards.forEach(el => el.classList.add('in')), 2500);
-
-// ---------- moteur maître ----------
-if (!reduced) {
-  const rail = document.querySelector('.progress-rail');
-  const heroBg = document.getElementById('heroBg');
-  const hero = document.querySelector('.hero');
-  const corTrack = document.querySelector('.cor-track');
-  const corWorld = document.getElementById('corWorld');
-  const rooms = [...corWorld.querySelectorAll('.cor-room')];
-  const roomZ = rooms.map(r => parseFloat(r.dataset.z));
-  const kinTrack = document.querySelector('.kin-track');
-  const voidTrack = document.querySelector('.void-track');
-  const voidIdxEl = document.getElementById('voidIdx');
-  const finale = document.querySelector('.finale');
-
-  // ---------- rail de l'atelier : un point = un site, un clic = on y saute ----------
-  // (noms propres — pas de traduction)
-  const V_NAMES = ['Verde', 'Kohnen & Fils', 'Maxime Roda'];
-  const vNav = document.getElementById('vNav');
-  V_NAMES.forEach((name, i) => {
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'v-dot';
-    b.dataset.name = name; b.setAttribute('aria-label', name);
-    b.addEventListener('click', () => {
-      const top = scrollY + voidTrack.getBoundingClientRect().top;
-      scrollTo({ top: top + ((i + 0.5) / vScreens.length) * (voidTrack.offsetHeight - innerHeight), behavior: 'smooth' });
-    });
-    vNav.appendChild(b);
-  });
-  const vDots = [...vNav.children];
-
-  let swayX = 0, swayY = 0, tSwayX = 0, tSwayY = 0;
-  let mx = innerWidth / 2, my = innerHeight / 2;
-  let rawV = 0, skew = 0, lastY = scrollY;
-  let dustDrift = 0, forming = false;
-
-  addEventListener('pointermove', ev => {
-    // le pouce qui scrolle n'est pas une souris : sur tactile il reste collé à un bord
-    // et penchait tout le couloir d'un côté — le sway est réservé au pointeur souris
-    if (ev.pointerType && ev.pointerType !== 'mouse') return;
-    mx = ev.clientX; my = ev.clientY;
-    tSwayX = (ev.clientX / innerWidth - 0.5) * 3.4;
-    tSwayY = (ev.clientY / innerHeight - 0.5) * -2.4;
-  }, { passive: true });
-
-  const prog = el => { const r = el.getBoundingClientRect(); return clamp01(-r.top / Math.max(r.height - innerHeight, 1)); };
-
-  let ticking = false;
-  const update = () => {
-    ticking = false;
-    const y = scrollY, vh = innerHeight;
-    rawV = y - lastY; lastY = y; dustDrift = rawV;
-    rail.style.transform = `scaleX(${clamp01(y / (document.documentElement.scrollHeight - vh))})`;
-    // héros : l'image respire, le wordmark plonge
-    if (y < vh * 1.3) {
-      heroBg.style.transform = `scale(${1.06 + y / vh * 0.06}) translate(${(mx - innerWidth / 2) * -0.012}px, ${(my - vh / 2) * -0.012 + y * 0.08}px)`;
-      hero.style.setProperty('--fade', clamp01(1 - y / (vh * 0.9)));
-    }
-    // couloir
-    const cp = prog(corTrack);
-    const camZ = cp * 6900 - 150;
-    corWorld.style.transform = `translateZ(${camZ}px) rotateY(${swayX.toFixed(2)}deg) rotateX(${swayY.toFixed(2)}deg)`;
-    rooms.forEach((r, i) => {
-      const d = roomZ[i] + camZ;
-      let o;
-      if (d > 320) o = 0;
-      else if (d > -160) o = 1 - (d + 160) / 480;
-      else if (d > -2400) o = 1;
-      else o = clamp01(1 - (-d - 2400) / 1600);
-      r.style.opacity = o.toFixed(3);
-      r.style.visibility = o <= 0.01 ? 'hidden' : 'visible';
-    });
-    // manifeste cinétique
-    const kp = prog(kinTrack);
-    const lit = Math.floor(kp * (kws.length + 5));
-    kws.forEach((w, i) => {
-      w.classList.toggle('lit', i < lit);
-      w.classList.toggle('hot', i === lit - 1);
-    });
-    // atelier dans le vide
-    const vp = prog(voidTrack);
-    const VN = vScreens.length;
-    const vi = Math.min(VN - 1, Math.floor(vp * VN));
-    const local = vp * VN - vi;
-    voidIdxEl.textContent = String(vi + 1).padStart(2, '0');
-    vDots.forEach((d, i) => d.classList.toggle('on', i === vi));
-    vScreens.forEach((s, i) => {
-      s.classList.toggle('on', i === vi);
-      s.style.transform = i === vi
-        ? `rotateY(${swayX * 2.4}deg) rotateX(${swayY * 1.8}deg) translateY(${(0.5 - local) * 26}px)`
-        : '';
-    });
-    specLists.forEach((ul, i) => {
-      ul.classList.toggle('on', i === vi);
-      if (i === vi) [...ul.children].forEach((li, k) => li.classList.toggle('on', local > 0.1 + k * 0.13));
-    });
-    // la poussière se condense dans le finale
-    const fr = finale.getBoundingClientRect();
-    forming = fr.top < vh * 0.55 && fr.bottom > vh * 0.5;
-  };
-  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-
-  // ---------- rythme de défilement : le visiteur choisit la longueur du voyage ----------
-  // le chip multiplie la hauteur des trois pistes scrubbées (--flow) ; au changement,
-  // on restaure la position RELATIVE (même progression dans la même piste) pour ne pas sauter
-  const FLOW = I18N[LANG].flow;
-  const FLOW_V = [1.4, 1, 0.55];
-  let flowI = 1;
-  try { const s = parseInt(localStorage.getItem('scar-flow'), 10); if (s >= 0 && s <= 2) flowI = s; } catch (e) {}
-  const flowTracks = [corTrack, kinTrack, voidTrack];
-  const flowBtn = document.createElement('button');
-  flowBtn.type = 'button'; flowBtn.className = 'flow-chip';
-  const applyFlow = () => {
-    document.documentElement.style.setProperty('--flow', FLOW_V[flowI]);
-    flowBtn.textContent = `${FLOW.label} · ${FLOW.modes[flowI]}`;
-  };
-  applyFlow();
-  // chip de rythme retiré (passe minimale 2026-11-14) : rythme NORMAL fixe
-  flowBtn.addEventListener('click', () => {
-    const vh = innerHeight;
-    const infos = flowTracks.map(t => { const r = t.getBoundingClientRect(); return { t, top: r.top, bottom: r.bottom, h: t.offsetHeight }; });
-    const inside = infos.find(o => o.top <= 0 && o.bottom > vh);
-    const f = inside ? clamp01(-inside.top / Math.max(inside.h - vh, 1)) : 0;
-    flowI = (flowI + 1) % 3;
-    try { localStorage.setItem('scar-flow', String(flowI)); } catch (e) {}
-    applyFlow();
-    if (inside) {
-      const nh = inside.t.offsetHeight;
-      scrollTo({ top: scrollY + inside.t.getBoundingClientRect().top + f * (nh - vh), behavior: 'instant' });
-    } else {
-      // au-dessous de pistes rétrécies/agrandies : compenser leur delta pour rester sur place
-      let d = 0;
-      infos.forEach(o => { if (o.bottom <= 0) d += o.t.offsetHeight - o.h; });
-      if (d) scrollBy({ top: d, behavior: 'instant' });
-    }
-    update();
-  });
-
-  // ---------- curseur : point + anneau ----------
-  const ring = document.createElement('div'); ring.className = 'cursor-ring';
-  const dot = document.createElement('div'); dot.className = 'cursor-dot';
-  document.body.append(ring, dot);
-  let rx = mx, ry = my;
-  addEventListener('pointermove', ev => {
-    dot.style.transform = `translate(${ev.clientX}px, ${ev.clientY}px)`;
-    ring.classList.add('on'); dot.classList.add('on');
-    ring.classList.toggle('hot', !!(ev.target.closest && ev.target.closest('a, button')));
-  }, { passive: true });
-
-  // ---------- poussière d'or ----------
-  const dustC = document.getElementById('dust');
-  const ctx = dustC.getContext('2d');
-  let W, H, DPR = Math.min(devicePixelRatio || 1, 2);
-  const fit = () => { W = dustC.width = Math.floor(innerWidth * DPR); H = dustC.height = Math.floor(innerHeight * DPR);
-    dustC.style.width = innerWidth + 'px'; dustC.style.height = innerHeight + 'px'; };
-  fit(); addEventListener('resize', fit);
-  const N = matchMedia('(pointer: coarse)').matches ? 320 : 1000;
-  const P = Array.from({ length: N }, () => ({
-    x: Math.random() * innerWidth * DPR, y: Math.random() * innerHeight * DPR,
-    vx: 0, vy: 0, s: (0.4 + Math.random() * 1.3) * DPR, a: 0.12 + Math.random() * 0.45
-  }));
-  let targets = null;
-  const buildTargets = () => {
-    try {
-      const oc = document.createElement('canvas'); oc.width = W; oc.height = H;
-      const o = oc.getContext('2d');
-      o.font = `340 ${Math.min(W * 0.13, 200 * DPR)}px Fraunces, Georgia, serif`;
-      o.textAlign = 'center'; o.textBaseline = 'middle'; o.fillStyle = '#fff';
-      o.fillText('scarsellato', W / 2, H * 0.32);
-      const d = o.getImageData(0, 0, W, H).data, pts = [], step = Math.max(4, Math.floor(5 * DPR));
-      for (let yy = 0; yy < H; yy += step) for (let xx = 0; xx < W; xx += step)
-        if (d[(yy * W + xx) * 4 + 3] > 128) pts.push([xx, yy]);
-      if (pts.length) targets = pts;
-    } catch (e) {}
-  };
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(buildTargets);
-  setTimeout(() => { if (!targets) buildTargets(); }, 2600);
-
-  // ---------- boucle continue : sway, skew, curseur, poussière ----------
-  (function loop() {
-    swayX += (tSwayX - swayX) * 0.06; swayY += (tSwayY - swayY) * 0.06;
-    rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
-    ring.style.transform = `translate(${rx.toFixed(1)}px, ${ry.toFixed(1)}px)`;
-    skew += (Math.max(-6, Math.min(6, rawV * 0.05)) - skew) * 0.1; rawV *= 0.85;
-    document.documentElement.style.setProperty('--vskew', skew.toFixed(2) + 'deg');
-    // poussière
-    ctx.clearRect(0, 0, W, H);
-    ctx.globalCompositeOperation = 'lighter';
-    const mxD = rx * DPR, myD = ry * DPR;
-    for (let i = 0; i < N; i++) {
-      const p = P[i];
-      if (forming && targets) {
-        const t = targets[i % targets.length];
-        p.vx += (t[0] - p.x) * 0.014; p.vy += (t[1] - p.y) * 0.014;
-        p.vx *= 0.84; p.vy *= 0.84;
-      } else {
-        p.vx += (Math.random() - 0.5) * 0.05 * DPR;
-        p.vy += (Math.random() - 0.5) * 0.05 * DPR + dustDrift * 0.0022 * DPR;
-        const dx = p.x - mxD, dy = p.y - myD, d2 = dx * dx + dy * dy, R = 150 * DPR;
-        if (d2 < R * R && d2 > 1) {
-          const dd = Math.sqrt(d2), f = (1 - dd / R) * 0.5 * DPR;
-          p.vx += (dx / dd) * f + (-dy / dd) * f * 0.7;
-          p.vy += (dy / dd) * f + (dx / dd) * f * 0.7;
-        }
-        p.vx *= 0.96; p.vy *= 0.96;
-      }
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0) p.x += W; if (p.x > W) p.x -= W;
-      if (p.y < 0) p.y += H; if (p.y > H) p.y -= H;
-      ctx.globalAlpha = p.a;
-      ctx.fillStyle = 'rgb(198 165 108)';
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, 6.2832); ctx.fill();
-    }
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(loop);
-  })();
-  update();
-
-  // les mondes respirent : lecture des boucles vidéo
-  document.querySelectorAll('video.vid').forEach(v => { v.muted = true; v.play().catch(() => {}); });
-
-  // ---------- boutons magnétiques + écrans qui penchent ----------
-  document.querySelectorAll('.magnetic').forEach(b => {
-    b.addEventListener('pointermove', ev => {
-      if (ev.pointerType && ev.pointerType !== 'mouse') return;
-      const r = b.getBoundingClientRect();
-      b.style.transform = `translate(${(ev.clientX - r.left - r.width / 2) * 0.22}px, ${(ev.clientY - r.top - r.height / 2) * 0.22}px)`;
-    });
-    b.addEventListener('pointerleave', () => { b.style.transform = ''; });
-  });
-}
-</script>
-
 <div class="chat" id="chat">
-  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="A question? Open the assistant" data-i18n-aria="chat.toggleAria">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
   </button>
-  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
-    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — EN DIRECT )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
-    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonjour ! Je réponds en direct, uniquement à partir des informations de l'atelier — je ne devine rien. Posez votre question, ou commencez par l'une de celles-ci :</p></div>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Atelier assistant" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — LIVE )</p><button class="chat-close" id="chatClose" type="button" aria-label="Close" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Hello! I answer live, only from the atelier's own information — I never guess. Ask your question, or start with one of these:</p></div>
     <div class="chat-choices" id="chatChoices"></div>
     <form class="chat-form" id="chatForm">
-      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="ÉCRIVEZ VOTRE QUESTION…" aria-label="Votre question" data-i18n-ph="chat.ph">
-      <button class="chat-send" id="chatSend" type="submit" aria-label="Envoyer" data-i18n-aria="chat.sendAria">➤</button>
+      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="WRITE YOUR QUESTION…" aria-label="Your question" data-i18n-ph="chat.ph">
+      <button class="chat-send" id="chatSend" type="submit" aria-label="Send" data-i18n-aria="chat.sendAria">➤</button>
     </form>
-    <p class="chat-note" data-i18n="chat.note">Vos messages servent uniquement à vous répondre. 0 cookie, 0 traceur.</p>
+    <p class="chat-note" data-i18n="chat.note">Your messages are used only to answer you. 0 cookies, 0 trackers.</p>
   </div>
 </div>
+
 <script>
-(() => {
-applyI18n(document.getElementById('chat')); // le bloc chat est parsé après le premier passage — deuxième passage SCOPÉ au chat
-// L'assistant est LE produit (offre 04) : il répond en direct depuis nos informations.
-// Les réponses préenregistrées restent la doublure hors-ligne — si le réseau tombe, la page répond quand même.
-const ENDPOINT = 'https://scarsellato.app.n8n.cloud/webhook/support-bot-demo';
-const QA = I18N[LANG].qa;
-const d = I18N[LANG];
-const log = document.getElementById('chatLog'), ch = document.getElementById('chatChoices'),
-      tg = document.getElementById('chatToggle'), pn = document.getElementById('chatPanel'),
-      cl = document.getElementById('chatClose'), fm = document.getElementById('chatForm'),
-      inp = document.getElementById('chatInput'), snd = document.getElementById('chatSend');
-const history = [];
-let busy = false;
-
-const say = (role, text, cls) => {
-  const p = document.createElement('p');
-  p.className = 'chat-msg ' + role + (cls ? ' ' + cls : '');
-  p.textContent = text;
-  log.appendChild(p); log.scrollTop = log.scrollHeight;
-  return p;
+window.PAGE_I18N = {
+  en: { qa: [
+    ["How exactly do you work?", "We talk first — at length, in writing, at your pace. I look for what your house wants people to feel. Then I draw, you see a real preview within days, you correct it, and I refine until it is right."],
+    ["What are the four crafts?", "Bespoke websites, Answer & Follow-up (every inquiry answered within minutes, then followed up), automations of repetitive tasks, and a site assistant that answers only from your information."],
+    ["How much does it cost?", "There is no listed price: every project is quoted individually after a conversation. Tell me in two lines what you want to do and you get an honest figure the same day."],
+    ["Can I try before paying?", "Yes — a free pilot: you judge the real thing before paying anything. Nothing goes out without your approval in week 1, and the first month is money back."]
+  ] },
+  fr: { t: {
+    'meta.title': "Scarsellato — L'atelier digital, Luxembourg",
+    'meta.desc': "Atelier digital à Luxembourg. Une entreprise a une philosophie avant d'avoir un site : je la trouve, puis je la rends visible. Sites sur mesure, réponse & relance, automatisations, assistant de site.",
+    'h.idx': '[ <b>Atelier digital</b> ] — Luxembourg · EN · FR · DE',
+    'h.l1': 'Une entreprise a', 'h.l2': 'une <span class="it">philosophie.</span>',
+    'h.lede': "Avant d'avoir un site, avant d'avoir un logo, elle a une raison d'exister, une manière de traiter les gens, quelque chose qu'elle veut qu'on ressente en poussant sa porte. Mon travail, c'est de trouver ça — et de le rendre visible à l'écran.",
+    'h.cta1': 'Voir les métiers', 'h.cta2': 'Raconter votre maison', 'h.f1': '[ 00 ] — un seul trait, sans lever la main', 'h.f2': 'Défiler ↓',
+    'c.idx': '[ <b>01</b> ] — Ce que je crois', 'c.l1': 'Avant de lire un mot,', 'c.l2': 'on ressent quelque chose.', 'c.l3': 'Tout part de là.',
+    'c.lede': "Du calme, de l'urgence, de la confiance ou de la méfiance : ce premier sentiment décide si vos visiteurs vous écrivent ou s'ils referment l'onglet. Alors je ne commence jamais par les pages — je commence par ce que votre maison veut faire ressentir.",
+    'c.cap': "[ Portrait — Noah, l'atelier ]",
+    'mq': "<span>Jamais de gabarit</span><span>réponse le jour même</span><span>Jamais de preuve empruntée</span><span>sans cookies, sans traceurs</span><span>Jamais rien d'inventé</span><span>peu de maisons, suivies longtemps</span><span>Jamais de gabarit</span><span>réponse le jour même</span><span>Jamais de preuve empruntée</span><span>sans cookies, sans traceurs</span><span>Jamais rien d'inventé</span><span>peu de maisons, suivies longtemps</span>",
+    'o.idx': "[ <b>02</b> ] — D'où ça vient", 'o.l1': 'Je viens du dessin,', 'o.l2': 'pas du code.',
+    'o.lede': "J'ai fait une école d'art : design, dessin, composition. On y apprend une chose avant toutes les autres — regarder longtemps avant de tracer quoi que ce soit. C'est resté ma méthode, et c'est pourquoi je ne commence jamais un site par un gabarit.",
+    'o.a.t': 'Le dessin', 'o.a.d': "Une page se compose comme une image : ce qu'on voit d'abord, ce qui vient ensuite, ce qu'on laisse respirer. Le rythme, le vide, la lumière — des décisions de dessinateur, pas des réglages techniques. C'est pour ça que deux sites faits par la même main ne se ressemblent pas.",
+    'o.b.t': 'La tête du visiteur', 'o.b.d': "Pourquoi une page inspire confiance et une autre non, pourquoi on hésite, pourquoi on écrit ou pourquoi on referme. Ça ne sert pas à manipuler qui que ce soit — ça sert à ne pas mettre d'obstacle entre vous et la personne qui voulait déjà vous parler.",
+    'm.idx': '[ <b>03</b> ] — Les métiers · quatre, pas plus', 'm.l1': "Le site n'est", 'm.l2': "qu'une porte.",
+    'm.lede': "Derrière la porte, il faut quelqu'un qui répond. Les quatre métiers de l'atelier font tous la même chose : qu'aucune personne qui voulait vous parler ne reparte sans réponse.",
+    'k1.tag': 'Sites &amp; mondes', 'k1.h': 'Sites &amp; <span class="it gold">mondes</span>',
+    'k1.p': "De la page unique au monde complet — dessiné sur mesure, jamais un template. Multilingue, sans cookies, avec un vrai chemin pour qu'un visiteur devienne une demande.",
+    'k1.m': 'Chiffré après un échange', 'k1.b': 'Les réalisations',
+    'k2.tag': 'Réponse &amp; Relance', 'k2.h': 'Réponse &amp; <span class="it gold">Relance</span>',
+    'k2.p': "Chaque demande reçoit une vraie réponse en quelques minutes — soirs et week-ends compris, dans la langue du client. Puis on relance jusqu'à ce que ce soit oui ou non. Plus de demande perdue un vendredi à 22 h.",
+    'k2.m': 'Pilote 14 jours — gratuit', 'kx.b': 'Voir le métier',
+    'k3.tag': 'Automatisations', 'k3.h': '<span class="it gold">Automatisations</span>',
+    'k3.p': 'Devis, rappels, suivis, saisies répétitives : je construis le circuit qui les fait tourner sans vous. Sur vos outils existants, sans migration — et vous gardez la main sur ce qui part.',
+    'k3.m': 'Test gratuit sur un cas réel',
+    'k4.tag': 'Assistant du site', 'k4.h': 'Assistant <span class="it gold">du site</span>',
+    'k4.p': "Il répond à vos visiteurs à toute heure — uniquement à partir de vos informations, jamais d'invention. Il passe la main dès qu'il n'est pas sûr et vous transmet les coordonnées des intéressés.",
+    'k4.m': 'Version test gratuite',
+    'p.idx': '[ <b>04</b> ] — Comment on travaille ensemble', 'p.l1': 'Peu de projets, et on', 'p.l2': "apprend l'un de l'autre.",
+    's1.h': 'On parle, longtemps, avant que je dessine.', 's1.p': "Par écrit, à votre rythme, en français, en allemand ou en anglais. Vous m'apprenez votre métier — ses mots, ses saisons, ce qui vous agace chez vos concurrents. Je ne peux pas rendre visible une chose que je n'ai pas comprise.",
+    's2.h': 'Vous voyez très vite quelque chose de réel.', 's2.p': "Un aperçu de votre monde arrive en jours, pas en mois. Pas un document : une page qui bouge, qu'on ouvre sur son téléphone. On juge sur pièces — c'est plus honnête qu'un devis illustré.",
+    's3.h': 'Vous corrigez, et vous avez souvent raison.', 's3.p': "C'est votre maison, pas ma galerie. Quand vous me dites « ça, ce n'est pas nous », le site devient plus juste. J'ai un avis, je le défends une fois — après, vous tranchez.",
+    's4.h': 'Je reste après la mise en ligne.', 's4.p': 'Une maison bouge : nouveaux services, nouvelles photos, nouvelles saisons. Je préfère peu de clients suivis longtemps que beaucoup de sites livrés puis oubliés.',
+    'ph.idx': '[ <b>05</b> ] — La philosophie, en quatre chapitres', 'ph.l1': 'Une manière de travailler', 'ph.l2': 'se voit à ses refus.',
+    'ch1.h': 'Les questions que je vous pose', 'ch1.k': 'avant de dessiner',
+    'ch1.ul': "<li><strong>Pourquoi avez-vous commencé ce métier ?</strong><span>Pas la version pour le banquier. La vraie.</span></li><li><strong>Que doit ressentir quelqu'un qui pousse votre porte ?</strong><span>Confiance, calme, envie, sécurité, respect — ce n'est jamais le même mot, et tout part de là.</span></li><li><strong>De quoi êtes-vous fier, que personne ne remarque ?</strong><span>C'est presque toujours ça qu'il faut montrer en premier.</span></li><li><strong>Vers quoi travaillez-vous ?</strong><span>Un site qui ignore où va la maison la fige dans ce qu'elle était l'an dernier.</span></li>",
+    'ch2.h': 'Comment un sentiment devient un site', 'ch2.k': "chaque décision s'explique",
+    'ch2.ul': "<li><strong>« Qu'ils se sentent en sécurité »</strong><span>Rythme lent, beaucoup de vide, rien qui clignote.<em>Une page pressée transmet l'urgence. Une page calme transmet la maîtrise.</em></span></li><li><strong>« On est une maison d'artisans »</strong><span>La matière au premier plan, le geste montré, le texte en retrait.<em>On croit ce qu'on voit se faire, pas ce qui est affirmé.</em></span></li><li><strong>« Nos clients hésitent longtemps »</strong><span>On répond aux objections dans l'ordre où elles arrivent.<em>Une hésitation restée sans réponse devient un onglet qu'on referme.</em></span></li>",
+    'ch3.h': 'Ce que je ne ferai pas', 'ch3.k': "la liste est courte parce qu'elle est vraie",
+    'ch3.ul': "<li><strong>Jamais de gabarit</strong><span>Aucun thème acheté, aucun modèle recoloré. Si votre site pouvait être celui d'une autre maison en changeant le logo, je l'ai raté.</span></li><li><strong>Jamais de preuve empruntée</strong><span>Pas de logos de clients que je n'ai pas, pas de témoignages inventés, pas de chiffres décoratifs. Je préfère vous dire que l'atelier est jeune.</span></li><li><strong>Jamais de cookies ni de traceurs</strong><span>Ni ici, ni sur ce que je livre. Une page rapide n'a pas besoin de vous suivre pour fonctionner.</span></li><li><strong>Jamais rien d'inventé</strong><span>Ni dans un texte, ni dans une réponse automatique à vos clients. Si une information manque, on la demande — on ne la comble pas.</span></li>",
+    'ch4.h': 'Ce qui ne change pas, après', 'ch4.k': 'peu de maisons, suivies longtemps',
+    'ch4.ul': "<li><strong>Je reste après la mise en ligne</strong><span>Une maison bouge : nouveaux services, nouvelles photos, nouvelles saisons. Le site suit.</span></li><li><strong>Peu de projets à la fois</strong><span>Volontairement. Je préfère suivre quelques maisons longtemps que livrer beaucoup de sites puis les oublier.</span></li><li><strong>Une réponse le jour même</strong><span>À chaque message. Et si je ne suis pas la bonne personne pour votre projet, je vous le dirai franchement.</span></li>",
+    'f.idx': "[ <b>FAQ</b> ] — Les questions qu'on me pose", 'f.l1': 'Franchement,', 'f.l2': 'avant de commencer.',
+    'q1': 'Vous travaillez comment, exactement ?', 'a1': "On parle d'abord — longtemps, par écrit, à votre rythme. Je cherche ce que votre maison veut faire ressentir. Ensuite je dessine, vous voyez un aperçu réel en jours, vous corrigez, et j'affine jusqu'à ce que ce soit juste.",
+    'q2': 'Pourquoi pas de gabarit ?', 'a2': "Parce qu'un gabarit impose une forme avant d'avoir écouté. Si votre site pouvait devenir celui d'une autre maison en changeant le logo, il ne raconte pas la vôtre.",
+    'q3': 'Combien ça coûte ?', 'a3': "Il n'y a pas de tarif affiché : chaque projet est chiffré sur mesure après un échange, parce qu'une page unique et un monde complet ne demandent pas le même travail. Dites-moi en deux lignes ce que vous voulez faire, vous aurez un chiffre honnête le jour même.",
+    'q4': 'Combien de projets prenez-vous ?', 'a4': 'Peu à la fois, volontairement. Je préfère suivre quelques maisons longtemps que livrer beaucoup de sites puis les oublier.',
+    'q5': "Et si je n'aime pas ce que vous proposez ?", 'a5': "Vous le dites, et c'est utile : ça m'apprend votre limite. J'ai un avis, je le défends une fois, et ensuite c'est vous qui tranchez — c'est votre maison.",
+    'k.idx': '[ <b>06</b> ] — Et vous', 'k.l1': 'Racontez-moi', 'k.l2': 'pourquoi vous faites ça.',
+    'k.lede': "Pas votre budget, pas le nombre de pages : votre métier, et ce que vous voulez qu'on ressente. Une ligne suffit — je réponds le jour même, et si je ne suis pas la bonne personne pour votre projet, je vous le dirai franchement.",
+    'k.msg': 'POURQUOI FAITES-VOUS CE MÉTIER ?'
+  }, qa: [
+    ["Vous travaillez comment, exactement ?", "On parle d'abord — longtemps, par écrit, à votre rythme. Je cherche ce que votre maison veut faire ressentir. Ensuite je dessine, vous voyez un aperçu réel en jours, vous corrigez, et j'affine jusqu'à ce que ce soit juste."],
+    ["Quels sont les quatre métiers ?", "Sites sur mesure, Réponse & Relance (chaque demande reçoit une réponse en quelques minutes, puis on relance), automatisations des tâches répétitives, et un assistant de site qui répond uniquement à partir de vos informations."],
+    ["Combien ça coûte ?", "Il n'y a pas de tarif affiché : chaque projet est chiffré sur mesure après un échange. Dites-moi en deux lignes ce que vous voulez faire, vous aurez un chiffre honnête le jour même."],
+    ["Peut-on essayer avant de payer ?", "Oui — un pilote gratuit : vous jugez sur pièces avant de payer quoi que ce soit. Rien ne part sans votre accord la première semaine, et le premier mois est satisfait ou remboursé."]
+  ] },
+  de: { t: {
+    'meta.title': 'Scarsellato — Das digitale Atelier, Luxemburg',
+    'meta.desc': 'Digitales Atelier in Luxemburg. Ein Unternehmen hat eine Philosophie, bevor es eine Website hat: Ich finde sie und mache sie sichtbar. Maßgefertigte Websites, Antwort & Nachfassen, Automatisierungen, Website-Assistent.',
+    'h.idx': '[ <b>Digitales Atelier</b> ] — Luxemburg · EN · FR · DE',
+    'h.l1': 'Ein Unternehmen hat', 'h.l2': 'eine <span class="it">Philosophie.</span>',
+    'h.lede': 'Bevor es eine Website hat, bevor es ein Logo hat, hat es einen Grund zu existieren, eine Art, mit Menschen umzugehen, etwas, das man spüren soll, wenn man seine Tür öffnet. Meine Arbeit ist es, das zu finden — und auf dem Bildschirm sichtbar zu machen.',
+    'h.cta1': 'Die Gewerke ansehen', 'h.cta2': 'Erzählen Sie von Ihrem Haus', 'h.f1': '[ 00 ] — eine Linie, ohne abzusetzen', 'h.f2': 'Scrollen ↓',
+    'c.idx': '[ <b>01</b> ] — Woran ich glaube', 'c.l1': 'Bevor man ein Wort liest,', 'c.l2': 'spürt man etwas.', 'c.l3': 'Dort beginnt alles.',
+    'c.lede': 'Ruhe, Eile, Vertrauen oder Misstrauen: Dieses erste Gefühl entscheidet, ob Ihre Besucher Ihnen schreiben oder den Tab schließen. Darum beginne ich nie mit den Seiten — ich beginne mit dem, was Ihr Haus spürbar machen will.',
+    'c.cap': '[ Porträt — Noah, das Atelier ]',
+    'mq': '<span>Niemals eine Vorlage</span><span>Antwort am selben Tag</span><span>Niemals geliehene Beweise</span><span>ohne Cookies, ohne Tracker</span><span>Niemals etwas Erfundenes</span><span>wenige Häuser, lange begleitet</span><span>Niemals eine Vorlage</span><span>Antwort am selben Tag</span><span>Niemals geliehene Beweise</span><span>ohne Cookies, ohne Tracker</span><span>Niemals etwas Erfundenes</span><span>wenige Häuser, lange begleitet</span>',
+    'o.idx': '[ <b>02</b> ] — Woher das kommt', 'o.l1': 'Ich komme vom Zeichnen,', 'o.l2': 'nicht vom Code.',
+    'o.lede': 'Ich war auf einer Kunstschule: Design, Zeichnen, Komposition. Dort lernt man eines vor allem anderen — lange schauen, bevor man irgendetwas zeichnet. Das ist meine Methode geblieben, und deshalb beginne ich eine Website nie mit einer Vorlage.',
+    'o.a.t': 'Das Zeichnen', 'o.a.d': 'Eine Seite wird komponiert wie ein Bild: was man zuerst sieht, was danach kommt, was atmen darf. Rhythmus, Leere, Licht — Entscheidungen eines Zeichners, keine technischen Einstellungen. Darum ähneln sich zwei Websites aus derselben Hand nie.',
+    'o.b.t': 'Der Kopf des Besuchers', 'o.b.d': 'Warum eine Seite Vertrauen weckt und eine andere nicht, warum man zögert, warum man schreibt oder schließt. Das dient nicht dazu, jemanden zu manipulieren — sondern dazu, kein Hindernis zwischen Sie und die Person zu stellen, die ohnehin mit Ihnen sprechen wollte.',
+    'm.idx': '[ <b>03</b> ] — Die Gewerke · vier, nicht mehr', 'm.l1': 'Die Website ist', 'm.l2': 'nur eine Tür.',
+    'm.lede': 'Hinter der Tür muss jemand antworten. Die vier Gewerke des Ateliers tun alle dasselbe: Niemand, der mit Ihnen sprechen wollte, geht ohne Antwort.',
+    'k1.tag': 'Websites &amp; Welten', 'k1.h': 'Websites &amp; <span class="it gold">Welten</span>',
+    'k1.p': 'Von der einzelnen Seite bis zur ganzen Welt — nach Maß gezeichnet, nie eine Vorlage. Mehrsprachig, ohne Cookies, mit einem echten Weg, auf dem ein Besucher zur Anfrage wird.',
+    'k1.m': 'Angebot nach einem Gespräch', 'k1.b': 'Die Arbeiten',
+    'k2.tag': 'Antwort &amp; Nachfassen', 'k2.h': 'Antwort &amp; <span class="it gold">Nachfassen</span>',
+    'k2.p': 'Jede Anfrage erhält innerhalb von Minuten eine echte Antwort — auch abends und am Wochenende, in der Sprache des Kunden. Dann fassen wir nach, bis es ein Ja oder ein Nein ist. Keine Anfrage geht mehr an einem Freitag um 22 Uhr verloren.',
+    'k2.m': '14-Tage-Pilot — kostenlos', 'kx.b': 'Das Gewerk ansehen',
+    'k3.tag': 'Automatisierungen', 'k3.h': '<span class="it gold">Automatisierungen</span>',
+    'k3.p': 'Angebote, Erinnerungen, Nachverfolgung, wiederkehrende Eingaben: Ich baue den Ablauf, der sie ohne Sie erledigt. Auf Ihren bestehenden Werkzeugen, ohne Umstellung — und Sie behalten die Kontrolle über alles, was rausgeht.',
+    'k3.m': 'Kostenloser Test an einem echten Fall',
+    'k4.tag': 'Website-Assistent', 'k4.h': 'Website-<span class="it gold">Assistent</span>',
+    'k4.p': 'Er antwortet Ihren Besuchern zu jeder Stunde — ausschließlich aus Ihren Informationen, nie erfunden. Er übergibt, sobald er unsicher ist, und leitet Ihnen die Kontaktdaten der Interessenten weiter.',
+    'k4.m': 'Kostenlose Testversion',
+    'p.idx': '[ <b>04</b> ] — Wie wir zusammenarbeiten', 'p.l1': 'Wenige Projekte, und wir', 'p.l2': 'lernen voneinander.',
+    's1.h': 'Wir sprechen lange, bevor ich zeichne.', 's1.p': 'Schriftlich, in Ihrem Tempo, auf Deutsch, Französisch oder Englisch. Sie bringen mir Ihr Handwerk bei — seine Wörter, seine Jahreszeiten, was Sie an Ihren Mitbewerbern stört. Ich kann nichts sichtbar machen, was ich nicht verstanden habe.',
+    's2.h': 'Sie sehen sehr schnell etwas Echtes.', 's2.p': 'Ein erster Blick auf Ihre Welt kommt in Tagen, nicht in Monaten. Kein Dokument: eine Seite, die sich bewegt und die man auf dem Handy öffnet. Wir urteilen am echten Ergebnis — das ist ehrlicher als ein bebildertes Angebot.',
+    's3.h': 'Sie korrigieren, und Sie haben oft recht.', 's3.p': 'Es ist Ihr Haus, nicht meine Galerie. Wenn Sie sagen „das sind nicht wir", wird die Website stimmiger. Ich habe eine Meinung und verteidige sie einmal — danach entscheiden Sie.',
+    's4.h': 'Ich bleibe nach dem Start.', 's4.p': 'Ein Haus bewegt sich: neue Leistungen, neue Fotos, neue Jahreszeiten. Ich begleite lieber wenige Kunden lange, als viele Websites zu liefern und sie zu vergessen.',
+    'ph.idx': '[ <b>05</b> ] — Die Philosophie, in vier Kapiteln', 'ph.l1': 'Eine Arbeitsweise', 'ph.l2': 'zeigt sich an ihren Absagen.',
+    'ch1.h': 'Die Fragen, die ich Ihnen stelle', 'ch1.k': 'bevor ich zeichne',
+    'ch1.ul': '<li><strong>Warum haben Sie mit diesem Beruf angefangen?</strong><span>Nicht die Version für die Bank. Die echte.</span></li><li><strong>Was soll jemand spüren, der Ihre Tür öffnet?</strong><span>Vertrauen, Ruhe, Lust, Sicherheit, Respekt — es ist nie dasselbe Wort, und alles folgt daraus.</span></li><li><strong>Worauf sind Sie stolz, ohne dass es jemand bemerkt?</strong><span>Genau das sollte man fast immer zuerst zeigen.</span></li><li><strong>Worauf arbeiten Sie hin?</strong><span>Eine Website, die nicht weiß, wohin das Haus geht, friert es in dem ein, was es letztes Jahr war.</span></li>',
+    'ch2.h': 'Wie aus einem Gefühl eine Website wird', 'ch2.k': 'jede Entscheidung lässt sich erklären',
+    'ch2.ul': '<li><strong>„Sie sollen sich sicher fühlen"</strong><span>Langsamer Rhythmus, viel Leere, nichts blinkt.<em>Eine gehetzte Seite vermittelt Eile. Eine ruhige Seite vermittelt Souveränität.</em></span></li><li><strong>„Wir sind ein Haus von Handwerkern"</strong><span>Das Material im Vordergrund, die Geste gezeigt, der Text zurückgenommen.<em>Man glaubt, was man entstehen sieht, nicht was behauptet wird.</em></span></li><li><strong>„Unsere Kunden zögern lange"</strong><span>Einwände werden in der Reihenfolge beantwortet, in der sie wirklich kommen.<em>Ein unbeantwortetes Zögern wird zu einem Tab, den man schließt.</em></span></li>',
+    'ch3.h': 'Was ich nicht tun werde', 'ch3.k': 'die Liste ist kurz, weil sie wahr ist',
+    'ch3.ul': '<li><strong>Niemals eine Vorlage</strong><span>Kein gekauftes Theme, kein umgefärbtes Muster. Wenn Ihre Website einem anderen Haus gehören könnte, nur weil man das Logo tauscht, habe ich versagt.</span></li><li><strong>Niemals geliehene Beweise</strong><span>Keine Kundenlogos, die ich nicht habe, keine erfundenen Stimmen, keine dekorativen Zahlen. Ich sage Ihnen lieber, dass das Atelier jung ist.</span></li><li><strong>Niemals Cookies oder Tracker</strong><span>Weder hier noch bei dem, was ich liefere. Eine schnelle Seite muss Ihnen nicht folgen, um zu funktionieren.</span></li><li><strong>Niemals etwas Erfundenes</strong><span>Weder in einem Text noch in einer automatischen Antwort an Ihre Kunden. Fehlt eine Information, fragen wir nach — wir füllen die Lücke nicht.</span></li>',
+    'ch4.h': 'Was sich danach nicht ändert', 'ch4.k': 'wenige Häuser, lange begleitet',
+    'ch4.ul': '<li><strong>Ich bleibe nach dem Start</strong><span>Ein Haus bewegt sich: neue Leistungen, neue Fotos, neue Jahreszeiten. Die Website folgt.</span></li><li><strong>Wenige Projekte gleichzeitig</strong><span>Bewusst. Ich begleite lieber wenige Häuser über Jahre, als viele Websites zu liefern und sie zu vergessen.</span></li><li><strong>Eine Antwort am selben Tag</strong><span>Auf jede Nachricht. Und wenn ich nicht die richtige Person für Ihr Projekt bin, sage ich es Ihnen offen.</span></li>',
+    'f.idx': '[ <b>FAQ</b> ] — Die Fragen, die man mir stellt', 'f.l1': 'Ehrlich gesagt,', 'f.l2': 'bevor wir anfangen.',
+    'q1': 'Wie arbeiten Sie genau?', 'a1': 'Zuerst sprechen wir — lange, schriftlich, in Ihrem Tempo. Ich suche, was Ihr Haus spürbar machen will. Dann zeichne ich, Sie sehen innerhalb von Tagen eine echte Vorschau, Sie korrigieren, und ich verfeinere, bis es stimmt.',
+    'q2': 'Warum keine Vorlagen?', 'a2': 'Weil eine Vorlage eine Form aufzwingt, bevor jemand zugehört hat. Wenn Ihre Website durch Tauschen des Logos einem anderen Haus gehören könnte, erzählt sie nicht Ihres.',
+    'q3': 'Was kostet das?', 'a3': 'Es gibt keinen Listenpreis: Jedes Projekt wird nach einem Gespräch individuell kalkuliert, denn eine einzelne Seite und eine ganze Welt sind nicht dieselbe Arbeit. Schreiben Sie mir in zwei Zeilen, was Sie vorhaben, und Sie erhalten am selben Tag eine ehrliche Zahl.',
+    'q4': 'Wie viele Projekte nehmen Sie an?', 'a4': 'Wenige gleichzeitig, bewusst. Ich begleite lieber eine Handvoll Häuser lange, als viele Websites zu liefern und sie zu vergessen.',
+    'q5': 'Und wenn mir Ihr Vorschlag nicht gefällt?', 'a5': 'Dann sagen Sie es, und das hilft: Es zeigt mir Ihre Grenze. Ich habe eine Meinung, verteidige sie einmal, und dann entscheiden Sie — es ist Ihr Haus.',
+    'k.idx': '[ <b>06</b> ] — Und Sie', 'k.l1': 'Erzählen Sie mir,', 'k.l2': 'warum Sie das tun.',
+    'k.lede': 'Nicht Ihr Budget, nicht die Anzahl der Seiten: Ihr Handwerk, und was man spüren soll. Eine Zeile genügt — ich antworte am selben Tag, und wenn ich nicht die richtige Person für Ihr Projekt bin, sage ich es offen.',
+    'k.msg': 'WARUM MACHEN SIE DIESEN BERUF?'
+  }, qa: [
+    ["Wie arbeiten Sie genau?", "Zuerst sprechen wir — lange, schriftlich, in Ihrem Tempo. Ich suche, was Ihr Haus spürbar machen will. Dann zeichne ich, Sie sehen innerhalb von Tagen eine echte Vorschau, Sie korrigieren, und ich verfeinere, bis es stimmt."],
+    ["Welche vier Gewerke gibt es?", "Maßgefertigte Websites, Antwort & Nachfassen (jede Anfrage in wenigen Minuten beantwortet, dann nachgefasst), Automatisierung wiederkehrender Aufgaben und ein Website-Assistent, der nur aus Ihren Informationen antwortet."],
+    ["Was kostet das?", "Es gibt keinen Listenpreis: Jedes Projekt wird nach einem Gespräch individuell kalkuliert. Schreiben Sie mir in zwei Zeilen, was Sie vorhaben, und Sie erhalten am selben Tag eine ehrliche Zahl."],
+    ["Kann man vor dem Bezahlen testen?", "Ja — mit einem kostenlosen Pilotprojekt: Sie beurteilen das echte Ergebnis, bevor Sie etwas bezahlen. In der ersten Woche geht nichts ohne Ihr Einverständnis raus, und im ersten Monat gibt es Geld zurück."]
+  ] }
 };
-
-/* Les suggestions se replient : visibles à l'ouverture, repliées dès la
-   première question — sinon elles mangent le journal. */
-let setSugg = () => {};
-
-const ask = async (question, fallback) => {
-  if (busy || !question) return;
-  busy = true; snd.disabled = true;
-  setSugg(false);
-  say('user', question);
-  const pending = say('bot', d.t['chat.typing'] || 'L’assistant écrit…', 'pending');
-  let answer = null;
-  try {
-    const ctl = new AbortController();
-    const to = setTimeout(() => ctl.abort(), 20000);
-    const r = await fetch(ENDPOINT, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctl.signal,
-      body: JSON.stringify({ message: question, history: history.slice(-10) })
-    });
-    clearTimeout(to);
-    const j = await r.json();
-    if (j && typeof j.reply === 'string' && j.reply.trim()) answer = j.reply.trim();
-  } catch (e) { /* réseau muet — la doublure prend le relais */ }
-  pending.remove();
-  // doublure : la réponse préenregistrée si elle existe, sinon l'adresse de l'atelier
-  if (!answer) answer = fallback || d.t['chat.offline'] || "L’assistant ne répond pas à l’instant — écrivez-nous à noah@scarsellato.com, réponse le jour même.";
-  say('bot', answer);
-  history.push({ role: 'user', content: question }, { role: 'assistant', content: answer });
-  busy = false; snd.disabled = false;
-};
-
-QA.forEach(([q, a]) => {
-  const b = document.createElement('button');
-  b.className = 'chat-choice'; b.type = 'button'; b.textContent = q;
-  b.onclick = () => ask(q, a);
-  ch.appendChild(b);
-});
-if (ch.children.length) {
-  const sw = document.createElement('button');
-  sw.className = 'chat-sugg-toggle'; sw.type = 'button';
-  sw.setAttribute('aria-controls', 'chatChoices');
-  setSugg = open => {
-    ch.classList.toggle('collapsed', !open);
-    sw.setAttribute('aria-expanded', String(open));
-    sw.textContent = (d.t['chat.sugg'] || 'Questions suggérées') + (open ? ' ▾' : ' ▸');
-  };
-  sw.onclick = () => setSugg(ch.classList.contains('collapsed'));
-  ch.parentNode.insertBefore(sw, ch);
-  setSugg(true);
-}
-fm.addEventListener('submit', ev => {
-  ev.preventDefault();
-  const q = inp.value.trim();
-  if (!q) return;
-  inp.value = '';
-  ask(q, null);
-});
-
-const tp = o => { pn.hidden = !o; tg.setAttribute('aria-expanded', String(o)); if (o) setTimeout(() => inp.focus(), 60); };
-tg.onclick = () => tp(pn.hidden); cl.onclick = () => tp(false);
-// « Essayer le nôtre » (métier 04) ouvre l'assistant et pose la question à sa place
-const tryBtn = document.getElementById('svcTryBot');
-if (tryBtn) tryBtn.addEventListener('click', () => {
-  tp(true);
-  if (!history.length) ask(d.t['chat.tryQ'] || "Comment fonctionne l'assistant que vous installez sur mon site ?", null);
-});
-})();
-
-/* MENU MOBILE (2026-11-15) — sur téléphone les onglets passent dans un panneau plein écran */
-(() => {
-  const b = document.querySelector('.nav-toggle'); if (!b) return;
-  const set = o => { document.body.classList.toggle('nav-open', o); b.setAttribute('aria-expanded', String(o)); b.textContent = o ? '✕' : 'Menu'; };
-  b.addEventListener('click', () => set(!document.body.classList.contains('nav-open')));
-  document.querySelectorAll('.top-links a').forEach(a => a.addEventListener('click', () => set(false)));
-  addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
-  addEventListener('resize', () => { if (innerWidth > 752) set(false); });
-})();
 </script>
-
+<script src="assets/v3.js?v=4"></script>
 </body>
 </html>

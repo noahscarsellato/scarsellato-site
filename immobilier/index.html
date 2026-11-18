@@ -1,258 +1,437 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zéro lead perdu — Agences immobilières · Scarsellato, Luxembourg</title>
-<meta name="description" content="Pour les agences immobilières au Luxembourg : chaque demande athome.lu, immotop.lu ou du site reçoit une vraie réponse en quelques minutes, au nom de l'agence, en FR/DE/EN — puis une relance jusqu'au oui ou au non. Pilote 14 jours gratuit.">
-<link rel="stylesheet" href="../assets/shell.css?v=8">
-<link rel="stylesheet" href="../reponse-relance/page.css?v=2">
-<link rel="stylesheet" href="page.css?v=1">
+<title>Zero lost leads — Real estate agencies · Scarsellato, Luxembourg</title>
+<meta name="description" content="For real estate agencies in Luxembourg: every athome.lu, immotop.lu or website inquiry gets a real reply within minutes, in the agency’s name, in FR/DE/EN — then a follow-up until it is a yes or a no. 14-day pilot, free.">
+<link rel="stylesheet" href="../assets/v3.css?v=4">
+<style>
+/* ===== Real estate — its own character: night film, scoreboard, desk notes, listing tag ===== */
+.immo-hero { color: var(--cream); background: #07090b; min-height: 100svh; }
+.immo-film { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+.immo-film video { width: 100%; height: 100%; object-fit: cover; filter: saturate(.75) brightness(.55); transform: scale(1.04); }
+.immo-film::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(7 9 11 / .92) 0%, rgb(7 9 11 / .55) 55%, rgb(7 9 11 / .25) 100%), linear-gradient(0deg, rgb(7 9 11 / .9), transparent 40%); }
+.immo-hero .wrap { position: relative; z-index: 2; }
+.immo-hero .lede { color: rgb(234 226 216 / .82); }
+.immo-hero h1 .it { color: var(--gold); }
+.immo-face { position: absolute; left: 0; top: 0; z-index: 9; pointer-events: none; padding: 12px 16px 12px 14px; border: 1px solid rgb(198 165 108 / .45); border-radius: 16px; background: rgb(7 9 11 / .72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 14px 40px rgb(0 0 0 / .35); opacity: 0; transition: opacity .6s var(--ease); will-change: transform; }
+.immo-face.on { opacity: 1; }
+.immo-face.on.ghost { opacity: .1; }
+.immo-face::before { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; background: var(--gold); }
+.immo-face.r::before { right: 100%; } .immo-face.l::before { left: 100%; }
+.immo-face .lbl { font-family: var(--mono); font-size: .58rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cream-mut); }
+.immo-face .val { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(1.9rem, 3.4vw, 2.8rem); line-height: 1.1; padding: .02em .06em .08em 0; color: var(--gold); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.immo-face .fnote { display: flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: .55rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cream-mut); max-width: 30ch; }
+.immo-face .dot { width: 7px; height: 7px; border-radius: 9px; background: #c96f5b; flex: 0 0 auto; transition: background .4s, box-shadow .4s; }
+.immo-face.done .dot { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+@media (max-width: 700px) { .immo-face .val { font-size: 1.6rem; } .immo-face .fnote { max-width: 18ch; } }
+
+.score { display: grid; grid-template-columns: 1fr 1px 1fr; align-items: end; gap: clamp(20px, 4vw, 60px); margin: 22px 0 clamp(60px, 8vw, 110px); padding: clamp(28px, 4vw, 50px) 0; border-block: 1px solid var(--line-d); }
+.score .num { font-family: var(--serif); font-weight: 300; font-size: clamp(3.2rem, 10vw, 9rem); line-height: 1.05; padding: .04em .06em .1em; white-space: nowrap; }
+.score .a .num { color: rgb(234 226 216 / .28); text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: rgb(201 111 91 / .7); }
+.score .b { text-align: right; }
+.score .b .num { font-style: italic; color: var(--gold); }
+.score .lab { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cream-mut); margin-top: 6px; }
+.score .vs { align-self: stretch; background: linear-gradient(transparent, var(--gold), transparent); }
+.duel { display: grid; grid-template-columns: 1fr 1px 1fr; gap: clamp(24px, 4vw, 64px); }
+.duel .spine { background: linear-gradient(var(--line-d), var(--gold) 60%, var(--line-d)); }
+.duel h3 { margin-bottom: 10px; }
+.duel ol { list-style: none; margin-top: 22px; }
+.duel li { padding: 18px 0; border-top: 1px solid var(--line-d); display: grid; grid-template-columns: 7.5em 1fr; gap: 16px; }
+.duel li strong { font-family: var(--mono); font-weight: 400; font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; padding-top: 3px; }
+.duel .a li { opacity: .62; }
+.duel .a li strong { color: var(--cream-mut); }
+.duel .b li strong { color: var(--gold); }
+.duel .b li span { color: var(--cream); }
+.duel .a li span { color: var(--cream-mut); }
+.duel .verdict { margin-top: 26px; font-family: var(--serif); font-size: 1.25rem; line-height: 1.35; }
+.duel .a .verdict { color: var(--cream-mut); font-style: italic; }
+.duel .b .verdict b { color: var(--gold); font-weight: 400; }
+@media (max-width: 860px) { .score, .duel { grid-template-columns: 1fr; } .score .vs, .duel .spine { display: none; } .score .b { text-align: left; } .duel li { grid-template-columns: 1fr; gap: 4px; } }
+
+.desk { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 2vw, 26px); padding: 10px 0 20px; }
+.note { --r: 0deg; background: #fbf7f0; border: 1px solid var(--line-l); border-radius: 6px; padding: 30px 22px 34px; box-shadow: 0 18px 40px rgb(21 25 28 / .1), 0 2px 0 rgb(21 25 28 / .04); transform: rotate(var(--r)); position: relative; transition: transform .6s var(--ease), box-shadow .6s var(--ease); }
+.note::before { content: ""; position: absolute; top: 10px; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 10px; background: var(--gold-deep); box-shadow: 0 2px 4px rgb(0 0 0 / .25); }
+.note:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 26px 50px rgb(21 25 28 / .14); }
+.note h3 { font-family: var(--serif); font-style: italic; font-weight: 350; font-size: clamp(1.3rem, 2vw, 1.7rem); line-height: 1.25; margin-top: 14px; padding-bottom: .1em; }
+.in .note, .note.in { transform: rotate(var(--r)); }
+@media (max-width: 860px) { .desk { grid-template-columns: 1fr 1fr; } }
+
+.moves { display: grid; gap: 0; border-top: 1px solid var(--line-d); }
+.mv { display: grid; grid-template-columns: clamp(80px, 12vw, 160px) 1fr; gap: clamp(16px, 3vw, 40px); padding: clamp(22px, 3vw, 36px) 0; border-bottom: 1px solid var(--line-d); align-items: baseline; }
+.mv .k { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(3rem, 7vw, 6rem); line-height: 1; color: var(--gold); padding-bottom: .08em; }
+.mv h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.4rem, 2.4vw, 2rem); margin-bottom: 10px; }
+.mv p { color: var(--cream-mut); max-width: 62ch; }
+.browser { margin-top: clamp(60px, 8vw, 110px); border: 1px solid var(--line-d); border-radius: 18px; overflow: hidden; background: var(--noir-2); box-shadow: 0 40px 100px rgb(0 0 0 / .45); }
+.browser .bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--line-d); font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-mut); }
+.browser .bar i { width: 10px; height: 10px; border-radius: 9px; background: rgb(234 226 216 / .14); }
+.browser .bar span { margin-left: 10px; }
+.browser .media-frame { border: 0; border-radius: 0; }
+.crm { margin-top: clamp(50px, 6vw, 80px); display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(24px, 4vw, 60px); align-items: baseline; }
+@media (max-width: 860px) { .crm { grid-template-columns: 1fr; } }
+
+.included { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(30px, 5vw, 80px); align-items: start; }
+.tag { position: relative; background: linear-gradient(160deg, #1a2126, #101418); border: 1px solid rgb(198 165 108 / .55); border-radius: 26px 26px 26px 120px; padding: clamp(28px, 3.5vw, 44px); transform: rotate(-1.6deg); box-shadow: 0 40px 90px rgb(0 0 0 / .5); }
+.tag::after { content: ""; position: absolute; inset: 10px; border: 1px dashed rgb(198 165 108 / .35); border-radius: 18px 18px 18px 110px; pointer-events: none; }
+.tag .hole { position: absolute; right: 30px; top: 30px; width: 22px; height: 22px; border-radius: 22px; background: var(--noir); border: 1px solid rgb(198 165 108 / .55); }
+.tag .big { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(5rem, 11vw, 9rem); line-height: 1; color: var(--gold); margin: 10px 0 6px; padding-bottom: .06em; }
+.tag ol { list-style: none; counter-reset: t; position: relative; z-index: 1; }
+.tag li { counter-increment: t; padding: 14px 0 14px 36px; border-top: 1px solid var(--line-d); position: relative; color: var(--cream-mut); }
+.tag li::before { content: counter(t, decimal-leading-zero); position: absolute; left: 0; top: 16px; font-family: var(--mono); font-size: .66rem; color: var(--gold); }
+.tag li b { color: var(--cream); font-weight: 500; }
+@media (max-width: 860px) { .included { grid-template-columns: 1fr; } .tag { transform: none; } }
+
+.faq-split { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(30px, 5vw, 80px); align-items: start; }
+.faq-head { position: sticky; top: 110px; }
+@media (max-width: 860px) { .faq-split { grid-template-columns: 1fr; } .faq-head { position: static; } }
+</style>
 </head>
 <body>
 
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="loader-core">
-    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
-    <p class="loader-count"><span id="loaderCount">00</span></p>
-    <div class="loader-bar"><span id="loaderBar"></span></div>
-  </div>
-</div>
-
-<canvas class="dust" id="dust" aria-hidden="true"></canvas>
-<div class="progress-rail" aria-hidden="true"></div>
-
-<header class="topbar">
-  <a class="wordmark" href="../">scar<span class="italic gold">sellato</span></a>
-  <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
-  <nav class="top-links" id="topLinks" aria-label="Navigation">
-    <a href="../" data-i18n="nav.home">Accueil</a>
-    <a href="../#metiers" data-i18n="nav.metiers">Métiers</a>
-    <a href="../immobilier/" aria-current="page" data-i18n="nav.immo">Immobilier</a>
-    <a href="../realisations/" data-i18n="nav.real">Réalisations</a>
-    <a href="../approche/" data-i18n="nav.appro">L'approche</a>
-    <a href="#contact" data-i18n="nav.contact">Contact</a>
-  </nav>
-  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
-    <button type="button" data-lang="fr">FR</button>
-    <button type="button" data-lang="en">EN</button>
-    <button type="button" data-lang="de">DE</button>
-  </div>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="topLinks">Menu</button>
-  <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.pilot">Demander le pilote</span><span class="pill-dot" aria-hidden="true">↗</span></a>
-</header>
+<nav class="nav" aria-label="Navigation">
+  <a class="mark" href="../">scar<span class="it gold">sellato</span></a>
+  <ul>
+    <li><a href="../#metiers" data-i18n="nav.crafts">Crafts</a></li>
+    <li><a href="../approche/" data-i18n="nav.approach">Approach</a></li>
+    <li><a href="../immobilier/" aria-current="page" data-i18n="nav.immo">Real estate</a></li>
+    <li><a href="../realisations/" data-i18n="nav.work">Work</a></li>
+  </ul>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button><button type="button" data-lang="de">DE</button></div>
+  <button class="nav-toggle" type="button" aria-expanded="false" data-i18n="nav.menu">Menu</button>
+  <a class="btn gold" href="#contact"><span class="roll" data-i18n="nav.write">Write</span></a>
+</nav>
 
 <main id="top">
 
-  <!-- HÉROS -->
-  <section class="pano rr-hero" aria-label="Zéro lead perdu">
-    <div class="pano-bg" data-parallax><img src="../img/world-immo.jpg?v=2" alt=""><video class="vid" muted loop playsinline preload="auto" src="../img/loop-immo.mp4?v=2"></video></div>
-    <div class="pano-scrim" aria-hidden="true"></div>
-    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( IMMOBILIER ) — POUR LES AGENCES, AU LUXEMBOURG</p>
-    <div class="statement">
-      <span class="chip kicker" data-i18n="hero.kicker">ATHOME.LU · IMMOTOP.LU · VOTRE SITE · FR · DE · EN</span>
-      <p class="st-line big"><span class="st-in" data-i18n="hero.st1">Zéro lead</span></p>
-      <p class="st-line big"><span class="st-in italic gold" data-i18n="hero.st2">perdu.</span></p>
-      <p class="sub" data-i18n="hero.sub">Dimanche, 21 h. Une demande arrive sur votre annonce. Vos bureaux sont vides — et la même personne vient d'écrire à trois autres agences. Nous lui répondons en quelques minutes, au nom de votre agence, dans sa langue. Puis nous relançons jusqu'à ce que ce soit oui ou non.</p>
-      <div class="hero-cta">
-        <a class="btn-pill big magnetic" href="#contact"><span data-i18n="hero.cta1">Pilote 14 jours — gratuit</span><span class="pill-dot" aria-hidden="true">↗</span></a>
-        <button class="btn-pill magnetic" type="button" data-ask="Comment ça marche avec les demandes athome.lu ?"><span data-i18n="hero.cta2">Demander à l'assistant</span><span class="pill-dot" aria-hidden="true">↗</span></button>
+  <!-- ===== HERO — Sunday night, full-bleed film ===== -->
+  <section class="hero dark immo-hero" data-reveal>
+    <div class="immo-film" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="../img/world-immo.jpg" src="../img/loop-immo.mp4"></video>
+    </div>
+    <div class="immo-face" id="rtBox" aria-hidden="true">
+      <p class="lbl" data-i18n="face.lbl">Response time</p>
+      <p class="val" id="rtFace">31 h 12</p>
+      <p class="fnote"><span class="dot"></span><span id="rtNote" data-i18n="face.note">example — a Sunday-evening inquiry, without us</span></p>
+    </div>
+    <div class="wrap">
+      <p class="idx" data-i18n="h.idx">[ <b>Real estate</b> ] — For agencies in Luxembourg</p>
+      <h1 class="h-xl">
+        <span class="lm"><span style="--i:0" data-i18n="h.l1">Zero lost</span></span>
+        <span class="lm"><span style="--i:1" data-i18n="h.l2"><span class="it">leads.</span></span></span>
+      </h1>
+      <p class="lede fade" style="--d:450" data-i18n="h.lede">Sunday, 9 pm. An inquiry lands on your listing. Your desks are empty — and the same person has just written to three other agencies. We answer them within minutes, in your agency’s name, in their language. Then we follow up until it is a yes or a no.</p>
+      <div class="ctas fade" style="--d:650">
+        <a class="btn gold" href="#contact"><span class="roll" data-i18n="h.cta1">14-day pilot — free</span></a>
+        <button class="btn ghost" type="button" data-ask="How does it work with athome.lu inquiries?" data-ask-fr="Comment ça marche avec les demandes athome.lu ?" data-ask-de="Wie funktioniert das mit Anfragen von athome.lu?"><span class="roll" data-i18n="h.cta2">Ask the assistant</span><span class="arr">↗</span></button>
       </div>
     </div>
-    <p class="im-face" aria-hidden="true">
-      <span class="lbl" data-i18n="hero.facelbl">Délai de réponse</span>
-      <span class="val" id="rtFace">31 h 12</span>
-      <small id="rtNote" data-i18n="hero.facenote">exemple — une demande du dimanche soir, sans nous</small>
-    </p>
-  </section>
-
-  <!-- (01) DIMANCHE SOIR -->
-  <section class="night" id="dimanche" aria-label="Dimanche soir">
-    <div class="night-head reveal">
-      <p class="chip" aria-hidden="true" data-i18n="night.head">( 01 ) — LA MÊME DEMANDE ATHOME, DEUX FINS</p>
-      <div class="statement">
-        <p class="st-line"><span class="st-in" data-i18n="night.st1">Le client ne choisit pas la meilleure agence.</span></p>
-        <p class="st-line"><span class="st-in italic gold" data-i18n="night.st2">Il choisit celle qui répond.</span></p>
-      </div>
-    </div>
-    <div class="night-grid">
-      <article class="night-col reveal">
-        <h3 data-i18n="night.a.title">Sans nous</h3>
-        <p class="col-sub" data-i18n="night.a.sub">Ce qui se passe aujourd'hui</p>
-        <ul class="tl">
-          <li><span class="h" data-i18n="night.a.1h">Dim · 21:04</span><span class="d" data-i18n="night.a.1">Une demande arrive par le portail sur votre 3 pièces. Elle tombe dans la boîte commune de l'agence.</span></li>
-          <li><span class="h" data-i18n="night.a.2h">Dim · 21:10</span><span class="d" data-i18n="night.a.2">La même personne écrit à trois autres agences pour des biens semblables.</span></li>
-          <li><span class="h" data-i18n="night.a.3h">Lun · 09:00</span><span class="d" data-i18n="night.a.3">Quarante mails. Chacun pense qu'un collègue a déjà répondu.</span></li>
-          <li><span class="h" data-i18n="night.a.4h">Mar · 14:00</span><span class="d" data-i18n="night.a.4">Quelqu'un répond enfin, et bien. La visite est déjà prise ailleurs.</span></li>
-        </ul>
-        <p class="verdict" data-i18n="night.a.verdict">Vous avez payé l'annonce. Le lead est arrivé. Il est parti chez celui qui a répondu le premier.</p>
-      </article>
-      <article class="night-col ours reveal d1">
-        <h3 data-i18n="night.b.title">Avec nous</h3>
-        <p class="col-sub" data-i18n="night.b.sub">La même demande, même heure</p>
-        <ul class="tl">
-          <li><span class="h" data-i18n="night.b.1h">Dim · 21:04</span><span class="d" data-i18n="night.b.1">La demande est lue : le bien, le nom, l'e-mail et le téléphone du client sont repris du message du portail.</span></li>
-          <li><span class="h" data-i18n="night.b.2h">Dim · 21:07</span><span class="d" data-i18n="night.b.2">Le client reçoit une vraie réponse — à lui, pas au portail — au nom de votre agence, dans sa langue, avec les questions qui font avancer.</span></li>
-          <li><span class="h" data-i18n="night.b.3h">Lun · 09:00</span><span class="d" data-i18n="night.b.3">Votre équipe ne découvre pas un mail : elle découvre une conversation déjà engagée.</span></li>
-          <li><span class="h">J+2 · J+5</span><span class="d" data-i18n="night.b.4">S'il ne répond plus, nous relançons. Sans harceler, jusqu'au oui ou au non.</span></li>
-        </ul>
-        <p class="verdict" data-i18n="night.b.verdict"><b>Vous êtes l'agence qui a répondu.</b> Le client n'a plus de raison d'attendre les trois autres.</p>
-      </article>
+    <div class="wrap hero-foot fade" style="--d:900">
+      <p class="idx" data-i18n="h.f1">athome.lu · immotop.lu · your website · FR · DE · EN</p>
+      <p class="idx" data-i18n="h.f2">Scroll ↓</p>
     </div>
   </section>
 
-  <!-- (02) LA BOÎTE COMMUNE -->
-  <section class="inbox" aria-label="La boîte commune">
-    <div class="inbox-inner">
-      <div class="inbox-head reveal">
-        <p class="chip" aria-hidden="true" data-i18n="inbox.head">( 02 ) — LA BOÎTE COMMUNE</p>
-        <div class="statement">
-          <p class="st-line"><span class="st-in" data-i18n="inbox.st1">Quatre bureaux.</span> <span class="st-in italic gold" data-i18n="inbox.st2">Une seule boîte.</span></p>
+  <!-- ===== 01 — TWO ENDINGS: scoreboard + duel timeline ===== -->
+  <section class="sec dark sheet" id="dimanche" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="n.idx">[ <b>01</b> ] — The same athome inquiry, two endings</p>
+      <h2 class="h-l" style="margin:22px 0 clamp(40px,5vw,70px)">
+        <span class="lm"><span style="--i:0" data-i18n="n.l1">Clients do not pick the best agency.</span></span>
+        <span class="lm"><span style="--i:1" class="it gold" data-i18n="n.l2">They pick the one that answers.</span></span>
+      </h2>
+      <p class="idx fade" style="--d:100" data-i18n="n.rt">[ Response time ] — example: a Sunday-evening inquiry</p>
+      <div class="score fade" style="--d:200">
+        <div class="side a"><p class="num">31 h 12</p><p class="lab" data-i18n="n.rt.a">Without us</p></div>
+        <div class="vs" aria-hidden="true"></div>
+        <div class="side b"><p class="num">3 min</p><p class="lab" data-i18n="n.rt.b">With us</p></div>
+      </div>
+      <div class="duel">
+        <div class="col a fade" style="--d:100">
+          <h3 class="h-m" data-i18n="n.a.t">Without us</h3>
+          <p class="idx" data-i18n="n.a.sub">What happens today</p>
+          <ol>
+            <li><strong data-i18n="n.a.1h">Sun · 21:04</strong><span data-i18n="n.a.1">An inquiry comes in through the portal for your 3-room flat. It lands in the agency’s shared inbox.</span></li>
+            <li><strong data-i18n="n.a.2h">Sun · 21:10</strong><span data-i18n="n.a.2">The same person writes to three other agencies about similar properties.</span></li>
+            <li><strong data-i18n="n.a.3h">Mon · 09:00</strong><span data-i18n="n.a.3">Forty emails. Everyone assumes a colleague has already replied.</span></li>
+            <li><strong data-i18n="n.a.4h">Tue · 14:00</strong><span data-i18n="n.a.4">Someone finally answers, and answers well. The viewing is already booked elsewhere.</span></li>
+          </ol>
+          <p class="verdict" data-i18n="n.a.v">You paid for the listing. The lead arrived. It went to whoever answered first.</p>
+        </div>
+        <div class="spine" aria-hidden="true"></div>
+        <div class="col b fade" style="--d:250">
+          <h3 class="h-m it gold" data-i18n="n.b.t">With us</h3>
+          <p class="idx" data-i18n="n.b.sub">Same inquiry, same hour</p>
+          <ol>
+            <li><strong data-i18n="n.b.1h">Sun · 21:04</strong><span data-i18n="n.b.1">The inquiry is read: the property, the client’s name, email and phone are taken from the portal’s message.</span></li>
+            <li><strong data-i18n="n.b.2h">Sun · 21:07</strong><span data-i18n="n.b.2">The client gets a real answer — to them, not to the portal — in your agency’s name, in their language, with the questions that move things forward.</span></li>
+            <li><strong data-i18n="n.b.3h">Mon · 09:00</strong><span data-i18n="n.b.3">Your team does not discover an email: it discovers a conversation already under way.</span></li>
+            <li><strong data-i18n="n.b.4h">Day 2 · Day 5</strong><span data-i18n="n.b.4">If they go quiet, we follow up. Without hounding, until it is a yes or a no.</span></li>
+          </ol>
+          <p class="verdict" data-i18n="n.b.v"><b>You are the agency that answered.</b> The client has no reason to wait for the other three.</p>
         </div>
       </div>
-      <div class="desks reveal">
-        <div class="desk"><span class="who" data-i18n="inbox.d1w">Bureau 1 · en visite</span><p class="thought" data-i18n="inbox.d1">« Je regarde ce soir. »</p></div>
-        <div class="desk"><span class="who" data-i18n="inbox.d2w">Bureau 2 · en rendez-vous</span><p class="thought" data-i18n="inbox.d2">« Julie a dû répondre. »</p></div>
-        <div class="desk"><span class="who" data-i18n="inbox.d3w">Bureau 3 · en congé</span><p class="thought" data-i18n="inbox.d3">« … »</p></div>
-        <div class="desk"><span class="who" data-i18n="inbox.d4w">Gérance</span><p class="thought" data-i18n="inbox.d4">« Je pensais que c'était traité. »</p></div>
+    </div>
+  </section>
+
+  <!-- ===== 02 — THE SHARED INBOX: notes on a desk ===== -->
+  <section class="sec light sheet" id="boite" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="ib.idx">[ <b>02</b> ] — The shared inbox</p>
+      <h2 class="h-l" style="margin:22px 0 clamp(40px,5vw,70px)">
+        <span class="lm"><span style="--i:0" data-i18n="ib.l1">Four desks.</span></span>
+        <span class="lm"><span style="--i:1;color:var(--gold-deep)" class="it" data-i18n="ib.l2">One inbox.</span></span>
+      </h2>
+      <div class="desk">
+        <div class="note fade" style="--d:100;--r:-3deg"><p class="idx" data-i18n="ib.d1w">Desk 1 · on a viewing</p><h3 data-i18n="ib.d1">“I’ll look tonight.”</h3></div>
+        <div class="note fade" style="--d:200;--r:2.2deg"><p class="idx" data-i18n="ib.d2w">Desk 2 · in a meeting</p><h3 data-i18n="ib.d2">“Julie must have answered.”</h3></div>
+        <div class="note fade" style="--d:300;--r:-1.4deg"><p class="idx" data-i18n="ib.d3w">Desk 3 · on leave</p><h3 data-i18n="ib.d3">“…”</h3></div>
+        <div class="note fade" style="--d:400;--r:3deg"><p class="idx" data-i18n="ib.d4w">Management</p><h3 data-i18n="ib.d4">“I thought it was handled.”</h3></div>
       </div>
-      <div class="inbox-verdict reveal d1">
-        <p data-i18n="inbox.v1">Le problème d'une agence n'est presque jamais la compétence. C'est <b>la demande qui appartient à tout le monde, donc à personne</b> — surtout le soir, le week-end, et pendant les visites.</p>
-        <p class="ours" data-i18n="inbox.v2"><b>Avec nous, chaque demande a sa réponse.</b> Chaque réponse et chaque relance partent avec une copie dans votre boîte commune, visible par toute l'équipe : celui qui reprend le dossier lundi voit exactement ce qui a été répondu.</p>
+      <div class="two fade" style="--d:250;margin-top:clamp(50px,6vw,90px)">
+        <p class="lede" data-i18n="ib.v1">An agency’s problem is almost never skill. It is <b>the inquiry that belongs to everyone, and therefore to no one</b> — especially evenings, weekends and during viewings.</p>
+        <p class="lede" data-i18n="ib.v2"><b>With us, every inquiry gets its answer.</b> Every reply and follow-up is copied to your shared inbox, visible to the whole team: whoever picks up the file on Monday sees exactly what was answered.</p>
       </div>
     </div>
   </section>
 
-  <!-- (03) PAS UN CHANTIER -->
-  <section class="mech" aria-label="Pas un chantier">
-    <div class="mech-head reveal">
-      <p class="chip" aria-hidden="true" data-i18n="mech.head">( 03 ) — CE N'EST PAS UN CHANTIER</p>
-      <div class="statement">
-        <p class="st-line"><span class="st-in" data-i18n="mech.st1">Rien à migrer.</span> <span class="st-in italic gold" data-i18n="mech.st2">Rien à apprendre.</span></p>
+  <!-- ===== 03 — NOT A PROJECT: three big moves + the film in a browser ===== -->
+  <section class="sec dark sheet" id="mecanique" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="m.idx">[ <b>03</b> ] — This is not a project</p>
+      <h2 class="h-l" style="margin:22px 0 clamp(40px,5vw,70px)">
+        <span class="lm"><span style="--i:0" data-i18n="m.l1">Nothing to migrate.</span></span>
+        <span class="lm"><span style="--i:1" class="it gold" data-i18n="m.l2">Nothing to learn.</span></span>
+      </h2>
+      <div class="moves">
+        <div class="mv fade" style="--d:100"><p class="k">01</p><div><h3 data-i18n="m.1.t">One forwarding rule, 5 minutes</h3><p data-i18n="m.1.d">On the inbox your athome.lu, immotop.lu and website inquiries already land in, one rule forwards a copy of each inquiry to us. We guide you through it. You change no address, no tool, no habit, and we never get access to your inbox.</p></div></div>
+        <div class="mv fade" style="--d:200"><p class="k">02</p><div><h3 data-i18n="m.2.t">Every inquiry gets its answer</h3><p data-i18n="m.2.d">Within minutes, at any hour, in French, German or English — in your agency’s name, about the property asked for. A real answer, not an acknowledgement.</p></div></div>
+        <div class="mv fade" style="--d:300"><p class="k">03</p><div><h3 data-i18n="m.3.t">You keep control</h3><p data-i18n="m.3.d">In week one you approve every reply before it goes out: nothing leaves without your green light. You correct the tone, we adjust. Then you decide.</p></div></div>
       </div>
-    </div>
-    <div class="mech-grid">
-      <div class="mech-step reveal">
-        <span class="n">01</span>
-        <h3 data-i18n="mech.1.t">Une règle de transfert, 5 minutes</h3>
-        <p data-i18n="mech.1.d">Sur la boîte où arrivent déjà vos demandes athome.lu, immotop.lu et celles de votre site, une règle transfère une copie de chaque demande vers nous. Nous vous guidons. Vous ne changez ni d'adresse, ni d'outil, ni d'habitude, et nous n'avons pas accès à votre boîte.</p>
-      </div>
-      <div class="mech-step reveal d1">
-        <span class="n">02</span>
-        <h3 data-i18n="mech.2.t">Chaque demande reçoit sa réponse</h3>
-        <p data-i18n="mech.2.d">En quelques minutes, à toute heure, en français, allemand ou anglais — au nom de votre agence, sur le bien demandé. Une vraie réponse, pas un accusé de réception.</p>
-      </div>
-      <div class="mech-step reveal d2">
-        <span class="n">03</span>
-        <h3 data-i18n="mech.3.t">Vous gardez la main</h3>
-        <p data-i18n="mech.3.d">La première semaine, vous validez chaque réponse avant qu'elle parte : rien ne part sans votre accord. Vous corrigez le ton, nous ajustons. Ensuite, vous décidez.</p>
-      </div>
-    </div>
-    <div class="crm-note reveal">
-      <span class="k" data-i18n="crm.k">Vous refaites votre CRM ?</span>
-      <p data-i18n="crm.d">Gardez-le. Nous ne le remplaçons pas : <b>un CRM range les leads, nous faisons en sorte qu'ils reçoivent une réponse.</b> Le pilote tourne sur votre boîte actuelle, sans attendre la fin du chantier — et quand le nouvel outil est prêt, nous regardons ensemble comment y faire arriver les conversations.</p>
-    </div>
-  </section>
-
-  <!-- (04) LA RELANCE -->
-  <section class="ladder" aria-label="La relance">
-    <div class="ladder-inner">
-      <div class="ladder-head reveal">
-        <p class="chip" aria-hidden="true" data-i18n="lad.head">( 04 ) — LA RELANCE, LÀ OÙ SE GAGNE LA VISITE</p>
-        <div class="statement">
-          <p class="st-line"><span class="st-in" data-i18n="lad.st1">Répondre, tout le monde y pense.</span></p>
-          <p class="st-line"><span class="st-in italic gold" data-i18n="lad.st2">Relancer, presque personne.</span></p>
+      <div class="browser fade" style="--d:200">
+        <div class="bar"><i></i><i></i><i></i><span data-i18n="m.vid">[ Answer &amp; Follow-up ] — example: an apartment inquiry</span></div>
+        <div class="media-frame">
+          <video autoplay muted loop playsinline preload="metadata" src="../media/rr-card.mp4" aria-hidden="true"></video>
+          <button class="play" type="button" data-full="../media/rr-explainer.mp4" data-i18n="play">▶ Watch full size</button>
         </div>
       </div>
-      <ul class="rungs">
-        <li class="rung reveal"><span class="when" data-i18n="lad.1.w">Minute 1</span><span class="what" data-i18n="lad.1.d">La réponse part, sur le bien demandé — avec les questions qui comptent pour organiser la suite : quand visiter, pour quel projet, dans quel délai.</span></li>
-        <li class="rung reveal"><span class="when" data-i18n="lad.2.w">Jour 2</span><span class="what" data-i18n="lad.2.d">Pas de réponse ? Une relance courte qui propose de fixer la visite — jamais un « je me permets de revenir vers vous ».</span></li>
-        <li class="rung reveal"><span class="when" data-i18n="lad.3.w">Jour 5</span><span class="what" data-i18n="lad.3.d">Un autre angle : ce qui compte pour lui dans sa recherche, pas ce qui arrange l'agence.</span></li>
-        <li class="rung last reveal"><span class="when" data-i18n="lad.4.w">Fin</span><span class="what" data-i18n="lad.4.d">Une dernière ligne, honnête, qui referme proprement. S'il dit non, c'est non : il ne sera plus jamais recontacté. Un dossier fermé vaut mieux qu'un dossier flou.</span></li>
-      </ul>
+      <div class="crm fade" style="--d:200">
+        <h3 class="h-m" data-i18n="crm.k">Rebuilding your CRM?</h3>
+        <p class="lede" data-i18n="crm.d">Keep it. We do not replace it: <b>a CRM stores leads, we make sure they get an answer.</b> The pilot runs on your current inbox without waiting for the project to finish — and once the new tool is ready, we look together at how to bring the conversations into it.</p>
+      </div>
     </div>
   </section>
 
-  <!-- (05) INCLUS + PILOTE -->
-  <section class="incl" aria-label="Ce qui est inclus">
-    <div class="incl-inner">
-      <div class="reveal">
-        <p class="chip" aria-hidden="true" style="margin-bottom:1.4rem" data-i18n="incl.head">( 05 ) — CE QUI EST COMPRIS</p>
-        <h3 data-i18n="incl.title">Tout est fait pour vous</h3>
-        <ul>
-          <li data-i18n="incl.1"><b>Réponse à chaque demande</b> — portails et site, soirs, week-ends et jours fériés compris.</li>
-          <li data-i18n="incl.2"><b>Trois langues</b> — la réponse part dans la langue du message reçu.</li>
-          <li data-i18n="incl.3"><b>Relance jusqu'au oui ou au non</b> — et arrêt définitif sur un non.</li>
-          <li data-i18n="incl.4"><b>Au nom de votre agence</b> — votre ton, votre signature, jamais le nôtre.</li>
-          <li data-i18n="incl.5"><b>Toute l'équipe voit nos réponses</b> — chacune arrive en copie dans votre boîte commune.</li>
-          <li data-i18n="incl.6"><b>RGPD</b> — désinscription honorée, aucune donnée revendue, jamais.</li>
+  <!-- ===== 04 — THE FOLLOW-UP — pinned horizontal ===== -->
+  <section class="process light sheet" id="methode">
+    <div class="stick">
+      <div class="wrap" data-reveal>
+        <p class="idx" data-i18n="l.idx">[ <b>04</b> ] — The follow-up, where the viewing is won</p>
+        <h2 class="h-l" style="margin-top:18px">
+          <span class="lm"><span style="--i:0" data-i18n="l.l1">Everyone thinks about replying.</span></span>
+          <span class="lm"><span style="--i:1" class="it" data-i18n="l.l2">Almost nobody follows up.</span></span>
+        </h2>
+      </div>
+      <div class="wrap bar"><span class="idx" id="pCount">[ 01 / 04 ]</span><span class="rail"><i id="pFill"></i></span></div>
+      <div class="ptrack" id="pTrack">
+        <article class="step"><p class="num">01</p><h3 data-i18n="l.1.w">Minute 1</h3><p data-i18n="l.1.d">The reply goes out, about the property asked for — with the questions that matter for what comes next: when to visit, for what project, on what timeline.</p></article>
+        <article class="step"><p class="num">02</p><h3 data-i18n="l.2.w">Day 2</h3><p data-i18n="l.2.d">No answer? A short follow-up offering to set the viewing — never a “just checking in”.</p></article>
+        <article class="step"><p class="num">03</p><h3 data-i18n="l.3.w">Day 5</h3><p data-i18n="l.3.d">A different angle: what matters to them in their search, not what suits the agency.</p></article>
+        <article class="step"><p class="num">04</p><h3 data-i18n="l.4.w">The end</h3><p data-i18n="l.4.d">One last honest line that closes it cleanly. If they say no, it is no: they are never contacted again. A closed file beats a vague one.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 05 — INCLUDED + THE PILOT as a listing tag ===== -->
+  <section class="sec dark sheet" id="pilote" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="i.idx">[ <b>05</b> ] — What is included</p>
+      <h2 class="h-l" style="margin:22px 0 clamp(40px,5vw,70px)">
+        <span class="lm"><span style="--i:0" data-i18n="i.l1">All of it</span></span>
+        <span class="lm"><span style="--i:1" class="it gold" data-i18n="i.l2">done for you.</span></span>
+      </h2>
+      <div class="included">
+        <ul class="rowlist fade" style="--d:100">
+          <li><strong data-i18n="i.1.t">An answer to every inquiry</strong><span data-i18n="i.1.d">Portals and website, evenings, weekends and holidays included.</span></li>
+          <li><strong data-i18n="i.2.t">Three languages</strong><span data-i18n="i.2.d">The reply goes out in the language it came in.</span></li>
+          <li><strong data-i18n="i.3.t">Follow-up until yes or no</strong><span data-i18n="i.3.d">And a permanent stop on a no.</span></li>
+          <li><strong data-i18n="i.4.t">In your agency’s name</strong><span data-i18n="i.4.d">Your tone, your signature, never ours.</span></li>
+          <li><strong data-i18n="i.5.t">The whole team sees our replies</strong><span data-i18n="i.5.d">Each one is copied to your shared inbox.</span></li>
+          <li><strong data-i18n="i.6.t">GDPR</strong><span data-i18n="i.6.d">Opt-outs honoured, no data ever resold.</span></li>
         </ul>
-      </div>
-      <div class="pilot reveal d1">
-        <span class="tag" data-i18n="pilot.tag">Le pilote — 14 jours, gratuit</span>
-        <p data-i18n="pilot.1">Nous branchons le système sur <b>vos vraies demandes</b>, pas sur une démo. Vous voyez ce qui arrive et ce qui repart, en direct.</p>
-        <p data-i18n="pilot.2"><b>Semaine 1 : vous validez chaque réponse</b> avant qu'elle parte. Rien ne part sans votre accord — c'est la garantie, pas une promesse.</p>
-        <p data-i18n="pilot.3">Au bout de quatorze jours, vous décidez. Si vous continuez et que le premier mois ne vous convainc pas, <b>il vous est remboursé</b>.</p>
-        <p data-i18n="pilot.4">Nous ne prenons que <b>trois pilotes en parallèle</b> — pour que chacun soit réglé personnellement. Quand c'est plein, c'est plein.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- (06) CONTACT -->
-  <section class="rr-contact" id="contact" aria-label="Contact">
-    <div class="rr-contact-inner">
-      <div class="reveal">
-        <p class="chip" aria-hidden="true" data-i18n="fin.head">( 06 ) — ET MAINTENANT</p>
-        <div class="statement" style="margin-top:1.4rem">
-          <p class="st-line big"><span class="st-in" data-i18n="fin.st1">Combien de demandes</span></p>
-          <p class="st-line big"><span class="st-in italic gold" data-i18n="fin.st2">attendent ce soir ?</span></p>
+        <div class="tag fade" style="--d:300">
+          <span class="hole" aria-hidden="true"></span>
+          <p class="idx" data-i18n="p.tag">[ <b>The pilot</b> ] — 14 days, free</p>
+          <p class="big">14</p>
+          <ol>
+            <li data-i18n="p.1">We plug the system into <b>your real inquiries</b>, not a demo. You see what comes in and what goes out, live.</li>
+            <li data-i18n="p.2"><b>Week 1: you approve every reply</b> before it goes out. Nothing leaves without your agreement — that is the guarantee, not a promise.</li>
+            <li data-i18n="p.3">After fourteen days, you decide. If you continue and the first month does not convince you, <b>it is refunded</b>.</li>
+            <li data-i18n="p.4">We take <b>three pilots at a time</b>, no more — so each one is set up personally. When it is full, it is full.</li>
+          </ol>
         </div>
-        <p class="note" data-i18n="fin.note">Une ligne suffit : votre agence, et où arrivent vos demandes. Nous répondons le jour même — et si le pilote n'a pas de sens pour vous, nous le dirons franchement plutôt que de vous vendre quelque chose.</p>
-        <form class="atelier-form" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
-          <input type="hidden" name="_subject" value="Immobilier — demande de pilote (scarsellato.com)">
-          <input type="hidden" name="_next" value="https://scarsellato.com/immobilier/#contact">
-          <input type="text" name="_honey" style="display:none">
-          <div class="af-row">
-            <input type="text" name="nom" placeholder="VOTRE NOM ET VOTRE AGENCE" required aria-label="Nom et agence" data-i18n-ph="form.name2">
-            <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
-          </div>
-          <textarea name="message" placeholder="OÙ ARRIVENT VOS DEMANDES ? (ATHOME, IMMOTOP, SITE…)" required aria-label="Message" data-i18n-ph="form.msg2"></textarea>
-          <button class="btn-pill magnetic big" type="submit"><span data-i18n="form.send">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
-        </form>
-        <a class="back-home" href="../reponse-relance/" data-i18n="fin.other">Vous n'êtes pas une agence ? Voir Réponse &amp; Relance ↗</a><br>
-        <a class="back-home" style="margin-top:1rem" href="../#metiers" data-i18n="fin.back">← Revoir tous les métiers</a>
       </div>
     </div>
   </section>
 
+  <!-- ===== FAQ — sticky title, questions on the right ===== -->
+  <section class="faq light sheet" id="faq" data-reveal>
+    <div class="wrap faq-split">
+      <div class="faq-head">
+        <p class="idx" data-i18n="f.idx">[ <b>FAQ</b> ] — What agencies ask us</p>
+        <h2 class="h-l" style="margin-top:22px">
+          <span class="lm"><span style="--i:0" data-i18n="f.l1">Honestly,</span></span>
+          <span class="lm"><span style="--i:1;color:var(--gold-deep)" class="it" data-i18n="f.l2">before the pilot.</span></span>
+        </h2>
+      </div>
+      <div class="acc">
+        <details><summary><span class="idx">[ 01 ]</span><span class="t" data-i18n="q1">How does it work with athome.lu inquiries?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a1">The portal sends you the inquiry by email. We read that message, take the property, the client’s name, email and phone, and we answer the client — not the portal’s address. Within minutes, in your agency’s name.</p></div></div></details>
+        <details><summary><span class="idx">[ 02 ]</span><span class="t" data-i18n="q2">We are rebuilding our CRM — it is not the right time.</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a2">That is exactly why it works: we do not touch the CRM. The pilot runs on the inbox your inquiries already reach, nothing to install or migrate. Once the new CRM is ready, we look together at how to bring the conversations into it.</p></div></div></details>
+        <details><summary><span class="idx">[ 03 ]</span><span class="t" data-i18n="q3">What do I actually have to do?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a3">Almost nothing: add one forwarding rule on the inbox your inquiries arrive in (5 minutes, we guide you). We never get access to your inbox. Setup, tone and follow-ups are on us. In week one, you approve every reply before it goes out.</p></div></div></details>
+        <details><summary><span class="idx">[ 04 ]</span><span class="t" data-i18n="q4">What if a reply is off?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a4">That is what week one is for: nothing goes out without your approval. You correct, we adjust. What you approve becomes the reference.</p></div></div></details>
+        <details><summary><span class="idx">[ 05 ]</span><span class="t" data-i18n="q5">Does it replace an agent?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a5">No. We answer and follow up; your agents do the viewings and close. The difference: when they pick up a file, the client is already expecting their call.</p></div></div></details>
+        <details><summary><span class="idx">[ 06 ]</span><span class="t" data-i18n="q6">How much does it cost?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a6">The fourteen-day pilot is free. After that the price depends on the size of the agency and the volume of inquiries — leave us your email and you get a precise quote the same day.</p></div></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact dark sheet" id="contact" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="k.idx">[ <b>06</b> ] — And now</p>
+      <h2 class="h-xl" style="margin-top:22px">
+        <span class="lm"><span style="--i:0" data-i18n="k.l1">How many inquiries</span></span>
+        <span class="lm"><span style="--i:1" class="it gold" data-i18n="k.l2">are waiting tonight?</span></span>
+      </h2>
+      <p class="lede fade" style="--d:400;margin-top:28px" data-i18n="k.lede">One line is enough: your agency, and where your inquiries arrive. We reply the same day — and if the pilot makes no sense for you, we will say so plainly rather than sell you something.</p>
+      <form class="form fade" style="--d:550" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
+        <input type="hidden" name="_subject" value="New message — scarsellato.com · immobilier">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row">
+          <input type="text" name="name" placeholder="YOUR NAME AND AGENCY" required aria-label="Name and agency" data-i18n-ph="k.name" data-i18n-aria="k.nameAria">
+          <input type="email" name="email" placeholder="YOUR E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+        </div>
+        <textarea name="message" placeholder="WHERE DO YOUR INQUIRIES ARRIVE? (ATHOME, IMMOTOP, WEBSITE…)" required aria-label="Message" data-i18n-ph="k.msg"></textarea>
+        <div><button class="btn gold" type="submit"><span class="roll" data-i18n="form.send">Send to the atelier</span><span class="arr">↗</span></button></div>
+      </form>
+      <a class="back" href="../reponse-relance/" data-i18n="k.other">Not an agency? See Answer &amp; Follow-up ↗</a><br>
+      <a class="back" style="margin-top:14px" href="../#metiers" data-i18n="k.back">← Back to all crafts</a>
+      <p class="giant" aria-hidden="true">scar<span class="it">sellato</span></p>
+      <div class="foot"><p class="idx" data-i18n="foot.l">Scarsellato — digital atelier · Luxembourg · © 2026</p><p class="idx" data-i18n="foot.r">0 cookies · 0 trackers</p></div>
+    </div>
+  </section>
 </main>
 
-<p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
-
 <div class="chat" id="chat">
-  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="A question? Open the assistant" data-i18n-aria="chat.toggleAria">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
   </button>
-  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
-    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — EN DIRECT )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
-    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonjour ! Je réponds en direct, uniquement à partir des informations de l'atelier — je ne devine rien. Posez votre question, ou commencez par l'une de celles-ci :</p></div>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Atelier assistant" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — LIVE )</p><button class="chat-close" id="chatClose" type="button" aria-label="Close" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Hello! I answer live, only from the atelier's own information — I never guess. Ask your question, or start with one of these:</p></div>
     <div class="chat-choices" id="chatChoices"></div>
     <form class="chat-form" id="chatForm">
-      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="ÉCRIVEZ VOTRE QUESTION…" aria-label="Votre question" data-i18n-ph="chat.ph">
-      <button class="chat-send" id="chatSend" type="submit" aria-label="Envoyer" data-i18n-aria="chat.sendAria">➤</button>
+      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="WRITE YOUR QUESTION…" aria-label="Your question" data-i18n-ph="chat.ph">
+      <button class="chat-send" id="chatSend" type="submit" aria-label="Send" data-i18n-aria="chat.sendAria">➤</button>
     </form>
-    <p class="chat-note" data-i18n="chat.note">Vos messages servent uniquement à vous répondre. 0 cookie, 0 traceur.</p>
+    <p class="chat-note" data-i18n="chat.note">Your messages are used only to answer you. 0 cookies, 0 trackers.</p>
   </div>
 </div>
 
 <script>
-/* Dictionnaire de CETTE page — le FR est la source inline, EN/DE traduisent.
-   Les paires qa[] servent de doublure hors-ligne à l'assistant ; elles
-   reprennent les questions entendues en agence (athome, CRM, chantier). */
 window.PAGE_I18N = {
+  en: { qa: [
+    ["How does it work with athome.lu inquiries?", "The portal sends you the inquiry by email. We read that message, take the property, the client’s name, email and phone, and we answer the client — not the portal’s address. Within minutes, in your agency’s name."],
+    ["We are rebuilding our CRM, it is not the right time.", "That is exactly why: we do not touch the CRM. The pilot runs on the inbox your inquiries already reach, nothing to install or migrate. Once the new CRM is ready, we look together at how to bring the conversations into it."],
+    ["What do I actually have to do?", "Almost nothing: add one forwarding rule on the inbox your inquiries arrive in (5 minutes, we guide you). We never get access to your inbox. Setup, tone and follow-ups are on us. In week one, you approve every reply before it goes out."],
+    ["What if a reply is off?", "That is what week one is for: nothing goes out without your approval. You correct, we adjust. What you approve becomes the reference."],
+    ["Does it replace an agent?", "No. We answer and follow up; your agents do the viewings and close. The difference: when they pick up a file, the client is already expecting their call."],
+    ["How much does it cost?", "The fourteen-day pilot is free. After that the price depends on the size of the agency and the volume of inquiries — leave us your email and you get a precise quote the same day."]
+  ] },
   fr: { t: {
-    'hero.facedone': 'avec nous'
+    'meta.title': 'Zéro lead perdu — Agences immobilières · Scarsellato, Luxembourg',
+    'meta.desc': "Pour les agences immobilières au Luxembourg : chaque demande athome.lu, immotop.lu ou du site reçoit une vraie réponse en quelques minutes, au nom de l'agence, en FR/DE/EN — puis une relance jusqu'au oui ou au non. Pilote 14 jours gratuit.",
+    'h.idx': '[ <b>Immobilier</b> ] — Pour les agences, au Luxembourg',
+    'h.l1': 'Zéro lead', 'h.l2': '<span class="it">perdu.</span>',
+    'h.lede': "Dimanche, 21 h. Une demande arrive sur votre annonce. Vos bureaux sont vides — et la même personne vient d'écrire à trois autres agences. Nous lui répondons en quelques minutes, au nom de votre agence, dans sa langue. Puis nous relançons jusqu'à ce que ce soit oui ou non.",
+    'h.cta1': 'Pilote 14 jours — gratuit', 'h.cta2': "Demander à l'assistant",
+    'face.lbl': 'Délai de réponse', 'face.note': 'exemple — une demande du dimanche soir, sans nous', 'face.done': 'avec nous',
+    'h.f1': 'athome.lu · immotop.lu · votre site · FR · DE · EN', 'h.f2': 'Défiler ↓',
+    'n.idx': '[ <b>01</b> ] — La même demande athome, deux fins',
+    'n.l1': 'Le client ne choisit pas la meilleure agence.', 'n.l2': 'Il choisit celle qui répond.',
+    'n.rt': '[ Délai de réponse ] — exemple : une demande du dimanche soir',
+    'n.rt.a': 'Sans nous', 'n.rt.b': 'Avec nous',
+    'n.a.t': 'Sans nous', 'n.a.sub': "Ce qui se passe aujourd'hui",
+    'n.a.1h': 'Dim · 21:04', 'n.a.1': "Une demande arrive par le portail sur votre 3 pièces. Elle tombe dans la boîte commune de l'agence.",
+    'n.a.2h': 'Dim · 21:10', 'n.a.2': 'La même personne écrit à trois autres agences pour des biens semblables.',
+    'n.a.3h': 'Lun · 09:00', 'n.a.3': "Quarante mails. Chacun pense qu'un collègue a déjà répondu.",
+    'n.a.4h': 'Mar · 14:00', 'n.a.4': 'Quelqu\'un répond enfin, et bien. La visite est déjà prise ailleurs.',
+    'n.a.v': "Vous avez payé l'annonce. Le lead est arrivé. Il est parti chez celui qui a répondu le premier.",
+    'n.b.t': 'Avec nous', 'n.b.sub': 'La même demande, même heure',
+    'n.b.1h': 'Dim · 21:04', 'n.b.1': "La demande est lue : le bien, le nom, l'e-mail et le téléphone du client sont repris du message du portail.",
+    'n.b.2h': 'Dim · 21:07', 'n.b.2': 'Le client reçoit une vraie réponse — à lui, pas au portail — au nom de votre agence, dans sa langue, avec les questions qui font avancer.',
+    'n.b.3h': 'Lun · 09:00', 'n.b.3': 'Votre équipe ne découvre pas un mail : elle découvre une conversation déjà engagée.',
+    'n.b.4h': 'J+2 · J+5', 'n.b.4': "S'il ne répond plus, nous relançons. Sans harceler, jusqu'au oui ou au non.",
+    'n.b.v': "<b>Vous êtes l'agence qui a répondu.</b> Le client n'a plus de raison d'attendre les trois autres.",
+    'ib.idx': '[ <b>02</b> ] — La boîte commune',
+    'ib.l1': 'Quatre bureaux.', 'ib.l2': 'Une seule boîte.',
+    'ib.d1w': 'Bureau 1 · en visite', 'ib.d1': '« Je regarde ce soir. »',
+    'ib.d2w': 'Bureau 2 · en rendez-vous', 'ib.d2': '« Julie a dû répondre. »',
+    'ib.d3w': 'Bureau 3 · en congé', 'ib.d3': '« … »',
+    'ib.d4w': 'Gérance', 'ib.d4': "« Je pensais que c'était traité. »",
+    'ib.v1': "Le problème d'une agence n'est presque jamais la compétence. C'est <b>la demande qui appartient à tout le monde, donc à personne</b> — surtout le soir, le week-end, et pendant les visites.",
+    'ib.v2': '<b>Avec nous, chaque demande a sa réponse.</b> Chaque réponse et chaque relance partent avec une copie dans votre boîte commune, visible par toute l\'équipe : celui qui reprend le dossier lundi voit exactement ce qui a été répondu.',
+    'm.idx': "[ <b>03</b> ] — Ce n'est pas un chantier",
+    'm.l1': 'Rien à migrer.', 'm.l2': 'Rien à apprendre.',
+    'm.1.t': 'Une règle de transfert, 5 minutes',
+    'm.1.d': "Sur la boîte où arrivent déjà vos demandes athome.lu, immotop.lu et celles de votre site, une règle transfère une copie de chaque demande vers nous. Nous vous guidons. Vous ne changez ni d'adresse, ni d'outil, ni d'habitude, et nous n'avons pas accès à votre boîte.",
+    'm.2.t': 'Chaque demande reçoit sa réponse',
+    'm.2.d': "En quelques minutes, à toute heure, en français, allemand ou anglais — au nom de votre agence, sur le bien demandé. Une vraie réponse, pas un accusé de réception.",
+    'm.3.t': 'Vous gardez la main',
+    'm.3.d': "La première semaine, vous validez chaque réponse avant qu'elle parte : rien ne part sans votre accord. Vous corrigez le ton, nous ajustons. Ensuite, vous décidez.",
+    'm.vid': '[ Réponse &amp; Relance ] — exemple : une demande pour un appartement',
+    'crm.k': 'Vous refaites votre CRM ?',
+    'crm.d': "Gardez-le. Nous ne le remplaçons pas : <b>un CRM range les leads, nous faisons en sorte qu'ils reçoivent une réponse.</b> Le pilote tourne sur votre boîte actuelle, sans attendre la fin du chantier — et quand le nouvel outil est prêt, nous regardons ensemble comment y faire arriver les conversations.",
+    'l.idx': '[ <b>04</b> ] — La relance, là où se gagne la visite',
+    'l.l1': 'Répondre, tout le monde y pense.', 'l.l2': 'Relancer, presque personne.',
+    'l.1.w': 'Minute 1', 'l.1.d': 'La réponse part, sur le bien demandé — avec les questions qui comptent pour organiser la suite : quand visiter, pour quel projet, dans quel délai.',
+    'l.2.w': 'Jour 2', 'l.2.d': 'Pas de réponse ? Une relance courte qui propose de fixer la visite — jamais un « je me permets de revenir vers vous ».',
+    'l.3.w': 'Jour 5', 'l.3.d': "Un autre angle : ce qui compte pour lui dans sa recherche, pas ce qui arrange l'agence.",
+    'l.4.w': 'Fin', 'l.4.d': "Une dernière ligne, honnête, qui referme proprement. S'il dit non, c'est non : il ne sera plus jamais recontacté. Un dossier fermé vaut mieux qu'un dossier flou.",
+    'i.idx': '[ <b>05</b> ] — Ce qui est compris',
+    'i.l1': 'Tout est fait', 'i.l2': 'pour vous.',
+    'i.1.t': 'Réponse à chaque demande', 'i.1.d': 'Portails et site, soirs, week-ends et jours fériés compris.',
+    'i.2.t': 'Trois langues', 'i.2.d': 'La réponse part dans la langue du message reçu.',
+    'i.3.t': "Relance jusqu'au oui ou au non", 'i.3.d': 'Et arrêt définitif sur un non.',
+    'i.4.t': 'Au nom de votre agence', 'i.4.d': 'Votre ton, votre signature, jamais le nôtre.',
+    'i.5.t': "Toute l'équipe voit nos réponses", 'i.5.d': 'Chacune arrive en copie dans votre boîte commune.',
+    'i.6.t': 'RGPD', 'i.6.d': 'Désinscription honorée, aucune donnée revendue, jamais.',
+    'p.tag': '[ <b>Le pilote</b> ] — 14 jours, gratuit',
+    'p.1': 'Nous branchons le système sur <b>vos vraies demandes</b>, pas sur une démo. Vous voyez ce qui arrive et ce qui repart, en direct.',
+    'p.2': "<b>Semaine 1 : vous validez chaque réponse</b> avant qu'elle parte. Rien ne part sans votre accord — c'est la garantie, pas une promesse.",
+    'p.3': 'Au bout de quatorze jours, vous décidez. Si vous continuez et que le premier mois ne vous convainc pas, <b>il vous est remboursé</b>.',
+    'p.4': "Nous ne prenons que <b>trois pilotes en parallèle</b> — pour que chacun soit réglé personnellement. Quand c'est plein, c'est plein.",
+    'f.idx': '[ <b>FAQ</b> ] — Ce que les agences nous demandent',
+    'f.l1': 'Franchement,', 'f.l2': 'avant le pilote.',
+    'q1': 'Comment ça marche avec les demandes athome.lu ?',
+    'a1': "Le portail vous envoie la demande par e-mail. Nous lisons ce message, reprenons le bien, le nom, l'e-mail et le téléphone du client, et c'est au client que nous répondons — pas à l'adresse du portail. En quelques minutes, au nom de votre agence.",
+    'q2': "On refait notre CRM, ce n'est pas le moment.",
+    'a2': "Justement : nous ne touchons pas au CRM. Le pilote tourne sur la boîte où arrivent déjà vos demandes, vous n'avez rien à installer ni à migrer. Quand le nouveau CRM est prêt, nous regardons ensemble comment y faire arriver les conversations.",
+    'q3': "Qu'est-ce que je dois faire, concrètement ?",
+    'a3': "Presque rien : ajouter une règle de transfert sur la boîte où arrivent vos demandes (5 minutes, nous vous guidons). Nous n'avons pas accès à votre boîte. Le réglage, le ton, les relances, c'est nous. La première semaine, vous validez chaque réponse avant qu'elle parte.",
+    'q4': 'Et si une réponse est à côté ?',
+    'a4': "C'est pour ça que la semaine 1 existe : rien ne part sans votre accord. Vous corrigez, nous ajustons. Ce que vous validez devient la référence.",
+    'q5': 'Ça remplace un agent ?',
+    'a5': 'Non. Nous répondons et relançons ; vos agents font les visites et concluent. La différence : quand ils reprennent un dossier, le client attend déjà leur appel.',
+    'q6': 'Combien ça coûte ?',
+    'a6': "Le pilote de quatorze jours est gratuit. Ensuite le prix dépend de la taille de l'agence et du volume de demandes — laissez-nous votre e-mail, vous avez un devis précis le jour même.",
+    'k.idx': '[ <b>06</b> ] — Et maintenant',
+    'k.l1': 'Combien de demandes', 'k.l2': 'attendent ce soir ?',
+    'k.lede': "Une ligne suffit : votre agence, et où arrivent vos demandes. Nous répondons le jour même — et si le pilote n'a pas de sens pour vous, nous le dirons franchement plutôt que de vous vendre quelque chose.",
+    'k.name': 'VOTRE NOM ET VOTRE AGENCE', 'k.nameAria': 'Nom et agence',
+    'k.msg': 'OÙ ARRIVENT VOS DEMANDES ? (ATHOME, IMMOTOP, SITE…)',
+    'k.other': "Vous n'êtes pas une agence ? Voir Réponse &amp; Relance ↗",
+    'k.back': '← Revoir tous les métiers'
   }, qa: [
     ["Comment ça marche avec les demandes athome.lu ?", "Le portail vous envoie la demande par e-mail. Nous lisons ce message, reprenons le bien, le nom, l'e-mail et le téléphone du client, et c'est au client que nous répondons — pas à l'adresse du portail. En quelques minutes, au nom de votre agence."],
     ["On refait notre CRM, ce n'est pas le moment.", "Justement : nous ne touchons pas au CRM. Le pilote tourne sur la boîte où arrivent déjà vos demandes, vous n'avez rien à installer ni à migrer. Quand le nouveau CRM est prêt, nous regardons ensemble comment y faire arriver les conversations."],
@@ -260,149 +439,91 @@ window.PAGE_I18N = {
     ["Et si une réponse est à côté ?", "C'est pour ça que la semaine 1 existe : rien ne part sans votre accord. Vous corrigez, nous ajustons. Ce que vous validez devient la référence."],
     ["Ça remplace un agent ?", "Non. Nous répondons et relançons ; vos agents font les visites et concluent. La différence : quand ils reprennent un dossier, le client attend déjà leur appel."],
     ["Combien ça coûte ?", "Le pilote de quatorze jours est gratuit. Ensuite le prix dépend de la taille de l'agence et du volume de demandes — laissez-nous votre e-mail, vous avez un devis précis le jour même."]
-  ]},
-  en: { t: {
-    'meta.title': 'Zero lost leads — Real estate agencies · Scarsellato, Luxembourg',
-    'meta.desc': 'For real estate agencies in Luxembourg: every athome.lu, immotop.lu or website inquiry gets a real reply within minutes, in the agency’s name, in FR/DE/EN — then a follow-up until it is a yes or a no. 14-day pilot, free.',
-    'nav.this': 'Real estate', 'cta.pilot': 'Ask for the pilot',
-    'hero.chip': '( REAL ESTATE ) — FOR AGENCIES IN LUXEMBOURG',
-    'hero.kicker': 'ATHOME.LU · IMMOTOP.LU · YOUR WEBSITE · FR · DE · EN',
-    'hero.st1': 'Zero lost', 'hero.st2': 'leads.',
-    'hero.sub': 'Sunday, 9 pm. An inquiry lands on your listing. Your desks are empty — and the same person has just written to three other agencies. We answer them within minutes, in your agency’s name, in their language. Then we follow up until it is a yes or a no.',
-    'hero.cta1': '14-day pilot — free', 'hero.cta2': 'Ask the assistant',
-    'hero.facelbl': 'Response time', 'hero.facenote': 'example — a Sunday-evening inquiry, without us', 'hero.facedone': 'with us',
-    'night.head': '( 01 ) — THE SAME ATHOME INQUIRY, TWO ENDINGS',
-    'night.st1': 'Clients do not pick the best agency.', 'night.st2': 'They pick the one that answers.',
-    'night.a.title': 'Without us', 'night.a.sub': 'What happens today',
-    'night.a.1h': 'Sun · 21:04', 'night.a.1': 'An inquiry comes in through the portal for your 3-room flat. It lands in the agency’s shared inbox.',
-    'night.a.2h': 'Sun · 21:10', 'night.a.2': 'The same person writes to three other agencies about similar properties.',
-    'night.a.3h': 'Mon · 09:00', 'night.a.3': 'Forty emails. Everyone assumes a colleague has already replied.',
-    'night.a.4h': 'Tue · 14:00', 'night.a.4': 'Someone finally answers, and answers well. The viewing is already booked elsewhere.',
-    'night.a.verdict': 'You paid for the listing. The lead arrived. It went to whoever answered first.',
-    'night.b.title': 'With us', 'night.b.sub': 'Same inquiry, same hour',
-    'night.b.1h': 'Sun · 21:04', 'night.b.1': 'The inquiry is read: the property, the client’s name, email and phone are taken from the portal’s message.',
-    'night.b.2h': 'Sun · 21:07', 'night.b.2': 'The client gets a real answer — to them, not to the portal — in your agency’s name, in their language, with the questions that move things forward.',
-    'night.b.3h': 'Mon · 09:00', 'night.b.3': 'Your team does not discover an email: it discovers a conversation already under way.',
-    'night.b.4': 'If they go quiet, we follow up. Without hounding, until it is a yes or a no.',
-    'night.b.verdict': '<b>You are the agency that answered.</b> The client has no reason to wait for the other three.',
-    'inbox.head': '( 02 ) — THE SHARED INBOX',
-    'inbox.st1': 'Four desks.', 'inbox.st2': 'One inbox.',
-    'inbox.d1w': 'Desk 1 · on a viewing', 'inbox.d1': '“I’ll look tonight.”',
-    'inbox.d2w': 'Desk 2 · in a meeting', 'inbox.d2': '“Julie must have answered.”',
-    'inbox.d3w': 'Desk 3 · on leave', 'inbox.d3': '“…”',
-    'inbox.d4w': 'Management', 'inbox.d4': '“I thought it was handled.”',
-    'inbox.v1': 'An agency’s problem is almost never skill. It is <b>the inquiry that belongs to everyone, and therefore to no one</b> — especially evenings, weekends and during viewings.',
-    'inbox.v2': '<b>With us, every inquiry gets its answer.</b> Every reply and follow-up is copied to your shared inbox, visible to the whole team: whoever picks up the file on Monday sees exactly what was answered.',
-    'mech.head': '( 03 ) — THIS IS NOT A PROJECT',
-    'mech.st1': 'Nothing to migrate.', 'mech.st2': 'Nothing to learn.',
-    'mech.1.t': 'One forwarding rule, 5 minutes',
-    'mech.1.d': 'On the inbox your athome.lu, immotop.lu and website inquiries already land in, one rule forwards a copy of each inquiry to us. We guide you through it. You change no address, no tool, no habit, and we never get access to your inbox.',
-    'mech.2.t': 'Every inquiry gets its answer',
-    'mech.2.d': 'Within minutes, at any hour, in French, German or English — in your agency’s name, about the property asked for. A real answer, not an acknowledgement.',
-    'mech.3.t': 'You keep control',
-    'mech.3.d': 'In week one you approve every reply before it goes out: nothing leaves without your green light. You correct the tone, we adjust. Then you decide.',
-    'crm.k': 'Rebuilding your CRM?',
-    'crm.d': 'Keep it. We do not replace it: <b>a CRM stores leads, we make sure they get an answer.</b> The pilot runs on your current inbox without waiting for the project to finish — and once the new tool is ready, we look together at how to bring the conversations into it.',
-    'lad.head': '( 04 ) — THE FOLLOW-UP, WHERE THE VIEWING IS WON',
-    'lad.st1': 'Everyone thinks about replying.', 'lad.st2': 'Almost nobody follows up.',
-    'lad.1.w': 'Minute 1', 'lad.1.d': 'The reply goes out, about the property asked for — with the questions that matter for what comes next: when to visit, for what project, on what timeline.',
-    'lad.2.w': 'Day 2', 'lad.2.d': 'No answer? A short follow-up offering to set the viewing — never a “just checking in”.',
-    'lad.3.w': 'Day 5', 'lad.3.d': 'A different angle: what matters to them in their search, not what suits the agency.',
-    'lad.4.w': 'The end', 'lad.4.d': 'One last honest line that closes it cleanly. If they say no, it is no: they are never contacted again. A closed file beats a vague one.',
-    'incl.head': '( 05 ) — WHAT IS INCLUDED', 'incl.title': 'All of it done for you',
-    'incl.1': '<b>An answer to every inquiry</b> — portals and website, evenings, weekends and holidays included.',
-    'incl.2': '<b>Three languages</b> — the reply goes out in the language it came in.',
-    'incl.3': '<b>Follow-up until yes or no</b> — and a permanent stop on a no.',
-    'incl.4': '<b>In your agency’s name</b> — your tone, your signature, never ours.',
-    'incl.5': '<b>The whole team sees our replies</b> — each one is copied to your shared inbox.',
-    'incl.6': '<b>GDPR</b> — opt-outs honoured, no data ever resold.',
-    'pilot.tag': 'The pilot — 14 days, free',
-    'pilot.1': 'We plug the system into <b>your real inquiries</b>, not a demo. You see what comes in and what goes out, live.',
-    'pilot.2': '<b>Week 1: you approve every reply</b> before it goes out. Nothing leaves without your agreement — that is the guarantee, not a promise.',
-    'pilot.3': 'After fourteen days, you decide. If you continue and the first month does not convince you, <b>it is refunded</b>.',
-    'pilot.4': 'We take <b>three pilots at a time</b>, no more — so each one is set up personally. When it is full, it is full.',
-    'fin.head': '( 06 ) — AND NOW',
-    'fin.st1': 'How many inquiries', 'fin.st2': 'are waiting tonight?',
-    'fin.note': 'One line is enough: your agency, and where your inquiries arrive. We reply the same day — and if the pilot makes no sense for you, we will say so plainly rather than sell you something.',
-    'form.name2': 'YOUR NAME AND AGENCY',
-    'form.msg2': 'WHERE DO YOUR INQUIRIES ARRIVE? (ATHOME, IMMOTOP, WEBSITE…)',
-    'fin.other': 'Not an agency? See Answer &amp; Follow-up ↗',
-    'fin.back': '← Back to all crafts'
-  }, qa: [
-    ["How does it work with athome.lu inquiries?", "The portal sends you the inquiry by email. We read that message, take the property, the client’s name, email and phone, and we answer the client — not the portal’s address. Within minutes, in your agency’s name."],
-    ["We are rebuilding our CRM, it is not the right time.", "That is exactly why: we do not touch the CRM. The pilot runs on the inbox your inquiries already reach, nothing to install or migrate. Once the new CRM is ready, we look together at how to bring the conversations into it."],
-    ["What do I actually have to do?", "Almost nothing: add one forwarding rule on the inbox your inquiries arrive in (5 minutes, we guide you). We never get access to your inbox. Setup, tone and follow-ups are on us. In week one, you approve every reply before it goes out."],
-    ["What if a reply is off?", "That is what week one is for: nothing goes out without your approval. You correct, we adjust. What you approve becomes the reference."],
-    ["Does it replace an agent?", "No. We answer and follow up; your agents do the viewings and close. The difference: when they pick up a file, the client is already expecting their call."],
-    ["How much does it cost?", "The fourteen-day pilot is free. After that the price depends on the size of the agency and the volume of inquiries — leave us your email and you get a precise quote the same day."]
-  ]},
+  ] },
   de: { t: {
     'meta.title': 'Kein Lead geht verloren — Immobilienagenturen · Scarsellato, Luxemburg',
     'meta.desc': 'Für Immobilienagenturen in Luxemburg: Jede Anfrage über athome.lu, immotop.lu oder die Website erhält innerhalb von Minuten eine echte Antwort, im Namen der Agentur, auf FR/DE/EN — danach fassen wir nach, bis es ein Ja oder ein Nein ist. 14-Tage-Pilot kostenlos.',
-    'nav.this': 'Immobilien', 'cta.pilot': 'Pilot anfragen',
-    'hero.chip': '( IMMOBILIEN ) — FÜR AGENTUREN IN LUXEMBURG',
-    'hero.kicker': 'ATHOME.LU · IMMOTOP.LU · IHRE WEBSITE · FR · DE · EN',
-    'hero.st1': 'Kein Lead', 'hero.st2': 'geht verloren.',
-    'hero.sub': 'Sonntag, 21 Uhr. Eine Anfrage kommt zu Ihrem Inserat. Ihre Schreibtische sind leer — und dieselbe Person hat gerade drei andere Agenturen angeschrieben. Wir antworten ihr innerhalb von Minuten, im Namen Ihrer Agentur, in ihrer Sprache. Danach fassen wir nach, bis es ein Ja oder ein Nein ist.',
-    'hero.cta1': '14-Tage-Pilot — kostenlos', 'hero.cta2': 'Den Assistenten fragen',
-    'hero.facelbl': 'Antwortzeit', 'hero.facenote': 'Beispiel — eine Anfrage am Sonntagabend, ohne uns', 'hero.facedone': 'mit uns',
-    'night.head': '( 01 ) — DIESELBE ATHOME-ANFRAGE, ZWEI AUSGÄNGE',
-    'night.st1': 'Kunden wählen nicht die beste Agentur.', 'night.st2': 'Sie wählen die, die antwortet.',
-    'night.a.title': 'Ohne uns', 'night.a.sub': 'Was heute passiert',
-    'night.a.1h': 'So · 21:04', 'night.a.1': 'Über das Portal kommt eine Anfrage zu Ihrer 3-Zimmer-Wohnung. Sie landet im gemeinsamen Postfach der Agentur.',
-    'night.a.2h': 'So · 21:10', 'night.a.2': 'Dieselbe Person schreibt drei weitere Agenturen zu ähnlichen Objekten an.',
-    'night.a.3h': 'Mo · 09:00', 'night.a.3': 'Vierzig E-Mails. Jeder glaubt, ein Kollege habe schon geantwortet.',
-    'night.a.4h': 'Di · 14:00', 'night.a.4': 'Endlich antwortet jemand, und zwar gut. Die Besichtigung ist längst woanders vereinbart.',
-    'night.a.verdict': 'Sie haben das Inserat bezahlt. Der Lead kam an. Er ging zu dem, der zuerst geantwortet hat.',
-    'night.b.title': 'Mit uns', 'night.b.sub': 'Dieselbe Anfrage, dieselbe Uhrzeit',
-    'night.b.1h': 'So · 21:04', 'night.b.1': 'Die Anfrage wird gelesen: Objekt, Name, E-Mail und Telefon des Kunden werden aus der Nachricht des Portals übernommen.',
-    'night.b.2h': 'So · 21:07', 'night.b.2': 'Der Kunde bekommt eine echte Antwort — an ihn, nicht an das Portal — im Namen Ihrer Agentur, in seiner Sprache, mit den Fragen, die weiterbringen.',
-    'night.b.3h': 'Mo · 09:00', 'night.b.3': 'Ihr Team entdeckt keine E-Mail: Es entdeckt ein bereits laufendes Gespräch.',
-    'night.b.4': 'Bleibt es still, fassen wir nach. Ohne zu drängen, bis es ein Ja oder ein Nein ist.',
-    'night.b.verdict': '<b>Sie sind die Agentur, die geantwortet hat.</b> Der Kunde hat keinen Grund, auf die anderen drei zu warten.',
-    'inbox.head': '( 02 ) — DAS GEMEINSAME POSTFACH',
-    'inbox.st1': 'Vier Schreibtische.', 'inbox.st2': 'Ein Postfach.',
-    'inbox.d1w': 'Schreibtisch 1 · bei einer Besichtigung', 'inbox.d1': '„Ich schaue heute Abend.“',
-    'inbox.d2w': 'Schreibtisch 2 · im Termin', 'inbox.d2': '„Julie hat bestimmt geantwortet.“',
-    'inbox.d3w': 'Schreibtisch 3 · im Urlaub', 'inbox.d3': '„…“',
-    'inbox.d4w': 'Geschäftsführung', 'inbox.d4': '„Ich dachte, das sei erledigt.“',
-    'inbox.v1': 'Das Problem einer Agentur ist fast nie die Kompetenz. Es ist <b>die Anfrage, die allen gehört — und damit niemandem</b>: vor allem abends, am Wochenende und während der Besichtigungen.',
-    'inbox.v2': '<b>Mit uns bekommt jede Anfrage ihre Antwort.</b> Jede Antwort und jede Nachfassung geht in Kopie an Ihr gemeinsames Postfach, für das ganze Team sichtbar: Wer die Akte am Montag übernimmt, sieht genau, was geantwortet wurde.',
-    'mech.head': '( 03 ) — DAS IST KEINE BAUSTELLE',
-    'mech.st1': 'Nichts zu migrieren.', 'mech.st2': 'Nichts zu lernen.',
-    'mech.1.t': 'Eine Weiterleitungsregel, 5 Minuten',
-    'mech.1.d': 'In dem Postfach, in dem Ihre Anfragen von athome.lu, immotop.lu und Ihrer Website schon ankommen, leitet eine Regel eine Kopie jeder Anfrage an uns weiter. Wir begleiten Sie dabei. Sie ändern weder Adresse noch Werkzeug noch Gewohnheit, und wir erhalten keinen Zugang zu Ihrem Postfach.',
-    'mech.2.t': 'Jede Anfrage bekommt ihre Antwort',
-    'mech.2.d': 'Innerhalb von Minuten, zu jeder Stunde, auf Französisch, Deutsch oder Englisch — im Namen Ihrer Agentur, zum angefragten Objekt. Eine echte Antwort, keine Empfangsbestätigung.',
-    'mech.3.t': 'Sie behalten die Kontrolle',
-    'mech.3.d': 'In der ersten Woche geben Sie jede Antwort frei, bevor sie rausgeht: Nichts geht ohne Ihr Einverständnis. Sie korrigieren den Ton, wir passen an. Danach entscheiden Sie.',
+    'h.idx': '[ <b>Immobilien</b> ] — Für Agenturen in Luxemburg',
+    'h.l1': 'Kein Lead', 'h.l2': '<span class="it">geht verloren.</span>',
+    'h.lede': 'Sonntag, 21 Uhr. Eine Anfrage kommt zu Ihrem Inserat. Ihre Schreibtische sind leer — und dieselbe Person hat gerade drei andere Agenturen angeschrieben. Wir antworten ihr innerhalb von Minuten, im Namen Ihrer Agentur, in ihrer Sprache. Danach fassen wir nach, bis es ein Ja oder ein Nein ist.',
+    'h.cta1': '14-Tage-Pilot — kostenlos', 'h.cta2': 'Den Assistenten fragen',
+    'face.lbl': 'Antwortzeit', 'face.note': 'Beispiel — eine Anfrage am Sonntagabend, ohne uns', 'face.done': 'mit uns',
+    'h.f1': 'athome.lu · immotop.lu · Ihre Website · FR · DE · EN', 'h.f2': 'Scrollen ↓',
+    'n.idx': '[ <b>01</b> ] — Dieselbe athome-Anfrage, zwei Ausgänge',
+    'n.l1': 'Kunden wählen nicht die beste Agentur.', 'n.l2': 'Sie wählen die, die antwortet.',
+    'n.rt': '[ Antwortzeit ] — Beispiel: eine Anfrage am Sonntagabend',
+    'n.rt.a': 'Ohne uns', 'n.rt.b': 'Mit uns',
+    'n.a.t': 'Ohne uns', 'n.a.sub': 'Was heute passiert',
+    'n.a.1h': 'So · 21:04', 'n.a.1': 'Über das Portal kommt eine Anfrage zu Ihrer 3-Zimmer-Wohnung. Sie landet im gemeinsamen Postfach der Agentur.',
+    'n.a.2h': 'So · 21:10', 'n.a.2': 'Dieselbe Person schreibt drei weitere Agenturen zu ähnlichen Objekten an.',
+    'n.a.3h': 'Mo · 09:00', 'n.a.3': 'Vierzig E-Mails. Jeder glaubt, ein Kollege habe schon geantwortet.',
+    'n.a.4h': 'Di · 14:00', 'n.a.4': 'Endlich antwortet jemand, und zwar gut. Die Besichtigung ist längst woanders vereinbart.',
+    'n.a.v': 'Sie haben das Inserat bezahlt. Der Lead kam an. Er ging zu dem, der zuerst geantwortet hat.',
+    'n.b.t': 'Mit uns', 'n.b.sub': 'Dieselbe Anfrage, dieselbe Uhrzeit',
+    'n.b.1h': 'So · 21:04', 'n.b.1': 'Die Anfrage wird gelesen: Objekt, Name, E-Mail und Telefon des Kunden werden aus der Nachricht des Portals übernommen.',
+    'n.b.2h': 'So · 21:07', 'n.b.2': 'Der Kunde bekommt eine echte Antwort — an ihn, nicht an das Portal — im Namen Ihrer Agentur, in seiner Sprache, mit den Fragen, die weiterbringen.',
+    'n.b.3h': 'Mo · 09:00', 'n.b.3': 'Ihr Team entdeckt keine E-Mail: Es entdeckt ein bereits laufendes Gespräch.',
+    'n.b.4h': 'Tag 2 · Tag 5', 'n.b.4': 'Bleibt es still, fassen wir nach. Ohne zu drängen, bis es ein Ja oder ein Nein ist.',
+    'n.b.v': '<b>Sie sind die Agentur, die geantwortet hat.</b> Der Kunde hat keinen Grund, auf die anderen drei zu warten.',
+    'ib.idx': '[ <b>02</b> ] — Das gemeinsame Postfach',
+    'ib.l1': 'Vier Schreibtische.', 'ib.l2': 'Ein Postfach.',
+    'ib.d1w': 'Schreibtisch 1 · bei einer Besichtigung', 'ib.d1': '„Ich schaue heute Abend.“',
+    'ib.d2w': 'Schreibtisch 2 · im Termin', 'ib.d2': '„Julie hat bestimmt geantwortet.“',
+    'ib.d3w': 'Schreibtisch 3 · im Urlaub', 'ib.d3': '„…“',
+    'ib.d4w': 'Geschäftsführung', 'ib.d4': '„Ich dachte, das sei erledigt.“',
+    'ib.v1': 'Das Problem einer Agentur ist fast nie die Kompetenz. Es ist <b>die Anfrage, die allen gehört — und damit niemandem</b>: vor allem abends, am Wochenende und während der Besichtigungen.',
+    'ib.v2': '<b>Mit uns bekommt jede Anfrage ihre Antwort.</b> Jede Antwort und jede Nachfassung geht in Kopie an Ihr gemeinsames Postfach, für das ganze Team sichtbar: Wer die Akte am Montag übernimmt, sieht genau, was geantwortet wurde.',
+    'm.idx': '[ <b>03</b> ] — Das ist keine Baustelle',
+    'm.l1': 'Nichts zu migrieren.', 'm.l2': 'Nichts zu lernen.',
+    'm.1.t': 'Eine Weiterleitungsregel, 5 Minuten',
+    'm.1.d': 'In dem Postfach, in dem Ihre Anfragen von athome.lu, immotop.lu und Ihrer Website schon ankommen, leitet eine Regel eine Kopie jeder Anfrage an uns weiter. Wir begleiten Sie dabei. Sie ändern weder Adresse noch Werkzeug noch Gewohnheit, und wir erhalten keinen Zugang zu Ihrem Postfach.',
+    'm.2.t': 'Jede Anfrage bekommt ihre Antwort',
+    'm.2.d': 'Innerhalb von Minuten, zu jeder Stunde, auf Französisch, Deutsch oder Englisch — im Namen Ihrer Agentur, zum angefragten Objekt. Eine echte Antwort, keine Empfangsbestätigung.',
+    'm.3.t': 'Sie behalten die Kontrolle',
+    'm.3.d': 'In der ersten Woche geben Sie jede Antwort frei, bevor sie rausgeht: Nichts geht ohne Ihr Einverständnis. Sie korrigieren den Ton, wir passen an. Danach entscheiden Sie.',
+    'm.vid': '[ Antwort &amp; Nachfassen ] — Beispiel: eine Anfrage zu einer Wohnung',
     'crm.k': 'Sie erneuern Ihr CRM?',
     'crm.d': 'Behalten Sie es. Wir ersetzen es nicht: <b>Ein CRM verwaltet Leads, wir sorgen dafür, dass sie eine Antwort bekommen.</b> Der Pilot läuft auf Ihrem aktuellen Postfach, ohne auf das Ende der Baustelle zu warten — und sobald das neue Werkzeug bereit ist, schauen wir gemeinsam, wie die Gespräche dort ankommen.',
-    'lad.head': '( 04 ) — DAS NACHFASSEN, WO DIE BESICHTIGUNG GEWONNEN WIRD',
-    'lad.st1': 'Ans Antworten denken alle.', 'lad.st2': 'Ans Nachfassen fast niemand.',
-    'lad.1.w': 'Minute 1', 'lad.1.d': 'Die Antwort geht raus, zum angefragten Objekt — mit den Fragen, die für den nächsten Schritt zählen: wann besichtigen, für welches Vorhaben, in welchem Zeitrahmen.',
-    'lad.2.w': 'Tag 2', 'lad.2.d': 'Keine Antwort? Ein kurzes Nachfassen, das einen Besichtigungstermin vorschlägt — nie ein „ich melde mich nochmal“.',
-    'lad.3.w': 'Tag 5', 'lad.3.d': 'Ein anderer Blickwinkel: was für ihn bei seiner Suche zählt, nicht was der Agentur passt.',
-    'lad.4.w': 'Schluss', 'lad.4.d': 'Eine letzte ehrliche Zeile, die sauber abschließt. Sagt er nein, ist es nein: Er wird nie wieder kontaktiert. Eine geschlossene Akte ist besser als eine unklare.',
-    'incl.head': '( 05 ) — WAS ENTHALTEN IST', 'incl.title': 'Alles für Sie erledigt',
-    'incl.1': '<b>Eine Antwort auf jede Anfrage</b> — Portale und Website, abends, am Wochenende und an Feiertagen.',
-    'incl.2': '<b>Drei Sprachen</b> — die Antwort geht in der Sprache raus, in der die Nachricht kam.',
-    'incl.3': '<b>Nachfassen bis Ja oder Nein</b> — und endgültiger Stopp bei einem Nein.',
-    'incl.4': '<b>Im Namen Ihrer Agentur</b> — Ihr Ton, Ihre Signatur, nie unsere.',
-    'incl.5': '<b>Das ganze Team sieht unsere Antworten</b> — jede kommt in Kopie in Ihr gemeinsames Postfach.',
-    'incl.6': '<b>DSGVO</b> — Abmeldungen werden respektiert, keine Daten werden je weiterverkauft.',
-    'pilot.tag': 'Der Pilot — 14 Tage, kostenlos',
-    'pilot.1': 'Wir verbinden das System mit <b>Ihren echten Anfragen</b>, nicht mit einer Demo. Sie sehen live, was reinkommt und was rausgeht.',
-    'pilot.2': '<b>Woche 1: Sie geben jede Antwort frei</b>, bevor sie rausgeht. Nichts geht ohne Ihr Einverständnis — das ist die Garantie, kein Versprechen.',
-    'pilot.3': 'Nach vierzehn Tagen entscheiden Sie. Wenn Sie weitermachen und der erste Monat Sie nicht überzeugt, <b>wird er erstattet</b>.',
-    'pilot.4': 'Wir nehmen <b>drei Piloten gleichzeitig</b>, nicht mehr — damit jeder persönlich eingerichtet wird. Wenn es voll ist, ist es voll.',
-    'fin.head': '( 06 ) — UND JETZT',
-    'fin.st1': 'Wie viele Anfragen', 'fin.st2': 'warten heute Abend?',
-    'fin.note': 'Eine Zeile genügt: Ihre Agentur, und wo Ihre Anfragen ankommen. Wir antworten noch am selben Tag — und wenn der Pilot für Sie keinen Sinn ergibt, sagen wir das offen, statt Ihnen etwas zu verkaufen.',
-    'form.name2': 'IHR NAME UND IHRE AGENTUR',
-    'form.msg2': 'WO KOMMEN IHRE ANFRAGEN AN? (ATHOME, IMMOTOP, WEBSITE…)',
-    'fin.other': 'Keine Agentur? Zur Seite Antwort &amp; Nachfassen ↗',
-    'fin.back': '← Zurück zu allen Gewerken'
+    'l.idx': '[ <b>04</b> ] — Das Nachfassen, wo die Besichtigung gewonnen wird',
+    'l.l1': 'Ans Antworten denken alle.', 'l.l2': 'Ans Nachfassen fast niemand.',
+    'l.1.w': 'Minute 1', 'l.1.d': 'Die Antwort geht raus, zum angefragten Objekt — mit den Fragen, die für den nächsten Schritt zählen: wann besichtigen, für welches Vorhaben, in welchem Zeitrahmen.',
+    'l.2.w': 'Tag 2', 'l.2.d': 'Keine Antwort? Ein kurzes Nachfassen, das einen Besichtigungstermin vorschlägt — nie ein „ich melde mich nochmal“.',
+    'l.3.w': 'Tag 5', 'l.3.d': 'Ein anderer Blickwinkel: was für ihn bei seiner Suche zählt, nicht was der Agentur passt.',
+    'l.4.w': 'Schluss', 'l.4.d': 'Eine letzte ehrliche Zeile, die sauber abschließt. Sagt er nein, ist es nein: Er wird nie wieder kontaktiert. Eine geschlossene Akte ist besser als eine unklare.',
+    'i.idx': '[ <b>05</b> ] — Was enthalten ist',
+    'i.l1': 'Alles für Sie', 'i.l2': 'erledigt.',
+    'i.1.t': 'Eine Antwort auf jede Anfrage', 'i.1.d': 'Portale und Website, abends, am Wochenende und an Feiertagen.',
+    'i.2.t': 'Drei Sprachen', 'i.2.d': 'Die Antwort geht in der Sprache raus, in der die Nachricht kam.',
+    'i.3.t': 'Nachfassen bis Ja oder Nein', 'i.3.d': 'Und endgültiger Stopp bei einem Nein.',
+    'i.4.t': 'Im Namen Ihrer Agentur', 'i.4.d': 'Ihr Ton, Ihre Signatur, nie unsere.',
+    'i.5.t': 'Das ganze Team sieht unsere Antworten', 'i.5.d': 'Jede kommt in Kopie in Ihr gemeinsames Postfach.',
+    'i.6.t': 'DSGVO', 'i.6.d': 'Abmeldungen werden respektiert, keine Daten werden je weiterverkauft.',
+    'p.tag': '[ <b>Der Pilot</b> ] — 14 Tage, kostenlos',
+    'p.1': 'Wir verbinden das System mit <b>Ihren echten Anfragen</b>, nicht mit einer Demo. Sie sehen live, was reinkommt und was rausgeht.',
+    'p.2': '<b>Woche 1: Sie geben jede Antwort frei</b>, bevor sie rausgeht. Nichts geht ohne Ihr Einverständnis — das ist die Garantie, kein Versprechen.',
+    'p.3': 'Nach vierzehn Tagen entscheiden Sie. Wenn Sie weitermachen und der erste Monat Sie nicht überzeugt, <b>wird er erstattet</b>.',
+    'p.4': 'Wir nehmen <b>drei Piloten gleichzeitig</b>, nicht mehr — damit jeder persönlich eingerichtet wird. Wenn es voll ist, ist es voll.',
+    'f.idx': '[ <b>FAQ</b> ] — Was Agenturen uns fragen',
+    'f.l1': 'Ehrlich gesagt,', 'f.l2': 'vor dem Pilot.',
+    'q1': 'Wie funktioniert das mit Anfragen von athome.lu?',
+    'a1': 'Das Portal schickt Ihnen die Anfrage per E-Mail. Wir lesen diese Nachricht, übernehmen Objekt, Name, E-Mail und Telefon des Kunden und antworten dem Kunden — nicht der Adresse des Portals. Innerhalb von Minuten, im Namen Ihrer Agentur.',
+    'q2': 'Wir erneuern gerade unser CRM, jetzt ist kein guter Zeitpunkt.',
+    'a2': 'Genau deshalb: Wir fassen das CRM nicht an. Der Pilot läuft auf dem Postfach, in dem Ihre Anfragen schon ankommen — nichts zu installieren oder zu migrieren. Sobald das neue CRM bereit ist, schauen wir gemeinsam, wie die Gespräche dort ankommen.',
+    'q3': 'Was muss ich konkret tun?',
+    'a3': 'Fast nichts: eine Weiterleitungsregel in dem Postfach einrichten, in dem Ihre Anfragen ankommen (5 Minuten, wir begleiten Sie). Wir erhalten keinen Zugang zu Ihrem Postfach. Einrichtung, Ton und Nachfassen übernehmen wir. In der ersten Woche geben Sie jede Antwort frei, bevor sie rausgeht.',
+    'q4': 'Und wenn eine Antwort danebenliegt?',
+    'a4': 'Genau dafür gibt es Woche eins: Nichts geht ohne Ihre Freigabe raus. Sie korrigieren, wir passen an. Was Sie freigeben, wird zur Referenz.',
+    'q5': 'Ersetzt das einen Makler?',
+    'a5': 'Nein. Wir antworten und fassen nach; Ihre Makler machen die Besichtigungen und schließen ab. Der Unterschied: Wenn sie eine Akte übernehmen, wartet der Kunde schon auf ihren Anruf.',
+    'q6': 'Was kostet das?',
+    'a6': 'Der vierzehntägige Pilot ist kostenlos. Danach hängt der Preis von der Größe der Agentur und dem Anfragevolumen ab — hinterlassen Sie uns Ihre E-Mail und Sie erhalten noch am selben Tag ein genaues Angebot.',
+    'k.idx': '[ <b>06</b> ] — Und jetzt',
+    'k.l1': 'Wie viele Anfragen', 'k.l2': 'warten heute Abend?',
+    'k.lede': 'Eine Zeile genügt: Ihre Agentur, und wo Ihre Anfragen ankommen. Wir antworten noch am selben Tag — und wenn der Pilot für Sie keinen Sinn ergibt, sagen wir das offen, statt Ihnen etwas zu verkaufen.',
+    'k.name': 'IHR NAME UND IHRE AGENTUR', 'k.nameAria': 'Name und Agentur',
+    'k.msg': 'WO KOMMEN IHRE ANFRAGEN AN? (ATHOME, IMMOTOP, WEBSITE…)',
+    'k.other': 'Keine Agentur? Zur Seite Antwort &amp; Nachfassen ↗',
+    'k.back': '← Zurück zu allen Gewerken'
   }, qa: [
     ["Wie funktioniert das mit Anfragen von athome.lu?", "Das Portal schickt Ihnen die Anfrage per E-Mail. Wir lesen diese Nachricht, übernehmen Objekt, Name, E-Mail und Telefon des Kunden und antworten dem Kunden — nicht der Adresse des Portals. Innerhalb von Minuten, im Namen Ihrer Agentur."],
     ["Wir erneuern gerade unser CRM, jetzt ist kein guter Zeitpunkt.", "Genau deshalb: Wir fassen das CRM nicht an. Der Pilot läuft auf dem Postfach, in dem Ihre Anfragen schon ankommen — nichts zu installieren oder zu migrieren. Sobald das neue CRM bereit ist, schauen wir gemeinsam, wie die Gespräche dort ankommen."],
@@ -410,30 +531,63 @@ window.PAGE_I18N = {
     ["Und wenn eine Antwort danebenliegt?", "Genau dafür gibt es Woche eins: Nichts geht ohne Ihre Freigabe raus. Sie korrigieren, wir passen an. Was Sie freigeben, wird zur Referenz."],
     ["Ersetzt das einen Makler?", "Nein. Wir antworten und fassen nach; Ihre Makler machen die Besichtigungen und schließen ab. Der Unterschied: Wenn sie eine Akte übernehmen, wartet der Kunde schon auf ihren Anruf."],
     ["Was kostet das?", "Der vierzehntägige Pilot ist kostenlos. Danach hängt der Preis von der Größe der Agentur und dem Anfragevolumen ab — hinterlassen Sie uns Ihre E-Mail und Sie erhalten noch am selben Tag ein genaues Angebot."]
-  ]}
+  ] }
 };
-
-/* Le délai de réponse fond au scroll : 31 h 12 sans nous -> 3 min avec nous.
-   Exemple illustratif (étiqueté comme tel à l'écran), aucune donnée n'en dépend. */
-(function () {
-  window.onShellScroll = (y, vh) => {
-    const v = document.getElementById('rtFace');
-    const n = document.getElementById('rtNote');
-    if (!v) return;
-    // dénominateur planché à 1 : un viewport de hauteur nulle donnait NaN
-    const p = Math.max(0, Math.min(1, y / Math.max(1, vh * 0.85)));
-    const e = 1 - Math.pow(1 - p, 3);
-    const mins = Math.max(3, Math.round((31 * 60 + 12) * (1 - e) + 3 * e));
-    v.textContent = mins >= 60 ? Math.floor(mins / 60) + ' h ' + String(mins % 60).padStart(2, '0') : mins + ' min';
-    if (n) {
-      if (!n.dataset.base) n.dataset.base = n.textContent;
-      const done = (window.PAGE_I18N[document.documentElement.lang] || window.PAGE_I18N.fr).t['hero.facedone'] || 'avec nous';
-      n.textContent = p >= 1 ? done : n.dataset.base;
+/* the response time rides the tip of the gold line and melts on the way: 31 h 12 without us -> 3 min with us
+   (illustrative example, labelled on screen). It lands on "3 min" as the scoreboard arrives, then lets the content speak. */
+addEventListener('load', () => {
+  const box = document.getElementById('rtBox'), v = document.getElementById('rtFace'), n = document.getElementById('rtNote');
+  if (!box) return;
+  document.body.appendChild(box);                                  // document-positioned, like the line itself
+  const L = (() => { let l = null; try { l = localStorage.getItem('scar-lang'); } catch (e) {} return (new URLSearchParams(location.search).get('lang') || l || 'en').toLowerCase(); })();
+  const DONE = { en: 'with us', fr: 'avec nous', de: 'mit uns' }[L] || 'with us';
+  const base = n.textContent, score = document.querySelector('.score'), duel = document.querySelector('.duel');
+  const TXT = [...document.querySelectorAll('main h1, main h2, main h3, main p, main li, main .btn, .note, .tag, .score, .browser')];
+  let x = null, y = null, lastTxt = '', stopY = innerHeight * 2;
+  // measured from the layout (offsets ignore reveal transforms) — stable while things animate
+  const docTop = el => { let t = 0; while (el) { t += el.offsetTop; el = el.offsetParent; } return t; };
+  const measure = () => { if (duel) stopY = docTop(duel) + duel.offsetHeight - innerHeight * 0.5; };
+  measure(); addEventListener('resize', measure); if (document.fonts) document.fonts.ready.then(measure);
+  const tick = () => {
+    const tip = window.SCAR && window.SCAR.tip;
+    if (tip) {
+      const W = document.documentElement.clientWidth, right = tip[0] < W * 0.62;
+      const bw = box.offsetWidth, bh = box.offsetHeight;
+      const tx = right ? tip[0] + 26 : tip[0] - 26 - bw, ty = tip[1] - bh / 2;
+      x = x === null ? tx : x + (tx - x) * 0.18; y = y === null ? ty : y + (ty - y) * 0.18;
+      const cx = Math.max(8, Math.min(W - bw - 8, x)), cy = Math.max(scrollY + 72, Math.min(scrollY + innerHeight - bh - 12, y));   // always fully on screen
+      box.style.transform = `translate(${cx.toFixed(1)}px, ${cy.toFixed(1)}px)`;
+      // never sit on top of text: fade to a whisper while it passes over a text block
+      const bx0 = cx, bx1 = cx + bw, by0 = cy - scrollY, by1 = by0 + bh;
+      box.classList.toggle('ghost', TXT.some(el => { const r = el.getBoundingClientRect(); return r.width && r.right > bx0 && r.left < bx1 && r.bottom > by0 && r.top < by1; }));
+      box.classList.toggle('r', right); box.classList.toggle('l', !right);
+      // melt evenly over the whole ride: it lands on 3 min just before the tag leaves (end of the two endings)
+      const end = stopY - innerHeight * 0.12;
+      const p = Math.max(0, Math.min(1, scrollY / Math.max(1, end)));
+      const e = p * p * (3 - 2 * p);                                     // smooth start, smooth landing
+      const mins = Math.max(3, Math.round((31 * 60 + 12) * (1 - e) + 3 * e));
+      const txt = mins >= 60 ? Math.floor(mins / 60) + ' h ' + String(mins % 60).padStart(2, '0') : mins + ' min';
+      if (txt !== lastTxt) { v.textContent = txt; lastTxt = txt; }
+      n.textContent = p >= 1 ? DONE : base;
+      box.classList.toggle('done', p >= 1);
+      // visible from the opening until the two endings are told
+      box.classList.toggle('on', scrollY < stopY);
     }
+    requestAnimationFrame(tick);
   };
+  requestAnimationFrame(tick);
+});
+/* "try it now" button: v3.js sends [data-ask] to the live assistant — ask in the visitor's language
+   (same language order as v3.js: ?lang= → saved choice → English). */
+(function () {
+  var l = null;
+  try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  if (!l) { try { l = localStorage.getItem('scar-lang'); } catch (e) {} }
+  l = (l || 'en').toLowerCase();
+  if (l !== 'fr' && l !== 'de') return;
+  document.querySelectorAll('[data-ask-' + l + ']').forEach(function (b) { b.setAttribute('data-ask', b.getAttribute('data-ask-' + l)); });
 })();
 </script>
-<script src="../assets/shell.js?v=8"></script>
-
+<script src="../assets/v3.js?v=4"></script>
 </body>
 </html>

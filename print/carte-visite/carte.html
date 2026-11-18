@@ -31,7 +31,7 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
 /* ---------- RECTO ---------- */
 .front { background: var(--noir); color: var(--cream); }
-.front::before { /* le fil d'or du site, en haut à gauche — déborde dans le fond perdu exprès */
+.front::before { /* 2026-11-16 : fil d or retire - il tombait entierement dans le fond perdu (coupe) */ display: none;
   content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 0.6mm;
   background: linear-gradient(90deg, #8a6a33, var(--gold));
 }

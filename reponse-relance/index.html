@@ -1,352 +1,551 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Réponse &amp; Relance — Scarsellato, Luxembourg</title>
-<meta name="description" content="Chaque demande reçoit une vraie réponse en quelques minutes — soirs et week-ends compris, en FR/DE/EN — puis une relance jusqu'au oui ou au non. Pilote 14 jours gratuit, sans cookies.">
-<link rel="stylesheet" href="../assets/shell.css?v=8">
-<link rel="stylesheet" href="page.css?v=2">
+<title>Answer &amp; Follow-up — Scarsellato, Luxembourg</title>
+<meta name="description" content="Every inquiry gets a real reply within minutes — evenings and weekends included, in FR/DE/EN — then a follow-up until it's a yes or a no. 14-day pilot, free, cookie-free.">
+<link rel="stylesheet" href="../assets/v3.css?v=4">
+<style>
+/* ===== Answer & Follow-up — its own character: one night, told by a clock =====
+   hero dial at 22:47 · a story clock in the free right margin that advances with the copy's own times ·
+   the body as one timeline on a gold spine · background drifts from deep night to dawn · paper by morning */
+.rr .h-xl, .rr .h-l { line-height: 1.06; }
+
+/* --- hero: the night, and the time it happens --- */
+.rr-hero { background: radial-gradient(60% 55% at 80% 45%, rgb(198 165 108 / .07), transparent 70%), #07090b; color: var(--cream); }
+.rr-hero h1 .it { color: var(--gold); }
+.rr-hero .lede { color: rgb(234 226 216 / .8); }
+.rr-hero h1.h-xl { font-size: clamp(2.6rem, 6vw, 6.2rem); }
+.rr-hgrid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
+.rr-dialcol { justify-self: end; width: min(100%, 420px); display: grid; justify-items: center; gap: 18px; }
+.rr-dial { position: relative; width: 100%; aspect-ratio: 1; }
+.rr-dial svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.rr-dial .tk line { stroke: rgb(234 226 216 / .22); stroke-width: .7; stroke-linecap: round; }
+.rr-dial .tk line.h { stroke: rgb(234 226 216 / .5); stroke-width: 1; }
+.rr-dial .track { fill: none; stroke: var(--line-d); stroke-width: .8; }
+.rr-dial .arc { fill: none; stroke: var(--gold); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 47 60; stroke-dashoffset: 47; transition: stroke-dashoffset 2.6s var(--ease) .5s; }
+.in .rr-dial .arc { stroke-dashoffset: 0; }
+.rr-dial .now { fill: var(--gold); opacity: 0; transition: opacity .8s var(--ease) 2.8s; }
+.rr-dial .halo { fill: rgb(198 165 108 / .25); opacity: 0; transform-box: fill-box; transform-origin: center; }
+.in .rr-dial .now { opacity: 1; }
+.in .rr-dial .halo { animation: rr-breathe 3.6s ease-in-out 3s infinite; }
+.rr-dial .num { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(2.6rem, 6.4vw, 6.2rem); line-height: 1.1; padding-bottom: .1em; letter-spacing: -.02em; color: var(--gold); font-variant-numeric: tabular-nums; }
+@keyframes rr-breathe { 0%, 100% { opacity: .15; transform: scale(.7); } 50% { opacity: .9; transform: scale(1.5); } }
+@media (max-width: 860px) {
+  .rr-hgrid { grid-template-columns: 1fr; gap: 26px; }
+  .rr-dialcol { order: -1; justify-self: start; width: min(180px, 50vw); gap: 10px; }
+  .rr-dial .num { font-size: 2.5rem; }
+}
+
+/* --- the story: one long night that slowly becomes dawn (no particles, just colour) --- */
+.rr-story { position: relative; background:
+  radial-gradient(110% 26% at 50% 100%, rgb(198 165 108 / .12), transparent 72%),
+  linear-gradient(180deg, #07090b 0%, #080a0d 28%, #0e1012 50%, #181612 72%, #25201a 90%, #2c261d 100%); }
+.rr-story .rr-sec { background: transparent; }
+.rr-story .rr-sec + .rr-sec { padding-top: clamp(40px, 6vw, 90px); }
+@media (min-width: 1180px) { .rr-story .wrap { width: min(1100px, calc(100% - 320px)); } }   /* frees the right margin for the story clock */
+.rr-gap { margin-top: clamp(56px, 7vw, 100px); }
+
+/* the spine + its nodes */
+.rr-duel, .rr-tl { --sp: rgb(198 165 108 / .5); position: relative; }
+.rr-duel::before, .rr-tl::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; margin-left: -.5px; background: linear-gradient(transparent, var(--sp) 7%, var(--sp) 93%, transparent); }
+.rr-node { display: block; width: 11px; height: 11px; border-radius: 50%; border: 1px solid var(--gold); background: #07090b; position: relative; transition: background .6s var(--ease), box-shadow .6s var(--ease); }
+.rr-node.lit { background: var(--gold); }
+.rr-node.now, .rr-ev.now::before { box-shadow: 0 0 0 6px rgb(198 165 108 / .12), 0 0 18px rgb(198 165 108 / .55); }
+@media (prefers-reduced-motion: no-preference) { .rr-node.now::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; background: rgb(198 165 108 / .3); animation: rr-breathe 3.6s ease-in-out infinite; } }
+
+/* 01 — the same inquiry, two nights: without us on the left, with us on the right, times at the spine */
+.rr-duel { display: grid; grid-template-columns: minmax(0, 1fr) clamp(64px, 8vw, 120px) minmax(0, 1fr); }
+.rr-duel > * { grid-row: var(--r); }
+.rr-duel > .a { grid-column: 1; } .rr-duel > .rr-node { grid-column: 2; justify-self: center; align-self: start; margin-top: 27px; } .rr-duel > .b { grid-column: 3; }
+.rr-side { padding-bottom: 22px; }
+.rr-side.a { text-align: right; }
+.rr-side .h-m { margin-bottom: 8px; }
+.rr-side.a .h-m { color: var(--cream-mut); }
+.rr-ev { display: grid; gap: 18px; padding: 22px 0; position: relative; }
+.rr-ev strong { font-family: var(--mono); font-weight: 400; font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; padding-top: 3px; white-space: normal; }
+.rr-ev.a { grid-template-columns: minmax(0, 1fr) 5.4rem; text-align: right; }
+.rr-ev.a strong { grid-column: 2; grid-row: 1; color: var(--cream-mut); }
+.rr-ev.a > span { grid-column: 1; grid-row: 1; color: var(--cream-mut); opacity: .78; }
+.rr-ev.b { grid-template-columns: 5.4rem minmax(0, 1fr); }
+.rr-ev.b strong { color: var(--gold); }
+.rr-ev.b > span, .rr-ev.b > div > span { color: var(--cream); }
+.rr-verdict { padding-top: 30px; font-family: var(--serif); font-size: clamp(1.15rem, 1.6vw, 1.35rem); line-height: 1.4; }
+.rr-verdict.a { text-align: right; font-style: italic; color: var(--cream-mut); }
+.rr-verdict b { font-weight: 400; color: var(--gold); }
+
+/* the reply, going out: the explainer inside a message window */
+.rr-app { margin: 22px 0 6px; border: 1px solid rgb(198 165 108 / .42); border-radius: 22px; overflow: hidden; background: #0b0e10; box-shadow: 0 30px 80px rgb(0 0 0 / .5); }
+.rr-app-bar { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--line-d); font-family: var(--mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-mut); }
+.rr-app-bar i { width: 9px; height: 9px; border-radius: 9px; background: rgb(234 226 216 / .14); flex: 0 0 auto; }
+.rr-app-bar span { flex: 1; min-width: 0; margin-left: 6px; line-height: 1.5; }
+.rr-app-bar em { font-style: normal; color: var(--gold); white-space: nowrap; }
+.rr-app .media-frame { border: 0; border-radius: 0; }
+.rr-app figcaption { display: grid; gap: 4px; padding: 14px 18px 18px; border-top: 1px solid var(--line-d); }
+.rr-app figcaption b { font-family: var(--serif); font-style: italic; font-weight: 350; font-size: 1.2rem; line-height: 1.25; color: var(--gold); padding-bottom: .05em; }
+.rr-app figcaption span { color: var(--cream-mut); font-size: .95rem; }
+
+/* moments on the spine, alternating sides */
+.rr-tl { --g: clamp(34px, 5vw, 64px); display: grid; gap: clamp(28px, 4vw, 54px); padding: 16px 0; }
+.rr-m { position: relative; width: calc(50% - var(--g)); }
+.rr-m.l { justify-self: start; text-align: right; }
+.rr-m.r { justify-self: end; }
+.rr-m > .rr-node { position: absolute; top: clamp(22px, 2.6vw, 34px); }
+.rr-m.l > .rr-node { right: calc(-1 * var(--g) - 5.5px); }
+.rr-m.r > .rr-node { left: calc(-1 * var(--g) - 5.5px); }
+.rr-m p { color: var(--cream-mut); max-width: 46ch; }
+.rr-m.l p { margin-left: auto; }
+.rr-m .idx { margin-bottom: 6px; }
+.rr-stamp, .rr-m p.rr-stamp { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: 1.08; padding-bottom: .1em; letter-spacing: -.01em; color: var(--gold); margin-bottom: 8px; }
+.rr-note { background: rgb(234 226 216 / .035); border: 1px solid var(--line-d); border-radius: 20px; padding: clamp(22px, 3vw, 36px); text-align: left !important; }
+.rr-note .k { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 2.4rem; line-height: 1.1; padding-bottom: .06em; color: var(--gold); }
+.rr-note h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1.2; margin: 10px 0 10px; }
+.rr-note p { margin-left: 0 !important; }
+.rr-note p b { color: var(--cream); font-weight: 500; }
+.rr-m p b { color: var(--cream); font-weight: 500; }
+
+/* by morning: what is included, on paper */
+.rr-paper { border-radius: 26px; padding: clamp(28px, 4.5vw, 64px); box-shadow: 0 40px 90px rgb(0 0 0 / .4); }
+.rr-paper .it.gold { color: var(--gold-deep); }
+.rr-paper .two { align-items: start; }
+
+/* the story clock: small, fixed in the free right margin, only while the story is told */
+.rr-clock { position: fixed; right: 22px; top: 50%; z-index: 9; width: 124px; padding: 14px 10px 12px; display: none; justify-items: center; gap: 6px; text-align: center; border: 1px solid rgb(198 165 108 / .35); border-radius: 18px; background: rgb(7 9 11 / .62); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 14px 40px rgb(0 0 0 / .35); opacity: 0; pointer-events: none; transform: translateY(-50%); transition: opacity .6s var(--ease); }
+@media (min-width: 1180px) { .rr-clock { display: grid; } }
+.rr-clock.on { opacity: 1; }
+.rr-clock.on.ghost { opacity: .08; }
+.rr-clock .ring { width: 38px; height: 38px; transform: rotate(-90deg); }
+.rr-clock .ring circle { fill: none; stroke: var(--line-d); stroke-width: 1.4; }
+.rr-clock .ring .p { stroke: var(--gold); stroke-dasharray: 100; stroke-dashoffset: 100; stroke-linecap: round; transition: stroke-dashoffset .3s linear; }
+.rr-clock .lbl { display: grid; font-family: var(--mono); font-size: .55rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-mut); line-height: 1.5; }
+.rr-clock .lbl span { grid-area: 1 / 1; opacity: 0; transition: opacity .4s var(--ease); }
+.rr-clock .lbl span.on { opacity: 1; }
+.rr-clock .val { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 1.75rem; line-height: 1.15; padding-bottom: .08em; color: var(--gold); font-variant-numeric: tabular-nums; transition: opacity .2s, transform .2s var(--ease); }
+.rr-clock .val.long { font-size: 1.2rem; line-height: 1.25; white-space: pre-line; }
+.rr-clock .val.flip { opacity: 0; transform: translateY(-6px); }
+
+/* FAQ: a calm, centred column — the morning after */
+.rr-faq .wrap { width: min(940px, var(--wrap)); }
+.rr-faq .fhead { text-align: center; margin-bottom: clamp(40px, 5vw, 70px); }
+
+@media (max-width: 860px) {
+  .rr-duel { display: flex; flex-direction: column; padding-left: 30px; }
+  .rr-duel::before, .rr-tl::before { left: 5px; }
+  .rr-duel > .a { order: 1; } .rr-duel > .b { order: 2; }
+  .rr-duel > .rr-node { display: none; }
+  .rr-side.b { margin-top: 50px; }
+  .rr-side.a, .rr-verdict.a { text-align: left; }
+  .rr-ev, .rr-ev.a, .rr-ev.b { grid-template-columns: 1fr; gap: 4px; text-align: left; padding: 16px 0; }
+  .rr-ev.a strong, .rr-ev.a > span { grid-column: auto; grid-row: auto; }
+  .rr-ev::before { content: ""; position: absolute; left: -30px; top: 20px; width: 11px; height: 11px; border-radius: 50%; border: 1px solid var(--gold); background: #07090b; transition: background .6s var(--ease), box-shadow .6s var(--ease); }
+  .rr-ev.lit::before { background: var(--gold); }
+  .rr-m, .rr-m.l, .rr-m.r { width: auto; justify-self: stretch; margin-left: 30px; text-align: left; }
+  .rr-m.l > .rr-node, .rr-m.r > .rr-node { left: -30px; right: auto; }
+  .rr-m.l p { margin-left: 0; }
+  .rr-stamp { font-size: 2.5rem; }
+}
+</style>
 </head>
-<body>
+<body class="rr">
 
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-slats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="loader-core">
-    <p class="loader-name">scar<span class="italic gold">sellato</span></p>
-    <p class="loader-count"><span id="loaderCount">00</span></p>
-    <div class="loader-bar"><span id="loaderBar"></span></div>
-  </div>
-</div>
-
-<canvas class="dust" id="dust" aria-hidden="true"></canvas>
-<div class="progress-rail" aria-hidden="true"></div>
-
-<header class="topbar">
-  <a class="wordmark" href="../">scar<span class="italic gold">sellato</span></a>
-  <p class="live-line" id="liveLine" aria-hidden="true">— : — : — [LUX]</p>
-  <nav class="top-links" id="topLinks" aria-label="Navigation">
-    <a href="../" data-i18n="nav.home">Accueil</a>
-    <a href="../#metiers" aria-current="page" data-i18n="nav.metiers">Métiers</a>
-    <a href="../immobilier/" data-i18n="nav.immo">Immobilier</a>
-    <a href="../realisations/" data-i18n="nav.real">Réalisations</a>
-    <a href="../approche/" data-i18n="nav.appro">L'approche</a>
-    <a href="#contact" data-i18n="nav.contact">Contact</a>
-  </nav>
-  <div class="lang-switch" id="langSwitch" role="group" aria-label="Langue — Language — Sprache">
-    <button type="button" data-lang="fr">FR</button>
-    <button type="button" data-lang="en">EN</button>
-    <button type="button" data-lang="de">DE</button>
-  </div>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="topLinks">Menu</button>
-  <a class="btn-pill magnetic" href="#contact"><span class="pill-label" data-i18n="cta.pilot">Demander le pilote</span><span class="pill-dot" aria-hidden="true">↗</span></a>
-</header>
+<nav class="nav" aria-label="Navigation">
+  <a class="mark" href="../">scar<span class="it gold">sellato</span></a>
+  <ul>
+    <li><a href="../#metiers" aria-current="page" data-i18n="nav.crafts">Crafts</a></li>
+    <li><a href="../approche/" data-i18n="nav.approach">Approach</a></li>
+    <li><a href="../immobilier/" data-i18n="nav.immo">Real estate</a></li>
+    <li><a href="../realisations/" data-i18n="nav.work">Work</a></li>
+  </ul>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button><button type="button" data-lang="de">DE</button></div>
+  <button class="nav-toggle" type="button" aria-expanded="false" data-i18n="nav.menu">Menu</button>
+  <a class="btn gold" href="#contact"><span class="roll" data-i18n="nav.write">Write</span></a>
+</nav>
 
 <main id="top">
 
-  <!-- HÉROS -->
-  <section class="pano rr-hero" aria-label="Réponse et Relance">
-    <div class="pano-bg" data-parallax><img src="../img/world-immo.jpg?v=2" alt=""><video class="vid" muted loop playsinline preload="auto" src="../img/loop-immo.mp4?v=2"></video></div>
-    <div class="pano-scrim" aria-hidden="true"></div>
-    <p class="chip chip-tl" aria-hidden="true" data-i18n="hero.chip">( MÉTIER 01 ) — RÉPONSE &amp; RELANCE DES DEMANDES</p>
-    <div class="statement">
-      <span class="chip kicker" data-i18n="hero.kicker">LUXEMBOURG · FR · DE · EN</span>
-      <p class="st-line big"><span class="st-in" data-i18n="hero.st1">La demande arrive</span></p>
-      <p class="st-line big"><span class="st-in italic gold" data-i18n="hero.st2">à 22 h 47.</span></p>
-      <p class="sub" data-i18n="hero.sub">Vous dormez. Elle, non : elle attend une réponse, et elle en trouvera une — chez vous ou ailleurs. Nous répondons à votre place, en quelques minutes, dans sa langue, puis nous relançons jusqu'à ce que ce soit oui ou non.</p>
-      <div class="hero-cta">
-        <a class="btn-pill big magnetic" href="#contact"><span data-i18n="hero.cta1">Pilote 14 jours — gratuit</span><span class="pill-dot" aria-hidden="true">↗</span></a>
-        <button class="btn-pill magnetic" type="button" data-ask="Comment fonctionne le pilote de 14 jours de la réponse & relance ?"><span data-i18n="hero.cta2">Demander à l'assistant</span><span class="pill-dot" aria-hidden="true">↗</span></button>
-      </div>
-    </div>
-    <p class="rr-clockface" id="clockFace" aria-hidden="true">22:47<small data-i18n="hero.clocknote">vendredi soir — votre boîte est ouverte, personne n'est là</small></p>
-  </section>
-
-  <!-- (01) LA NUIT DU VENDREDI -->
-  <section class="night" id="nuit" aria-label="La nuit du vendredi">
-    <div class="night-head reveal">
-      <p class="chip" aria-hidden="true" data-i18n="night.head">( 01 ) — LA MÊME DEMANDE, DEUX NUITS</p>
-      <div class="statement">
-        <p class="st-line"><span class="st-in" data-i18n="night.st1">Ce n'est pas le client qui part.</span></p>
-        <p class="st-line"><span class="st-in italic gold" data-i18n="night.st2">C'est le silence qui le pousse.</span></p>
-      </div>
-    </div>
-    <div class="night-grid">
-      <article class="night-col reveal">
-        <h3 data-i18n="night.a.title">Sans nous</h3>
-        <p class="col-sub" data-i18n="night.a.sub">Ce qui se passe aujourd'hui</p>
-        <ul class="tl">
-          <li><span class="h">22:47</span><span class="d" data-i18n="night.a.1">Un message arrive par votre formulaire. Personne ne le voit.</span></li>
-          <li><span class="h">22:51</span><span class="d" data-i18n="night.a.2">La même personne écrit à deux autres. L'une répond dans la minute.</span></li>
-          <li><span class="h">08:30</span><span class="d" data-i18n="night.a.3">Lundi. Vous ouvrez votre boîte : 14 messages, celui-ci est le neuvième.</span></li>
-          <li><span class="h">09:12</span><span class="d" data-i18n="night.a.4">Vous répondez, bien. Le rendez-vous est déjà pris ailleurs.</span></li>
-        </ul>
-        <p class="verdict" data-i18n="night.a.verdict">Vous n'avez rien fait de mal. Vous étiez simplement fermé — et la demande, elle, ne l'était pas.</p>
-      </article>
-      <article class="night-col ours reveal d1">
-        <h3 data-i18n="night.b.title">Avec nous</h3>
-        <p class="col-sub" data-i18n="night.b.sub">La même demande, même heure</p>
-        <ul class="tl">
-          <li><span class="h">22:47</span><span class="d" data-i18n="night.b.1">Le message arrive. Il est lu, compris, et il obtient une vraie réponse.</span></li>
-          <li><span class="h">22:49</span><span class="d" data-i18n="night.b.2">Réponse envoyée dans sa langue, avec les questions utiles pour avancer.</span></li>
-          <li><span class="h">08:30</span><span class="d" data-i18n="night.b.3">Lundi. Vous ne découvrez pas un message : vous découvrez une conversation déjà commencée.</span></li>
-          <li><span class="h">J+2 · J+5</span><span class="d" data-i18n="night.b.4">S'il ne répond pas, nous relançons. Sans harceler, jusqu'au oui ou au non.</span></li>
-        </ul>
-        <p class="verdict" data-i18n="night.b.verdict"><b>Vous êtes celui qui a répondu.</b> Le client n'a plus de raison d'aller voir ailleurs — et vous n'avez rien tapé.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- (02) MÉCANISME -->
-  <section class="mech" aria-label="Le mécanisme">
-    <div class="mech-head reveal">
-      <p class="chip" aria-hidden="true" data-i18n="mech.head">( 02 ) — COMMENT ÇA MARCHE VRAIMENT</p>
-      <div class="statement">
-        <p class="st-line"><span class="st-in" data-i18n="mech.st1">Trois gestes.</span> <span class="st-in italic gold" data-i18n="mech.st2">Aucun de votre part.</span></p>
-      </div>
-    </div>
-    <div class="mech-grid">
-      <div class="mech-step reveal">
-        <span class="n">01</span>
-        <h3 data-i18n="mech.1.t">Nous branchons vos demandes</h3>
-        <p data-i18n="mech.1.d">Formulaire, boîte mail, portails d'annonces : les demandes arrivent où elles arrivent déjà. Rien à migrer, rien à réapprendre, aucun logiciel à installer chez vous.</p>
-      </div>
-      <div class="mech-step reveal d1">
-        <span class="n">02</span>
-        <h3 data-i18n="mech.2.t">Chaque demande reçoit une réponse</h3>
-        <p data-i18n="mech.2.d">En quelques minutes, à toute heure, dans la langue du demandeur — français, allemand, anglais. Une vraie réponse à ce qu'il demande, pas un accusé de réception automatique.</p>
-      </div>
-      <div class="mech-step reveal d2">
-        <span class="n">03</span>
-        <h3 data-i18n="mech.3.t">Vous gardez la main</h3>
-        <p data-i18n="mech.3.d">La première semaine du pilote, vous validez chaque réponse avant qu'elle parte : rien ne part sans votre accord. Vous voyez le ton, vous corrigez, nous ajustons. Ensuite, vous décidez de la laisser courir ou non.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- (03) L'ÉCHELLE DE RELANCE -->
-  <section class="ladder" aria-label="La relance">
-    <div class="ladder-inner">
-      <div class="ladder-head reveal">
-        <p class="chip" aria-hidden="true" data-i18n="lad.head">( 03 ) — LA RELANCE, LÀ OÙ TOUT SE JOUE</p>
-        <div class="statement">
-          <p class="st-line"><span class="st-in" data-i18n="lad.st1">Répondre, tout le monde y pense.</span></p>
-          <p class="st-line"><span class="st-in italic gold" data-i18n="lad.st2">Relancer, presque personne.</span></p>
+  <!-- ===== HERO — Friday, 22:47: the dial ===== -->
+  <section class="hero dark rr-hero" data-reveal>
+    <div class="wrap rr-hgrid">
+      <div>
+        <p class="idx" data-i18n="h.idx">[ <b>Answer &amp; Follow-up</b> ] — answering &amp; following up on inquiries · FR · DE · EN</p>
+        <h1 class="h-xl">
+          <span class="lm"><span style="--i:0" data-i18n="h.l1">The inquiry arrives</span></span>
+          <span class="lm"><span style="--i:1" data-i18n="h.l2">at <span class="it">10:47 pm.</span></span></span>
+        </h1>
+        <p class="lede fade" style="--d:450" data-i18n="h.lede">You are asleep. The inquiry is not: it is waiting for an answer, and it will find one — from you or from someone else. We answer on your behalf, within minutes, in its language, then we follow up until it is a yes or a no.</p>
+        <div class="ctas fade" style="--d:650">
+          <a class="btn gold" href="#contact"><span class="roll" data-i18n="h.cta1">14-day pilot — free</span></a>
+          <button class="btn ghost" type="button" data-ask="How does the 14-day Answer &amp; Follow-up pilot work?" data-ask-k="ask.hero"><span class="roll" data-i18n="h.cta2">Ask the assistant</span><span class="arr">↗</span></button>
         </div>
       </div>
-      <ul class="rungs">
-        <li class="rung reveal"><span class="when" data-i18n="lad.1.w">Minute 1</span><span class="what" data-i18n="lad.1.d">La réponse part. Le demandeur sait qu'il existe quelqu'un en face.</span></li>
-        <li class="rung reveal"><span class="when" data-i18n="lad.2.w">Jour 2</span><span class="what" data-i18n="lad.2.d">Pas de réponse ? Une relance courte, qui apporte quelque chose de neuf — jamais un « je me permets de revenir vers vous ».</span></li>
-        <li class="rung reveal"><span class="when" data-i18n="lad.3.w">Jour 5</span><span class="what" data-i18n="lad.3.d">Un angle différent : ce qui compte pour lui, pas ce qui nous arrange.</span></li>
-        <li class="rung last reveal"><span class="when" data-i18n="lad.4.w">Fin</span><span class="what" data-i18n="lad.4.d">Une dernière ligne, honnête, qui referme proprement. S'il dit non, c'est non : il ne sera plus jamais recontacté. Un dossier fermé vaut mieux qu'un dossier flou.</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- (04) INCLUS + PILOTE -->
-  <section class="incl" aria-label="Ce qui est inclus">
-    <div class="incl-inner">
-      <div class="reveal">
-        <p class="chip" aria-hidden="true" style="margin-bottom:1.4rem" data-i18n="incl.head">( 04 ) — CE QUI EST COMPRIS</p>
-        <h3 data-i18n="incl.title">Tout est fait pour vous</h3>
-        <ul>
-          <li data-i18n="incl.1"><b>Réponse à chaque demande</b> — soirs, week-ends, jours fériés compris.</li>
-          <li data-i18n="incl.2"><b>Trois langues</b> — la réponse part dans la langue du message reçu.</li>
-          <li data-i18n="incl.3"><b>Relance jusqu'au oui ou au non</b> — et arrêt définitif sur un non.</li>
-          <li data-i18n="incl.4"><b>Votre ton, pas le nôtre</b> — nous écrivons comme votre maison écrit.</li>
-          <li data-i18n="incl.5"><b>Vous voyez tout</b> — chaque échange reste dans votre boîte, elle vous appartient.</li>
-          <li data-i18n="incl.6"><b>RGPD</b> — désinscription honorée, aucune donnée revendue, jamais.</li>
-        </ul>
-      </div>
-      <div class="pilot reveal d1">
-        <span class="tag" data-i18n="pilot.tag">Le pilote — 14 jours, gratuit</span>
-        <p data-i18n="pilot.1">Nous branchons le système sur <b>vos vraies demandes</b>, pas sur une démo. Vous voyez ce qui arrive et ce qui repart, en direct.</p>
-        <p data-i18n="pilot.2"><b>Semaine 1 : vous validez chaque réponse</b> avant qu'elle parte. Rien ne part sans votre accord — c'est la garantie, pas une promesse.</p>
-        <p data-i18n="pilot.3">Au bout de quatorze jours, vous décidez. Si vous continuez et que le premier mois ne vous convainc pas, <b>il vous est remboursé</b>.</p>
-        <p data-i18n="pilot.4">Nous ne prenons que <b>trois pilotes en parallèle</b> — pour que chacun soit réglé personnellement. Quand c'est plein, c'est plein.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- (05) CONTACT -->
-  <section class="rr-contact" id="contact" aria-label="Contact">
-    <div class="rr-contact-inner">
-      <div class="reveal">
-        <p class="chip" aria-hidden="true" data-i18n="fin.head">( 05 ) — ET MAINTENANT</p>
-        <div class="statement" style="margin-top:1.4rem">
-          <p class="st-line big"><span class="st-in" data-i18n="fin.st1">Dites-nous où</span></p>
-          <p class="st-line big"><span class="st-in italic gold" data-i18n="fin.st2">arrivent vos demandes.</span></p>
+      <div class="rr-dialcol fade" style="--d:250" aria-hidden="true">
+        <div class="rr-dial">
+          <svg viewBox="0 0 200 200">
+            <g class="tk" id="rrTicks"></g>
+            <circle class="track" cx="100" cy="100" r="84"/>
+            <circle class="arc" cx="100" cy="100" r="84" pathLength="60" transform="rotate(-90 100 100)"/>
+            <circle class="halo" cx="17.84" cy="82.54" r="7"/>
+            <circle class="now" cx="17.84" cy="82.54" r="3.2"/>
+          </svg>
+          <p class="num">22:47</p>
         </div>
-        <p class="note" data-i18n="fin.note">Une ligne suffit. Nous répondons le jour même — et si le pilote n'a pas de sens pour votre maison, nous le dirons franchement plutôt que de vous vendre quelque chose.</p>
-        <form class="atelier-form" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
-          <input type="hidden" name="_subject" value="Réponse &amp; Relance — demande de pilote (scarsellato.com)">
-          <input type="hidden" name="_next" value="https://scarsellato.com/reponse-relance/#contact">
-          <input type="text" name="_honey" style="display:none">
-          <div class="af-row">
-            <input type="text" name="nom" placeholder="VOTRE NOM" required aria-label="Nom" data-i18n-ph="form.name">
-            <input type="email" name="email" placeholder="VOTRE E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+        <p class="idx" data-i18n="ck.fri">Friday night</p>
+      </div>
+    </div>
+    <div class="wrap hero-foot fade" style="--d:900">
+      <p class="idx" data-i18n="h.f1">[ 22:47 ] — friday night: your inbox is open, nobody is there</p>
+      <p class="idx" data-i18n="h.f2">Scroll ↓</p>
+    </div>
+  </section>
+
+  <!-- ===== THE STORY — one night on a gold spine, from deep noir to dawn ===== -->
+  <div class="rr-story sheet">
+
+    <!-- 01 — the same inquiry, two nights -->
+    <section class="sec dark rr-sec" id="nuit" data-reveal>
+      <div class="wrap">
+        <p class="idx" data-i18n="n.idx">[ <b>01</b> ] — The same inquiry, two nights</p>
+        <h2 class="h-l" style="margin-top:22px">
+          <span class="lm"><span style="--i:0" data-i18n="n.l1">It is not the client who leaves.</span></span>
+          <span class="lm"><span style="--i:1" class="it gold" data-i18n="n.l2">It is the silence that pushes them.</span></span>
+        </h2>
+        <div class="rr-duel rr-gap">
+          <div class="rr-side a" style="--r:1"><h3 class="h-m" data-i18n="n.a.t">Without us</h3><p class="idx" data-i18n="n.a.s">What happens today</p></div>
+          <div class="rr-side b" style="--r:1"><h3 class="h-m" data-i18n="n.b.t">With <span class="it gold">us</span></h3><p class="idx" data-i18n="n.b.s">Same inquiry, same hour</p></div>
+
+          <div class="rr-ev a fade" style="--r:2"><strong class="ck" data-ckl="fri">22:47</strong><span data-i18n="n.a.1">A message arrives through your form. Nobody sees it.</span></div>
+          <i class="rr-node" style="--r:2" aria-hidden="true"></i>
+          <div class="rr-ev b fade" style="--r:2"><strong class="ck" data-ckl="fri">22:47</strong><span data-i18n="n.b.1">The message arrives. It is read, understood, and it gets a real answer.</span></div>
+
+          <i class="rr-node" style="--r:3" aria-hidden="true"></i>
+          <div class="rr-ev b fade" style="--r:3"><strong class="ck" data-ckl="fri">22:49</strong>
+            <div>
+              <span data-i18n="n.b.2">Reply sent in their language, with the questions that actually move things forward.</span>
+              <figure class="rr-app">
+                <div class="rr-app-bar"><i></i><i></i><i></i><span data-i18n="v.idx">[ <b>▶</b> ] — The craft, in motion</span><em>22:49 ✓</em></div>
+                <div class="media-frame">
+                  <video autoplay muted loop playsinline preload="metadata" src="../media/rr-card.mp4" aria-hidden="true"></video>
+                  <button class="play" type="button" data-full="../media/rr-explainer.mp4" data-title="Answer &amp; Follow-up" data-i18n="play">▶ Watch full size</button>
+                </div>
+                <figcaption><b data-i18n="s1.h">Minute 1</b><span data-i18n="s1.p">The reply goes out. The person knows there is someone on the other side.</span></figcaption>
+              </figure>
+            </div>
           </div>
-          <textarea name="message" placeholder="OÙ ARRIVENT VOS DEMANDES AUJOURD'HUI ?" required aria-label="Message" data-i18n-ph="form.msg2"></textarea>
-          <button class="btn-pill magnetic big" type="submit"><span data-i18n="form.send">Envoyer</span><span class="pill-dot" aria-hidden="true">↗</span></button>
-        </form>
-        <a class="back-home" href="../immobilier/" data-i18n="fin.immo">Vous êtes une agence immobilière ? Voir Zéro lead perdu ↗</a><br>
-        <a class="back-home" style="margin-top:1rem" href="../#metiers" data-i18n="fin.back">← Revoir tous les métiers</a>
+
+          <div class="rr-ev a fade" style="--r:4"><strong class="ck" data-ckl="fri">22:51</strong><span data-i18n="n.a.2">The same person writes to two others. One answers within a minute.</span></div>
+          <i class="rr-node" style="--r:4" aria-hidden="true"></i>
+
+          <div class="rr-ev a fade" style="--r:5"><strong class="ck" data-ckl="mon">08:30</strong><span data-i18n="n.a.3">Monday. You open your inbox: 14 messages, this one is ninth.</span></div>
+          <i class="rr-node" style="--r:5" aria-hidden="true"></i>
+          <div class="rr-ev b fade" style="--r:5"><strong class="ck" data-ckl="mon">08:30</strong><span data-i18n="n.b.3">Monday. You are not discovering a message: you are discovering a conversation already under way.</span></div>
+
+          <div class="rr-ev a fade" style="--r:6"><strong class="ck" data-ckl="mon">09:12</strong><span data-i18n="n.a.4">You reply, and reply well. The appointment has already been booked elsewhere.</span></div>
+          <i class="rr-node" style="--r:6" aria-hidden="true"></i>
+
+          <i class="rr-node" style="--r:7" aria-hidden="true"></i>
+          <div class="rr-ev b fade" style="--r:7"><strong class="ck" data-ckl="fu" data-i18n="n.b.4w">Day 2 · Day 5</strong><span data-i18n="n.b.4">If they go quiet, we follow up. Without hounding, until it is a yes or a no.</span></div>
+
+          <p class="rr-verdict a fade" style="--r:8" data-i18n="n.a.v">You did nothing wrong. You were simply closed — and the inquiry was not.</p>
+          <p class="rr-verdict b fade" style="--r:8" data-i18n="n.b.v"><b>You are the one who answered.</b> The client has no reason to look elsewhere — and you typed nothing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — the follow-up: Day 2, Day 5, the end -->
+    <section class="sec dark rr-sec" id="relance" data-reveal>
+      <div class="wrap">
+        <p class="idx" data-i18n="p.idx">[ <b>02</b> ] — The follow-up, where everything is decided</p>
+        <h2 class="h-l" style="margin-top:22px">
+          <span class="lm"><span style="--i:0" data-i18n="p.l1">Everyone thinks about replying.</span></span>
+          <span class="lm"><span style="--i:1" class="it gold" data-i18n="p.l2">Almost nobody follows up.</span></span>
+        </h2>
+        <div class="rr-tl rr-gap">
+          <article class="rr-m l fade"><i class="rr-node" aria-hidden="true"></i><h3 class="rr-stamp ck" data-ckl="fu" data-i18n="s2.h">Day 2</h3><p data-i18n="s2.p">No answer? A short follow-up that brings something new — never a "just checking in".</p></article>
+          <article class="rr-m r fade"><i class="rr-node" aria-hidden="true"></i><h3 class="rr-stamp ck" data-ckl="fu" data-i18n="s3.h">Day 5</h3><p data-i18n="s3.p">A different angle: what matters to them, not what suits us.</p></article>
+          <article class="rr-m l fade"><i class="rr-node" aria-hidden="true"></i><h3 class="rr-stamp ck" data-ckl="fu" data-i18n="s4.h">The end</h3><p data-i18n="s4.p">One last honest line that closes it cleanly. If they say no, it is no: they are never contacted again. A closed file beats a vague one.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — the mechanism: three notes on the spine -->
+    <section class="sec dark rr-sec" id="mecanisme" data-reveal>
+      <div class="wrap">
+        <p class="idx" data-i18n="m.idx">[ <b>03</b> ] — How it actually works</p>
+        <h2 class="h-l" style="margin-top:22px">
+          <span class="lm"><span style="--i:0" data-i18n="m.l1">Three moves.</span></span>
+          <span class="lm"><span style="--i:1" class="it gold" data-i18n="m.l2">None of them yours.</span></span>
+        </h2>
+        <div class="rr-tl rr-gap">
+          <article class="rr-m r rr-note fade"><i class="rr-node" aria-hidden="true"></i><p class="k">01</p><h3 data-i18n="m.1.t">We plug into your inquiries</h3><p data-i18n="m.1.d">Form, mailbox, listing portals: inquiries keep arriving where they already arrive. Nothing to migrate, nothing to relearn, no software to install.</p></article>
+          <article class="rr-m l rr-note fade"><i class="rr-node" aria-hidden="true"></i><p class="k">02</p><h3 data-i18n="m.2.t">Every inquiry gets an answer</h3><p data-i18n="m.2.d">Within minutes, at any hour, in the language of the person writing — French, German, English. A real answer to what they asked, not an automatic acknowledgement.</p></article>
+          <article class="rr-m r rr-note fade"><i class="rr-node" aria-hidden="true"></i><p class="k">03</p><h3 data-i18n="m.3.t">You keep control</h3><p data-i18n="m.3.d">During week one of the pilot you approve every reply before it goes out: nothing leaves without your green light. You see the tone, you correct it, we adjust. Then you decide whether to let it run.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — by morning: what is included (paper) + the pilot (Week 1, 14 days) -->
+    <section class="sec dark rr-sec" id="inclus" data-reveal>
+      <div class="wrap">
+        <div class="rr-paper light fade">
+          <div class="two">
+            <div>
+              <p class="idx" data-i18n="i.idx">[ <b>04</b> ] — What is included</p>
+              <h2 class="h-l" style="margin-top:22px">
+                <span class="lm"><span style="--i:0" data-i18n="i.l1">All of it</span></span>
+                <span class="lm"><span style="--i:1" class="it gold" data-i18n="i.l2">done for you.</span></span>
+              </h2>
+            </div>
+            <ul class="rowlist">
+              <li><strong data-i18n="i.1s">An answer to every inquiry</strong><span data-i18n="i.1d">Evenings, weekends and holidays included.</span></li>
+              <li><strong data-i18n="i.2s">Three languages</strong><span data-i18n="i.2d">The reply goes out in the language it came in.</span></li>
+              <li><strong data-i18n="i.3s">Follow-up until yes or no</strong><span data-i18n="i.3d">And a permanent stop on a no.</span></li>
+              <li><strong data-i18n="i.4s">Your tone, not ours</strong><span data-i18n="i.4d">We write the way your business writes.</span></li>
+              <li><strong data-i18n="i.5s">You see everything</strong><span data-i18n="i.5d">Every exchange stays in your mailbox, which remains yours.</span></li>
+              <li><strong data-i18n="i.6s">GDPR</strong><span data-i18n="i.6d">Opt-outs honoured, no data ever resold.</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="idx" style="margin-top:clamp(80px,10vw,140px)" data-i18n="pi.idx">[ <b>The pilot</b> ] — 14 days, free</p>
+        <h2 class="h-l" style="margin-top:22px">
+          <span class="lm"><span style="--i:0" data-i18n="pi.l1">Judge it on your</span></span>
+          <span class="lm"><span style="--i:1" class="it gold" data-i18n="pi.l2">real inquiries.</span></span>
+        </h2>
+        <div class="rr-tl rr-gap">
+          <article class="rr-m l rr-note fade"><i class="rr-node" aria-hidden="true"></i><p class="k">01</p><p data-i18n="pi.1">We plug the system into <b>your real inquiries</b>, not a demo. You see what comes in and what goes out, live.</p></article>
+          <article class="rr-m r fade"><i class="rr-node" aria-hidden="true"></i><p class="idx">[ 02 ]</p><p class="rr-stamp ck" data-ckl="pilot" data-i18n="st.w1">Week 1</p><p data-i18n="pi.2"><b>Week 1: you approve every reply</b> before it goes out. Nothing leaves without your agreement — that is the guarantee, not a promise.</p></article>
+          <article class="rr-m l fade"><i class="rr-node" aria-hidden="true"></i><p class="idx">[ 03 ]</p><p class="rr-stamp ck" data-ckl="pilot" data-i18n="st.14">14 days</p><p data-i18n="pi.3">After fourteen days, you decide. If you continue and the first month does not convince you, <b>it is refunded</b>.</p></article>
+          <article class="rr-m r rr-note fade"><i class="rr-node" aria-hidden="true"></i><p class="k">04</p><p data-i18n="pi.4">We take <b>three pilots at a time</b>, no more — so each one is set up personally. When it is full, it is full.</p></article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== FAQ — daylight, a calm centred column ===== -->
+  <section class="faq light sheet rr-faq" id="faq" data-reveal>
+    <div class="wrap">
+      <div class="fhead">
+        <p class="idx" data-i18n="f.idx">[ <b>FAQ</b> ] — The questions people ask</p>
+        <h2 class="h-l" style="margin-top:22px">
+          <span class="lm"><span style="--i:0" data-i18n="f.l1">Honestly,</span></span>
+          <span class="lm"><span style="--i:1;color:var(--gold-deep)" class="it" data-i18n="f.l2">before the pilot.</span></span>
+        </h2>
+      </div>
+      <div class="acc">
+        <details><summary><span class="idx">[ 01 ]</span><span class="t" data-i18n="q1">How does the free pilot work?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a1">Fourteen days, on your real inquiries, no commitment. In week one you approve every reply before it goes out. At the end you decide — and if you continue, the first month is refunded if it does not convince you.</p></div></div></details>
+        <details><summary><span class="idx">[ 02 ]</span><span class="t" data-i18n="q2">Do you really answer at night?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a2">Yes — evenings, weekends and public holidays included. That is the whole point: the inquiry landing at 10 pm on a Friday does not sleep until Monday.</p></div></div></details>
+        <details><summary><span class="idx">[ 03 ]</span><span class="t" data-i18n="q3">What if a reply is off?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a3">That is exactly why week one exists: nothing goes out without your approval. You correct the tone, we adjust. What you approve becomes the reference.</p></div></div></details>
+        <details><summary><span class="idx">[ 04 ]</span><span class="t" data-i18n="q4">In which languages?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a4">French, German and English — the reply goes out in the language of the message received.</p></div></div></details>
+        <details><summary><span class="idx">[ 05 ]</span><span class="t" data-i18n="q5">How much does it cost?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a5">The fourteen-day pilot is free. After that the price depends on your volume and your inquiry sources — leave us your email and you get a precise quote the same day.</p></div></div></details>
+        <details><summary><span class="idx">[ 06 ]</span><span class="t" data-i18n="q6">Does it affect my existing clients?</span><span class="v"><span class="p">+</span></span></summary><div class="content"><div><p data-i18n="a6">No. We only handle new incoming inquiries. Your exchanges with current clients stay entirely yours.</p></div></div></details>
       </div>
     </div>
   </section>
 
+  <!-- ===== CONTACT ===== -->
+  <section class="contact dark sheet" id="contact" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="k.idx">[ <b>05</b> ] — And now</p>
+      <h2 class="h-xl" style="margin-top:22px">
+        <span class="lm"><span style="--i:0" data-i18n="k.l1">Tell us where</span></span>
+        <span class="lm"><span style="--i:1" class="it gold" data-i18n="k.l2">your inquiries land.</span></span>
+      </h2>
+      <p class="lede fade" style="--d:400;margin-top:28px" data-i18n="k.lede">One line is enough. We reply the same day — and if the pilot makes no sense for your business, we will say so plainly rather than sell you something.</p>
+      <form class="form fade" style="--d:550" action="https://formsubmit.co/noah@scarsellato.com" method="POST">
+        <input type="hidden" name="_subject" value="New message — scarsellato.com · Answer &amp; Follow-up">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row">
+          <input type="text" name="name" placeholder="YOUR NAME" required aria-label="Name" data-i18n-ph="form.name">
+          <input type="email" name="email" placeholder="YOUR E-MAIL" required aria-label="E-mail" data-i18n-ph="form.email">
+        </div>
+        <textarea name="message" placeholder="WHERE DO YOUR INQUIRIES ARRIVE TODAY?" required aria-label="Message" data-i18n-ph="k.msg"></textarea>
+        <div><button class="btn gold" type="submit"><span class="roll" data-i18n="form.send">Send to the atelier</span><span class="arr">↗</span></button></div>
+      </form>
+      <p><a class="back" href="../immobilier/" data-i18n="k.immo">Real estate agency? See Zero lost leads ↗</a></p>
+      <p><a class="back" style="margin-top:14px" href="../#metiers" data-i18n="k.back">← Back to all crafts</a></p>
+      <p class="giant" aria-hidden="true">scar<span class="it">sellato</span></p>
+      <div class="foot"><p class="idx" data-i18n="foot.l">Scarsellato — digital atelier · Luxembourg · © 2026</p><p class="idx" data-i18n="foot.r">0 cookies · 0 trackers</p></div>
+    </div>
+  </section>
 </main>
 
-<p class="foot-line" data-i18n="foot">SCARSELLATO — L'ATELIER DIGITAL · LUXEMBOURG · © 2026 · SANS COOKIES, SANS TRACEURS</p>
+<!-- the story clock (decorative: every time it shows is already written in the page) -->
+<div class="rr-clock" id="rrClock" aria-hidden="true">
+  <svg class="ring" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><circle class="p" cx="24" cy="24" r="20" pathLength="100"/></svg>
+  <p class="lbl"><span data-l="fri" data-i18n="ck.fri">Friday night</span><span data-l="mon" data-i18n="ck.mon">Monday</span><span data-l="fu" data-i18n="ck.fu">The follow-up</span><span data-l="pilot" data-i18n="ck.pilot">The pilot</span></p>
+  <p class="val" id="rrVal">22:47</p>
+</div>
 
 <div class="chat" id="chat">
-  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="Une question ? Ouvrir l'assistant" data-i18n-aria="chat.toggleAria">
+  <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatPanel" aria-label="A question? Open the assistant" data-i18n-aria="chat.toggleAria">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
   </button>
-  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant de l'atelier" data-i18n-aria="chat.panelAria" hidden>
-    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — EN DIRECT )</p><button class="chat-close" id="chatClose" aria-label="Fermer" data-i18n-aria="chat.closeAria">×</button></div>
-    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Bonjour ! Je réponds en direct, uniquement à partir des informations de l'atelier — je ne devine rien. Posez votre question, ou commencez par l'une de celles-ci :</p></div>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Atelier assistant" data-i18n-aria="chat.panelAria" hidden>
+    <div class="chat-head"><p class="chip" data-i18n="chat.head">( ASSISTANT — LIVE )</p><button class="chat-close" id="chatClose" type="button" aria-label="Close" data-i18n-aria="chat.closeAria">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><p class="chat-msg bot" data-i18n="chat.greet">Hello! I answer live, only from the atelier's own information — I never guess. Ask your question, or start with one of these:</p></div>
     <div class="chat-choices" id="chatChoices"></div>
     <form class="chat-form" id="chatForm">
-      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="ÉCRIVEZ VOTRE QUESTION…" aria-label="Votre question" data-i18n-ph="chat.ph">
-      <button class="chat-send" id="chatSend" type="submit" aria-label="Envoyer" data-i18n-aria="chat.sendAria">➤</button>
+      <input class="chat-input" id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="WRITE YOUR QUESTION…" aria-label="Your question" data-i18n-ph="chat.ph">
+      <button class="chat-send" id="chatSend" type="submit" aria-label="Send" data-i18n-aria="chat.sendAria">➤</button>
     </form>
-    <p class="chat-note" data-i18n="chat.note">Vos messages servent uniquement à vous répondre. 0 cookie, 0 traceur.</p>
+    <p class="chat-note" data-i18n="chat.note">Your messages are used only to answer you. 0 cookies, 0 trackers.</p>
   </div>
 </div>
 
 <script>
-/* Dictionnaire de CETTE page — le FR est la source inline, EN/DE traduisent.
-   Les paires qa[] servent de doublure hors-ligne à l'assistant. */
 window.PAGE_I18N = {
-  fr: { t: {}, qa: [
-    ["Comment marche le pilote gratuit ?", "Quatorze jours, sur vos vraies demandes, sans engagement. La première semaine, vous validez chaque réponse avant qu'elle parte. À la fin, vous décidez — et si vous continuez, le premier mois est remboursé s'il ne vous convainc pas."],
-    ["Vous répondez vraiment la nuit ?", "Oui — soirs, week-ends et jours fériés compris. C'est tout l'intérêt : la demande qui arrive un vendredi à 22 h ne dort pas jusqu'à lundi."],
-    ["Et si la réponse est à côté ?", "C'est exactement pourquoi la semaine 1 existe : rien ne part sans votre accord. Vous corrigez le ton, nous ajustons. Ce que vous validez devient la référence."],
-    ["Dans quelles langues ?", "Français, allemand et anglais — la réponse part dans la langue du message reçu."],
-    ["Combien ça coûte ?", "Le pilote de quatorze jours est gratuit. Ensuite le prix dépend de votre volume et de vos sources de demandes — laissez-nous votre e-mail et vous avez un devis précis le jour même."],
-    ["Mes clients existants sont concernés ?", "Non. Nous ne touchons qu'aux NOUVELLES demandes entrantes. Vos échanges avec vos clients actuels restent entièrement les vôtres."]
-  ]},
-  en: { t: {
-    'meta.title': 'Answer & Follow-up — Scarsellato, Luxembourg',
-    'meta.desc': "Every inquiry gets a real reply within minutes — evenings and weekends included, in FR/DE/EN — then a follow-up until it's a yes or a no. 14-day pilot, free, cookie-free.",
-    'nav.this': 'Answer &amp; Follow-up', 'cta.pilot': 'Ask for the pilot',
-    'hero.chip': '( CRAFT 01 ) — ANSWERING &amp; FOLLOWING UP ON INQUIRIES',
-    'hero.kicker': 'LUXEMBOURG · FR · DE · EN',
-    'hero.st1': 'The inquiry arrives', 'hero.st2': 'at 10:47 pm.',
-    'hero.sub': "You are asleep. The inquiry is not: it is waiting for an answer, and it will find one — from you or from someone else. We answer on your behalf, within minutes, in its language, then we follow up until it is a yes or a no.",
-    'hero.cta1': '14-day pilot — free', 'hero.cta2': 'Ask the assistant',
-    'hero.clocknote': 'friday night — your inbox is open, nobody is there',
-    'night.head': '( 01 ) — THE SAME INQUIRY, TWO NIGHTS',
-    'night.st1': 'It is not the client who leaves.', 'night.st2': 'It is the silence that pushes them.',
-    'night.a.title': 'Without us', 'night.a.sub': 'What happens today',
-    'night.a.1': 'A message arrives through your form. Nobody sees it.',
-    'night.a.2': 'The same person writes to two others. One answers within a minute.',
-    'night.a.3': 'Monday. You open your inbox: 14 messages, this one is ninth.',
-    'night.a.4': 'You reply, and reply well. The appointment has already been booked elsewhere.',
-    'night.a.verdict': 'You did nothing wrong. You were simply closed — and the inquiry was not.',
-    'night.b.title': 'With us', 'night.b.sub': 'Same inquiry, same hour',
-    'night.b.1': 'The message arrives. It is read, understood, and it gets a real answer.',
-    'night.b.2': 'Reply sent in their language, with the questions that actually move things forward.',
-    'night.b.3': 'Monday. You are not discovering a message: you are discovering a conversation already under way.',
-    'night.b.4': 'If they go quiet, we follow up. Without hounding, until it is a yes or a no.',
-    'night.b.verdict': '<b>You are the one who answered.</b> The client has no reason to look elsewhere — and you typed nothing.',
-    'mech.head': '( 02 ) — HOW IT ACTUALLY WORKS',
-    'mech.st1': 'Three moves.', 'mech.st2': 'None of them yours.',
-    'mech.1.t': 'We plug into your inquiries',
-    'mech.1.d': 'Form, mailbox, listing portals: inquiries keep arriving where they already arrive. Nothing to migrate, nothing to relearn, no software to install.',
-    'mech.2.t': 'Every inquiry gets an answer',
-    'mech.2.d': 'Within minutes, at any hour, in the language of the person writing — French, German, English. A real answer to what they asked, not an automatic acknowledgement.',
-    'mech.3.t': 'You keep control',
-    'mech.3.d': 'During week one of the pilot you approve every reply before it goes out: nothing leaves without your green light. You see the tone, you correct it, we adjust. Then you decide whether to let it run.',
-    'lad.head': '( 03 ) — THE FOLLOW-UP, WHERE EVERYTHING IS DECIDED',
-    'lad.st1': 'Everyone thinks about replying.', 'lad.st2': 'Almost nobody follows up.',
-    'lad.1.w': 'Minute 1', 'lad.1.d': 'The reply goes out. The person knows there is someone on the other side.',
-    'lad.2.w': 'Day 2', 'lad.2.d': 'No answer? A short follow-up that brings something new — never a "just checking in".',
-    'lad.3.w': 'Day 5', 'lad.3.d': 'A different angle: what matters to them, not what suits us.',
-    'lad.4.w': 'The end', 'lad.4.d': 'One last honest line that closes it cleanly. If they say no, it is no: they are never contacted again. A closed file beats a vague one.',
-    'incl.head': '( 04 ) — WHAT IS INCLUDED', 'incl.title': 'All of it done for you',
-    'incl.1': '<b>An answer to every inquiry</b> — evenings, weekends and holidays included.',
-    'incl.2': '<b>Three languages</b> — the reply goes out in the language it came in.',
-    'incl.3': '<b>Follow-up until yes or no</b> — and a permanent stop on a no.',
-    'incl.4': '<b>Your tone, not ours</b> — we write the way your business writes.',
-    'incl.5': '<b>You see everything</b> — every exchange stays in your mailbox, which remains yours.',
-    'incl.6': '<b>GDPR</b> — opt-outs honoured, no data ever resold.',
-    'pilot.tag': 'The pilot — 14 days, free',
-    'pilot.1': 'We plug the system into <b>your real inquiries</b>, not a demo. You see what comes in and what goes out, live.',
-    'pilot.2': '<b>Week 1: you approve every reply</b> before it goes out. Nothing leaves without your agreement — that is the guarantee, not a promise.',
-    'pilot.3': 'After fourteen days, you decide. If you continue and the first month does not convince you, <b>it is refunded</b>.',
-    'pilot.4': 'We take <b>three pilots at a time</b>, no more — so each one is set up personally. When it is full, it is full.',
-    'fin.head': '( 05 ) — AND NOW',
-    'fin.st1': 'Tell us where', 'fin.st2': 'your inquiries land.',
-    'fin.note': 'One line is enough. We reply the same day — and if the pilot makes no sense for your business, we will say so plainly rather than sell you something.',
-    'form.msg2': 'WHERE DO YOUR INQUIRIES ARRIVE TODAY?',
-    'fin.immo': 'Real estate agency? See Zero lost leads ↗',
-    'fin.back': '← Back to all crafts'
-  }, qa: [
+  en: { qa: [
     ["How does the free pilot work?", "Fourteen days, on your real inquiries, no commitment. In week one you approve every reply before it goes out. At the end you decide — and if you continue, the first month is refunded if it does not convince you."],
     ["Do you really answer at night?", "Yes — evenings, weekends and public holidays included. That is the whole point: the inquiry landing at 10 pm on a Friday does not sleep until Monday."],
     ["What if a reply is off?", "That is exactly why week one exists: nothing goes out without your approval. You correct the tone, we adjust. What you approve becomes the reference."],
     ["In which languages?", "French, German and English — the reply goes out in the language of the message received."],
     ["How much does it cost?", "The fourteen-day pilot is free. After that the price depends on your volume and your inquiry sources — leave us your email and you get a precise quote the same day."],
     ["Does it affect my existing clients?", "No. We only handle NEW incoming inquiries. Your exchanges with current clients stay entirely yours."]
-  ]},
+  ] },
+  fr: { t: {
+    'meta.title': 'Réponse &amp; Relance — Scarsellato, Luxembourg',
+    'meta.desc': "Chaque demande reçoit une vraie réponse en quelques minutes — soirs et week-ends compris, en FR/DE/EN — puis une relance jusqu'au oui ou au non. Pilote 14 jours gratuit, sans cookies.",
+    'ask.hero': 'Comment fonctionne le pilote de 14 jours de la réponse & relance ?',
+    'h.idx': '[ <b>Réponse &amp; Relance</b> ] — réponse &amp; relance des demandes · FR · DE · EN',
+    'h.l1': 'La demande arrive', 'h.l2': 'à <span class="it">22 h 47.</span>',
+    'h.lede': "Vous dormez. Elle, non : elle attend une réponse, et elle en trouvera une — chez vous ou ailleurs. Nous répondons à votre place, en quelques minutes, dans sa langue, puis nous relançons jusqu'à ce que ce soit oui ou non.",
+    'h.cta1': 'Pilote 14 jours — gratuit', 'h.cta2': "Demander à l'assistant",
+    'h.f1': "[ 22:47 ] — vendredi soir : votre boîte est ouverte, personne n'est là", 'h.f2': 'Défiler ↓',
+    'v.idx': '[ <b>▶</b> ] — Le métier, en mouvement',
+    'n.idx': '[ <b>01</b> ] — La même demande, deux nuits',
+    'n.l1': "Ce n'est pas le client qui part.", 'n.l2': "C'est le silence qui le pousse.",
+    'n.a.t': 'Sans nous', 'n.a.s': "Ce qui se passe aujourd'hui",
+    'n.a.1': 'Un message arrive par votre formulaire. Personne ne le voit.',
+    'n.a.2': "La même personne écrit à deux autres. L'une répond dans la minute.",
+    'n.a.3': 'Lundi. Vous ouvrez votre boîte : 14 messages, celui-ci est le neuvième.',
+    'n.a.4': 'Vous répondez, bien. Le rendez-vous est déjà pris ailleurs.',
+    'n.a.v': "Vous n'avez rien fait de mal. Vous étiez simplement fermé — et la demande, elle, ne l'était pas.",
+    'n.b.t': 'Avec <span class="it gold">nous</span>', 'n.b.s': 'La même demande, même heure',
+    'n.b.1': 'Le message arrive. Il est lu, compris, et il obtient une vraie réponse.',
+    'n.b.2': 'Réponse envoyée dans sa langue, avec les questions utiles pour avancer.',
+    'n.b.3': 'Lundi. Vous ne découvrez pas un message : vous découvrez une conversation déjà commencée.',
+    'n.b.4w': 'J+2 · J+5',
+    'n.b.4': "S'il ne répond pas, nous relançons. Sans harceler, jusqu'au oui ou au non.",
+    'n.b.v': "<b>Vous êtes celui qui a répondu.</b> Le client n'a plus de raison d'aller voir ailleurs — et vous n'avez rien tapé.",
+    'm.idx': '[ <b>03</b> ] — Comment ça marche vraiment',
+    'm.l1': 'Trois gestes.', 'm.l2': 'Aucun de votre part.',
+    'm.1.t': 'Nous branchons vos demandes',
+    'm.1.d': "Formulaire, boîte mail, portails d'annonces : les demandes arrivent où elles arrivent déjà. Rien à migrer, rien à réapprendre, aucun logiciel à installer chez vous.",
+    'm.2.t': 'Chaque demande reçoit une réponse',
+    'm.2.d': "En quelques minutes, à toute heure, dans la langue du demandeur — français, allemand, anglais. Une vraie réponse à ce qu'il demande, pas un accusé de réception automatique.",
+    'm.3.t': 'Vous gardez la main',
+    'm.3.d': "La première semaine du pilote, vous validez chaque réponse avant qu'elle parte : rien ne part sans votre accord. Vous voyez le ton, vous corrigez, nous ajustons. Ensuite, vous décidez de la laisser courir ou non.",
+    'p.idx': '[ <b>02</b> ] — La relance, là où tout se joue',
+    'p.l1': 'Répondre, tout le monde y pense.', 'p.l2': 'Relancer, presque personne.',
+    's1.h': 'Minute 1', 's1.p': "La réponse part. Le demandeur sait qu'il existe quelqu'un en face.",
+    's2.h': 'Jour 2', 's2.p': 'Pas de réponse ? Une relance courte, qui apporte quelque chose de neuf — jamais un « je me permets de revenir vers vous ».',
+    's3.h': 'Jour 5', 's3.p': 'Un angle différent : ce qui compte pour lui, pas ce qui nous arrange.',
+    's4.h': 'Fin', 's4.p': "Une dernière ligne, honnête, qui referme proprement. S'il dit non, c'est non : il ne sera plus jamais recontacté. Un dossier fermé vaut mieux qu'un dossier flou.",
+    'i.idx': '[ <b>04</b> ] — Ce qui est compris',
+    'i.l1': 'Tout est fait', 'i.l2': 'pour vous.',
+    'i.1s': 'Réponse à chaque demande', 'i.1d': 'Soirs, week-ends, jours fériés compris.',
+    'i.2s': 'Trois langues', 'i.2d': 'La réponse part dans la langue du message reçu.',
+    'i.3s': "Relance jusqu'au oui ou au non", 'i.3d': 'Et arrêt définitif sur un non.',
+    'i.4s': 'Votre ton, pas le nôtre', 'i.4d': 'Nous écrivons comme votre maison écrit.',
+    'i.5s': 'Vous voyez tout', 'i.5d': 'Chaque échange reste dans votre boîte, elle vous appartient.',
+    'i.6s': 'RGPD', 'i.6d': 'Désinscription honorée, aucune donnée revendue, jamais.',
+    'pi.idx': '[ <b>Le pilote</b> ] — 14 jours, gratuit',
+    'pi.l1': 'Jugez sur vos', 'pi.l2': 'vraies demandes.',
+    'pi.1': 'Nous branchons le système sur <b>vos vraies demandes</b>, pas sur une démo. Vous voyez ce qui arrive et ce qui repart, en direct.',
+    'pi.2': "<b>Semaine 1 : vous validez chaque réponse</b> avant qu'elle parte. Rien ne part sans votre accord — c'est la garantie, pas une promesse.",
+    'pi.3': 'Au bout de quatorze jours, vous décidez. Si vous continuez et que le premier mois ne vous convainc pas, <b>il vous est remboursé</b>.',
+    'pi.4': "Nous ne prenons que <b>trois pilotes en parallèle</b> — pour que chacun soit réglé personnellement. Quand c'est plein, c'est plein.",
+    'f.idx': "[ <b>FAQ</b> ] — Les questions qu'on nous pose", 'f.l1': 'Franchement,', 'f.l2': 'avant le pilote.',
+    'q1': 'Comment marche le pilote gratuit ?', 'a1': "Quatorze jours, sur vos vraies demandes, sans engagement. La première semaine, vous validez chaque réponse avant qu'elle parte. À la fin, vous décidez — et si vous continuez, le premier mois est remboursé s'il ne vous convainc pas.",
+    'q2': 'Vous répondez vraiment la nuit ?', 'a2': "Oui — soirs, week-ends et jours fériés compris. C'est tout l'intérêt : la demande qui arrive un vendredi à 22 h ne dort pas jusqu'à lundi.",
+    'q3': 'Et si la réponse est à côté ?', 'a3': "C'est exactement pourquoi la semaine 1 existe : rien ne part sans votre accord. Vous corrigez le ton, nous ajustons. Ce que vous validez devient la référence.",
+    'q4': 'Dans quelles langues ?', 'a4': 'Français, allemand et anglais — la réponse part dans la langue du message reçu.',
+    'q5': 'Combien ça coûte ?', 'a5': 'Le pilote de quatorze jours est gratuit. Ensuite le prix dépend de votre volume et de vos sources de demandes — laissez-nous votre e-mail et vous avez un devis précis le jour même.',
+    'q6': 'Mes clients existants sont concernés ?', 'a6': "Non. Nous ne touchons qu'aux nouvelles demandes entrantes. Vos échanges avec vos clients actuels restent entièrement les vôtres.",
+    'k.idx': '[ <b>05</b> ] — Et maintenant',
+    'k.l1': 'Dites-nous où', 'k.l2': 'arrivent vos demandes.',
+    'k.lede': "Une ligne suffit. Nous répondons le jour même — et si le pilote n'a pas de sens pour votre maison, nous le dirons franchement plutôt que de vous vendre quelque chose.",
+    'k.msg': "OÙ ARRIVENT VOS DEMANDES AUJOURD'HUI ?",
+    'k.immo': 'Vous êtes une agence immobilière ? Voir Zéro lead perdu ↗',
+    'k.back': '← Revoir tous les métiers',
+    'ck.fri': 'Vendredi soir', 'ck.mon': 'Lundi', 'ck.fu': 'La relance', 'ck.pilot': 'Le pilote',
+    'st.w1': 'Semaine 1', 'st.14': '14 jours'
+  }, qa: [
+    ["Comment marche le pilote gratuit ?", "Quatorze jours, sur vos vraies demandes, sans engagement. La première semaine, vous validez chaque réponse avant qu'elle parte. À la fin, vous décidez — et si vous continuez, le premier mois est remboursé s'il ne vous convainc pas."],
+    ["Vous répondez vraiment la nuit ?", "Oui — soirs, week-ends et jours fériés compris. C'est tout l'intérêt : la demande qui arrive un vendredi à 22 h ne dort pas jusqu'à lundi."],
+    ["Et si la réponse est à côté ?", "C'est exactement pourquoi la semaine 1 existe : rien ne part sans votre accord. Vous corrigez le ton, nous ajustons. Ce que vous validez devient la référence."],
+    ["Dans quelles langues ?", "Français, allemand et anglais — la réponse part dans la langue du message reçu."],
+    ["Combien ça coûte ?", "Le pilote de quatorze jours est gratuit. Ensuite le prix dépend de votre volume et de vos sources de demandes — laissez-nous votre e-mail et vous avez un devis précis le jour même."],
+    ["Mes clients existants sont concernés ?", "Non. Nous ne touchons qu'aux NOUVELLES demandes entrantes. Vos échanges avec vos clients actuels restent entièrement les vôtres."]
+  ] },
   de: { t: {
-    'meta.title': 'Antwort & Nachfassen — Scarsellato, Luxemburg',
+    'meta.title': 'Antwort &amp; Nachfassen — Scarsellato, Luxemburg',
     'meta.desc': 'Jede Anfrage erhält innerhalb von Minuten eine echte Antwort — abends und am Wochenende, auf FR/DE/EN — danach fassen wir nach, bis es ein Ja oder ein Nein ist. 14-Tage-Pilot kostenlos, ohne Cookies.',
-    'nav.this': 'Antwort &amp; Nachfassen', 'cta.pilot': 'Pilot anfragen',
-    'hero.chip': '( GEWERK 01 ) — ANFRAGEN BEANTWORTEN &amp; NACHFASSEN',
-    'hero.kicker': 'LUXEMBURG · FR · DE · EN',
-    'hero.st1': 'Die Anfrage kommt', 'hero.st2': 'um 22:47 Uhr.',
-    'hero.sub': 'Sie schlafen. Die Anfrage nicht: Sie wartet auf eine Antwort — und sie wird eine finden, bei Ihnen oder woanders. Wir antworten an Ihrer Stelle, innerhalb von Minuten, in ihrer Sprache, und fassen nach, bis es ein Ja oder ein Nein ist.',
-    'hero.cta1': '14-Tage-Pilot — kostenlos', 'hero.cta2': 'Den Assistenten fragen',
-    'hero.clocknote': 'Freitagabend — Ihr Postfach ist offen, niemand ist da',
-    'night.head': '( 01 ) — DIESELBE ANFRAGE, ZWEI NÄCHTE',
-    'night.st1': 'Nicht der Kunde geht.', 'night.st2': 'Das Schweigen schickt ihn weg.',
-    'night.a.title': 'Ohne uns', 'night.a.sub': 'Was heute passiert',
-    'night.a.1': 'Eine Nachricht kommt über Ihr Formular. Niemand sieht sie.',
-    'night.a.2': 'Dieselbe Person schreibt zwei weitere an. Eine antwortet innerhalb einer Minute.',
-    'night.a.3': 'Montag. Sie öffnen Ihr Postfach: 14 Nachrichten, diese ist die neunte.',
-    'night.a.4': 'Sie antworten, und zwar gut. Der Termin ist längst woanders vergeben.',
-    'night.a.verdict': 'Sie haben nichts falsch gemacht. Sie hatten nur geschlossen — die Anfrage nicht.',
-    'night.b.title': 'Mit uns', 'night.b.sub': 'Dieselbe Anfrage, dieselbe Uhrzeit',
-    'night.b.1': 'Die Nachricht kommt an. Sie wird gelesen, verstanden — und bekommt eine echte Antwort.',
-    'night.b.2': 'Antwort in ihrer Sprache, mit den Fragen, die wirklich weiterbringen.',
-    'night.b.3': 'Montag. Sie entdecken keine Nachricht: Sie entdecken ein bereits laufendes Gespräch.',
-    'night.b.4': 'Bleibt es still, fassen wir nach. Ohne zu drängen, bis es ein Ja oder ein Nein ist.',
-    'night.b.verdict': '<b>Sie sind derjenige, der geantwortet hat.</b> Der Kunde hat keinen Grund mehr, woanders zu schauen — und Sie haben nichts getippt.',
-    'mech.head': '( 02 ) — WIE ES WIRKLICH FUNKTIONIERT',
-    'mech.st1': 'Drei Handgriffe.', 'mech.st2': 'Keiner davon Ihrer.',
-    'mech.1.t': 'Wir binden Ihre Anfragen an',
-    'mech.1.d': 'Formular, Postfach, Immobilienportale: Anfragen kommen weiterhin dort an, wo sie ohnehin ankommen. Nichts migrieren, nichts neu lernen, keine Software installieren.',
-    'mech.2.t': 'Jede Anfrage bekommt eine Antwort',
-    'mech.2.d': 'Innerhalb von Minuten, zu jeder Stunde, in der Sprache des Absenders — Französisch, Deutsch, Englisch. Eine echte Antwort auf die Frage, keine automatische Empfangsbestätigung.',
-    'mech.3.t': 'Sie behalten die Kontrolle',
-    'mech.3.d': 'In Woche eins des Piloten geben Sie jede Antwort frei, bevor sie rausgeht: Nichts geht ohne Ihr Einverständnis. Sie sehen den Ton, Sie korrigieren, wir passen an. Danach entscheiden Sie, ob es laufen darf.',
-    'lad.head': '( 03 ) — DAS NACHFASSEN, WO ES SICH ENTSCHEIDET',
-    'lad.st1': 'Ans Antworten denken alle.', 'lad.st2': 'Ans Nachfassen fast niemand.',
-    'lad.1.w': 'Minute 1', 'lad.1.d': 'Die Antwort geht raus. Der Absender weiß, dass jemand auf der anderen Seite ist.',
-    'lad.2.w': 'Tag 2', 'lad.2.d': 'Keine Antwort? Ein kurzes Nachfassen, das etwas Neues bringt — nie ein „ich melde mich nochmal“.',
-    'lad.3.w': 'Tag 5', 'lad.3.d': 'Ein anderer Blickwinkel: was für ihn zählt, nicht was uns passt.',
-    'lad.4.w': 'Schluss', 'lad.4.d': 'Eine letzte ehrliche Zeile, die sauber abschließt. Sagt er nein, ist es nein: er wird nie wieder kontaktiert. Eine geschlossene Akte ist besser als eine unklare.',
-    'incl.head': '( 04 ) — WAS ENTHALTEN IST', 'incl.title': 'Alles für Sie erledigt',
-    'incl.1': '<b>Eine Antwort auf jede Anfrage</b> — abends, am Wochenende und an Feiertagen.',
-    'incl.2': '<b>Drei Sprachen</b> — die Antwort geht in der Sprache raus, in der die Nachricht kam.',
-    'incl.3': '<b>Nachfassen bis Ja oder Nein</b> — und endgültiger Stopp bei einem Nein.',
-    'incl.4': '<b>Ihr Ton, nicht unserer</b> — wir schreiben so, wie Ihr Haus schreibt.',
-    'incl.5': '<b>Sie sehen alles</b> — jeder Austausch bleibt in Ihrem Postfach, und das gehört Ihnen.',
-    'incl.6': '<b>DSGVO</b> — Abmeldungen werden respektiert, keine Daten werden je weiterverkauft.',
-    'pilot.tag': 'Der Pilot — 14 Tage, kostenlos',
-    'pilot.1': 'Wir verbinden das System mit <b>Ihren echten Anfragen</b>, nicht mit einer Demo. Sie sehen live, was reinkommt und was rausgeht.',
-    'pilot.2': '<b>Woche 1: Sie geben jede Antwort frei</b>, bevor sie rausgeht. Nichts geht ohne Ihr Einverständnis — das ist die Garantie, kein Versprechen.',
-    'pilot.3': 'Nach vierzehn Tagen entscheiden Sie. Wenn Sie weitermachen und der erste Monat Sie nicht überzeugt, <b>wird er erstattet</b>.',
-    'pilot.4': 'Wir nehmen <b>drei Piloten gleichzeitig</b>, nicht mehr — damit jeder persönlich eingerichtet wird. Wenn es voll ist, ist es voll.',
-    'fin.head': '( 05 ) — UND JETZT',
-    'fin.st1': 'Sagen Sie uns, wo', 'fin.st2': 'Ihre Anfragen ankommen.',
-    'fin.note': 'Eine Zeile genügt. Wir antworten noch am selben Tag — und wenn der Pilot für Ihr Haus keinen Sinn ergibt, sagen wir das offen, statt Ihnen etwas zu verkaufen.',
-    'form.msg2': 'WO KOMMEN IHRE ANFRAGEN HEUTE AN?',
-    'fin.immo': 'Immobilienagentur? Zur Seite Kein Lead geht verloren ↗',
-    'fin.back': '← Zurück zu allen Gewerken'
+    'ask.hero': 'Wie funktioniert der 14-Tage-Pilot von Antwort & Nachfassen?',
+    'h.idx': '[ <b>Antwort &amp; Nachfassen</b> ] — Anfragen beantworten &amp; nachfassen · FR · DE · EN',
+    'h.l1': 'Die Anfrage kommt', 'h.l2': 'um <span class="it">22:47 Uhr.</span>',
+    'h.lede': 'Sie schlafen. Die Anfrage nicht: Sie wartet auf eine Antwort — und sie wird eine finden, bei Ihnen oder woanders. Wir antworten an Ihrer Stelle, innerhalb von Minuten, in ihrer Sprache, und fassen nach, bis es ein Ja oder ein Nein ist.',
+    'h.cta1': '14-Tage-Pilot — kostenlos', 'h.cta2': 'Den Assistenten fragen',
+    'h.f1': '[ 22:47 ] — Freitagabend: Ihr Postfach ist offen, niemand ist da', 'h.f2': 'Scrollen ↓',
+    'v.idx': '[ <b>▶</b> ] — Das Gewerk, in Bewegung',
+    'n.idx': '[ <b>01</b> ] — Dieselbe Anfrage, zwei Nächte',
+    'n.l1': 'Nicht der Kunde geht.', 'n.l2': 'Das Schweigen schickt ihn weg.',
+    'n.a.t': 'Ohne uns', 'n.a.s': 'Was heute passiert',
+    'n.a.1': 'Eine Nachricht kommt über Ihr Formular. Niemand sieht sie.',
+    'n.a.2': 'Dieselbe Person schreibt zwei weitere an. Eine antwortet innerhalb einer Minute.',
+    'n.a.3': 'Montag. Sie öffnen Ihr Postfach: 14 Nachrichten, diese ist die neunte.',
+    'n.a.4': 'Sie antworten, und zwar gut. Der Termin ist längst woanders vergeben.',
+    'n.a.v': 'Sie haben nichts falsch gemacht. Sie hatten nur geschlossen — die Anfrage nicht.',
+    'n.b.t': 'Mit <span class="it gold">uns</span>', 'n.b.s': 'Dieselbe Anfrage, dieselbe Uhrzeit',
+    'n.b.1': 'Die Nachricht kommt an. Sie wird gelesen, verstanden — und bekommt eine echte Antwort.',
+    'n.b.2': 'Antwort in ihrer Sprache, mit den Fragen, die wirklich weiterbringen.',
+    'n.b.3': 'Montag. Sie entdecken keine Nachricht: Sie entdecken ein bereits laufendes Gespräch.',
+    'n.b.4w': 'Tag 2 · Tag 5',
+    'n.b.4': 'Bleibt es still, fassen wir nach. Ohne zu drängen, bis es ein Ja oder ein Nein ist.',
+    'n.b.v': '<b>Sie sind derjenige, der geantwortet hat.</b> Der Kunde hat keinen Grund mehr, woanders zu schauen — und Sie haben nichts getippt.',
+    'm.idx': '[ <b>03</b> ] — Wie es wirklich funktioniert',
+    'm.l1': 'Drei Handgriffe.', 'm.l2': 'Keiner davon Ihrer.',
+    'm.1.t': 'Wir binden Ihre Anfragen an',
+    'm.1.d': 'Formular, Postfach, Immobilienportale: Anfragen kommen weiterhin dort an, wo sie ohnehin ankommen. Nichts migrieren, nichts neu lernen, keine Software installieren.',
+    'm.2.t': 'Jede Anfrage bekommt eine Antwort',
+    'm.2.d': 'Innerhalb von Minuten, zu jeder Stunde, in der Sprache des Absenders — Französisch, Deutsch, Englisch. Eine echte Antwort auf die Frage, keine automatische Empfangsbestätigung.',
+    'm.3.t': 'Sie behalten die Kontrolle',
+    'm.3.d': 'In Woche eins des Piloten geben Sie jede Antwort frei, bevor sie rausgeht: Nichts geht ohne Ihr Einverständnis. Sie sehen den Ton, Sie korrigieren, wir passen an. Danach entscheiden Sie, ob es laufen darf.',
+    'p.idx': '[ <b>02</b> ] — Das Nachfassen, wo es sich entscheidet',
+    'p.l1': 'Ans Antworten denken alle.', 'p.l2': 'Ans Nachfassen fast niemand.',
+    's1.h': 'Minute 1', 's1.p': 'Die Antwort geht raus. Der Absender weiß, dass jemand auf der anderen Seite ist.',
+    's2.h': 'Tag 2', 's2.p': 'Keine Antwort? Ein kurzes Nachfassen, das etwas Neues bringt — nie ein „ich melde mich nochmal“.',
+    's3.h': 'Tag 5', 's3.p': 'Ein anderer Blickwinkel: was für ihn zählt, nicht was uns passt.',
+    's4.h': 'Schluss', 's4.p': 'Eine letzte ehrliche Zeile, die sauber abschließt. Sagt er nein, ist es nein: Er wird nie wieder kontaktiert. Eine geschlossene Akte ist besser als eine unklare.',
+    'i.idx': '[ <b>04</b> ] — Was enthalten ist',
+    'i.l1': 'Alles für Sie', 'i.l2': 'erledigt.',
+    'i.1s': 'Eine Antwort auf jede Anfrage', 'i.1d': 'Abends, am Wochenende und an Feiertagen.',
+    'i.2s': 'Drei Sprachen', 'i.2d': 'Die Antwort geht in der Sprache raus, in der die Nachricht kam.',
+    'i.3s': 'Nachfassen bis Ja oder Nein', 'i.3d': 'Und endgültiger Stopp bei einem Nein.',
+    'i.4s': 'Ihr Ton, nicht unserer', 'i.4d': 'Wir schreiben so, wie Ihr Haus schreibt.',
+    'i.5s': 'Sie sehen alles', 'i.5d': 'Jeder Austausch bleibt in Ihrem Postfach, und das gehört Ihnen.',
+    'i.6s': 'DSGVO', 'i.6d': 'Abmeldungen werden respektiert, keine Daten werden je weiterverkauft.',
+    'pi.idx': '[ <b>Der Pilot</b> ] — 14 Tage, kostenlos',
+    'pi.l1': 'Urteilen Sie an Ihren', 'pi.l2': 'echten Anfragen.',
+    'pi.1': 'Wir verbinden das System mit <b>Ihren echten Anfragen</b>, nicht mit einer Demo. Sie sehen live, was reinkommt und was rausgeht.',
+    'pi.2': '<b>Woche 1: Sie geben jede Antwort frei</b>, bevor sie rausgeht. Nichts geht ohne Ihr Einverständnis — das ist die Garantie, kein Versprechen.',
+    'pi.3': 'Nach vierzehn Tagen entscheiden Sie. Wenn Sie weitermachen und der erste Monat Sie nicht überzeugt, <b>wird er erstattet</b>.',
+    'pi.4': 'Wir nehmen <b>drei Piloten gleichzeitig</b>, nicht mehr — damit jeder persönlich eingerichtet wird. Wenn es voll ist, ist es voll.',
+    'f.idx': '[ <b>FAQ</b> ] — Die Fragen, die man uns stellt', 'f.l1': 'Ehrlich gesagt,', 'f.l2': 'vor dem Pilot.',
+    'q1': 'Wie funktioniert der kostenlose Pilot?', 'a1': 'Vierzehn Tage, mit Ihren echten Anfragen, ohne Verpflichtung. In Woche eins geben Sie jede Antwort frei, bevor sie rausgeht. Am Ende entscheiden Sie — und wenn Sie weitermachen, wird der erste Monat erstattet, falls er Sie nicht überzeugt.',
+    'q2': 'Antworten Sie wirklich nachts?', 'a2': 'Ja — abends, am Wochenende und an Feiertagen. Genau darum geht es: Die Anfrage, die freitags um 22 Uhr kommt, schläft nicht bis Montag.',
+    'q3': 'Und wenn eine Antwort danebenliegt?', 'a3': 'Genau dafür gibt es Woche eins: Nichts geht ohne Ihre Freigabe raus. Sie korrigieren den Ton, wir passen an. Was Sie freigeben, wird zur Referenz.',
+    'q4': 'In welchen Sprachen?', 'a4': 'Französisch, Deutsch und Englisch — die Antwort geht in der Sprache der erhaltenen Nachricht raus.',
+    'q5': 'Was kostet das?', 'a5': 'Der vierzehntägige Pilot ist kostenlos. Danach hängt der Preis von Ihrem Volumen und Ihren Anfragequellen ab — hinterlassen Sie uns Ihre E-Mail und Sie erhalten noch am selben Tag ein genaues Angebot.',
+    'q6': 'Betrifft das meine Bestandskunden?', 'a6': 'Nein. Wir kümmern uns ausschließlich um neue eingehende Anfragen. Ihr Austausch mit aktuellen Kunden gehört weiterhin ganz Ihnen.',
+    'k.idx': '[ <b>05</b> ] — Und jetzt',
+    'k.l1': 'Sagen Sie uns, wo', 'k.l2': 'Ihre Anfragen ankommen.',
+    'k.lede': 'Eine Zeile genügt. Wir antworten noch am selben Tag — und wenn der Pilot für Ihr Haus keinen Sinn ergibt, sagen wir das offen, statt Ihnen etwas zu verkaufen.',
+    'k.msg': 'WO KOMMEN IHRE ANFRAGEN HEUTE AN?',
+    'k.immo': 'Immobilienagentur? Zur Seite Kein Lead geht verloren ↗',
+    'k.back': '← Zurück zu allen Gewerken',
+    'ck.fri': 'Freitagabend', 'ck.mon': 'Montag', 'ck.fu': 'Das Nachfassen', 'ck.pilot': 'Der Pilot',
+    'st.w1': 'Woche 1', 'st.14': '14 Tage'
   }, qa: [
     ["Wie funktioniert der kostenlose Pilot?", "Vierzehn Tage, mit Ihren echten Anfragen, ohne Verpflichtung. In Woche eins geben Sie jede Antwort frei, bevor sie rausgeht. Am Ende entscheiden Sie — und wenn Sie weitermachen, wird der erste Monat erstattet, falls er Sie nicht überzeugt."],
     ["Antworten Sie wirklich nachts?", "Ja — abends, am Wochenende und an Feiertagen. Genau darum geht es: Die Anfrage, die freitags um 22 Uhr kommt, schläft nicht bis Montag."],
@@ -354,22 +553,71 @@ window.PAGE_I18N = {
     ["In welchen Sprachen?", "Französisch, Deutsch und Englisch — die Antwort geht in der Sprache der erhaltenen Nachricht raus."],
     ["Was kostet das?", "Der vierzehntägige Pilot ist kostenlos. Danach hängt der Preis von Ihrem Volumen und Ihren Anfragequellen ab — hinterlassen Sie uns Ihre E-Mail und Sie erhalten noch am selben Tag ein genaues Angebot."],
     ["Betrifft das meine Bestandskunden?", "Nein. Wir kümmern uns ausschließlich um NEUE eingehende Anfragen. Ihr Austausch mit aktuellen Kunden gehört weiterhin ganz Ihnen."]
-  ]}
+  ] }
 };
-
-/* L'horloge du héros avance vers 22:49 quand on descend — le moment
-   où la réponse part. Purement décoratif : aucune donnée n'en dépend. */
-window.onShellScroll = (y, vh) => {
-  const el = document.getElementById('clockFace');
-  if (!el) return;
-  // dénominateur planché à 1 : un viewport de hauteur nulle (onglet non composité,
-  // aperçu, impression) donnait 0/0 = NaN et affichait « 22:NaN » à l'écran.
-  const p = Math.max(0, Math.min(1, y / Math.max(1, vh * 0.85)));
-  const total = 47 + Math.round(p * 2); // 22:47 -> 22:49, le moment où la réponse part
-  el.firstChild.nodeValue = '22:' + String(total).padStart(2, '0');
-};
+/* "Ask the assistant" buttons: the chat prompt follows the page language (v3.js reads data-ask at click time). */
+addEventListener('DOMContentLoaded', () => {
+  const T = (window.SCAR || {}).T || {};
+  document.querySelectorAll('[data-ask-k]').forEach(b => { const v = T[b.dataset.askK]; if (v) b.dataset.ask = v; });
+});
+/* hero dial: 60 fine minute ticks (longer every five) — the gold arc is drawn to minute 47 by CSS */
+(function () {
+  var g = document.getElementById('rrTicks'); if (!g) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  for (var i = 0; i < 60; i++) {
+    var a = i * Math.PI / 30, h = i % 5 === 0, r1 = 97, r0 = h ? 89 : 93, l = document.createElementNS(NS, 'line');
+    l.setAttribute('x1', (100 + r0 * Math.sin(a)).toFixed(2)); l.setAttribute('y1', (100 - r0 * Math.cos(a)).toFixed(2));
+    l.setAttribute('x2', (100 + r1 * Math.sin(a)).toFixed(2)); l.setAttribute('y2', (100 - r1 * Math.cos(a)).toFixed(2));
+    if (h) l.setAttribute('class', 'h');
+    g.appendChild(l);
+  }
+})();
+/* the story clock: shows the time written in the page at the reading line (it never invents one — it copies
+   the stamp's own, already-translated text), lights the spine's nodes as the night passes. */
+addEventListener('load', function () {
+  var story = document.querySelector('.rr-story'), ck = document.getElementById('rrClock');
+  if (!story || !ck) return;
+  var val = document.getElementById('rrVal'), ring = ck.querySelector('.ring .p'), wrap0 = story.querySelector('.wrap');
+  var labs = [].slice.call(ck.querySelectorAll('[data-l]'));
+  var stamps = [].slice.call(story.querySelectorAll('.ck'));
+  var nodesD = [].slice.call(story.querySelectorAll('.rr-node'));
+  var nodesM = [].slice.call(story.querySelectorAll('.rr-tl .rr-node, .rr-ev'));
+  var cur = null, curL = null, flipT = 0, lastNow = null;
+  function setVal(v, l) {
+    if (v !== cur) {
+      cur = v; val.classList.add('flip'); clearTimeout(flipT);
+      flipT = setTimeout(function () { val.textContent = v.replace(' · ', ' ·\n'); val.classList.toggle('long', v.length > 7); val.classList.remove('flip'); }, 200);
+    }
+    if (l !== curL) { curL = l; labs.forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-l') === l); }); }
+  }
+  function tick() {
+    var H = innerHeight, sr = story.getBoundingClientRect();
+    if (sr.top < H && sr.bottom > 0) {
+      var list = innerWidth <= 860 ? nodesM : nodesD, now = null, nowTop = -1e9;
+      list.forEach(function (d) {
+        if (!d.offsetParent) return;
+        var t = d.getBoundingClientRect().top, lit = t < H * 0.6;
+        if (d.classList.contains('lit') !== lit) d.classList.toggle('lit', lit);
+        if (lit && t > nowTop) { now = d; nowTop = t; }
+      });
+      if (now !== lastNow) { if (lastNow) lastNow.classList.remove('now'); if (now) now.classList.add('now'); lastNow = now; }
+    }
+    var on = innerWidth >= 1180 && sr.top < H * 0.45 && sr.bottom > H * 0.55;
+    if (ck.classList.contains('on') !== on) ck.classList.toggle('on', on);
+    if (on && stamps.length) {
+      var mid = H * 0.55, s = stamps[0];
+      for (var i = 0; i < stamps.length; i++) { if (stamps[i].getBoundingClientRect().top < mid) s = stamps[i]; else break; }
+      setVal(s.textContent.replace(/\s+/g, ' ').trim(), s.getAttribute('data-ckl'));
+      var p = Math.max(0, Math.min(1, (mid - sr.top) / sr.height));
+      ring.style.strokeDashoffset = (100 - p * 100).toFixed(1);
+      // never over text: if a narrow layout ever pushes content under it, it fades to a whisper
+      ck.classList.toggle('ghost', ck.getBoundingClientRect().left < wrap0.getBoundingClientRect().right + 6);
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+});
 </script>
-<script src="../assets/shell.js?v=8"></script>
-
+<script src="../assets/v3.js?v=4"></script>
 </body>
 </html>
