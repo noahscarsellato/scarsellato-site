@@ -82,6 +82,13 @@
 .tag li b { color: var(--cream); font-weight: 500; }
 @media (max-width: 860px) { .included { grid-template-columns: 1fr; } .tag { transform: none; } }
 
+.ag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line-l); border: 1px solid var(--line-l); border-radius: 22px; overflow: hidden; }
+.ag { background: #fbf7f0; padding: clamp(26px, 3.4vw, 44px); position: relative; }
+.ag .n { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(2.6rem, 5vw, 4rem); line-height: 1.05; color: var(--gold-deep); padding-bottom: .06em; }
+.ag h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.2; margin: 10px 0 12px; padding-bottom: .06em; }
+.ag p:not(.n) { color: var(--ink-mut); max-width: 52ch; }
+@media (max-width: 760px) { .ag-grid { grid-template-columns: 1fr; } }
+
 .faq-split { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(30px, 5vw, 80px); align-items: start; }
 .faq-head { position: sticky; top: 110px; }
 @media (max-width: 860px) { .faq-split { grid-template-columns: 1fr; } .faq-head { position: static; } }
@@ -222,6 +229,23 @@
     </div>
   </section>
 
+  <!-- ===== AGENCIES ONLY — the four things built for how an agency works ===== -->
+  <section class="sec light sheet" id="agences" data-reveal>
+    <div class="wrap">
+      <p class="idx" data-i18n="ag.idx">[ <b>Agencies only</b> ] — built for how an agency works</p>
+      <h2 class="h-l" style="margin:22px 0 clamp(40px,5vw,70px)">
+        <span class="lm"><span style="--i:0" data-i18n="ag.l1">Not a generic assistant.</span></span>
+        <span class="lm"><span style="--i:1;color:var(--gold-deep)" class="it" data-i18n="ag.l2">An agency's working day.</span></span>
+      </h2>
+      <div class="ag-grid">
+        <article class="ag fade" style="--d:0"><p class="n">i</p><h3 data-i18n="ag.1.t">Viewings that book themselves</h3><p data-i18n="ag.1.d">The reply offers viewing times from your calendar as one-click buttons. Your hours, your minimum notice, never a double booking — and you and the client both receive the invitation. Cancelling and moving are handled too.</p></article>
+        <article class="ag fade" style="--d:120"><p class="n">ii</p><h3 data-i18n="ag.2.t">The rental file, before you call</h3><p data-i18n="ag.2.d">For rentals, the reply gathers what you always need — move-in date, number of occupants, income or guarantor — without ever asking for documents by email. When the file is complete, you are told: ready to present to the owner.</p></article>
+        <article class="ag fade" style="--d:0"><p class="n">iii</p><h3 data-i18n="ag.3.t">Sellers come straight to you</h3><p data-i18n="ag.3.d">Someone wants to sell or rent out their property? No price, no estimate, no promise is ever written. The reply thanks them and asks the essentials — and you get a “potential listing” alert to call them yourself.</p></article>
+        <article class="ag fade" style="--d:120"><p class="n">iv</p><h3 data-i18n="ag.4.t">Already gone? Still a lead.</h3><p data-i18n="ag.4.d">If the property is under offer, the reply says so plainly, offers no viewing for it, and suggests the closest one you actually have — then asks what they are looking for.</p></article>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== 04 — THE FOLLOW-UP — pinned horizontal ===== -->
   <section class="process light sheet" id="methode">
     <div class="stick">
@@ -355,6 +379,16 @@ window.PAGE_I18N = {
     'h.l1': 'Zéro lead', 'h.l2': '<span class="it">perdu.</span>',
     'h.lede': "Dimanche, 21 h. Une demande arrive sur votre annonce. Vos bureaux sont vides — et la même personne vient d'écrire à trois autres agences. Nous lui répondons en quelques minutes, au nom de votre agence, dans sa langue. Puis nous relançons jusqu'à ce que ce soit oui ou non.",
     'h.cta1': 'Pilote 14 jours — gratuit', 'h.cta2': "Demander à l'assistant",
+    'ag.idx': '[ <b>Pour les agences</b> ] — pensé pour le quotidien d\'une agence',
+    'ag.l1': 'Pas un assistant générique.', 'ag.l2': 'La journée d\'une agence.',
+    'ag.1.t': 'Des visites qui se réservent seules',
+    'ag.1.d': 'La réponse propose des créneaux de visite tirés de votre agenda, en un clic. Vos horaires, votre délai minimum, jamais deux visites en même temps — et vous comme le client recevez l\'invitation. Annulations et déplacements compris.',
+    'ag.2.t': 'Le dossier locataire, avant votre appel',
+    'ag.2.d': 'Pour les locations, la réponse rassemble ce qu\'il vous faut toujours — date d\'emménagement, nombre d\'occupants, revenus ou garant — sans jamais demander de documents par email. Quand le dossier est complet, vous êtes prévenu : prêt à présenter au propriétaire.',
+    'ag.3.t': 'Les vendeurs arrivent directement chez vous',
+    'ag.3.d': 'Quelqu\'un veut vendre ou louer son bien ? Aucun prix, aucune estimation, aucune promesse n\'est jamais écrite. La réponse le remercie et demande l\'essentiel — et vous recevez une alerte « mandat potentiel » pour l\'appeler vous-même.',
+    'ag.4.t': 'Déjà parti ? Toujours un lead.',
+    'ag.4.d': 'Si le bien est sous compromis, la réponse le dit simplement, ne propose aucune visite pour lui et suggère le bien le plus proche que vous avez vraiment — puis demande ce qu\'il recherche.',
     'face.lbl': 'Délai de réponse', 'face.note': 'exemple — une demande du dimanche soir, sans nous', 'face.done': 'avec nous',
     'h.f1': 'athome.lu · immotop.lu · votre site · FR · DE · EN', 'h.f2': 'Défiler ↓',
     'n.idx': '[ <b>01</b> ] — La même demande athome, deux fins',
@@ -447,6 +481,16 @@ window.PAGE_I18N = {
     'h.l1': 'Kein Lead', 'h.l2': '<span class="it">geht verloren.</span>',
     'h.lede': 'Sonntag, 21 Uhr. Eine Anfrage kommt zu Ihrem Inserat. Ihre Schreibtische sind leer — und dieselbe Person hat gerade drei andere Agenturen angeschrieben. Wir antworten ihr innerhalb von Minuten, im Namen Ihrer Agentur, in ihrer Sprache. Danach fassen wir nach, bis es ein Ja oder ein Nein ist.',
     'h.cta1': '14-Tage-Pilot — kostenlos', 'h.cta2': 'Den Assistenten fragen',
+    'ag.idx': '[ <b>Nur für Agenturen</b> ] — gebaut für den Alltag einer Agentur',
+    'ag.l1': 'Kein allgemeiner Assistent.', 'ag.l2': 'Der Arbeitstag einer Agentur.',
+    'ag.1.t': 'Besichtigungen, die sich selbst buchen',
+    'ag.1.d': 'Die Antwort bietet Besichtigungstermine aus Ihrem Kalender als Ein-Klick-Buttons an. Ihre Zeiten, Ihre Mindestvorlaufzeit, nie eine Doppelbuchung — und Sie wie der Kunde erhalten die Einladung. Absagen und Verschieben inklusive.',
+    'ag.2.t': 'Die Mieterakte, bevor Sie anrufen',
+    'ag.2.d': 'Bei Mietobjekten sammelt die Antwort, was Sie immer brauchen — Einzugsdatum, Anzahl der Bewohner, Einkommen oder Bürge — ohne je Dokumente per E-Mail anzufordern. Ist die Akte vollständig, werden Sie benachrichtigt: bereit für den Eigentümer.',
+    'ag.3.t': 'Verkäufer landen direkt bei Ihnen',
+    'ag.3.d': 'Jemand möchte seine Immobilie verkaufen oder vermieten? Es wird nie ein Preis, eine Schätzung oder ein Versprechen geschrieben. Die Antwort bedankt sich und fragt das Wesentliche — und Sie erhalten eine Meldung „möglicher Auftrag“, um selbst anzurufen.',
+    'ag.4.t': 'Schon weg? Trotzdem ein Lead.',
+    'ag.4.d': 'Ist das Objekt bereits reserviert, sagt die Antwort das offen, bietet dafür keine Besichtigung an und schlägt das nächstliegende Objekt vor, das Sie wirklich haben — und fragt dann, was gesucht wird.',
     'face.lbl': 'Antwortzeit', 'face.note': 'Beispiel — eine Anfrage am Sonntagabend, ohne uns', 'face.done': 'mit uns',
     'h.f1': 'athome.lu · immotop.lu · Ihre Website · FR · DE · EN', 'h.f2': 'Scrollen ↓',
     'n.idx': '[ <b>01</b> ] — Dieselbe athome-Anfrage, zwei Ausgänge',
