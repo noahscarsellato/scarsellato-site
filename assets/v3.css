@@ -358,3 +358,16 @@ main .wrap, .marquee, .chap { position: relative; z-index: 7; }
 .media-frame .play { position: absolute; right: 14px; bottom: 14px; z-index: 3; font-family: var(--mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; border: 1px solid rgb(198 165 108 / .6); background: rgb(13 17 20 / .7); color: var(--cream); cursor: pointer; }
 .back { display: inline-block; margin-top: 40px; font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
 .back:hover { opacity: 1; color: var(--gold); }
+
+/* =================== site map above the footer =================== */
+.site-map { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 60px); padding: clamp(40px, 6vw, 70px) 0 clamp(30px, 4vw, 44px); border-top: 1px solid var(--line-d); margin-top: clamp(40px, 6vw, 70px); }
+.light .site-map { border-color: var(--line-l); }
+.site-map ul { list-style: none; margin-top: 16px; display: grid; gap: 10px; }
+.site-map li { font-size: .95rem; color: var(--cream-mut); }
+.site-map a { color: var(--cream); opacity: .82; transition: opacity .3s, color .3s; }
+.site-map a:hover { opacity: 1; color: var(--gold); }
+.site-map .mut { font-family: var(--mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; }
+.site-map + .foot { margin-top: 0; }
+@media (max-width: 760px) { .site-map { grid-template-columns: 1fr 1fr; } .site-map .sm-col:last-child { grid-column: 1 / -1; } }
+
+.foot { padding-bottom: 96px; }   /* room under the fixed chat button */

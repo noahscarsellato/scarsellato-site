@@ -73,6 +73,30 @@
   });
 })();
 
+/* ================= the site map above every footer (ecomlux-style essentials, our words) ================= */
+(() => {
+  const { LANG, T } = window.SCAR;
+  const W = {
+    en: { crafts: 'Crafts', discover: 'Discover', contact: 'Contact', rr: 'Answer & Follow-up', auto: 'Automations', sites: 'Websites & worlds', bot: 'Site assistant', immo: 'Real estate', appro: 'The approach', work: 'Work', faq: 'Questions', write: 'Write to the atelier', reply: 'Same-day reply', loc: 'Luxembourg & Greater Region', langs: 'EN · FR · DE' },
+    fr: { crafts: 'Métiers', discover: 'Découvrir', contact: 'Contact', rr: 'Réponse & Relance', auto: 'Automatisations', sites: 'Sites & mondes', bot: 'Assistant du site', immo: 'Immobilier', appro: "L'approche", work: 'Réalisations', faq: 'Questions', write: "Écrire à l'atelier", reply: 'Réponse le jour même', loc: 'Luxembourg & Grande Région', langs: 'FR · DE · EN' },
+    de: { crafts: 'Gewerke', discover: 'Entdecken', contact: 'Kontakt', rr: 'Antwort & Nachfassen', auto: 'Automatisierungen', sites: 'Websites & Welten', bot: 'Website-Assistent', immo: 'Immobilien', appro: 'Der Ansatz', work: 'Arbeiten', faq: 'Fragen', write: 'Dem Atelier schreiben', reply: 'Antwort am selben Tag', loc: 'Luxemburg & Großregion', langs: 'DE · FR · EN' }
+  }[LANG];
+  const sub = /\/(approche|realisations|reponse-relance|automatisations|assistant|immobilier)\/?$/.test(location.pathname.replace(/index\.html$/, ''));
+  const base = sub ? '../' : './';
+  const q = LANG === 'en' ? '' : '?lang=' + LANG;
+  const link = (path, label) => `<li><a href="${base}${path}${path.includes('#') ? '' : q}${path.includes('#') && q ? '' : ''}">${label}</a></li>`;
+  const hash = (path, label) => { const [p, h] = path.split('#'); return `<li><a href="${base}${p}${q}#${h}">${label}</a></li>`; };
+  document.querySelectorAll('.foot').forEach(foot => {
+    if (foot.previousElementSibling && foot.previousElementSibling.classList.contains('site-map')) return;
+    const nav = document.createElement('nav'); nav.className = 'site-map'; nav.setAttribute('aria-label', W.discover);
+    nav.innerHTML = `
+      <div class="sm-col"><p class="idx">[ <b>${W.crafts}</b> ]</p><ul>${link('reponse-relance/', W.rr)}${link('automatisations/', W.auto)}${link('realisations/', W.sites)}${link('assistant/', W.bot)}${link('immobilier/', W.immo)}</ul></div>
+      <div class="sm-col"><p class="idx">[ <b>${W.discover}</b> ]</p><ul>${link('approche/', W.appro)}${link('realisations/', W.work)}${hash('#faq', W.faq)}</ul></div>
+      <div class="sm-col"><p class="idx">[ <b>${W.contact}</b> ]</p><ul><li>${W.loc}</li><li><a href="mailto:noah@scarsellato.com">noah@scarsellato.com</a></li><li><a href="#contact">${W.write} ↗</a></li><li class="mut">${W.reply} · ${W.langs}</li></ul></div>`;
+    foot.parentNode.insertBefore(nav, foot);
+  });
+})();
+
 (() => {
   const T = window.SCAR.T;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
